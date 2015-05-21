@@ -123,11 +123,23 @@ namespace GowWebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            City city = db.Cities.Find(id);
-            db.Cities.Remove(city);
+            //City city = db.Cities.Find(id);
+            //db.Cities.Remove(city);
+            //db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult UpdateAthenaGift()
+        {
+            foreach (CityInfo info in db.CityInfoes)
+            {
+                info.CollectAthenaGift=true;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
