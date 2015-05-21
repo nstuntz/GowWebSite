@@ -1,0 +1,78 @@
+﻿@model IEnumerable<GowWebSite.Models.City>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alliance.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login.UserName)
+        </th>
+        <th>
+            Min Since
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResourceType.Type)
+        </th>
+        <th>
+            SH Lvl
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityInfo.NeedRSS)
+        </th>
+        <th>
+            RSS Image
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) 
+{
+    <tr>
+        <td>
+            @Html.ActionLink(item.CityName, "Details", "CityInfo", new { id = item.CityID}, null )
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alliance.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login.UserName)
+        </td>
+        <td>
+            @item.CityInfo.City.Login.RunSince.ToString("F0")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResourceType.Type)
+        </td>
+        <td>            
+            @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
+        </td>
+        <td>
+            @if (item.CityInfo.Upgrade)
+            { 
+                @Html.DisplayFor(modelItem => item.CityInfo.NeedRSS)
+            }
+        </td>
+        <td>
+            <img src='/Images/RSSImage_@(item.CityID).jpg' />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CityID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CityID })
+ 
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Create New", "Create")

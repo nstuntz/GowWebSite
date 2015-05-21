@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alliance">
+          <Key>
+            <PropertyRef Name="AllianceID" />
+          </Key>
+          <Property Name="AllianceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kingdom" Type="int" Nullable="false" />
+          <Property Name="CityX" Type="int" Nullable="false" />
+          <Property Name="CityY" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginID" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kingdom" Type="int" Nullable="false" />
+          <Property Name="LocationX" Type="int" Nullable="false" />
+          <Property Name="LocationY" Type="int" Nullable="false" />
+          <Property Name="Created" Type="bit" Nullable="false" />
+          <Property Name="Placed" Type="bit" Nullable="false" />
+          <Property Name="ResourceTypeID" Type="int" Nullable="false" />
+          <Property Name="AllianceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CityInfo">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="Bank" Type="bit" Nullable="false" />
+          <Property Name="Rally" Type="bit" Nullable="false" />
+          <Property Name="Tent" Type="bit" Nullable="false" />
+          <Property Name="Shield" Type="bit" Nullable="false" />
+          <Property Name="RallyX" Type="int" />
+          <Property Name="RallyY" Type="int" />
+          <Property Name="TentX" Type="int" />
+          <Property Name="TentY" Type="int" />
+          <Property Name="LastRally" Type="datetime" />
+          <Property Name="LastBank" Type="datetime" />
+          <Property Name="LastUpgrade" Type="datetime" />
+          <Property Name="LastAthenaGift" Type="datetime" />
+          <Property Name="LastShield" Type="datetime" Nullable="false" />
+          <Property Name="ProductionPerHour" Type="int" />
+          <Property Name="LastUpgradeBuilding" Type="int" Nullable="false" />
+          <Property Name="StrongHoldLevel" Type="int" Nullable="false" />
+          <Property Name="TreasuryLevel" Type="int" Nullable="false" />
+          <Property Name="NeedRSS" Type="bit" Nullable="false" />
+          <Property Name="Upgrade" Type="bit" Nullable="false" />
+          <Property Name="HeroUpgradeNeeded" Type="bit" Nullable="false" />
+          <Property Name="CollectAthenaGift" Type="bit" Nullable="false" />
+          <Property Name="RedeemCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RSSBankNum" Type="int" Nullable="false" />
+          <Property Name="SilverBankNum" Type="int" Nullable="false" />
+          <Property Name="RssMarches" Type="int" Nullable="false" />
+          <Property Name="SilverMarches" Type="int" Nullable="false" />
+          <Property Name="TreasuryDue" Type="datetime" />
+          <Property Name="HasGoldMine" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MachineID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Severity" Type="int" Nullable="false" />
+          <Property Name="LoginID" Type="int" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="LastRun" Type="datetime" Nullable="false" />
+          <Property Name="InProcess" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PIN" Type="varchar" MaxLength="4" />
+          <Property Name="LoginDelayMin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResourceType">
+          <Key>
+            <PropertyRef Name="ResourceTypeID" />
+          </Key>
+          <Property Name="ResourceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_City_Alliance">
+          <End Role="Alliance" Type="Self.Alliance" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alliance">
+              <PropertyRef Name="AllianceID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="AllianceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_ResourceType">
+          <End Role="ResourceType" Type="Self.ResourceType" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResourceType">
+              <PropertyRef Name="ResourceTypeID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="ResourceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityInfo_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="CityInfo" Type="Self.CityInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="CityInfo">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CreateExistingCitySetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="CityName" Type="varchar" Mode="In" />
+          <Parameter Name="CityX" Type="int" Mode="In" />
+          <Parameter Name="CityY" Type="int" Mode="In" />
+          <Parameter Name="AllianceID" Type="int" Mode="In" />
+          <Parameter Name="RSSType" Type="int" Mode="In" />
+          <Parameter Name="SHLevel" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CreateExistingCitySetupFull" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="CityName" Type="varchar" Mode="In" />
+          <Parameter Name="PIN" Type="varchar" Mode="In" />
+          <Parameter Name="CityX" Type="int" Mode="In" />
+          <Parameter Name="CityY" Type="int" Mode="In" />
+          <Parameter Name="AllianceID" Type="int" Mode="In" />
+          <Parameter Name="RSSType" Type="int" Mode="In" />
+          <Parameter Name="SHLevel" Type="int" Mode="In" />
+          <Parameter Name="RSSBank" Type="int" Mode="In" />
+          <Parameter Name="SilverBank" Type="int" Mode="In" />
+          <Parameter Name="RssMarches" Type="int" Mode="In" />
+          <Parameter Name="SilverMarches" Type="int" Mode="In" />
+          <Parameter Name="Upgrade" Type="bit" Mode="In" />
+          <Parameter Name="LoginDelayMin" Type="int" Mode="In" />
+          <Parameter Name="Shield" Type="bit" Mode="In" />
+          <Parameter Name="LastShieldDate" Type="datetime" Mode="In" />
+          <Parameter Name="Bank" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="GetOldestLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MachineID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetOldestLogin2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="GowModelStoreContainer">
+          <EntitySet Name="Alliance" EntityType="Self.Alliance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityInfo" EntityType="Self.CityInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResourceType" EntityType="Self.ResourceType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_City_Alliance" Association="Self.FK_City_Alliance">
+            <End Role="Alliance" EntitySet="Alliance" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Login" Association="Self.FK_City_Login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_ResourceType" Association="Self.FK_City_ResourceType">
+            <End Role="ResourceType" EntitySet="ResourceType" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityInfo_City" Association="Self.FK_CityInfo_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="CityInfo" EntitySet="CityInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Login" Association="Self.FK_Log_Login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alliance">
+          <Key>
+            <PropertyRef Name="AllianceID" />
+          </Key>
+          <Property Name="AllianceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kingdom" Type="Int32" Nullable="false" />
+          <Property Name="CityX" Type="Int32" Nullable="false" />
+          <Property Name="CityY" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_City_Alliance" FromRole="Alliance" ToRole="City" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginID" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kingdom" Type="Int32" Nullable="false" />
+          <Property Name="LocationX" Type="Int32" Nullable="false" />
+          <Property Name="LocationY" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="Boolean" Nullable="false" />
+          <Property Name="Placed" Type="Boolean" Nullable="false" />
+          <Property Name="ResourceTypeID" Type="Int32" Nullable="false" />
+          <Property Name="AllianceID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alliance" Relationship="Self.FK_City_Alliance" FromRole="City" ToRole="Alliance" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_City_Login" FromRole="City" ToRole="Login" />
+          <NavigationProperty Name="ResourceType" Relationship="Self.FK_City_ResourceType" FromRole="City" ToRole="ResourceType" />
+          <NavigationProperty Name="CityInfo" Relationship="Self.FK_CityInfo_City" FromRole="City" ToRole="CityInfo" />
+        </EntityType>
+        <EntityType Name="CityInfo">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="Bank" Type="Boolean" Nullable="false" />
+          <Property Name="Rally" Type="Boolean" Nullable="false" />
+          <Property Name="Tent" Type="Boolean" Nullable="false" />
+          <Property Name="Shield" Type="Boolean" Nullable="false" />
+          <Property Name="RallyX" Type="Int32" />
+          <Property Name="RallyY" Type="Int32" />
+          <Property Name="TentX" Type="Int32" />
+          <Property Name="TentY" Type="Int32" />
+          <Property Name="LastRally" Type="DateTime" Precision="3" />
+          <Property Name="LastBank" Type="DateTime" Precision="3" />
+          <Property Name="LastUpgrade" Type="DateTime" Precision="3" />
+          <Property Name="LastAthenaGift" Type="DateTime" Precision="3" />
+          <Property Name="LastShield" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProductionPerHour" Type="Int32" />
+          <Property Name="LastUpgradeBuilding" Type="Int32" Nullable="false" />
+          <Property Name="StrongHoldLevel" Type="Int32" Nullable="false" />
+          <Property Name="TreasuryLevel" Type="Int32" Nullable="false" />
+          <Property Name="NeedRSS" Type="Boolean" Nullable="false" />
+          <Property Name="Upgrade" Type="Boolean" Nullable="false" />
+          <Property Name="HeroUpgradeNeeded" Type="Boolean" Nullable="false" />
+          <Property Name="CollectAthenaGift" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="RedeemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" DefaultValue="String.Empty" />
+          <NavigationProperty Name="City" Relationship="Self.FK_CityInfo_City" FromRole="CityInfo" ToRole="City" />
+          <Property Name="RSSBankNum" Type="Int32" Nullable="false" />
+          <Property Name="SilverBankNum" Type="Int32" Nullable="false" />
+          <Property Name="RssMarches" Type="Int32" Nullable="false" />
+          <Property Name="SilverMarches" Type="Int32" Nullable="false" />
+          <Property Name="TreasuryDue" Type="DateTime" Precision="3" />
+          <Property Name="HasGoldMine" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineID" Type="String" Nullable="false" />
+          <Property Name="Severity" Type="Int32" Nullable="false" />
+          <Property Name="LoginID" Type="Int32" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Login" Relationship="GowModel.FK_Log_Login" FromRole="Log" ToRole="Login" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="LastRun" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InProcess" Type="String" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_City_Login" FromRole="Login" ToRole="City" />
+          <NavigationProperty Name="Logs" Relationship="GowModel.FK_Log_Login" FromRole="Login" ToRole="Log" />
+          <Property Name="PIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LoginDelayMin" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResourceType">
+          <Key>
+            <PropertyRef Name="ResourceTypeID" />
+          </Key>
+          <Property Name="ResourceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_City_ResourceType" FromRole="ResourceType" ToRole="City" />
+        </EntityType>
+        <Association Name="FK_City_Alliance">
+          <End Role="Alliance" Type="Self.Alliance" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alliance">
+              <PropertyRef Name="AllianceID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="AllianceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_ResourceType">
+          <End Role="ResourceType" Type="Self.ResourceType" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResourceType">
+              <PropertyRef Name="ResourceTypeID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="ResourceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CityInfo_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="CityInfo" Type="Self.CityInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="CityInfo">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GowEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alliances" EntityType="Self.Alliance" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="CityInfoes" EntityType="Self.CityInfo" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="ResourceTypes" EntityType="Self.ResourceType" />
+          <AssociationSet Name="FK_City_Alliance" Association="Self.FK_City_Alliance">
+            <End Role="Alliance" EntitySet="Alliances" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Login" Association="Self.FK_City_Login">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_ResourceType" Association="Self.FK_City_ResourceType">
+            <End Role="ResourceType" EntitySet="ResourceTypes" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CityInfo_City" Association="Self.FK_CityInfo_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="CityInfo" EntitySet="CityInfoes" />
+          </AssociationSet>
+          <FunctionImport Name="CreateExitingCitySetup">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="CityX" Mode="In" Type="Int32" />
+            <Parameter Name="CityY" Mode="In" Type="Int32" />
+            <Parameter Name="AllianceID" Mode="In" Type="Int32" />
+            <Parameter Name="RSSType" Mode="In" Type="Int32" />
+            <Parameter Name="SHLevel" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetOldestLogin" ReturnType="Collection(GowModel.GetOldestLogin_Result)">
+          <Parameter Name="MachineID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateExistingCitySetup">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="CityX" Mode="In" Type="Int32" />
+            <Parameter Name="CityY" Mode="In" Type="Int32" />
+            <Parameter Name="AllianceID" Mode="In" Type="Int32" />
+            <Parameter Name="RSSType" Mode="In" Type="Int32" />
+            <Parameter Name="SHLevel" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_Log_Login" Association="GowModel.FK_Log_Login">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
+          <FunctionImport Name="CreateExistingCitySetupFull">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="PIN" Mode="In" Type="String" />
+            <Parameter Name="CityX" Mode="In" Type="Int32" />
+            <Parameter Name="CityY" Mode="In" Type="Int32" />
+            <Parameter Name="AllianceID" Mode="In" Type="Int32" />
+            <Parameter Name="RSSType" Mode="In" Type="Int32" />
+            <Parameter Name="SHLevel" Mode="In" Type="Int32" />
+            <Parameter Name="RSSBank" Mode="In" Type="Int32" />
+            <Parameter Name="SilverBank" Mode="In" Type="Int32" />
+            <Parameter Name="RssMarches" Mode="In" Type="Int32" />
+            <Parameter Name="SilverMarches" Mode="In" Type="Int32" />
+            <Parameter Name="Upgrade" Mode="In" Type="Boolean" />
+            <Parameter Name="LoginDelayMin" Mode="In" Type="Int32" />
+            <Parameter Name="Shield" Mode="In" Type="Boolean" />
+            <Parameter Name="LastShieldDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Bank" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetOldestLogin2" ReturnType="Collection(GowModel.GetOldestLogin2_Result)">
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetOldestLogin_Result">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="LastRun" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="LoginID" Nullable="false" />
+          <Property Type="String" Name="LastRunConvert" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <Association Name="FK_Log_Login">
+          <End Type="GowModel.Login" Role="Login" Multiplicity="0..1" />
+          <End Type="GowModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetOldestLogin2_Result">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="LastRun" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="LoginID" Nullable="false" />
+          <Property Type="String" Name="LastRunConvert" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PIN" Nullable="true" MaxLength="4" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GowModelStoreContainer" CdmEntityContainer="GowEntities">
+          <EntitySetMapping Name="Alliances">
+            <EntityTypeMapping TypeName="GowModel.Alliance">
+              <MappingFragment StoreEntitySet="Alliance">
+                <ScalarProperty Name="AllianceID" ColumnName="AllianceID" />
+                <ScalarProperty Name="Kingdom" ColumnName="Kingdom" />
+                <ScalarProperty Name="CityX" ColumnName="CityX" />
+                <ScalarProperty Name="CityY" ColumnName="CityY" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="GowModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Kingdom" ColumnName="Kingdom" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Placed" ColumnName="Placed" />
+                <ScalarProperty Name="ResourceTypeID" ColumnName="ResourceTypeID" />
+                <ScalarProperty Name="AllianceID" ColumnName="AllianceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityInfoes">
+            <EntityTypeMapping TypeName="GowModel.CityInfo">
+              <MappingFragment StoreEntitySet="CityInfo">
+                <ScalarProperty Name="HasGoldMine" ColumnName="HasGoldMine" />
+                <ScalarProperty Name="TreasuryDue" ColumnName="TreasuryDue" />
+                <ScalarProperty Name="SilverMarches" ColumnName="SilverMarches" />
+                <ScalarProperty Name="RssMarches" ColumnName="RssMarches" />
+                <ScalarProperty Name="SilverBankNum" ColumnName="SilverBankNum" />
+                <ScalarProperty Name="RSSBankNum" ColumnName="RSSBankNum" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Rally" ColumnName="Rally" />
+                <ScalarProperty Name="Tent" ColumnName="Tent" />
+                <ScalarProperty Name="Shield" ColumnName="Shield" />
+                <ScalarProperty Name="RallyX" ColumnName="RallyX" />
+                <ScalarProperty Name="RallyY" ColumnName="RallyY" />
+                <ScalarProperty Name="TentX" ColumnName="TentX" />
+                <ScalarProperty Name="TentY" ColumnName="TentY" />
+                <ScalarProperty Name="LastRally" ColumnName="LastRally" />
+                <ScalarProperty Name="LastBank" ColumnName="LastBank" />
+                <ScalarProperty Name="LastUpgrade" ColumnName="LastUpgrade" />
+                <ScalarProperty Name="LastAthenaGift" ColumnName="LastAthenaGift" />
+                <ScalarProperty Name="LastShield" ColumnName="LastShield" />
+                <ScalarProperty Name="ProductionPerHour" ColumnName="ProductionPerHour" />
+                <ScalarProperty Name="LastUpgradeBuilding" ColumnName="LastUpgradeBuilding" />
+                <ScalarProperty Name="StrongHoldLevel" ColumnName="StrongHoldLevel" />
+                <ScalarProperty Name="TreasuryLevel" ColumnName="TreasuryLevel" />
+                <ScalarProperty Name="NeedRSS" ColumnName="NeedRSS" />
+                <ScalarProperty Name="Upgrade" ColumnName="Upgrade" />
+                <ScalarProperty Name="HeroUpgradeNeeded" ColumnName="HeroUpgradeNeeded" />
+                <ScalarProperty Name="CollectAthenaGift" ColumnName="CollectAthenaGift" />
+                <ScalarProperty Name="RedeemCode" ColumnName="RedeemCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="GowModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="GowModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="LoginDelayMin" ColumnName="LoginDelayMin" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+                <ScalarProperty Name="InProcess" ColumnName="InProcess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourceTypes">
+            <EntityTypeMapping TypeName="GowModel.ResourceType">
+              <MappingFragment StoreEntitySet="ResourceType">
+                <ScalarProperty Name="ResourceTypeID" ColumnName="ResourceTypeID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetOldestLogin" FunctionName="GowModel.Store.GetOldestLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GowModel.GetOldestLogin_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="LastRunConvert" ColumnName="LastRunConvert" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateExistingCitySetup" FunctionName="GowModel.Store.CreateExistingCitySetup" />
+          <FunctionImportMapping FunctionImportName="CreateExistingCitySetupFull" FunctionName="GowModel.Store.CreateExistingCitySetupFull" />
+          <FunctionImportMapping FunctionImportName="GetOldestLogin2" FunctionName="GowModel.Store.GetOldestLogin2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GowModel.GetOldestLogin2_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="LastRunConvert" ColumnName="LastRunConvert" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

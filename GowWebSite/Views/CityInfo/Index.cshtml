@@ -1,0 +1,185 @@
+﻿@model IEnumerable<GowWebSite.Models.CityInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>City Info</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.City.CityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rally)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Tent)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Shield)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RallyX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RallyY)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.TentX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TentY)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.LastRally)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastBank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpgrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastAthenaGift)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastShield)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductionPerHour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpgradeBuilding)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StrongHoldLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreasuryLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NeedRSS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Upgrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HeroUpgradeNeeded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CollectAthenaGift)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.RedeemCode)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.RSSBankNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RssMarches)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SilverBankNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SilverMarches)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(@item.City.CityName, "Edit", new { id = item.CityID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rally)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Tent)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Shield)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RallyX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RallyY)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TentX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TentY)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.LastRally)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastBank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpgrade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastAthenaGift)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastShield)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductionPerHour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpgradeBuilding)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StrongHoldLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreasuryLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NeedRSS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Upgrade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HeroUpgradeNeeded)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CollectAthenaGift)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.RedeemCode)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.RSSBankNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RssMarches)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SilverBankNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SilverMarches)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CityID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CityID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CityID })
+        </td>
+    </tr>
+}
+
+</table>

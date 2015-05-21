@@ -1,0 +1,208 @@
+﻿@model GowWebSite.Models.CityInfo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CityInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rally)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rally)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shield)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shield)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RallyX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RallyX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RallyY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RallyY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TentX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TentX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TentY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TentY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastRally)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastRally)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastBank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastBank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpgrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpgrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastAthenaGift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastAthenaGift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastShield)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastShield)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionPerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionPerHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpgradeBuilding)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpgradeBuilding)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StrongHoldLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StrongHoldLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreasuryLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreasuryLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NeedRSS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NeedRSS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Upgrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Upgrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeroUpgradeNeeded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeroUpgradeNeeded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CollectAthenaGift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CollectAthenaGift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RedeemCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RedeemCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City.CityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.CityName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @*<input type="submit" value="Delete" class="btn btn-default" /> |*@
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

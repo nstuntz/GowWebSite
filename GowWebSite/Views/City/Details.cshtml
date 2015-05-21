@@ -1,0 +1,106 @@
+﻿@model GowWebSite.Models.City
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>City</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kingdom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kingdom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Placed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Placed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alliance.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alliance.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceType.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourceType.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityInfo.RedeemCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityInfo.RedeemCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResourceImage.ContentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResourceImage.ContentType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CityID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
