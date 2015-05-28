@@ -51,7 +51,7 @@ namespace GowWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CityID,Bank,Rally,Tent,Shield,RallyX,RallyY,TentX,TentY,LastRally,LastBank,LastUpgrade,LastAthenaGift,LastShield,ProductionPerHour,LastUpgradeBuilding,StrongHoldLevel,TreasuryLevel,NeedRSS,Upgrade,HeroUpgradeNeeded,CollectAthenaGift,RedeemCode")] CityInfo cityInfo)
+        public ActionResult Create(CityInfo cityInfo)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace GowWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CityID,Bank,Rally,Shield,RallyX,RallyY,LastRally,LastBank,LastUpgrade,LastAthenaGift,LastShield,ProductionPerHour,LastUpgradeBuilding,StrongHoldLevel,TreasuryLevel,NeedRSS,Upgrade,HeroUpgradeNeeded,CollectAthenaGift,RSSBankNum,SilverBankNum,RssMarches,SilverMarches")] CityInfo cityInfo)
+        public ActionResult Edit(CityInfo cityInfo)
         {
             if (ModelState.IsValid)
             {

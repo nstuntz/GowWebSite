@@ -88,7 +88,7 @@ namespace GowWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CityID,LoginID,CityName,Kingdom,LocationX,LocationY,Created,Placed,ResourceTypeID,AllianceID")] City city)
+        public ActionResult Edit(City city)
         {
             if (ModelState.IsValid)
             {
