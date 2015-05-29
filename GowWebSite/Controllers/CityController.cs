@@ -17,8 +17,23 @@ namespace GowWebSite.Controllers
         // GET: City
         public ActionResult Index()
         {
-            var cities = db.Cities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
+            ViewBag.Alliances = db.Alliances.ToList();
+            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
+            var orderedCities = db.Cities.OrderBy(x => x.CityName);
+            var cities = orderedCities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
             return View(cities.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Index(int? allianceID)
+        {
+            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
+            IQueryable<City> cities = null;
+            if (allianceID.HasValue) { cities = db.Cities.Where(x => x.AllianceID == allianceID).OrderBy(x => x.CityName);}
+            else { cities = db.Cities.OrderBy(x => x.CityName);}
+            
+            var cities2 = cities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
+            return View(cities2.ToList());
         }
 
         // GET: City/Details/5
