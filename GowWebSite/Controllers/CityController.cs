@@ -18,8 +18,18 @@ namespace GowWebSite.Controllers
         public ActionResult Index()
         {
             ViewBag.Alliances = db.Alliances.ToList();
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
             var orderedCities = db.Cities.OrderBy(x => x.CityName);
+            if (Request.Cookies["SelectedAlliance"] != null)
+            {
+                int allianceID = Int32.Parse(Request.Cookies["SelectedAlliance"].Value);
+                orderedCities = orderedCities.Where(x => x.AllianceID == allianceID).OrderBy(x => x.CityName);
+                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", allianceID );
+            }
+            else
+            {
+                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
+            }
+
             var cities = orderedCities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
             return View(cities.ToList());
         }
@@ -27,12 +37,24 @@ namespace GowWebSite.Controllers
         [HttpPost]
         public ActionResult Index(int? allianceID)
         {
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
             IQueryable<City> cities = null;
-            if (allianceID.HasValue) { cities = db.Cities.Where(x => x.AllianceID == allianceID).OrderBy(x => x.CityName);}
-            else { cities = db.Cities.OrderBy(x => x.CityName);}
+            if (allianceID.HasValue)
+            {
+                cities = db.Cities.Where(x => x.AllianceID == allianceID).OrderBy(x => x.CityName);
+                Response.Cookies["SelectedAlliance"].Value = allianceID.Value.ToString();
+                Response.Cookies["SelectedAlliance"].Expires = DateTime.Now.AddYears(1);
+
+                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", allianceID);
+            }
+            else
+            {
+                cities = db.Cities.OrderBy(x => x.CityName);
+                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
+            }
             
             var cities2 = cities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
+
+
             return View(cities2.ToList());
         }
 
