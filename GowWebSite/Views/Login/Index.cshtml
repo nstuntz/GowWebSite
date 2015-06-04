@@ -31,7 +31,9 @@
             @Html.DisplayFor(modelItem => item.Active)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RunSince) ( @Html.DisplayFor(modelItem => item.LastRun) )
+            <div style="  display: inline-flex;">
+                @Html.Raw(item.RunSince.ToString("F0"))  <div class="text-muted">&nbsp;&nbsp;( @Html.Raw(item.LastRun) )</div>
+            </div>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.InProcess)
