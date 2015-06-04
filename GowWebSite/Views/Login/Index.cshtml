@@ -14,6 +14,9 @@
             @Html.DisplayNameFor(model => model.Active)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.LoginDelayMin)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LastRun)
         </th>
         <th>
@@ -29,6 +32,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoginDelayMin)
         </td>
         <td>
             <div style="  display: inline-flex;">
