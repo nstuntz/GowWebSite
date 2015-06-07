@@ -49,11 +49,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) 
+@foreach (var item in Model)
 {
-    <tr>
+    bool error = false;
+    string errorClass = "";
+    if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
+            || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(72) < DateTime.Now))
+    {
+        error = true;
+        errorClass = "danger";
+    }
+    <tr class=@errorClass>
         <td>
-            @Html.ActionLink(item.CityName, "Details", "CityInfo", new { id = item.CityID}, null )
+            @if (error)
+            {<div class="glyphicon glyphicon-exclamation-sign"></div> }
+            @Html.ActionLink(item.CityName, "Details", "CityInfo", new { id = item.CityID }, null)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Alliance.Name)
@@ -67,12 +77,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.ResourceType.Type)
         </td>
-        <td>            
+        <td>
             @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
         </td>
         <td>
             @if (item.CityInfo.Upgrade)
-            { 
+            {
                 @Html.DisplayFor(modelItem => item.CityInfo.NeedRSS)
             }
         </td>
@@ -80,9 +90,9 @@
             <img src='/Images/RSSImage_@(item.CityID).jpg' />
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CityID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CityID })
- 
+            @Html.ActionLink("Edit", "Edit", new { id = item.CityID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CityID })
+
         </td>
     </tr>
 }

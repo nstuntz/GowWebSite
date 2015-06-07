@@ -107,7 +107,7 @@ namespace GowWebSite.Controllers
         {
             ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type");
-            return View();
+            return View(new CreateCityFullModel());
         }
 
         // POST: City/CreateFull
@@ -141,8 +141,8 @@ namespace GowWebSite.Controllers
             
             if (ModelState.IsValid)
             {
-                db.CreateExistingCitySetupFull(city.UserName, city.Password, city.PIN, 
-                        city.CityName, city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID, 
+                db.CreateExistingCitySetupFull(city.UserName, city.Password,
+                        city.CityName, city.PIN,city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID, 
                         city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches, 
                         city.Upgrade, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank, 
                         city.Rally, city.RallyX, city.RallyY);
