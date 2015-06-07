@@ -87,6 +87,13 @@ namespace GowWebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CityInfo cityInfo)
         {
+            var city = db.Cities.FirstOrDefault(x => x.CityID == cityInfo.CityID);
+            //Check the rally target
+            if (cityInfo.Rally && db.CityInfoes.Where(x => x.City.AllianceID == city.AllianceID && x.RallyX == cityInfo.RallyX && x.RallyY == cityInfo.RallyY && x.CityID != cityInfo.CityID).Count() > 0)
+            {
+                ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
+            }
+
             if (ModelState.IsValid)
             {
                 if (cityInfo.RedeemCode == null)
@@ -99,6 +106,7 @@ namespace GowWebSite.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CityID = new SelectList(db.Cities, "CityID", "CityName", cityInfo.CityID);
+            cityInfo.City = db.Cities.Find(cityInfo.CityID);
             return View(cityInfo);
         }
 

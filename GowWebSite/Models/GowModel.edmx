@@ -184,6 +184,9 @@
           <Parameter Name="Shield" Type="bit" Mode="In" />
           <Parameter Name="LastShieldDate" Type="datetime" Mode="In" />
           <Parameter Name="Bank" Type="bit" Mode="In" />
+          <Parameter Name="Rally" Type="bit" Mode="In" />
+          <Parameter Name="RallyX" Type="int" Mode="In" />
+          <Parameter Name="RallyY" Type="int" Mode="In" />
         </Function>
         <Function Name="GetOldestLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MachineID" Type="int" Mode="In" />
@@ -293,7 +296,7 @@
             <PropertyRef Name="LogID" />
           </Key>
           <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MachineID" Type="String" Nullable="false" />
+          <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Severity" Type="Int32" Nullable="false" />
           <Property Name="LoginID" Type="Int32" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -309,7 +312,7 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="LastRun" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="InProcess" Type="String" Nullable="false" />
+          <Property Name="InProcess" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Cities" Relationship="Self.FK_City_Login" FromRole="Login" ToRole="City" />
           <NavigationProperty Name="Logs" Relationship="GowModel.FK_Log_Login" FromRole="Login" ToRole="Log" />
           <Property Name="PIN" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
@@ -440,9 +443,12 @@
             <Parameter Name="Shield" Mode="In" Type="Boolean" />
             <Parameter Name="LastShieldDate" Mode="In" Type="DateTime" />
             <Parameter Name="Bank" Mode="In" Type="Boolean" />
+            <Parameter Name="Rally" Mode="In" Type="Boolean" />
+            <Parameter Name="RallyX" Mode="In" Type="Int32" />
+            <Parameter Name="RallyY" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetOldestLogin2" ReturnType="Collection(GowModel.GetOldestLogin2_Result)">
-            <Parameter Name="ComputerName" Mode="In" Type="String" />
+          <Parameter Name="ComputerName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">

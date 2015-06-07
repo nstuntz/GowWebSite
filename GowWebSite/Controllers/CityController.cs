@@ -101,6 +101,61 @@ namespace GowWebSite.Controllers
             return View(city);
         }
 
+
+        // GET: City/CreateFull
+        public ActionResult CreateFull()
+        {
+            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
+            ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type");
+            return View();
+        }
+
+        // POST: City/CreateFull
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateFull(CreateCityFullModel city)
+        {
+            if (!city.LastShieldDate.HasValue)
+            {
+                city.LastShieldDate = new DateTime(2004, 1, 1, 1, 1, 1);
+            }
+
+            if (db.Cities.Count(x=>x.AllianceID==city.AllianceID) >= 98)
+            {
+                ModelState.AddModelError("AllianceID", "There are already 98 cities in that alliance.  You can not add more.");
+            }
+            if (city.SHLevel == 21 && city.LoginDelayMin < 120)
+            {
+                city.LoginDelayMin = 120;
+            }
+            if (city.SHLevel >= 14 && city.LoginDelayMin < 60)
+            {
+                city.LoginDelayMin = 60;
+            }
+
+            //Check the rally target
+            if (city.Rally && db.CityInfoes.Where(x => x.City.AllianceID == city.AllianceID && x.RallyX == city.RallyX && x.RallyY == city.RallyY).Count() > 0)
+            {
+                ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
+            }
+            
+            if (ModelState.IsValid)
+            {
+                db.CreateExistingCitySetupFull(city.UserName, city.Password, city.PIN, 
+                        city.CityName, city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID, 
+                        city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches, 
+                        city.Upgrade, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank, 
+                        city.Rally, city.RallyX, city.RallyY);
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", city.AllianceID);
+            ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
+            return View(city);
+        }
+
         // GET: City/Edit/5
         public ActionResult Edit(int? id)
         {

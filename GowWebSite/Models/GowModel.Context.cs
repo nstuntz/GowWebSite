@@ -117,7 +117,7 @@ namespace GowWebSite.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateExistingCitySetup", userNameParameter, passwordParameter, cityNameParameter, cityXParameter, cityYParameter, allianceIDParameter, rSSTypeParameter, sHLevelParameter);
         }
     
-        public virtual int CreateExistingCitySetupFull(string userName, string password, string cityName, string pIN, Nullable<int> cityX, Nullable<int> cityY, Nullable<int> allianceID, Nullable<int> rSSType, Nullable<int> sHLevel, Nullable<int> rSSBank, Nullable<int> silverBank, Nullable<int> rssMarches, Nullable<int> silverMarches, Nullable<bool> upgrade, Nullable<int> loginDelayMin, Nullable<bool> shield, Nullable<System.DateTime> lastShieldDate, Nullable<bool> bank)
+        public virtual int CreateExistingCitySetupFull(string userName, string password, string cityName, string pIN, Nullable<int> cityX, Nullable<int> cityY, Nullable<int> allianceID, Nullable<int> rSSType, Nullable<int> sHLevel, Nullable<int> rSSBank, Nullable<int> silverBank, Nullable<int> rssMarches, Nullable<int> silverMarches, Nullable<bool> upgrade, Nullable<int> loginDelayMin, Nullable<bool> shield, Nullable<System.DateTime> lastShieldDate, Nullable<bool> bank, Nullable<bool> rally, Nullable<int> rallyX, Nullable<int> rallyY)
         {
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
@@ -191,7 +191,19 @@ namespace GowWebSite.Models
                 new ObjectParameter("Bank", bank) :
                 new ObjectParameter("Bank", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateExistingCitySetupFull", userNameParameter, passwordParameter, cityNameParameter, pINParameter, cityXParameter, cityYParameter, allianceIDParameter, rSSTypeParameter, sHLevelParameter, rSSBankParameter, silverBankParameter, rssMarchesParameter, silverMarchesParameter, upgradeParameter, loginDelayMinParameter, shieldParameter, lastShieldDateParameter, bankParameter);
+            var rallyParameter = rally.HasValue ?
+                new ObjectParameter("Rally", rally) :
+                new ObjectParameter("Rally", typeof(bool));
+    
+            var rallyXParameter = rallyX.HasValue ?
+                new ObjectParameter("RallyX", rallyX) :
+                new ObjectParameter("RallyX", typeof(int));
+    
+            var rallyYParameter = rallyY.HasValue ?
+                new ObjectParameter("RallyY", rallyY) :
+                new ObjectParameter("RallyY", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateExistingCitySetupFull", userNameParameter, passwordParameter, cityNameParameter, pINParameter, cityXParameter, cityYParameter, allianceIDParameter, rSSTypeParameter, sHLevelParameter, rSSBankParameter, silverBankParameter, rssMarchesParameter, silverMarchesParameter, upgradeParameter, loginDelayMinParameter, shieldParameter, lastShieldDateParameter, bankParameter, rallyParameter, rallyXParameter, rallyYParameter);
         }
     
         public virtual ObjectResult<GetOldestLogin2_Result> GetOldestLogin2(string computerName)
