@@ -32,6 +32,7 @@ namespace GowWebSite.Models
         public bool Upgrade { get; set; }
         public bool Bank { get; set; }
         public bool Shield { get; set; }
+        [Range(0, 6000)]
         public DateTime? LastShieldDate { get; set; }
         public int LoginDelayMin { get; set; }
         public bool Rally { get; set; }
@@ -39,6 +40,7 @@ namespace GowWebSite.Models
         public int RallyX { get; set; }
         [Range(1, 1022)]
         public int RallyY { get; set; }
+        public bool HasGoldMine { get; set; }
 
         public CreateCityFullModel()
         {

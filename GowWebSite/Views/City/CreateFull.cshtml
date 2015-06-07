@@ -111,6 +111,7 @@
                 @Html.ValidationMessageFor(model => model.SilverMarches, "", new { @class = "text-danger" })
             </div>
         </div>
+       <!--
         <div class="form-group">
             @Html.LabelFor(model => model.Upgrade, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
             <div class="checkbox col-md-10 col-sm-9">
@@ -118,6 +119,7 @@
                 @Html.ValidationMessageFor(model => model.Upgrade, "", new { @class = "text-danger" })
             </div>
         </div>
+        -->
         <div class="form-group">
             @Html.LabelFor(model => model.Bank, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
             <div class="checkbox col-md-10 col-sm-9">
@@ -166,6 +168,14 @@
                 @Html.EditorFor(model => model.RallyY, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RallyY, "", new { @class = "text-danger" })
             </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.HasGoldMine, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
+            <div class="checkbox col-md-10 col-sm-9">
+                @Html.EditorFor(model => model.HasGoldMine)
+                @Html.ValidationMessageFor(model => model.HasGoldMine, "", new { @class = "text-danger" })
+            </div>
+            <div class="text-muted">Gold mines must be moved to the far upper right position next to the graveyard before being added.</div>
         </div>
 
 

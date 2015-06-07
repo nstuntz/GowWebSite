@@ -144,8 +144,8 @@ namespace GowWebSite.Controllers
                 db.CreateExistingCitySetupFull(city.UserName, city.Password,
                         city.CityName, city.PIN,city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID, 
                         city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches, 
-                        city.Upgrade, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank, 
-                        city.Rally, city.RallyX, city.RallyY);
+                        false, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank, 
+                        city.Rally, city.RallyX, city.RallyY, city.HasGoldMine);
 
                 db.SaveChanges();
                 return RedirectToAction("Index");

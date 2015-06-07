@@ -187,6 +187,7 @@
           <Parameter Name="Rally" Type="bit" Mode="In" />
           <Parameter Name="RallyX" Type="int" Mode="In" />
           <Parameter Name="RallyY" Type="int" Mode="In" />
+          <Parameter Name="HasGoldMine" Type="bit" Mode="In" />
         </Function>
         <Function Name="GetOldestLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MachineID" Type="int" Mode="In" />
@@ -446,6 +447,7 @@
             <Parameter Name="Rally" Mode="In" Type="Boolean" />
             <Parameter Name="RallyX" Mode="In" Type="Int32" />
             <Parameter Name="RallyY" Mode="In" Type="Int32" />
+            <Parameter Name="HasGoldMine" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="GetOldestLogin2" ReturnType="Collection(GowModel.GetOldestLogin2_Result)">
           <Parameter Name="ComputerName" Mode="In" Type="String" />

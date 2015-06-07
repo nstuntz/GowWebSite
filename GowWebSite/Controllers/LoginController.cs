@@ -17,7 +17,7 @@ namespace GowWebSite.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View(db.Logins.OrderByDescending(x => x.InProcess).ThenByDescending(x => x.LastRun).ToList());
+            return View(db.Logins.OrderByDescending(x => x.InProcess).ThenBy(x => System.Data.Entity.DbFunctions.AddMinutes(x.LastRun,(x.LoginDelayMin))).ToList());
         }
 
         // GET: Login/Details/5
