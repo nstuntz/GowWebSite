@@ -10,6 +10,7 @@ using GowWebSite.Models;
 
 namespace GowWebSite.Views
 {
+    [Authorize(Roles = "Admin")]
     public class AllianceController : Controller
     {
         private GowEntities db = new GowEntities();

@@ -10,6 +10,7 @@ using GowWebSite.Models;
 
 namespace GowWebSite.Controllers
 {
+    [Authorize]
     public class CityInfoController : Controller
     {
         private GowEntities db = new GowEntities();
@@ -17,7 +18,20 @@ namespace GowWebSite.Controllers
         // GET: CityInfo
         public ActionResult Index()
         {
-            var cityInfoes = db.CityInfoes.Include(c => c.City);
+            var ordered = db.CityInfoes.OrderBy(x => x.City.CityName);
+
+            if (Request.Cookies["SelectedAlliance"] != null)
+            {
+                int allianceID = Int32.Parse(Request.Cookies["SelectedAlliance"].Value);
+                ordered = ordered.Where(x => x.City.AllianceID == allianceID).OrderBy(x => x.City.CityName);
+            }
+            else if (!User.IsInRole("Admin"))
+            {
+                return View(new List<City>());
+            }
+
+
+            var cityInfoes = ordered.Include(c => c.City);
             return View(cityInfoes.ToList());
         }
 

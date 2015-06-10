@@ -10,6 +10,7 @@ using GowWebSite.Models;
 
 namespace GowWebSite.Controllers
 {
+    [Authorize]
     public class CityController : Controller
     {
         private GowEntities db = new GowEntities();
@@ -17,25 +18,22 @@ namespace GowWebSite.Controllers
         // GET: City
         public ActionResult Index()
         {
-            ViewBag.Alliances = db.Alliances.ToList();
             var orderedCities = db.Cities.OrderBy(x => x.CityName);
             if (Request.Cookies["SelectedAlliance"] != null)
             {
                 int allianceID = Int32.Parse(Request.Cookies["SelectedAlliance"].Value);
                 orderedCities = orderedCities.Where(x => x.AllianceID == allianceID).OrderBy(x => x.CityName);
-                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", allianceID );
             }
-            else
+            else if (!User.IsInRole("Admin"))
             {
-                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
+                return View(new List<City>());
             }
-
             var cities = orderedCities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
             return View(cities.ToList());
         }
 
         [HttpPost]
-        public ActionResult Index(int? allianceID)
+        public ActionResult Alliance(int? allianceID)
         {
             IQueryable<City> cities = null;
             if (allianceID.HasValue)
@@ -44,18 +42,9 @@ namespace GowWebSite.Controllers
                 Response.Cookies["SelectedAlliance"].Value = allianceID.Value.ToString();
                 Response.Cookies["SelectedAlliance"].Expires = DateTime.Now.AddYears(1);
 
-                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", allianceID);
             }
-            else
-            {
-                cities = db.Cities.OrderBy(x => x.CityName);
-                ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
-            }
-            
-            var cities2 = cities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
 
-
-            return View(cities2.ToList());
+            return RedirectToAction("Index", "City");
         }
 
         // GET: City/Details/5
@@ -76,7 +65,6 @@ namespace GowWebSite.Controllers
         // GET: City/Create
         public ActionResult Create()
         {
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type");
             return View();
         }
@@ -96,7 +84,6 @@ namespace GowWebSite.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", city.AllianceID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             return View(city);
         }
@@ -105,7 +92,6 @@ namespace GowWebSite.Controllers
         // GET: City/CreateFull
         public ActionResult CreateFull()
         {
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name");
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type");
             return View(new CreateCityFullModel());
         }
@@ -150,8 +136,6 @@ namespace GowWebSite.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", city.AllianceID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             return View(city);
         }
@@ -168,7 +152,6 @@ namespace GowWebSite.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", city.AllianceID);
             ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
@@ -188,7 +171,6 @@ namespace GowWebSite.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AllianceID = new SelectList(db.Alliances, "AllianceID", "Name", city.AllianceID);
             ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);

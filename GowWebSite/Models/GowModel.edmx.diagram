@@ -16,6 +16,8 @@
         <AssociationConnector Association="GowModel.FK_City_ResourceType" ManuallyRouted="false" />
         <AssociationConnector Association="GowModel.FK_CityInfo_City" ManuallyRouted="false" />
         <AssociationConnector Association="GowModel.FK_Log_Login" />
+        <EntityTypeShape EntityType="GowModel.UserAlliance" Width="1.5" PointX="3" PointY="8.75" />
+        <AssociationConnector Association="GowModel.FK_UserAlliance_Alliance" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

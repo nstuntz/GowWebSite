@@ -10,6 +10,7 @@ using GowWebSite.Models;
 
 namespace GowWebSite.Views
 {
+    [Authorize(Roles = "Admin,MachineOwner")]
     public class LogController : Controller
     {
         private GowEntities db = new GowEntities();

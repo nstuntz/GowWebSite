@@ -33,6 +33,7 @@ namespace GowWebSite.Models
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<ResourceType> ResourceTypes { get; set; }
+        public virtual DbSet<UserAlliance> UserAlliances { get; set; }
     
         public virtual int CreateExitingCitySetup(string userName, string password, string cityName, Nullable<int> cityX, Nullable<int> cityY, Nullable<int> allianceID, Nullable<int> rSSType, Nullable<int> sHLevel)
         {

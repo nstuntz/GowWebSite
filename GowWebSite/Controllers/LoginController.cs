@@ -10,6 +10,7 @@ using GowWebSite.Models;
 
 namespace GowWebSite.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class LoginController : Controller
     {
         private GowEntities db = new GowEntities();

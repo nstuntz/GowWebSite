@@ -95,6 +95,14 @@
           <Property Name="ResourceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserAlliance">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="AllianceID" />
+          </Key>
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="AllianceID" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_City_Alliance">
           <End Role="Alliance" Type="Self.Alliance" Multiplicity="1" />
           <End Role="City" Type="Self.City" Multiplicity="*" />
@@ -155,6 +163,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserAlliance_Alliance">
+          <End Role="Alliance" Type="Self.Alliance" Multiplicity="1" />
+          <End Role="UserAlliance" Type="Self.UserAlliance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alliance">
+              <PropertyRef Name="AllianceID" />
+            </Principal>
+            <Dependent Role="UserAlliance">
+              <PropertyRef Name="AllianceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="CreateExistingCitySetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -202,6 +222,7 @@
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResourceType" EntityType="Self.ResourceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAlliance" EntityType="Self.UserAlliance" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_Alliance" Association="Self.FK_City_Alliance">
             <End Role="Alliance" EntitySet="Alliance" />
             <End Role="City" EntitySet="City" />
@@ -222,6 +243,10 @@
             <End Role="Login" EntitySet="Login" />
             <End Role="Log" EntitySet="Log" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserAlliance_Alliance" Association="Self.FK_UserAlliance_Alliance">
+            <End Role="Alliance" EntitySet="Alliance" />
+            <End Role="UserAlliance" EntitySet="UserAlliance" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -237,6 +262,7 @@
           <Property Name="CityY" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cities" Relationship="Self.FK_City_Alliance" FromRole="Alliance" ToRole="City" />
+          <NavigationProperty Name="UserAlliances" Relationship="GowModel.FK_UserAlliance_Alliance" FromRole="Alliance" ToRole="UserAlliance" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -452,6 +478,11 @@
           <FunctionImport Name="GetOldestLogin2" ReturnType="Collection(GowModel.GetOldestLogin2_Result)">
           <Parameter Name="ComputerName" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="UserAlliances" EntityType="GowModel.UserAlliance" />
+          <AssociationSet Name="FK_UserAlliance_Alliance" Association="GowModel.FK_UserAlliance_Alliance">
+            <End Role="Alliance" EntitySet="Alliances" />
+            <End Role="UserAlliance" EntitySet="UserAlliances" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -480,6 +511,27 @@
           <Property Type="String" Name="LastRunConvert" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="PIN" Nullable="true" MaxLength="4" />
         </ComplexType>
+        <EntityType Name="UserAlliance">
+          <Key>
+            <PropertyRef Name="AllianceID" />
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="AllianceID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alliance" Relationship="GowModel.FK_UserAlliance_Alliance" FromRole="UserAlliance" ToRole="Alliance" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_UserAlliance_Alliance">
+          <End Type="GowModel.Alliance" Role="Alliance" Multiplicity="1" />
+          <End Type="GowModel.UserAlliance" Role="UserAlliance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alliance">
+              <PropertyRef Name="AllianceID" />
+            </Principal>
+            <Dependent Role="UserAlliance">
+              <PropertyRef Name="AllianceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -607,6 +659,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="UserAlliances">
+            <EntityTypeMapping TypeName="GowModel.UserAlliance">
+              <MappingFragment StoreEntitySet="UserAlliance">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AllianceID" ColumnName="AllianceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

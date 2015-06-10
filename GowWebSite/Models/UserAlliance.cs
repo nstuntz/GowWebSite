@@ -12,21 +12,11 @@ namespace GowWebSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Alliance
+    public partial class UserAlliance
     {
-        public Alliance()
-        {
-            this.Cities = new HashSet<City>();
-            this.UserAlliances = new HashSet<UserAlliance>();
-        }
-    
         public int AllianceID { get; set; }
-        public int Kingdom { get; set; }
-        public int CityX { get; set; }
-        public int CityY { get; set; }
-        public string Name { get; set; }
+        public string Email { get; set; }
     
-        public virtual ICollection<City> Cities { get; set; }
-        public virtual ICollection<UserAlliance> UserAlliances { get; set; }
+        public virtual Alliance Alliance { get; set; }
     }
 }
