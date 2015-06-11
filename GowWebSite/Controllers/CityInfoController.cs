@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GowWebSite.Models;
+using System.IO;
 
 namespace GowWebSite.Controllers
 {
@@ -50,6 +51,34 @@ namespace GowWebSite.Controllers
             var cityLogs = db.Logs.Where(l => l.LoginID == cityInfo.City.LoginID);
             cityLogs = cityLogs.OrderByDescending(l => l.LogDate);
             ViewBag.Logs = cityLogs.Take(50).ToList();
+
+
+            try
+            {
+                Dictionary<string, string> images = new Dictionary<string, string>();
+                if (System.IO.Directory.Exists(Server.MapPath("/Images/" + cityInfo.CityID)))
+                {
+                    foreach (string file in Directory.GetFiles((Server.MapPath("/Images/" + cityInfo.CityID))))
+                    {
+                        if (file.EndsWith("jpg"))
+                        {
+                            FileInfo info = new FileInfo(file);
+                            images.Add("/Images/" + cityInfo.CityID + "/" + info.Name, info.CreationTime.ToString("G"));
+                        }
+                    }
+                }
+                else
+                {
+                    string createTime = new FileInfo(Server.MapPath("/Images/CityImage_" + cityInfo.CityID + ".jpg")).CreationTime.ToString("G");
+                    images.Add("/Images/CityImage_" + cityInfo.CityID + ".jpg", createTime);
+                }
+                ViewBag.Images = images;
+            }
+            catch
+            {
+                ViewBag.Images = new Dictionary<string, string>();
+            }
+
             return View(cityInfo);
         }
 

@@ -73,7 +73,7 @@
             }
         </td>
         <td>
-            <img src='/Images/RSSImage_@(item.CityID).jpg' />
+            <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.CityID }) |
@@ -84,9 +84,8 @@
 }
 
 </table>
-
+@Html.ActionLink("Create New", "CreateFull", null, new { @class = "btn btn-default" })
 @if (User.IsInRole("Admin"))
 { 
-    @Html.ActionLink("Create New", "CreateFull", null, new { @class = "btn btn-default" })
     @Html.ActionLink("Set Athena Gift", "UpdateAthenaGift", null, new { @class = "btn btn-default" })
 }

@@ -28,8 +28,8 @@
                     }                 
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Alliances", "Index", "Alliance")</li>
                         <li>@Html.ActionLink("Logins", "Index", "Login")</li>
+                        <li>@Html.ActionLink("Alliances", "Index", "Alliance")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

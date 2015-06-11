@@ -32,6 +32,19 @@ namespace GowWebSite.Controllers
             {
                 return "Failed";
             }
+
+            int cityID = -1;
+            if (httpRequest.Headers.AllKeys.Contains("CityID"))
+            {
+                try
+                {
+                    cityID = Int16.Parse(httpRequest.Headers["CityID"]);
+                }
+                catch
+                {
+                    cityID = -1;
+                }
+            }
             try
             {
                 if (httpRequest.Files.Count > 0)
@@ -40,7 +53,20 @@ namespace GowWebSite.Controllers
                     foreach (string file in httpRequest.Files)
                     {
                         var postedFile = httpRequest.Files[file];
-                        var filePath = HttpContext.Current.Server.MapPath("/Images/" + postedFile.FileName);
+                        string filePath;
+                        if (cityID > 0)
+                        {
+                            string dir =  HttpContext.Current.Server.MapPath("/Images/" + cityID + "/");
+                            if (!System.IO.Directory.Exists(dir))
+                            {
+                                System.IO.Directory.CreateDirectory(dir);
+                            }
+                            filePath = dir + postedFile.FileName;
+                        }
+                        else
+                        {
+                            filePath = HttpContext.Current.Server.MapPath("/Images/" + postedFile.FileName);
+                        }
                         postedFile.SaveAs(filePath);
 
                         docfiles.Add(filePath);
