@@ -23,7 +23,38 @@ textarea {
     max-width: 280px;
 }
 
-
 form-group {
     margin-bottom: 5px;
+}
+
+ .modal-content {
+    width : 800px  !important;
+    max-width : 1000px ;
+    margin: 30px auto !important;
+}
+.modal-body{
+    padding-bottom: 5px;
+}
+.modal-header {
+    border-bottom: 2px solid #000;
+}
+.modal-footer{
+    border-top: none;
+    margin-top: 0px;
+    padding-top: 2px;
+}
+ .modal-body ul {
+    border-bottom: 2px solid #000;
+    text-align:left;
+    vertical-align:middle;
+}
+ .modal-body ul li{
+    padding-bottom: 2px;
+    text-align:left;
+    vertical-align:middle;
+}
+
+ .modal-body ul li:first-child{
+    border-right: 3px solid #d8d8d8;
+    text-align:center;
 }

@@ -1,0 +1,25 @@
+﻿<div class="modal-content imagesModal">
+    <div class="modal-header text-center">
+        <h4>Images</h4>
+    </div>
+    <div class="modal-body">
+
+        @foreach (KeyValuePair<string, string> image in ViewBag.Images)
+        {
+            <ul class="list-group list-inline">
+                <li>@image.Value</li>
+                <li><img class="img-responsive" src='@image.Key' /></li>
+            </ul>
+        }
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary modal-close-btn" id="approve-btn">Close</button> 
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#approve-btn').click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+    </script>
+</div>

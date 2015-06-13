@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using GowWebSite.Models;
 
 namespace GowWebSite.Controllers
@@ -28,6 +29,38 @@ namespace GowWebSite.Controllers
             {
                 return View(new List<City>());
             }
+
+
+            //try
+            //{
+            //    Dictionary<int, Dictionary<string, string>> cityImages = new Dictionary<int, Dictionary<string, string>>();
+            //    foreach (var city in orderedCities)
+            //    {
+            //        Dictionary<string, string> images = new Dictionary<string, string>();
+            //        if (System.IO.Directory.Exists(Server.MapPath("/Images/" + city.CityID)))
+            //        {
+            //            foreach (string file in Directory.GetFiles((Server.MapPath("/Images/" + city.CityID))))
+            //            {
+            //                if (file.EndsWith("jpg"))
+            //                {
+            //                    FileInfo info = new FileInfo(file);
+            //                    if (info.Length < 50000)
+            //                    {
+            //                        images.Add("/Images/" + city.CityID + "/" + info.Name, info.CreationTime.ToString("G"));
+            //                    }
+            //                }
+            //            }
+            //        }
+            //        cityImages.Add(city.CityID, images);
+            //    }
+
+            //    ViewBag.Images = cityImages;
+            //}
+            //catch
+            //{
+            //    ViewBag.Images = new Dictionary<int, Dictionary<string, string>>();
+            //}
+
             var cities = orderedCities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
             return View(cities.ToList());
         }
@@ -50,7 +83,7 @@ namespace GowWebSite.Controllers
         // GET: City/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null) 
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -76,7 +109,7 @@ namespace GowWebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateCityModel city)
         {
-            
+
             if (ModelState.IsValid)
             {
                 db.CreateExistingCitySetup(city.UserName, city.Password, city.CityName, city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID, city.SHLevel);
@@ -106,7 +139,7 @@ namespace GowWebSite.Controllers
                 city.LastShieldDate = new DateTime(2004, 1, 1, 1, 1, 1);
             }
 
-            if (db.Cities.Count(x=>x.AllianceID==city.AllianceID) >= 98)
+            if (db.Cities.Count(x => x.AllianceID == city.AllianceID) >= 98)
             {
                 ModelState.AddModelError("AllianceID", "There are already 98 cities in that alliance.  You can not add more.");
             }
@@ -124,13 +157,13 @@ namespace GowWebSite.Controllers
             {
                 ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
             }
-            
+
             if (ModelState.IsValid)
             {
                 db.CreateExistingCitySetupFull(city.UserName, city.Password,
-                        city.CityName, city.PIN,city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID, 
-                        city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches, 
-                        false, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank, 
+                        city.CityName, city.PIN, city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID,
+                        city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches,
+                        false, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank,
                         city.Rally, city.RallyX, city.RallyY, city.HasGoldMine);
 
                 db.SaveChanges();
@@ -207,13 +240,53 @@ namespace GowWebSite.Controllers
         {
             foreach (CityInfo info in db.CityInfoes)
             {
-                info.CollectAthenaGift=true;
+                info.CollectAthenaGift = true;
             }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
 
+        public ActionResult ViewImages(int? cityid)
+        {
+            if (!cityid.HasValue)
+            {
+                ViewBag.Images = new Dictionary<int, Dictionary<string, string>>();
+                return PartialView("_ViewImages");
+            }
+
+            try
+            {
+
+                Dictionary<string, string> images = new Dictionary<string, string>();
+                if (System.IO.Directory.Exists(Server.MapPath("/Images/" + cityid)))
+                {
+                    foreach (string file in Directory.GetFiles((Server.MapPath("/Images/" + cityid))))
+                    {
+                        if (file.EndsWith("jpg"))
+                        {
+                            FileInfo info = new FileInfo(file);
+                            if (info.Length < 50000)
+                            {
+                                images.Add("/Images/" + cityid + "/" + info.Name, info.CreationTime.ToString("G"));
+                            }
+                        }
+                    }
+                }
+                ViewBag.Images = images;
+            }
+            catch
+            {
+                ViewBag.Images = new Dictionary<int, Dictionary<string, string>>();
+            }
+
+            return PartialView("_ViewImages");
+        }
+        [HttpPost]
+        public ActionResult ViewImages()
+        {
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

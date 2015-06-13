@@ -29,6 +29,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CityInfo.NeedRSS)
         </th>
+        <th></th>
         <th>
             RSS Image
         </th>
@@ -72,6 +73,11 @@
                 @Html.DisplayFor(modelItem => item.CityInfo.NeedRSS)
             }
         </td>
+        <td class="">
+            <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+            </a>
+        </td>
         <td>
             <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
         </td>
@@ -84,8 +90,40 @@
 }
 
 </table>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog"></div>
+
+
 @Html.ActionLink("Create New", "CreateFull", null, new { @class = "btn btn-default" })
 @if (User.IsInRole("Admin"))
 { 
     @Html.ActionLink("Set Athena Gift", "UpdateAthenaGift", null, new { @class = "btn btn-default" })
 }
+
+
+<script type="text/javascript">
+    $(function () {
+        // Initialize numeric spinner input boxes
+        //$(".numeric-spinner").spinedit();
+        // Initialize modal dialog
+        // attach modal-container bootstrap attributes to links with .modal-link class.
+        // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+        $('body').on('click', '.modal-link', function (e) {
+            e.preventDefault();
+            $(this).attr('data-target', '#myModal');
+            $(this).attr('data-toggle', 'modal');
+        });
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body').on('click', '.modal-close-btn', function () {
+            $('#myModal').modal('hide');
+        });
+        //clear modal cache, so that new content can be loaded
+        $('#myModal').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
+        $('#CancelModal').on('click', function () {
+            return false;
+        });
+    });
+</script>
