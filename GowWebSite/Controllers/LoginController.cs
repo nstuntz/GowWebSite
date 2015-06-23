@@ -36,6 +36,51 @@ namespace GowWebSite.Controllers
             return View(login);
         }
 
+        public ActionResult ViewLogin(int? cityID)
+        {
+            if (cityID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            City city = db.Cities.Find(cityID);
+
+            if (city == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Login login = db.Logins.Find(city.LoginID);
+            if (login == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            ViewBag.CityName = city.CityName;
+
+            return PartialView("_ViewCityLogin",login);
+        }
+
+
+        // GET: Login/Details/5
+        public ActionResult ReRunLogin(int? loginID)
+        {
+            if (loginID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Login login = db.Logins.Find(loginID);
+            if (login == null)
+            {
+                return HttpNotFound();
+            }
+
+            login.LastRun = login.LastRun.AddMinutes(-1 * login.LoginDelayMin);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "City");
+        }
+
         // GET: Login/Create
         public ActionResult Create()
         {

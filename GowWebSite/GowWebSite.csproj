@@ -336,6 +336,7 @@
     <Content Include="Views\City\CreateFull.cshtml" />
     <Content Include="Views\Shared\_ViewImages.cshtml" />
     <Content Include="Views\Shared\_ViewLogs.cshtml" />
+    <Content Include="Views\Shared\_ViewCityLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

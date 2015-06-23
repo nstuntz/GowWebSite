@@ -1,0 +1,40 @@
+﻿@model GowWebSite.Models.Login
+@using GowWebSite.Models
+
+<div class="modal-content imagesModal">
+    <div class="modal-header text-center">
+        <h4>Run Info - @ViewBag.CityName</h4>
+    <div class="modal-body">
+
+
+        <div>
+            <ul class="list-group list-inline">
+                <li>Last Run at:</li>
+                <li>@Html.DisplayFor(model => model.LastRun)</li>
+            </ul>
+            @if (User.IsInRole("Admin"))
+            {
+                <ul class="list-group list-inline">
+                    <li>@Html.DisplayNameFor(model => model.InProcess)</li>
+                    <li>@Html.DisplayFor(model => model.InProcess)</li>
+                </ul>
+            }
+            <ul class="list-group list-inline">
+                <li>Approximate time between runs(mins):</li>
+                <li>@Html.DisplayFor(model => model.LoginDelayMin)</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        @if (Model.LastRun.AddMinutes(20) > DateTime.Now)
+        {
+            @Html.ActionLink("Rerun City", "ReRunLogin", new { loginID = Model.LoginID }, new { @class = "btn btn-primary modal-close-btn disabled" })
+        }
+        else
+        {
+            @Html.ActionLink("Rerun City", "ReRunLogin", new { loginID = Model.LoginID }, new { @class = "btn btn-primary modal-close-btn" })
+        }
+        <button class="btn btn-primary modal-close-btn" data-dismiss="modal" id="approve-btn">Close</button>
+    </div>
+</div>
