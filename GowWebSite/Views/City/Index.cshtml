@@ -12,9 +12,6 @@
             @Html.DisplayNameFor(model => model.CityName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Alliance.Name)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Login.UserName)
         </th>
         <th>
@@ -50,9 +47,6 @@
         <td>
             @if (error) {<div class="glyphicon glyphicon-exclamation-sign"></div> }
             @Html.ActionLink(item.CityName, "Details", "CityInfo", new { id = item.CityID }, null)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Alliance.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Login.UserName)

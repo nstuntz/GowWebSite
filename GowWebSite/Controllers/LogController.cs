@@ -71,7 +71,7 @@ namespace GowWebSite.Views
 
             ViewBag.CityName = city.CityName;
 
-            return PartialView("_ViewLogs", logs.Take(50).ToList());
+            return PartialView("_ViewLogs", logs.OrderByDescending(x=>x.LogDate).Take(50).ToList());
         }
 
         // GET: Log/Create
