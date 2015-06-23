@@ -117,5 +117,9 @@
         $('#myModal').on('hidden.bs.modal', function () {
             $(this).removeData('bs.modal');
         });
+
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myModal').scrollTop(0);
+        });
     });
 </script>

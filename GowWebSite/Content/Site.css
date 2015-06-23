@@ -52,9 +52,9 @@ form-group {
     padding-bottom: 2px;
     text-align:left;
     vertical-align:middle;
+    border-right: 3px solid #d8d8d8;
 }
 
- .modal-body ul li:first-child{
-    border-right: 3px solid #d8d8d8;
-    text-align:center;
+ .modal-body ul li:last-child{
+    border-right: 0px;
 }

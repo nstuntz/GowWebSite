@@ -10,6 +10,11 @@
         @foreach (Log log in Model)
         {
             <ul class="list-group list-inline">
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>@log.MachineID</li>
+                    <li>@log.Severity</li>
+                }
                 <li>@log.LogDate</li>
                 <li>@log.Message</li>
             </ul>
