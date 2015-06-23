@@ -1,0 +1,21 @@
+﻿@model List<GowWebSite.Models.Log>
+@using GowWebSite.Models
+
+<div class="modal-content imagesModal">
+    <div class="modal-header text-center">
+        <h4>Logs - @ViewBag.CityName</h4>
+    </div>
+    <div class="modal-body">
+
+        @foreach (Log log in Model)
+        {
+            <ul class="list-group list-inline">
+                <li>@log.LogDate</li>
+                <li>@log.Message</li>
+            </ul>
+        }
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary modal-close-btn" data-dismiss="modal" id="approve-btn">Close</button>
+    </div>
+</div>

@@ -335,6 +335,7 @@
     <Content Include="Views\Shared\DisplayTemplates\TimeSpan.cshtml" />
     <Content Include="Views\City\CreateFull.cshtml" />
     <Content Include="Views\Shared\_ViewImages.cshtml" />
+    <Content Include="Views\Shared\_ViewLogs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

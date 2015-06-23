@@ -45,6 +45,35 @@ namespace GowWebSite.Views
             return View(log);
         }
 
+
+
+        // GET: Log/Details/5
+        public ActionResult CityLogs(int? loginID)
+        {
+            if (loginID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            City city = db.Cities.FirstOrDefault(x => x.LoginID == loginID);
+
+            if (city == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            IQueryable<Log> logs = db.Logs.Where(x => x.LoginID == loginID);
+
+            if (logs == null || logs.Count() == 0)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.CityName = city.CityName;
+
+            return PartialView("_ViewLogs", logs.Take(50).ToList());
+        }
+
         // GET: Log/Create
         public ActionResult Create()
         {
