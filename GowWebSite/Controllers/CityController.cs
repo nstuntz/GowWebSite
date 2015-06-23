@@ -255,21 +255,28 @@ namespace GowWebSite.Controllers
                 return PartialView("_ViewImages");
             }
 
+            City city = db.Cities.Find(cityid);
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+
             try
             {
-
                 Dictionary<string, string> images = new Dictionary<string, string>();
                 if (System.IO.Directory.Exists(Server.MapPath("/Images/" + cityid)))
                 {
-                    foreach (string file in Directory.GetFiles((Server.MapPath("/Images/" + cityid))))
+                    DirectoryInfo di = new DirectoryInfo(Server.MapPath("/Images/" + cityid));
+                    FileInfo[] files = di.GetFiles();
+                    List<FileInfo> orderedFiles = files.OrderBy(f => f.Length).ToList();
+
+                    foreach (FileInfo file in orderedFiles)
                     {
-                        if (file.EndsWith("jpg"))
+                        if (file.Length > 10000) continue;
+
+                        if (file.Name.EndsWith("jpg"))
                         {
-                            FileInfo info = new FileInfo(file);
-                            if (info.Length < 50000)
-                            {
-                                images.Add("/Images/" + cityid + "/" + info.Name, info.CreationTime.ToString("G"));
-                            }
+                            images.Add("/Images/" + cityid + "/" + file.Name, file.LastWriteTime.ToString("G"));
                         }
                     }
                 }
@@ -280,7 +287,51 @@ namespace GowWebSite.Controllers
                 ViewBag.Images = new Dictionary<int, Dictionary<string, string>>();
             }
 
-            return PartialView("_ViewImages");
+            return PartialView("_ViewImages", city);
+        }
+
+
+        public ActionResult ViewImagesLg(int? cityid)
+        {
+            if (!cityid.HasValue)
+            {
+                ViewBag.Images = new Dictionary<int, Dictionary<string, string>>();
+                return PartialView("_ViewImages");
+            }
+
+            City city = db.Cities.Find(cityid);
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+
+            try
+            {
+                Dictionary<string, string> images = new Dictionary<string, string>();
+                if (System.IO.Directory.Exists(Server.MapPath("/Images/" + cityid)))
+                {
+                    DirectoryInfo di = new DirectoryInfo(Server.MapPath("/Images/" + cityid));
+                    FileInfo[] files = di.GetFiles();
+                    List<FileInfo> orderedFiles = files.OrderBy(f => f.Length).ToList();
+                    
+                    foreach (FileInfo file in orderedFiles)
+                    {
+                        if (file.Length <= 10000) continue;
+
+                        if (file.Name.EndsWith("jpg"))
+                        {
+                            images.Add("/Images/" + cityid + "/" + file.Name, file.LastWriteTime.ToString("G"));
+                        }
+                    }
+                }
+                ViewBag.Images = images;
+            }
+            catch
+            {
+                ViewBag.Images = new Dictionary<int, Dictionary<string, string>>();
+            }
+
+            return PartialView("_ViewImages", city);
         }
         [HttpPost]
         public ActionResult ViewImages()

@@ -47,7 +47,7 @@ namespace GowWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LoginID,UserName,Password,Active,LastRun,InProcess")] Login login)
+        public ActionResult Create([Bind(Include = "LoginID,UserName,Password,Active,LastRun,InProcess,PIN")] Login login)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace GowWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LoginID,UserName,Password,Active,LastRun,InProcess,LoginDelayMin")] Login login)
+        public ActionResult Edit([Bind(Include = "LoginID,UserName,Password,Active,LastRun,InProcess,LoginDelayMin,PIN")] Login login)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +88,7 @@ namespace GowWebSite.Controllers
                 dbLogin.InProcess = login.InProcess;
                 dbLogin.LastRun = login.LastRun;
                 dbLogin.LoginDelayMin = login.LoginDelayMin;
+                dbLogin.PIN = login.PIN;
 
                 //db.Entry(login).State = EntityState.Modified;
                 db.SaveChanges();

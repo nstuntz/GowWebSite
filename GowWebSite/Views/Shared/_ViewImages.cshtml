@@ -1,6 +1,9 @@
-﻿<div class="modal-content imagesModal">
+﻿@model GowWebSite.Models.City
+
+
+<div class="modal-content imagesModal">
     <div class="modal-header text-center">
-        <h4>Images</h4>
+        <h4>Images - @Model.CityName</h4>
     </div>
     <div class="modal-body">
 
@@ -13,13 +16,6 @@
         }
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary modal-close-btn" id="approve-btn">Close</button> 
+        <button class="btn btn-primary modal-close-btn" data-dismiss="modal" id="approve-btn">Close</button> 
     </div>
-    <script type="text/javascript">
-        $(function () {
-            $('#approve-btn').click(function () {
-                $('#myModal').modal('hide');
-            });
-        });
-    </script>
 </div>

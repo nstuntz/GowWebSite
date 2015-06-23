@@ -25,9 +25,9 @@ namespace GowWebSite.Models
         public int RSSBank { get; set; }
         [Range(1, 4)]
         public int SilverBank { get; set; }
-        [Range(1, 5)]
+        [Range(0, 5)]
         public int RSSMarches { get; set; }
-        [Range(1, 5)]
+        [Range(0, 5)]
         public int SilverMarches { get; set; }
         public bool Upgrade { get; set; }
         public bool Bank { get; set; }
@@ -36,9 +36,9 @@ namespace GowWebSite.Models
         public DateTime? LastShieldDate { get; set; }
         public int LoginDelayMin { get; set; }
         public bool Rally { get; set; }
-        [Range(1, 510)]
+        [Range(0, 510)]
         public int RallyX { get; set; }
-        [Range(1, 1022)]
+        [Range(0, 1022)]
         public int RallyY { get; set; }
         public bool HasGoldMine { get; set; }
 

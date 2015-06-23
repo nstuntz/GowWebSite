@@ -48,8 +48,7 @@
     }
     <tr class=@errorClass>
         <td>
-            @if (error)
-            {<div class="glyphicon glyphicon-exclamation-sign"></div> }
+            @if (error) {<div class="glyphicon glyphicon-exclamation-sign"></div> }
             @Html.ActionLink(item.CityName, "Details", "CityInfo", new { id = item.CityID }, null)
         </td>
         <td>
@@ -75,7 +74,10 @@
         </td>
         <td class="">
             <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-plus-sign"></span>
+                <span class="glyphicon glyphicon-camera"></span>
+            </a>
+            <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-home"></span>
             </a>
         </td>
         <td>
@@ -92,7 +94,7 @@
 </table>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog"></div>
+<div id="myModal" class="modal" role="dialog" tabindex="-1"></div>
 
 
 @Html.ActionLink("Create New", "CreateFull", null, new { @class = "btn btn-default" })
@@ -114,16 +116,9 @@
             $(this).attr('data-target', '#myModal');
             $(this).attr('data-toggle', 'modal');
         });
-        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
-        $('body').on('click', '.modal-close-btn', function () {
-            $('#myModal').modal('hide');
-        });
         //clear modal cache, so that new content can be loaded
         $('#myModal').on('hidden.bs.modal', function () {
             $(this).removeData('bs.modal');
-        });
-        $('#CancelModal').on('click', function () {
-            return false;
         });
     });
 </script>
