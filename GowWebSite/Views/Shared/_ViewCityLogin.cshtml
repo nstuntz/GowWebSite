@@ -27,13 +27,20 @@
 
     </div>
     <div class="modal-footer">
-        @if (Model.LastRun.AddMinutes(20) > DateTime.Now)
-        {
-            @Html.ActionLink("Rerun City", "ReRunLogin", new { loginID = Model.LoginID }, new { @class = "btn btn-primary modal-close-btn disabled" })
+        @if (Model.InProcess != "0")
+        { 
+            @Html.Raw("Running")
         }
         else
-        {
-            @Html.ActionLink("Rerun City", "ReRunLogin", new { loginID = Model.LoginID }, new { @class = "btn btn-primary modal-close-btn" })
+        { 
+            if (Model.LastRun.AddMinutes(20) > DateTime.Now)
+            {
+                @Html.ActionLink("Rerun City", "ReRunLogin", new { loginID = Model.LoginID }, new { @class = "btn btn-primary modal-close-btn disabled" })
+            }
+            else
+            {
+                @Html.ActionLink("Rerun City", "ReRunLogin", new { loginID = Model.LoginID }, new { @class = "btn btn-primary modal-close-btn" })
+            }
         }
         <button class="btn btn-primary modal-close-btn" data-dismiss="modal" id="approve-btn">Close</button>
     </div>

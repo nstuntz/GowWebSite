@@ -10,12 +10,13 @@ using GowWebSite.Models;
 
 namespace GowWebSite.Views
 {
-    [Authorize(Roles = "Admin,MachineOwner")]
+    
     public class LogController : Controller
     {
         private GowEntities db = new GowEntities();
         
         // GET: Log
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Index(string machineID)
         {
             ViewBag.Machines = db.Logs.Select(x => x.MachineID).Distinct().OrderBy(x => x).ToList();
@@ -31,6 +32,7 @@ namespace GowWebSite.Views
         }
 
         // GET: Log/Details/5
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,6 +50,7 @@ namespace GowWebSite.Views
 
 
         // GET: Log/Details/5
+        [Authorize]
         public ActionResult CityLogs(int? loginID)
         {
             if (loginID == null)
@@ -71,10 +74,16 @@ namespace GowWebSite.Views
 
             ViewBag.CityName = city.CityName;
 
+            if (!User.IsInRole("Admin") && !User.IsInRole("MachineOwner"))
+            {
+                logs = logs.Where(x => x.Severity > 1 && x.Severity < 5);
+            }
+
             return PartialView("_ViewLogs", logs.OrderByDescending(x=>x.LogDate).Take(50).ToList());
         }
 
         // GET: Log/Create
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Create()
         {
             return View();
@@ -85,6 +94,7 @@ namespace GowWebSite.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Create([Bind(Include = "LogID,MachineID,Severity,LoginID,Message,LogDate")] Log log)
         {
             if (ModelState.IsValid)
@@ -117,6 +127,7 @@ namespace GowWebSite.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Edit([Bind(Include = "LogID,MachineID,Severity,LoginID,Message,LogDate")] Log log)
         {
             if (ModelState.IsValid)
@@ -129,6 +140,7 @@ namespace GowWebSite.Views
         }
 
         // GET: Log/Delete/5
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -146,6 +158,7 @@ namespace GowWebSite.Views
         // POST: Log/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult DeleteConfirmed(int id)
         {
             Log log = db.Logs.Find(id);

@@ -10,18 +10,19 @@ using GowWebSite.Models;
 
 namespace GowWebSite.Controllers
 {
-    [Authorize(Roles="Admin")]
     public class LoginController : Controller
     {
         private GowEntities db = new GowEntities();
 
         // GET: Login
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Logins.OrderByDescending(x => x.InProcess).ThenBy(x => System.Data.Entity.DbFunctions.AddMinutes(x.LastRun,(x.LoginDelayMin))).ToList());
         }
 
         // GET: Login/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +37,7 @@ namespace GowWebSite.Controllers
             return View(login);
         }
 
+        [Authorize]
         public ActionResult ViewLogin(int? cityID)
         {
             if (cityID == null)
@@ -55,7 +57,6 @@ namespace GowWebSite.Controllers
                 return HttpNotFound();
             }
 
-
             ViewBag.CityName = city.CityName;
 
             return PartialView("_ViewCityLogin",login);
@@ -63,6 +64,7 @@ namespace GowWebSite.Controllers
 
 
         // GET: Login/Details/5
+        [Authorize]
         public ActionResult ReRunLogin(int? loginID)
         {
             if (loginID == null)
@@ -82,6 +84,7 @@ namespace GowWebSite.Controllers
         }
 
         // GET: Login/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -92,6 +95,7 @@ namespace GowWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "LoginID,UserName,Password,Active,LastRun,InProcess,PIN")] Login login)
         {
             if (ModelState.IsValid)
@@ -105,6 +109,7 @@ namespace GowWebSite.Controllers
         }
 
         // GET: Login/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -124,6 +129,7 @@ namespace GowWebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "LoginID,UserName,Password,Active,LastRun,InProcess,LoginDelayMin,PIN")] Login login)
         {
             if (ModelState.IsValid)
@@ -143,6 +149,7 @@ namespace GowWebSite.Controllers
         }
 
         // GET: Login/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -160,6 +167,7 @@ namespace GowWebSite.Controllers
         // POST: Login/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             //Login login = db.Logins.Find(id);
