@@ -83,6 +83,24 @@ namespace GowWebSite.Controllers
             return RedirectToAction("Index", "City");
         }
 
+        [Authorize]
+        public ActionResult ToggleActive(int? loginID)
+        {
+            if (loginID == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Login login = db.Logins.Find(loginID);
+            if (login == null)
+            {
+                return HttpNotFound();
+            }
+
+            login.Active = !login.Active;
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "City");
+        }
         // GET: Login/Create
         [Authorize(Roles = "Admin")]
         public ActionResult Create()

@@ -14,9 +14,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Login.UserName)
         </th>
+        <th>&nbsp;</th>
         <th>
             Min Since
         </th>
+        <th>&nbsp;</th>
         <th>
             @Html.DisplayNameFor(model => model.ResourceType.Type)
         </th>
@@ -43,6 +45,11 @@
         error = true;
         errorClass = "danger";
     }
+    else if (!item.Login.Active)
+    {
+        errorClass = "info";
+    }
+        
     <tr class=@errorClass>
         <td>
             @if (error) {<div class="glyphicon glyphicon-exclamation-sign"></div> }
@@ -50,13 +57,16 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Login.UserName)
+        </td>
+        <td>
             <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
                 <span class="glyphicon glyphicon-list"></span>
             </a>
         </td>
         <td>
             @item.CityInfo.City.Login.RunSince.ToString("F0")
-
+        </td>
+        <td>
             <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
                 <span class="glyphicon glyphicon-forward"></span>
             </a>
