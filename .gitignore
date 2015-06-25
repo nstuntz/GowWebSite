@@ -43,9 +43,12 @@ Temporary Items
 .apdisk
 
 .nuget/
+*.suo
+*.user
 
 GowWebsite/bin
 GowWebsite/obj
+GowWebsite/images
 
 /packages/
 !packages/repositories.config
