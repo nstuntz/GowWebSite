@@ -6,7 +6,7 @@
 
 <h2>Index</h2>
 
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CityName)
@@ -35,72 +35,73 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-    bool error = false;
-    string errorClass = "";
-    if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
-            || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(72) < DateTime.Now))
+    @foreach (var item in Model)
     {
-        error = true;
-        errorClass = "danger";
-    }
-    else if (!item.Login.Active)
-    {
-        errorClass = "info";
-    }
-        
-    <tr class=@errorClass>
-        <td>
-            @if (error) {<div class="glyphicon glyphicon-exclamation-sign"></div> }
-            @Html.ActionLink(item.CityName, "Details", "CityInfo", new { id = item.CityID }, null)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Login.UserName)
-        </td>
-        <td>
-            <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-list"></span>
-            </a>
-        </td>
-        <td>
-            @item.CityInfo.City.Login.RunSince.ToString("F0")
-        </td>
-        <td>
-            <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-forward"></span>
-            </a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ResourceType.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
-        </td>
-        <td>
-            @if (item.CityInfo.Upgrade)
-            {
-                @Html.DisplayFor(modelItem => item.CityInfo.NeedRSS)
-            }
-        </td>
-        <td class="">
-            <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-camera"></span>
-            </a>
-            <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-home"></span>
-            </a>
-        </td>
-        <td>
-            <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CityID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CityID })
+        bool error = false;
+        string errorClass = "";
+        if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
+                || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(72) < DateTime.Now))
+        {
+            error = true;
+            errorClass = "danger";
+        }
+        else if (!item.Login.Active)
+        {
+            errorClass = "success";
+        }
 
-        </td>
-    </tr>
-}
+        <tr class=@errorClass>
+            <td>
+                @if (error)
+                {<div class="glyphicon glyphicon-exclamation-sign"></div> }
+                @Html.ActionLink(item.CityName, "Details", "CityInfo", new { id = item.CityID }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login.UserName)
+            </td>
+            <td>
+                <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-list"></span>
+                </a>
+            </td>
+            <td>
+                @item.CityInfo.City.Login.RunSince.ToString("F0")
+            </td>
+            <td>
+                <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-forward"></span>
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResourceType.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
+            </td>
+            <td>
+                @if (item.CityInfo.Upgrade)
+                {
+                    @Html.DisplayFor(modelItem => item.CityInfo.NeedRSS)
+                }
+            </td>
+            <td class="">
+                <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-camera"></span>
+                </a>
+                <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </td>
+            <td>
+                <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CityID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CityID })
+
+            </td>
+        </tr>
+    }
 
 </table>
 
