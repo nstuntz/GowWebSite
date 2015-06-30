@@ -401,6 +401,7 @@ namespace GowWebSite.Controllers
             //Fill the Login
             origLogin.Password = city.Login.Password;
             origLogin.PIN = city.Login.PIN;
+            origLogin.LoginDelayMin = city.Login.LoginDelayMin;
 
             origCity.CityName = city.CityName;
             origCity.ResourceTypeID = city.ResourceTypeID;
