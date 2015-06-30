@@ -39,6 +39,7 @@
           <Property Name="Rally" Type="bit" Nullable="false" />
           <Property Name="Tent" Type="bit" Nullable="false" />
           <Property Name="Shield" Type="bit" Nullable="false" />
+          <Property Name="Treasury" Type="bit" Nullable="false" />
           <Property Name="RallyX" Type="int" />
           <Property Name="RallyY" Type="int" />
           <Property Name="TentX" Type="int" />
@@ -48,6 +49,8 @@
           <Property Name="LastUpgrade" Type="datetime" />
           <Property Name="LastAthenaGift" Type="datetime" />
           <Property Name="LastShield" Type="datetime" Nullable="false" />
+          <Property Name="LastTreasury" Type="datetime" />
+          <Property Name="TreasuryDue" Type="datetime" />
           <Property Name="ProductionPerHour" Type="int" />
           <Property Name="LastUpgradeBuilding" Type="int" Nullable="false" />
           <Property Name="StrongHoldLevel" Type="int" Nullable="false" />
@@ -61,7 +64,6 @@
           <Property Name="SilverBankNum" Type="int" Nullable="false" />
           <Property Name="RssMarches" Type="int" Nullable="false" />
           <Property Name="SilverMarches" Type="int" Nullable="false" />
-          <Property Name="TreasuryDue" Type="datetime" />
           <Property Name="HasGoldMine" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Log">
@@ -317,6 +319,8 @@
           <Property Name="SilverMarches" Type="Int32" Nullable="false" />
           <Property Name="TreasuryDue" Type="DateTime" Precision="3" />
           <Property Name="HasGoldMine" Type="Boolean" Nullable="false" />
+          <Property Name="Treasury" Type="Boolean" Nullable="false" />
+          <Property Name="LastTreasury" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Log">
           <Key>
@@ -568,6 +572,8 @@
           <EntitySetMapping Name="CityInfoes">
             <EntityTypeMapping TypeName="GowModel.CityInfo">
               <MappingFragment StoreEntitySet="CityInfo">
+                <ScalarProperty Name="LastTreasury" ColumnName="LastTreasury" />
+                <ScalarProperty Name="Treasury" ColumnName="Treasury" />
                 <ScalarProperty Name="HasGoldMine" ColumnName="HasGoldMine" />
                 <ScalarProperty Name="TreasuryDue" ColumnName="TreasuryDue" />
                 <ScalarProperty Name="SilverMarches" ColumnName="SilverMarches" />

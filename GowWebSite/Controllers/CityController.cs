@@ -194,21 +194,21 @@ namespace GowWebSite.Controllers
         // POST: City/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(City city)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(city).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
-            ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
-            ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
-            return View(city);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(City city)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(city).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
+        //    ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
+        //    ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
+        //    return View(city);
+        //}
 
         // GET: City/Delete/5
         public ActionResult Delete(int? id)
@@ -333,10 +333,112 @@ namespace GowWebSite.Controllers
 
             return PartialView("_ViewImages", city);
         }
+
         [HttpPost]
         public ActionResult ViewImages()
         {
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult CityPopup(int? cityid)
+        {
+            if (!cityid.HasValue)
+            {
+                return HttpNotFound();
+            }
+
+            City city = db.Cities.Find(cityid);
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
+            return PartialView("_ViewCity", city);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(City city)
+        {
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+            Login origLogin = db.Logins.Find(city.LoginID);
+
+            if (origLogin == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (city.CityInfo.Shield && city.CityInfo.Rally)
+            {
+                ModelState.AddModelError(String.Empty, "You can not both rally and shield a city.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                city.Login.UserName = origLogin.UserName;
+
+                ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
+                return View(city);
+            }
+            CityInfo origCityInfo = db.CityInfoes.Find(city.CityID);
+            City origCity = db.Cities.Find(city.CityID);
+            
+
+            if (origCityInfo == null)
+            {
+                return HttpNotFound();
+            }
+            if (origCity == null)
+            {
+                return HttpNotFound();
+            }
+            //Fill the Login
+            origLogin.Password = city.Login.Password;
+            origLogin.PIN = city.Login.PIN;
+
+            origCity.CityName = city.CityName;
+            origCity.ResourceTypeID = city.ResourceTypeID;
+            origCity.LocationX = city.LocationX;
+            origCity.LocationY = city.LocationY;
+            origCity.Kingdom = city.Kingdom;
+            origCity.AllianceID = city.AllianceID;
+
+            //Fill the City Info
+            origCityInfo.StrongHoldLevel = city.CityInfo.StrongHoldLevel;
+            origCityInfo.TreasuryLevel = city.CityInfo.TreasuryLevel;
+            origCityInfo.HasGoldMine = city.CityInfo.HasGoldMine;
+
+            origCityInfo.RssMarches = city.CityInfo.RssMarches;
+            origCityInfo.RSSBankNum = city.CityInfo.RSSBankNum;
+            origCityInfo.SilverBankNum = city.CityInfo.SilverBankNum;
+            origCityInfo.SilverMarches = city.CityInfo.SilverMarches;
+            origCityInfo.Shield = city.CityInfo.Shield;
+            origCityInfo.Upgrade = city.CityInfo.Upgrade;
+            origCityInfo.NeedRSS = city.CityInfo.NeedRSS;
+            origCityInfo.Rally = city.CityInfo.Rally;
+            origCityInfo.RallyX = city.CityInfo.RallyX;
+            origCityInfo.RallyY = city.CityInfo.RallyY;
+            origCityInfo.TreasuryLevel = city.CityInfo.TreasuryLevel;
+            origCityInfo.Treasury = city.CityInfo.Treasury;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(origCity).State = EntityState.Modified;
+                db.Entry(origCityInfo).State = EntityState.Modified;
+                db.Entry(origLogin).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            city.Login.UserName = origLogin.UserName;
+            ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
+            return View(city);
         }
 
         protected override void Dispose(bool disposing)

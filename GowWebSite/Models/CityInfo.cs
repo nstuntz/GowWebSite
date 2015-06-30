@@ -49,6 +49,8 @@ namespace GowWebSite.Models
         public int SilverMarches { get; set; }
         public Nullable<System.DateTime> TreasuryDue { get; set; }
         public bool HasGoldMine { get; set; }
+        public bool Treasury { get; set; }
+        public Nullable<System.DateTime> LastTreasury { get; set; }
     
         public virtual City City { get; set; }
     }
