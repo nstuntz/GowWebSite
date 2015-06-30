@@ -19,11 +19,14 @@
             @Html.HiddenFor(model => model.LoginID)
 
             <div class="panel panel-default">
-                <div class="panel-heading"><a data-toggle="collapse" href="#LoginGroup">Login</a></div>
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#LoginGroup">Login</a>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover"  data-content="This section contains basic login information needed to access your GoW account."></span>
+                </div>
                 <div id="LoginGroup" class="panel-collapse collapse in">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Login.UserName, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
-                        <div class="col-md-10 col-sm-9">
+                        <div class="col-md-10 col-sm-9 form-control-static">
                             @Html.DisplayFor(model => model.Login.UserName)
                             @Html.ValidationMessageFor(model => model.Login.UserName, "", new { @class = "text-danger" })
                         </div>
@@ -57,10 +60,13 @@
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading"><a data-toggle="collapse" href="#CityGroup">City Setup</a></div>
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#CityGroup">City Setup</a>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                </div>
                 <div id="CityGroup" class="panel-collapse collapse in">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
+                         @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })                                                
                         <div class="col-md-10 col-sm-9">
                             @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
@@ -128,7 +134,10 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><a data-toggle="collapse" href="#BankGroup">Bank</a></div>
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#BankGroup">Bank</a>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to bank your city resources."></span>
+                </div>
                 <div class="panel-collapse collapse in" id="BankGroup">
                     <div class="form-group">
                         @Html.LabelFor(model => model.CityInfo.Bank, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
@@ -171,7 +180,10 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><a data-toggle="collapse" href="#RallyGroup">Rally</a></div>
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#RallyGroup">Rally</a>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero."></span>
+                </div>
                 <div class="panel-collapse collapse in" id="RallyGroup">
                     <div class="form-group">
                         @Html.LabelFor(model => model.CityInfo.Rally, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
@@ -200,7 +212,10 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><a data-toggle="collapse" href="#ShieldGroup">Shield</a></div>
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#ShieldGroup">Shield</a>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city Shielding information."></span>
+                </div>
                 <div class="panel-collapse collapse in" id="ShieldGroup">
                     <div class="form-group">
                         @Html.LabelFor(model => model.CityInfo.Shield, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
@@ -214,7 +229,10 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading"><a data-toggle="collapse" href="#UpgradeGroup">Upgrade</a></div>
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#UpgradeGroup">Upgrade</a>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information."></span>
+                </div>
                 <div class="panel-collapse collapse in" id="UpgradeGroup">
                     <div class="form-group">
                         @Html.LabelFor(model => model.CityInfo.Upgrade, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
@@ -238,7 +256,10 @@
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading"><a data-toggle="collapse" href="#TreasuryGroup">Treasury</a></div>
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#TreasuryGroup">Treasury</a>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains Treasury collection information."></span>
+                </div>
                 <div class="panel-collapse collapse in" id="TreasuryGroup">
                     <div class="form-group">
                         @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
@@ -247,13 +268,6 @@
                                 @Html.EditorFor(model => model.CityInfo.Treasury)
                                 @Html.ValidationMessageFor(model => model.CityInfo.Treasury, "", new { @class = "text-danger" })
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.CityInfo.TreasuryLevel, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
-                        <div class="col-md-10 col-sm-9">
-                            @Html.EditorFor(model => model.CityInfo.TreasuryLevel, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CityInfo.TreasuryLevel, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -268,4 +282,8 @@
     </div>
 }
 
-
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
