@@ -348,6 +348,7 @@
     <Content Include="Views\Shared\_ViewLogs.cshtml" />
     <Content Include="Views\Shared\_ViewCityLogin.cshtml" />
     <Content Include="Views\Shared\_ViewCity.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RadioButtonListEnum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

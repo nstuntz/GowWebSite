@@ -47,14 +47,27 @@
                             @Html.ValidationMessageFor(model => model.Login.PIN, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
+
+                    <div class="form-group">
+                        @Html.Label("Login Timing", htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
+                        <div class="col-md-10 col-sm-9">
+                            @Html.EditorFor(model => model.Login.DelayTier, "RadioButtonListEnum")
+                            @Html.ValidationMessageFor(model => model.Login.LoginDelayMin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="panel panel-default">
+<<<<<<< HEAD
                 <div class="panel-heading">
                     <a data-toggle="collapse" href="#CityGroup">City</a>
                     <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
                 </div>
+=======
+                <div class="panel-heading"><a data-toggle="collapse" href="#CityGroup">City Setup</a></div>
+>>>>>>> 2b095c16f9896f825881f91b9e2006284b9ec9a1
                 <div id="CityGroup" class="panel-collapse collapse in">
                     <div class="form-group">
                          @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })                                                
@@ -254,9 +267,11 @@
                 <div class="panel-collapse collapse in" id="TreasuryGroup">
                     <div class="form-group">
                         @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
-                        <div class="checkbox col-md-10 col-sm-9">
-                            @Html.EditorFor(model => model.CityInfo.Treasury)
-                            @Html.ValidationMessageFor(model => model.CityInfo.Treasury, "", new { @class = "text-danger" })
+                        <div class="col-md-10 col-sm-9">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.CityInfo.Treasury)
+                                @Html.ValidationMessageFor(model => model.CityInfo.Treasury, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
