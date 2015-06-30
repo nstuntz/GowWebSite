@@ -19,7 +19,10 @@ namespace GowWebSite.Controllers
         // GET: City
         public ActionResult Index()
         {
-            var orderedCities = db.Cities.OrderBy(x => x.CityName);
+            var userCities = db.Cities.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
+
+            var orderedCities = userCities.OrderBy(x => x.CityName);
+
             if (Request.Cookies["SelectedAlliance"] != null)
             {
                 int allianceID = Int32.Parse(Request.Cookies["SelectedAlliance"].Value);
@@ -29,37 +32,6 @@ namespace GowWebSite.Controllers
             {
                 return View(new List<City>());
             }
-
-
-            //try
-            //{
-            //    Dictionary<int, Dictionary<string, string>> cityImages = new Dictionary<int, Dictionary<string, string>>();
-            //    foreach (var city in orderedCities)
-            //    {
-            //        Dictionary<string, string> images = new Dictionary<string, string>();
-            //        if (System.IO.Directory.Exists(Server.MapPath("/Images/" + city.CityID)))
-            //        {
-            //            foreach (string file in Directory.GetFiles((Server.MapPath("/Images/" + city.CityID))))
-            //            {
-            //                if (file.EndsWith("jpg"))
-            //                {
-            //                    FileInfo info = new FileInfo(file);
-            //                    if (info.Length < 50000)
-            //                    {
-            //                        images.Add("/Images/" + city.CityID + "/" + info.Name, info.CreationTime.ToString("G"));
-            //                    }
-            //                }
-            //            }
-            //        }
-            //        cityImages.Add(city.CityID, images);
-            //    }
-
-            //    ViewBag.Images = cityImages;
-            //}
-            //catch
-            //{
-            //    ViewBag.Images = new Dictionary<int, Dictionary<string, string>>();
-            //}
 
             var cities = orderedCities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
             return View(cities.ToList());

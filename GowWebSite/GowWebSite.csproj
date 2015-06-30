@@ -185,6 +185,9 @@
     <Compile Include="Models\Alliance.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\City.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
@@ -227,6 +230,9 @@
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAlliance.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserCity.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

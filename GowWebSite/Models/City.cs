@@ -14,6 +14,11 @@ namespace GowWebSite.Models
     
     public partial class City
     {
+        public City()
+        {
+            this.UserCities = new HashSet<UserCity>();
+        }
+    
         public int CityID { get; set; }
         public int LoginID { get; set; }
         public string CityName { get; set; }
@@ -29,5 +34,6 @@ namespace GowWebSite.Models
         public virtual Login Login { get; set; }
         public virtual ResourceType ResourceType { get; set; }
         public virtual CityInfo CityInfo { get; set; }
+        public virtual ICollection<UserCity> UserCities { get; set; }
     }
 }

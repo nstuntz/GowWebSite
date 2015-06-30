@@ -35,6 +35,7 @@ namespace GowWebSite
                 if (filterContext.HttpContext.User.IsInRole("Admin"))
                 {
                     userAlliances = db.Alliances;
+                    filterContext.Controller.ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", filterContext.HttpContext.User.Identity.Name);
                 }
                 else
                 {

@@ -15,6 +15,23 @@
           <Property Name="CityY" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CityID" />
@@ -105,6 +122,14 @@
           <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="AllianceID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserCity">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_City_Alliance">
           <End Role="Alliance" Type="Self.Alliance" Multiplicity="1" />
           <End Role="City" Type="Self.City" Multiplicity="*" />
@@ -177,6 +202,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserCity_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="UserCity" Type="Self.UserCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="UserCity">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="CreateExistingCitySetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -219,12 +256,14 @@
         </Function>
         <EntityContainer Name="GowModelStoreContainer">
           <EntitySet Name="Alliance" EntityType="Self.Alliance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CityInfo" EntityType="Self.CityInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResourceType" EntityType="Self.ResourceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAlliance" EntityType="Self.UserAlliance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserCity" EntityType="Self.UserCity" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_Alliance" Association="Self.FK_City_Alliance">
             <End Role="Alliance" EntitySet="Alliance" />
             <End Role="City" EntitySet="City" />
@@ -248,6 +287,10 @@
           <AssociationSet Name="FK_UserAlliance_Alliance" Association="Self.FK_UserAlliance_Alliance">
             <End Role="Alliance" EntitySet="Alliance" />
             <End Role="UserAlliance" EntitySet="UserAlliance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserCity_City" Association="Self.FK_UserCity_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="UserCity" EntitySet="UserCity" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -284,6 +327,7 @@
           <NavigationProperty Name="Login" Relationship="Self.FK_City_Login" FromRole="City" ToRole="Login" />
           <NavigationProperty Name="ResourceType" Relationship="Self.FK_City_ResourceType" FromRole="City" ToRole="ResourceType" />
           <NavigationProperty Name="CityInfo" Relationship="Self.FK_CityInfo_City" FromRole="City" ToRole="CityInfo" />
+          <NavigationProperty Name="UserCities" Relationship="GowModel.FK_UserCity_City" FromRole="City" ToRole="UserCity" />
         </EntityType>
         <EntityType Name="CityInfo">
           <Key>
@@ -487,6 +531,12 @@
             <End Role="Alliance" EntitySet="Alliances" />
             <End Role="UserAlliance" EntitySet="UserAlliances" />
           </AssociationSet>
+          <EntitySet Name="UserCities" EntityType="GowModel.UserCity" />
+          <AssociationSet Name="FK_UserCity_City" Association="GowModel.FK_UserCity_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="UserCity" EntitySet="UserCities" />
+          </AssociationSet>
+          <EntitySet Name="AspNetUsers" EntityType="GowModel.AspNetUser" />
         </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -536,6 +586,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserCity">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="GowModel.FK_UserCity_City" FromRole="UserCity" ToRole="City" />
+        </EntityType>
+        <Association Name="FK_UserCity_City">
+          <End Type="GowModel.City" Role="City" Multiplicity="1" />
+          <End Type="GowModel.UserCity" Role="UserCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="UserCity">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -670,6 +758,32 @@
               <MappingFragment StoreEntitySet="UserAlliance">
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="AllianceID" ColumnName="AllianceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCities">
+            <EntityTypeMapping TypeName="GowModel.UserCity">
+              <MappingFragment StoreEntitySet="UserCity">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GowModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
