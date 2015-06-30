@@ -86,7 +86,7 @@ namespace GowWebSite.Controllers
 
             if (ModelState.IsValid)
             {
-                db.CreateExistingCitySetup(city.UserName, city.Password, city.CityName, city.CityX, city.CityY, city.Alliance, city.ResourceTypeID, city.SHLevel);
+                db.CreateExistingCitySetup(city.UserName, city.Password, city.CityName, city.CityX, city.CityY, city.Alliance, city.ResourceTypeID, city.SHLevel, User.Identity.Name);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -134,7 +134,7 @@ namespace GowWebSite.Controllers
                         city.CityName, city.PIN, city.CityX, city.CityY, city.Alliance, city.ResourceTypeID,
                         city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches,
                         false, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank,
-                        city.Rally, city.RallyX, city.RallyY, city.HasGoldMine);
+                        city.Rally, city.RallyX, city.RallyY, city.HasGoldMine, User.Identity.Name);
 
                 db.SaveChanges();
                 return RedirectToAction("Index");

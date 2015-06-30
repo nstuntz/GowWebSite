@@ -181,6 +181,7 @@
           <Parameter Name="Alliance" Type="varchar" Mode="In" />
           <Parameter Name="RSSType" Type="int" Mode="In" />
           <Parameter Name="SHLevel" Type="int" Mode="In" />
+          <Parameter Name="CreateUserEmail" Type="varchar" Mode="In" />
         </Function>
         <Function Name="CreateExistingCitySetupFull" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
@@ -205,6 +206,7 @@
           <Parameter Name="RallyX" Type="int" Mode="In" />
           <Parameter Name="RallyY" Type="int" Mode="In" />
           <Parameter Name="HasGoldMine" Type="bit" Mode="In" />
+          <Parameter Name="CreateUserEmail" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetOldestLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MachineID" Type="int" Mode="In" />
@@ -412,6 +414,7 @@
             <Parameter Name="Alliance" Mode="In" Type="String" />
             <Parameter Name="RSSType" Mode="In" Type="Int32" />
             <Parameter Name="SHLevel" Mode="In" Type="Int32" />
+            <Parameter Name="CreateUserEmail" Mode="In" Type="String" />
           </FunctionImport>
           <AssociationSet Name="FK_Log_Login" Association="GowModel.FK_Log_Login">
             <End Role="Login" EntitySet="Logins" />
@@ -440,6 +443,7 @@
             <Parameter Name="RallyX" Mode="In" Type="Int32" />
             <Parameter Name="RallyY" Mode="In" Type="Int32" />
             <Parameter Name="HasGoldMine" Mode="In" Type="Boolean" />
+            <Parameter Name="CreateUserEmail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetOldestLogin2" ReturnType="Collection(GowModel.GetOldestLogin2_Result)">
           <Parameter Name="ComputerName" Mode="In" Type="String" />
