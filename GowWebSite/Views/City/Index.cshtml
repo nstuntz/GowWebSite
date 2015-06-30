@@ -32,7 +32,6 @@
         <th>
             RSS Image
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -94,11 +93,6 @@
             </td>
             <td>
                 <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CityID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CityID })
-
             </td>
         </tr>
     }
