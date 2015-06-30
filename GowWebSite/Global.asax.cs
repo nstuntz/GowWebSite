@@ -31,37 +31,30 @@ namespace GowWebSite
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                IQueryable<GowWebSite.Models.Alliance> userAlliances;
+                IQueryable<GowWebSite.Models.AspNetUser> users;
                 if (filterContext.HttpContext.User.IsInRole("Admin"))
                 {
-                    userAlliances = db.Alliances;
-                    filterContext.Controller.ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", filterContext.HttpContext.User.Identity.Name);
+                    users = db.AspNetUsers;
                 }
                 else
                 {
-                    var userAl = db.UserAlliances.Where(x => x.Email == filterContext.HttpContext.User.Identity.Name).Select(x => x.AllianceID);
-                    userAlliances = db.Alliances.Where(x => userAl.Contains(x.AllianceID));
+                    filterContext.RequestContext.HttpContext.Response.Cookies["SelectedUser"].Value = filterContext.HttpContext.User.Identity.Name;
+                    filterContext.RequestContext.HttpContext.Response.Cookies["SelectedUser"].Expires = DateTime.Now.AddYears(1);
+                    return;
                 }
 
-                SelectList alliances;
-                if (filterContext.RequestContext.HttpContext.Request.Cookies["SelectedAlliance"] != null && filterContext.RequestContext.HttpContext.Request.Cookies["SelectedAlliance"].Value != null)
+                SelectList userDD;
+                if (filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"] != null && filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"].Value != null)
                 {
-                    int allianceID = Int32.Parse(filterContext.RequestContext.HttpContext.Request.Cookies["SelectedAlliance"].Value);
-                    alliances = new SelectList(userAlliances, "AllianceID", "Name", allianceID);
+                    string selectedUser = filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"].Value;
+                    userDD = new SelectList(db.AspNetUsers, "Email", "Email", selectedUser);
                 }
                 else
                 {
-                    //If the user isn't admin then set the cookie to the first value in the list
-                    if (userAlliances.Count() > 0)
-                    {
-                        filterContext.RequestContext.HttpContext.Response.Cookies["SelectedAlliance"].Value = userAlliances.FirstOrDefault().AllianceID.ToString();
-                        filterContext.RequestContext.HttpContext.Response.Cookies["SelectedAlliance"].Expires = DateTime.Now.AddYears(1);
-                    }
-
-                    alliances = new SelectList(userAlliances, "AllianceID", "Name");
+                    userDD = new SelectList(users, "Email", "Email");
                 }
 
-                filterContext.Controller.ViewBag.AllianceID = alliances;
+                filterContext.Controller.ViewBag.UserIDs = userDD;
             }
         }
     }

@@ -5,19 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="803b31fc5de54aa5a45bd109e925b8f4" Name="Diagram1">
-        <EntityTypeShape EntityType="GowModel.Alliance" Width="1.5" PointX="0.875" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GowModel.City" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GowModel.CityInfo" Width="1.5" PointX="4.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GowModel.Log" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GowModel.Login" Width="1.5" PointX="0.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GowModel.ResourceType" Width="1.5" PointX="1.625" PointY="8.375" IsExpanded="true" />
-        <AssociationConnector Association="GowModel.FK_City_Alliance" ManuallyRouted="false" />
         <AssociationConnector Association="GowModel.FK_City_Login" ManuallyRouted="false" />
         <AssociationConnector Association="GowModel.FK_City_ResourceType" ManuallyRouted="false" />
         <AssociationConnector Association="GowModel.FK_CityInfo_City" ManuallyRouted="false" />
         <AssociationConnector Association="GowModel.FK_Log_Login" />
-        <EntityTypeShape EntityType="GowModel.UserAlliance" Width="1.5" PointX="1" PointY="6.375" />
-        <AssociationConnector Association="GowModel.FK_UserAlliance_Alliance" />
         <EntityTypeShape EntityType="GowModel.UserCity" Width="1.5" PointX="4.125" PointY="8.125" />
         <AssociationConnector Association="GowModel.FK_UserCity_City" />
         <EntityTypeShape EntityType="GowModel.AspNetUser" Width="1.5" PointX="6.75" PointY="0.625" />

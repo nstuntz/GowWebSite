@@ -19,33 +19,35 @@ namespace GowWebSite.Controllers
         // GET: City
         public ActionResult Index()
         {
-            var userCities = db.Cities.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
-
-            var orderedCities = userCities.OrderBy(x => x.CityName);
-
-            if (Request.Cookies["SelectedAlliance"] != null)
+            string selectedUser = User.Identity.Name;
+            if (Request.Cookies["SelectedUser"] != null)
             {
-                int allianceID = Int32.Parse(Request.Cookies["SelectedAlliance"].Value);
-                orderedCities = orderedCities.Where(x => x.AllianceID == allianceID).OrderBy(x => x.CityName);
+                selectedUser = Request.Cookies["SelectedUser"].Value;
             }
-            else if (!User.IsInRole("Admin"))
+
+            try
+            {
+                var userCities = db.Cities.Where(x => db.UserCities.Where(y => y.Email == selectedUser).Select(id => id.CityID).Contains(x.CityID));
+                var orderedCities = userCities.OrderBy(x => x.CityName);
+
+                var cities = orderedCities.Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
+                return View(cities.ToList());
+            }
+            catch
             {
                 return View(new List<City>());
             }
-
-            var cities = orderedCities.Include(c => c.Alliance).Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
-            return View(cities.ToList());
         }
 
         [HttpPost]
-        public ActionResult Alliance(int? allianceID)
+        public ActionResult SelectUser(string UserIds)
         {
-            IQueryable<City> cities = null;
-            if (allianceID.HasValue)
+            if (UserIds != null)
             {
-                cities = db.Cities.Where(x => x.AllianceID == allianceID).OrderBy(x => x.CityName);
-                Response.Cookies["SelectedAlliance"].Value = allianceID.Value.ToString();
-                Response.Cookies["SelectedAlliance"].Expires = DateTime.Now.AddYears(1);
+                Response.Cookies["SelectedUser"].Value = UserIds;
+                Response.Cookies["SelectedUser"].Expires = DateTime.Now.AddYears(1);
+                //Response.Cookies["SelectedAlliance"].Value = allianceID.Value.ToString();
+                //Response.Cookies["SelectedAlliance"].Expires = DateTime.Now.AddYears(1);
 
             }
 
@@ -84,7 +86,7 @@ namespace GowWebSite.Controllers
 
             if (ModelState.IsValid)
             {
-                db.CreateExistingCitySetup(city.UserName, city.Password, city.CityName, city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID, city.SHLevel);
+                db.CreateExistingCitySetup(city.UserName, city.Password, city.CityName, city.CityX, city.CityY, city.Alliance, city.ResourceTypeID, city.SHLevel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -111,10 +113,6 @@ namespace GowWebSite.Controllers
                 city.LastShieldDate = new DateTime(2004, 1, 1, 1, 1, 1);
             }
 
-            if (db.Cities.Count(x => x.AllianceID == city.AllianceID) >= 98)
-            {
-                ModelState.AddModelError("AllianceID", "There are already 98 cities in that alliance.  You can not add more.");
-            }
             if (city.SHLevel == 21 && city.LoginDelayMin < 120)
             {
                 city.LoginDelayMin = 120;
@@ -125,15 +123,15 @@ namespace GowWebSite.Controllers
             }
 
             //Check the rally target
-            if (city.Rally && db.CityInfoes.Where(x => x.City.AllianceID == city.AllianceID && x.RallyX == city.RallyX && x.RallyY == city.RallyY).Count() > 0)
-            {
-                ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
-            }
+            //if (city.Rally && db.CityInfoes.Where(x => x.City.AllianceID == city.AllianceID && x.RallyX == city.RallyX && x.RallyY == city.RallyY).Count() > 0)
+            //{
+            //    ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
+            //}
 
             if (ModelState.IsValid)
             {
                 db.CreateExistingCitySetupFull(city.UserName, city.Password,
-                        city.CityName, city.PIN, city.CityX, city.CityY, city.AllianceID, city.ResourceTypeID,
+                        city.CityName, city.PIN, city.CityX, city.CityY, city.Alliance, city.ResourceTypeID,
                         city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches,
                         false, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank,
                         city.Rally, city.RallyX, city.RallyY, city.HasGoldMine);
@@ -380,7 +378,7 @@ namespace GowWebSite.Controllers
             origCity.LocationX = city.LocationX;
             origCity.LocationY = city.LocationY;
             origCity.Kingdom = city.Kingdom;
-            origCity.AllianceID = city.AllianceID;
+            origCity.Alliance = city.Alliance;
 
             //Fill the City Info
             origCityInfo.StrongHoldLevel = city.CityInfo.StrongHoldLevel;

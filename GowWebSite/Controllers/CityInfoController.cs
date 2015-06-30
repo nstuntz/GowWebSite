@@ -21,12 +21,7 @@ namespace GowWebSite.Controllers
         {
             var ordered = db.CityInfoes.OrderBy(x => x.City.CityName);
 
-            if (Request.Cookies["SelectedAlliance"] != null)
-            {
-                int allianceID = Int32.Parse(Request.Cookies["SelectedAlliance"].Value);
-                ordered = ordered.Where(x => x.City.AllianceID == allianceID).OrderBy(x => x.City.CityName);
-            }
-            else if (!User.IsInRole("Admin"))
+            if (!User.IsInRole("Admin"))
             {
                 return View(new List<City>());
             }
@@ -132,10 +127,10 @@ namespace GowWebSite.Controllers
         {
             var city = db.Cities.FirstOrDefault(x => x.CityID == cityInfo.CityID);
             //Check the rally target
-            if (cityInfo.Rally && db.CityInfoes.Where(x => x.City.AllianceID == city.AllianceID && x.RallyX == cityInfo.RallyX && x.RallyY == cityInfo.RallyY && x.CityID != cityInfo.CityID).Count() > 0)
-            {
-                ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
-            }
+            //if (cityInfo.Rally && db.CityInfoes.Where(x => x.City.AllianceID == city.AllianceID && x.RallyX == cityInfo.RallyX && x.RallyY == cityInfo.RallyY && x.CityID != cityInfo.CityID).Count() > 0)
+            //{
+            //    ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
+            //}
 
             if (ModelState.IsValid)
             {

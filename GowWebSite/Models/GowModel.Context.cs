@@ -27,13 +27,11 @@ namespace GowWebSite.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Alliance> Alliances { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<CityInfo> CityInfoes { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<ResourceType> ResourceTypes { get; set; }
-        public virtual DbSet<UserAlliance> UserAlliances { get; set; }
         public virtual DbSet<UserCity> UserCities { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     
@@ -83,7 +81,7 @@ namespace GowWebSite.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOldestLogin_Result>("GetOldestLogin", machineIDParameter);
         }
     
-        public virtual int CreateExistingCitySetup(string userName, string password, string cityName, Nullable<int> cityX, Nullable<int> cityY, Nullable<int> allianceID, Nullable<int> rSSType, Nullable<int> sHLevel)
+        public virtual int CreateExistingCitySetup(string userName, string password, string cityName, Nullable<int> cityX, Nullable<int> cityY, string alliance, Nullable<int> rSSType, Nullable<int> sHLevel)
         {
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
@@ -105,9 +103,9 @@ namespace GowWebSite.Models
                 new ObjectParameter("CityY", cityY) :
                 new ObjectParameter("CityY", typeof(int));
     
-            var allianceIDParameter = allianceID.HasValue ?
-                new ObjectParameter("AllianceID", allianceID) :
-                new ObjectParameter("AllianceID", typeof(int));
+            var allianceParameter = alliance != null ?
+                new ObjectParameter("Alliance", alliance) :
+                new ObjectParameter("Alliance", typeof(string));
     
             var rSSTypeParameter = rSSType.HasValue ?
                 new ObjectParameter("RSSType", rSSType) :
@@ -117,10 +115,10 @@ namespace GowWebSite.Models
                 new ObjectParameter("SHLevel", sHLevel) :
                 new ObjectParameter("SHLevel", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateExistingCitySetup", userNameParameter, passwordParameter, cityNameParameter, cityXParameter, cityYParameter, allianceIDParameter, rSSTypeParameter, sHLevelParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateExistingCitySetup", userNameParameter, passwordParameter, cityNameParameter, cityXParameter, cityYParameter, allianceParameter, rSSTypeParameter, sHLevelParameter);
         }
     
-        public virtual int CreateExistingCitySetupFull(string userName, string password, string cityName, string pIN, Nullable<int> cityX, Nullable<int> cityY, Nullable<int> allianceID, Nullable<int> rSSType, Nullable<int> sHLevel, Nullable<int> rSSBank, Nullable<int> silverBank, Nullable<int> rssMarches, Nullable<int> silverMarches, Nullable<bool> upgrade, Nullable<int> loginDelayMin, Nullable<bool> shield, Nullable<System.DateTime> lastShieldDate, Nullable<bool> bank, Nullable<bool> rally, Nullable<int> rallyX, Nullable<int> rallyY, Nullable<bool> hasGoldMine)
+        public virtual int CreateExistingCitySetupFull(string userName, string password, string cityName, string pIN, Nullable<int> cityX, Nullable<int> cityY, string alliance, Nullable<int> rSSType, Nullable<int> sHLevel, Nullable<int> rSSBank, Nullable<int> silverBank, Nullable<int> rssMarches, Nullable<int> silverMarches, Nullable<bool> upgrade, Nullable<int> loginDelayMin, Nullable<bool> shield, Nullable<System.DateTime> lastShieldDate, Nullable<bool> bank, Nullable<bool> rally, Nullable<int> rallyX, Nullable<int> rallyY, Nullable<bool> hasGoldMine)
         {
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
@@ -146,9 +144,9 @@ namespace GowWebSite.Models
                 new ObjectParameter("CityY", cityY) :
                 new ObjectParameter("CityY", typeof(int));
     
-            var allianceIDParameter = allianceID.HasValue ?
-                new ObjectParameter("AllianceID", allianceID) :
-                new ObjectParameter("AllianceID", typeof(int));
+            var allianceParameter = alliance != null ?
+                new ObjectParameter("Alliance", alliance) :
+                new ObjectParameter("Alliance", typeof(string));
     
             var rSSTypeParameter = rSSType.HasValue ?
                 new ObjectParameter("RSSType", rSSType) :
@@ -210,7 +208,7 @@ namespace GowWebSite.Models
                 new ObjectParameter("HasGoldMine", hasGoldMine) :
                 new ObjectParameter("HasGoldMine", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateExistingCitySetupFull", userNameParameter, passwordParameter, cityNameParameter, pINParameter, cityXParameter, cityYParameter, allianceIDParameter, rSSTypeParameter, sHLevelParameter, rSSBankParameter, silverBankParameter, rssMarchesParameter, silverMarchesParameter, upgradeParameter, loginDelayMinParameter, shieldParameter, lastShieldDateParameter, bankParameter, rallyParameter, rallyXParameter, rallyYParameter, hasGoldMineParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateExistingCitySetupFull", userNameParameter, passwordParameter, cityNameParameter, pINParameter, cityXParameter, cityYParameter, allianceParameter, rSSTypeParameter, sHLevelParameter, rSSBankParameter, silverBankParameter, rssMarchesParameter, silverMarchesParameter, upgradeParameter, loginDelayMinParameter, shieldParameter, lastShieldDateParameter, bankParameter, rallyParameter, rallyXParameter, rallyYParameter, hasGoldMineParameter);
         }
     
         public virtual ObjectResult<GetOldestLogin2_Result> GetOldestLogin2(string computerName)

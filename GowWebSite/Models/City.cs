@@ -28,9 +28,8 @@ namespace GowWebSite.Models
         public bool Created { get; set; }
         public bool Placed { get; set; }
         public int ResourceTypeID { get; set; }
-        public int AllianceID { get; set; }
+        public string Alliance { get; set; }
     
-        public virtual Alliance Alliance { get; set; }
         public virtual Login Login { get; set; }
         public virtual ResourceType ResourceType { get; set; }
         public virtual CityInfo CityInfo { get; set; }

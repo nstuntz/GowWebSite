@@ -182,9 +182,6 @@
     </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Alliance.cs">
-      <DependentUpon>GowModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
@@ -229,15 +226,11 @@
     <Compile Include="Models\ResourceType.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserAlliance.cs">
-      <DependentUpon>GowModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserCity.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Controllers\AllianceController.cs" />
     <Compile Include="Controllers\LogController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -338,11 +331,6 @@
     <Content Include="Views\Login\Details.cshtml" />
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Alliance\Create.cshtml" />
-    <Content Include="Views\Alliance\Delete.cshtml" />
-    <Content Include="Views\Alliance\Details.cshtml" />
-    <Content Include="Views\Alliance\Edit.cshtml" />
-    <Content Include="Views\Alliance\Index.cshtml" />
     <Content Include="Views\Log\Create.cshtml" />
     <Content Include="Views\Log\Delete.cshtml" />
     <Content Include="Views\Log\Details.cshtml" />

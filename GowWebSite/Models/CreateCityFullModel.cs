@@ -17,7 +17,7 @@ namespace GowWebSite.Models
         public int CityX { get; set; }
         [Range(1, 1022)]
         public int CityY { get; set; }
-        public int AllianceID { get; set; }
+        public string Alliance { get; set; }
         public int ResourceTypeID { get; set; }
         [Range(1, 21)]
         public int SHLevel { get; set; }

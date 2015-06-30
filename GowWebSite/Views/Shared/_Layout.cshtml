@@ -31,7 +31,6 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Logins", "Index", "Login")</li>
-                        <li>@Html.ActionLink("Alliances", "Index", "Alliance")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -40,32 +39,25 @@
 
     </div>
 
-    <div class="nav navbar-form text-center">
-        @if (User.Identity.IsAuthenticated)
-        {
-            using (Html.BeginForm("Alliance", "City", FormMethod.Post, new {@class="form-horizontal"}))
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <div class="nav navbar-form text-center">
+            @using (Html.BeginForm("SelectUser", "City", FormMethod.Post, new {@class="form-horizontal"}))
             {
 
                 @Html.AntiForgeryToken()
                 <div class="form-group">
-                    <div class="control-label col-xs-4">@Html.Raw("Alliance:")</div>
+                    <div class="control-label col-xs-4">@Html.Raw("User:")</div>
                     <div class="col-xs-5">
-                        @if (User.IsInRole("Admin"))
-                        {
-                            @Html.DropDownList("UserID", null, "-- Select One --", htmlAttributes: new { @class = "form-control" })
-                        }
-                        else
-                        {
-                            @Html.DropDownList("AllianceID", null, null, htmlAttributes: new { @class = "form-control" })
-                        }
+                        @Html.DropDownList("UserIDs", null, "-- Select One --", htmlAttributes: new { @class = "form-control" })
                     </div>
                     <div class=" col-xs-3">
                         <input type="submit" class="btn btn-primary" value="Filter" />
                     </div>
                 </div>
             }
-        }
-    </div>
+        </div>
+    }
     <div class="container body-content">
         @RenderBody()
         <hr />
