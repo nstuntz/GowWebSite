@@ -24,14 +24,15 @@
                     <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover"  data-content="This section contains basic login information needed to access your GoW account."></span>
                 </div>
                 <div id="LoginGroup" class="panel-collapse collapse in">
+                    <div class="form-group"></div>
                     <div class="form-group">
                         <div class="row">
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.Login.UserName, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the email address associated with the GoW Account."></span>
                             </div>
-                            <div class="col-md-8 col-sm-7">
+                            <div class="col-md-8 col-sm-7 form-control-static">
                                 @Html.DisplayFor(model => model.Login.UserName)
                                 @Html.ValidationMessageFor(model => model.Login.UserName, "", new { @class = "text-danger" })
                             </div>
@@ -43,7 +44,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.Login.Password, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the password associated with the Username."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.PasswordFor(model => model.Login.Password, new { value = Model.Login.Password })
@@ -57,7 +58,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.Login.PIN, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the PIN associated with this UserName (preferably not on every login)."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.Login.PIN)
@@ -72,7 +73,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.Label("Login Timing", htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the frequency with which the service will log into the account. This is also the basis for the 3 tiers of pricing. The basic functionality includes: Collecting Daily and Alliance Quests; Collecting Athenas gifts; Clicking on Helps; Collecting Alliance Gifts. The price is $.90/$1.50/$3.00 for 6/3/1 hrs respectively. All costs are on a monthly basis."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.Login.DelayTier, "RadioButtonListEnum")
@@ -89,11 +90,12 @@
                     <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
                 </div>
                 <div id="CityGroup" class="panel-collapse collapse in">
-                    <div class="form-group">
+                    <div class="form-group"></div>
+                    <div class="form-group">                        
                         <div class="row">
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is a name for the city so you know which of your cities is which. Purely informational."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
@@ -107,7 +109,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.Kingdom, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the kingdom your city is in. Purely informational."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.Kingdom, new { htmlAttributes = new { @class = "form-control" } })
@@ -121,7 +123,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.LocationX, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the X coordinates of your city. Purely informational."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.LocationX, new { htmlAttributes = new { @class = "form-control" } })
@@ -135,7 +137,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.LocationY, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the Y coordinates of your city. Purely informational."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.LocationY, new { htmlAttributes = new { @class = "form-control" } })
@@ -149,7 +151,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.ResourceTypeID, "ResourceTypeID", htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the resource type that this city produces. If you enable banking this will determine what is sent to the bank, otherwise it is purely informational."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.DropDownList("ResourceTypeID", null, htmlAttributes: new { @class = "form-control" })
@@ -163,7 +165,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.Alliance, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the alliance your city is in. Purely informational."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                     @Html.EditorFor(model => model.Alliance, new { htmlAttributes = new { @class = "form-control" } })
@@ -177,7 +179,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.StrongHoldLevel, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the current level of your stronghold. This is used by the Upgrade component, otherwise it is just informational."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityInfo.StrongHoldLevel, new { htmlAttributes = new { @class = "form-control" } })
@@ -191,7 +193,7 @@
                                 
                                 <div class="col-md-2 col-sm-3" style="text-align:right;">
                                     @Html.LabelFor(model => model.CityInfo.HasGoldMine, htmlAttributes: new { @class = "control-label" })
-                                    <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                    <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if your city has a gold mine. If you are using the upgrade component the goldmine should be moved to the top right most square outside the city. Otherwise this is purely informational."></span>
                                 </div>
                                 <div class="col-md-8 col-sm-7">
                                     <div class="checkbox">                                        
@@ -207,15 +209,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a data-toggle="collapse" href="#BankGroup">Bank</a>
-                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to bank your city resources."></span>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. In order to properly bank, the city(ies) that you are banking two must be listed first alphabetically in your alliance. The cost is $.20/$.30/$.50 by login frequency of 6/3/1 hrs."></span>
                 </div>
                 <div class="panel-collapse collapse in" id="BankGroup">
+                    <div class="form-group"></div>
                     <div class="form-group">
                         <div class="row">
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.Bank, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if this city will bank resources."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 <div class="checkbox">
@@ -230,7 +233,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.RSSBankNum, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the city in alphabetical order that your city will bank its non silver resources too. This cannot be greater than 4."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityInfo.RSSBankNum, new { htmlAttributes = new { @class = "form-control" } })
@@ -244,7 +247,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.RssMarches, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the number of marches of your non silver resource you will send to the bank on each login. If this matches or exceeds your max number of marches you will not bank silver."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityInfo.RssMarches, new { htmlAttributes = new { @class = "form-control" } })
@@ -257,7 +260,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.SilverBankNum, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the city in alphabetical order that your city will bank silver too. This cannot be greater than 4."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityInfo.SilverBankNum, new { htmlAttributes = new { @class = "form-control" } })
@@ -270,7 +273,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.SilverMarches, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the number of marches of your silver that you will send to the bank on each login."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityInfo.SilverMarches, new { htmlAttributes = new { @class = "form-control" } })
@@ -283,15 +286,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a data-toggle="collapse" href="#RallyGroup">Rally</a>
-                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero."></span>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. The cost is $.35 regardless of login frequency."></span>
                 </div>
                 <div class="panel-collapse collapse in" id="RallyGroup">
+                    <div class="form-group"></div>
                     <div class="form-group">
                         <div class="row">
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.Rally, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator of if this city will attempt to rally the hero."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 <div class="checkbox">
@@ -307,7 +311,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.RallyX, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the X coordinates of the rally target."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityInfo.RallyX, new { htmlAttributes = new { @class = "form-control" } })
@@ -320,7 +324,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.RallyY, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the Y coordinates of the rally target."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 @Html.EditorFor(model => model.CityInfo.RallyY, new { htmlAttributes = new { @class = "form-control" } })
@@ -333,15 +337,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a data-toggle="collapse" href="#ShieldGroup">Shield</a>
-                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city Shielding information."></span>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city shielding information. In order to shield, the city must either have 3d shields on hand, or enough gold to buy one. The cost to shield is $.20 regardless of login frequency."></span>
                 </div>
                 <div class="panel-collapse collapse in" id="ShieldGroup">
+                    <div class="form-group"></div>
                     <div class="form-group">
                         <div class="row">
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.Shield, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if the city will be shielded."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 <div class="checkbox">
@@ -356,15 +361,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a data-toggle="collapse" href="#UpgradeGroup">Upgrade</a>
-                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information."></span>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information. This will upgrade to SH 14, but in order to continue you must manually upgrade to SH 15 and update the Stronghold Level value. The cost is $.50 regardless of login frequency."></span>
                 </div>
                 <div class="panel-collapse collapse in" id="UpgradeGroup">
+                    <div class="form-group"></div>
                     <div class="form-group">
                         <div class="row">
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.Upgrade, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if this city will upgrade buildings."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 <div class="checkbox">
@@ -379,7 +385,7 @@
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.NeedRSS, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an information flag that is set when the service fails to upgrade any buildings, indicating that it needs additional rss to continue."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 <div class="checkbox">                                    
@@ -395,15 +401,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a data-toggle="collapse" href="#TreasuryGroup">Treasury</a>
-                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains Treasury collection information."></span>
+                    <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains treasury collection information. This will collect the treasury and then re-invest for another 30 days. The cost is $.20 regardless of the login frequency."></span>
                 </div>
                 <div class="panel-collapse collapse in" id="TreasuryGroup">
+                    <div class="form-group"></div>
                     <div class="form-group">
                         <div class="row">
                             
                             <div class="col-md-2 col-sm-3" style="text-align:right;">
                                 @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label" })
-                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This section contains basic city information."></span>
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator of if this city will collect the treasury and reinvest."></span>
                             </div>
                             <div class="col-md-8 col-sm-7">
                                 <div class="checkbox">
@@ -427,6 +434,6 @@
 
 <script>
     $(document).ready(function () {
-        $('[data-toggle="popover"]').popover();
+        $('[data-toggle="popover"]').popover({ container: 'body' });
     });
 </script>
