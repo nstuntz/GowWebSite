@@ -176,6 +176,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -191,6 +192,8 @@
     <Compile Include="Models\CityInfo.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CityInfoMetadata.cs" />
+    <Compile Include="Models\CityMetadata.cs" />
     <Compile Include="Models\CreateCityFullModel.cs" />
     <Compile Include="Models\CreateCityModel.cs" />
     <Compile Include="Models\GetOldestLogin2_Result.cs">
@@ -222,6 +225,7 @@
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginExtension.cs" />
+    <Compile Include="Models\LoginMetadata.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ResourceType.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
@@ -348,6 +352,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\RSSImages\" />
     <Folder Include="Views\Image\" />
+    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

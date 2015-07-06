@@ -11,7 +11,7 @@ using System.IO;
 
 namespace GowWebSite.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Admin")]
     public class CityInfoController : Controller
     {
         private GowEntities db = new GowEntities();

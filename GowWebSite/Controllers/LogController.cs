@@ -108,6 +108,7 @@ namespace GowWebSite.Views
         }
 
         // GET: Log/Edit/5
+        [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

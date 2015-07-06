@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using GowWebSite.Models;
+using System.Data.Entity.Validation;
 
 namespace GowWebSite.Controllers
 {
@@ -100,44 +101,74 @@ namespace GowWebSite.Controllers
         public ActionResult CreateFull()
         {
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type");
-            return View(new CreateCityFullModel());
-        }
+            City newCity = new City();
+            newCity.Login = new Login();
+            newCity.Login.DelayTier = Login.AllowDelays.Min360;
 
+            newCity.CityInfo = new CityInfo();
+
+            return View(newCity);
+        }
+        
         // POST: City/CreateFull
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateFull(CreateCityFullModel city)
+        public ActionResult CreateFull(City city)
         {
-            if (!city.LastShieldDate.HasValue)
+            if (string.IsNullOrWhiteSpace(city.Login.UserName))
             {
-                city.LastShieldDate = new DateTime(2004, 1, 1, 1, 1, 1);
+                ModelState.AddModelError(city.Login.UserName, "UserName is required.");
             }
 
-            if (city.SHLevel == 21 && city.LoginDelayMin < 120)
+            if (city.CityInfo.Rally)
             {
-                city.LoginDelayMin = 120;
-            }
-            if (city.SHLevel >= 14 && city.LoginDelayMin < 60)
-            {
-                city.LoginDelayMin = 60;
+                if (!city.CityInfo.RallyX.HasValue)
+                {
+                    ModelState.AddModelError(String.Empty, "RallyX is required when rallying.");
+                }
+                if (!city.CityInfo.RallyY.HasValue)
+                {
+                    ModelState.AddModelError(String.Empty, "RallyY is required when rallying.");
+                }
             }
 
-            //Check the rally target
-            //if (city.Rally && db.CityInfoes.Where(x => x.City.AllianceID == city.AllianceID && x.RallyX == city.RallyX && x.RallyY == city.RallyY).Count() > 0)
-            //{
-            //    ModelState.AddModelError("Rally", "A city in your alliance already has that rally target.");
-            //}
+            if (city.CityInfo.Shield && city.CityInfo.Rally)
+            {
+                ModelState.AddModelError(String.Empty, "You can not both rally and shield a city.");
+            }
 
             if (ModelState.IsValid)
             {
-                db.CreateExistingCitySetupFull(city.UserName, city.Password,
-                        city.CityName, city.PIN, city.CityX, city.CityY, city.Alliance, city.ResourceTypeID,
-                        city.SHLevel, city.RSSBank, city.SilverBank, city.RSSMarches, city.SilverMarches,
-                        false, city.LoginDelayMin, city.Shield, city.LastShieldDate, city.Bank,
-                        city.Rally, city.RallyX, city.RallyY, city.HasGoldMine, User.Identity.Name);
+                city.Login.InProcess = "0";
 
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                //Set the dates so it doesn't get confused
+                city.Login.LastRun = DateTime.Now;
+                city.CityInfo.LastAthenaGift = DateTime.Today;
+                city.CityInfo.LastBank = DateTime.Today;
+                city.CityInfo.LastRally = DateTime.Today;
+                city.CityInfo.LastShield = DateTime.Today;
+                city.CityInfo.LastTreasury = DateTime.Today;
+                city.CityInfo.LastUpgrade = DateTime.Today;
+                city.CityInfo.TreasuryDue = DateTime.Today;
+                
+                UserCity uc = new UserCity();
+                uc.Email = User.Identity.Name;
+                city.UserCities.Add(uc);
+
+                db.Logins.Add(city.Login);
+                db.Cities.Add(city);
+                db.CityInfoes.Add(city.CityInfo);
+                db.UserCities.Add(uc);
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    throw e;
+                }
+                //return RedirectToAction("Index");
             }
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             return View(city);
@@ -155,30 +186,17 @@ namespace GowWebSite.Controllers
             {
                 return HttpNotFound();
             }
+
+            //Fixing because it wasn't trimmed when it was put in
+            city.Alliance = city.Alliance.Trim();
+
+
             ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
             return View(city);
         }
 
-        // POST: City/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(City city)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(city).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
-        //    ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
-        //    ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
-        //    return View(city);
-        //}
 
         // GET: City/Delete/5
         public ActionResult Delete(int? id)
@@ -378,7 +396,7 @@ namespace GowWebSite.Controllers
             origCity.LocationX = city.LocationX;
             origCity.LocationY = city.LocationY;
             origCity.Kingdom = city.Kingdom;
-            origCity.Alliance = city.Alliance;
+            origCity.Alliance = city.Alliance.Trim();
 
             //Fill the City Info
             origCityInfo.StrongHoldLevel = city.CityInfo.StrongHoldLevel;
