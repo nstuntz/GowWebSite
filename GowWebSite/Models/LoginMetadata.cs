@@ -16,7 +16,7 @@ namespace GowWebSite.Models
         [Required]
         public string UserName { get; set; }
 
-        [MinLength(8)]
+        [MinLength(8, ErrorMessage = "Password must be at least 8 characters.")]
         [Required(ErrorMessage="Password if required.")]
         public string Password { get; set; }
     }
