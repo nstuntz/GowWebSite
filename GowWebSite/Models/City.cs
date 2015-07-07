@@ -17,6 +17,7 @@ namespace GowWebSite.Models
         public City()
         {
             this.UserCities = new HashSet<UserCity>();
+            this.CityPayItems = new HashSet<CityPayItem>();
         }
     
         public int CityID { get; set; }
@@ -29,10 +30,12 @@ namespace GowWebSite.Models
         public bool Placed { get; set; }
         public int ResourceTypeID { get; set; }
         public string Alliance { get; set; }
+        public Nullable<int> AllianceID { get; set; }
     
         public virtual Login Login { get; set; }
         public virtual ResourceType ResourceType { get; set; }
         public virtual CityInfo CityInfo { get; set; }
         public virtual ICollection<UserCity> UserCities { get; set; }
+        public virtual ICollection<CityPayItem> CityPayItems { get; set; }
     }
 }

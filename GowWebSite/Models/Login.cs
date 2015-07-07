@@ -28,6 +28,9 @@ namespace GowWebSite.Models
         public string InProcess { get; set; }
         public string PIN { get; set; }
         public int LoginDelayMin { get; set; }
+        public int LoginAttempts { get; set; }
+        public bool Paid { get; set; }
+        public System.DateTime CreateDate { get; set; }
     
         public virtual ICollection<City> Cities { get; set; }
         public virtual ICollection<Log> Logs { get; set; }

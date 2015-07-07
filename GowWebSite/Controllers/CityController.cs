@@ -160,6 +160,64 @@ namespace GowWebSite.Controllers
                 db.CityInfoes.Add(city.CityInfo);
                 db.UserCities.Add(uc);
 
+                //Now add the costs
+                CityPayItem item = new CityPayItem();
+                switch (city.Login.LoginDelayMin)
+                {
+                    case (int)Login.AllowDelays.Min360:
+                        item.CityPayItemID = (int)PayItems.Hour6;
+                        break;
+                    case (int)Login.AllowDelays.Min180:
+                        item.CityPayItemID = (int)PayItems.Hour3;
+                        break;
+                    case (int)Login.AllowDelays.Min60:
+                        item.CityPayItemID = (int)PayItems.Hour1;
+                        break;
+                    default:
+                        item.CityPayItemID = (int)PayItems.Hour1;
+                        break;
+                }
+                city.CityPayItems.Add(item);
+                db.CityPayItems.Add(item);
+
+                if (city.CityInfo.Bank)
+                {
+                    CityPayItem itemBank = new CityPayItem();
+                    item.CityPayItemID = (int)PayItems.Bank;
+                    city.CityPayItems.Add(itemBank);
+                    db.CityPayItems.Add(itemBank);
+                }
+                if (city.CityInfo.Rally)
+                {
+                    CityPayItem itemRally = new CityPayItem();
+                    item.CityPayItemID = (int)PayItems.Rally;
+                    city.CityPayItems.Add(itemRally);
+                    db.CityPayItems.Add(itemRally);
+                }
+                if (city.CityInfo.Upgrade)
+                {
+                    CityPayItem itemUpgrade = new CityPayItem();
+                    item.CityPayItemID = (int)PayItems.Upgrade;
+                    city.CityPayItems.Add(itemUpgrade);
+                    db.CityPayItems.Add(itemUpgrade);
+                }
+
+                if (city.CityInfo.Shield)
+                {
+                    CityPayItem itemShield = new CityPayItem();
+                    item.CityPayItemID = (int)PayItems.Shield;
+                    city.CityPayItems.Add(itemShield);
+                    db.CityPayItems.Add(itemShield);
+                }
+
+                if (city.CityInfo.Treasury)
+                {
+                    CityPayItem itemTreasury = new CityPayItem();
+                    item.CityPayItemID = (int)PayItems.Treasury;
+                    city.CityPayItems.Add(itemTreasury);
+                    db.CityPayItems.Add(itemTreasury);
+                }
+
                 try
                 {
                     db.SaveChanges();
@@ -168,7 +226,7 @@ namespace GowWebSite.Controllers
                 {
                     throw e;
                 }
-                //return RedirectToAction("Index");
+                return RedirectToAction("Index","Payment");
             }
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             return View(city);

@@ -194,6 +194,9 @@
     </Compile>
     <Compile Include="Models\CityInfoMetadata.cs" />
     <Compile Include="Models\CityMetadata.cs" />
+    <Compile Include="Models\CityPayItem.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CreateCityFullModel.cs" />
     <Compile Include="Models\CreateCityModel.cs" />
     <Compile Include="Models\GetOldestLogin2_Result.cs">
@@ -227,7 +230,14 @@
     <Compile Include="Models\LoginExtension.cs" />
     <Compile Include="Models\LoginMetadata.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PayItem.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PayItems.cs" />
     <Compile Include="Models\ResourceType.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Subscription.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserCity.cs">
@@ -347,12 +357,12 @@
     <Content Include="Views\Shared\_ViewCityLogin.cshtml" />
     <Content Include="Views\Shared\_ViewCity.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RadioButtonListEnum.cshtml" />
+    <Content Include="Views\Payment\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\RSSImages\" />
     <Folder Include="Views\Image\" />
-    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
