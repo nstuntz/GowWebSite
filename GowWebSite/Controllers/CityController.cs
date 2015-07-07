@@ -143,6 +143,7 @@ namespace GowWebSite.Controllers
 
                 //Set the dates so it doesn't get confused
                 city.Login.LastRun = DateTime.Now;
+                city.Login.CreateDate = DateTime.Now;
                 city.CityInfo.LastAthenaGift = DateTime.Today;
                 city.CityInfo.LastBank = DateTime.Today;
                 city.CityInfo.LastRally = DateTime.Today;
@@ -161,63 +162,63 @@ namespace GowWebSite.Controllers
                 db.UserCities.Add(uc);
 
                 //Now add the costs
-                CityPayItem item = new CityPayItem();
+                CityPayItem itemHours = new CityPayItem();
                 switch (city.Login.LoginDelayMin)
                 {
                     case (int)Login.AllowDelays.Min360:
-                        item.CityPayItemID = (int)PayItems.Hour6;
+                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour6);
                         break;
                     case (int)Login.AllowDelays.Min180:
-                        item.CityPayItemID = (int)PayItems.Hour3;
+                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour3);
                         break;
                     case (int)Login.AllowDelays.Min60:
-                        item.CityPayItemID = (int)PayItems.Hour1;
+                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour1);
                         break;
                     default:
-                        item.CityPayItemID = (int)PayItems.Hour1;
+                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour1);
                         break;
                 }
-                city.CityPayItems.Add(item);
-                db.CityPayItems.Add(item);
+                db.CityPayItems.Add(itemHours);
+                city.CityPayItems.Add(itemHours);
 
                 if (city.CityInfo.Bank)
                 {
                     CityPayItem itemBank = new CityPayItem();
-                    item.CityPayItemID = (int)PayItems.Bank;
-                    city.CityPayItems.Add(itemBank);
+                    itemBank.PayItem = db.PayItems.Find((int)PayItems.Bank);
                     db.CityPayItems.Add(itemBank);
+                    city.CityPayItems.Add(itemBank);
                 }
                 if (city.CityInfo.Rally)
                 {
                     CityPayItem itemRally = new CityPayItem();
-                    item.CityPayItemID = (int)PayItems.Rally;
-                    city.CityPayItems.Add(itemRally);
+                    itemRally.PayItem = db.PayItems.Find((int)PayItems.Rally);
                     db.CityPayItems.Add(itemRally);
+                    city.CityPayItems.Add(itemRally);
                 }
                 if (city.CityInfo.Upgrade)
                 {
                     CityPayItem itemUpgrade = new CityPayItem();
-                    item.CityPayItemID = (int)PayItems.Upgrade;
-                    city.CityPayItems.Add(itemUpgrade);
+                    itemUpgrade.PayItem = db.PayItems.Find((int)PayItems.Upgrade);
                     db.CityPayItems.Add(itemUpgrade);
+                    city.CityPayItems.Add(itemUpgrade);
                 }
 
                 if (city.CityInfo.Shield)
                 {
                     CityPayItem itemShield = new CityPayItem();
-                    item.CityPayItemID = (int)PayItems.Shield;
-                    city.CityPayItems.Add(itemShield);
+                    itemShield.PayItem = db.PayItems.Find((int)PayItems.Shield);
                     db.CityPayItems.Add(itemShield);
+                    city.CityPayItems.Add(itemShield);
                 }
 
                 if (city.CityInfo.Treasury)
                 {
                     CityPayItem itemTreasury = new CityPayItem();
-                    item.CityPayItemID = (int)PayItems.Treasury;
-                    city.CityPayItems.Add(itemTreasury);
+                    itemTreasury.PayItem = db.PayItems.Find((int)PayItems.Treasury);
                     db.CityPayItems.Add(itemTreasury);
+                    city.CityPayItems.Add(itemTreasury);
                 }
-
+                
                 try
                 {
                     db.SaveChanges();

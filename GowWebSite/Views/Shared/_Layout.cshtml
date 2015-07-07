@@ -32,6 +32,10 @@
                     {
                         <li>@Html.ActionLink("Logins", "Index", "Login")</li>
                     }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Cart", "Index", "Payment")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -22,6 +22,7 @@ namespace GowWebSite.Models
         public int CityPayItemID { get; set; }
         public int CityID { get; set; }
         public int PayItemID { get; set; }
+        public bool Paid { get; set; }
     
         public virtual City City { get; set; }
         public virtual PayItem PayItem { get; set; }

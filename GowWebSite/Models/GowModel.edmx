@@ -81,6 +81,7 @@
           <Property Name="CityPayItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CityID" Type="int" Nullable="false" />
           <Property Name="PayItemID" Type="int" Nullable="false" />
+          <Property Name="Paid" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Log">
           <Key>
@@ -657,6 +658,7 @@
           <NavigationProperty Name="City" Relationship="GowModel.FK_CityPayItems_City" FromRole="CityPayItem" ToRole="City" />
           <NavigationProperty Name="PayItem" Relationship="GowModel.FK_CityPayItems_PayItems" FromRole="CityPayItem" ToRole="PayItem" />
           <NavigationProperty Name="Subscriptions" Relationship="GowModel.SubscriptionItems" FromRole="CityPayItem" ToRole="Subscription" />
+          <Property Name="Paid" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="PayItem">
           <Key>
@@ -858,6 +860,7 @@
           <EntitySetMapping Name="CityPayItems">
             <EntityTypeMapping TypeName="GowModel.CityPayItem">
               <MappingFragment StoreEntitySet="CityPayItems">
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
                 <ScalarProperty Name="PayItemID" ColumnName="PayItemID" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CityPayItemID" ColumnName="CityPayItemID" />

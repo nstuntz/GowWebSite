@@ -197,6 +197,7 @@
     <Compile Include="Models\CityPayItem.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CityPayItemsMetadata.cs" />
     <Compile Include="Models\CreateCityFullModel.cs" />
     <Compile Include="Models\CreateCityModel.cs" />
     <Compile Include="Models\GetOldestLogin2_Result.cs">
@@ -357,7 +358,8 @@
     <Content Include="Views\Shared\_ViewCityLogin.cshtml" />
     <Content Include="Views\Shared\_ViewCity.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RadioButtonListEnum.cshtml" />
-    <Content Include="Views\Payment\View.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

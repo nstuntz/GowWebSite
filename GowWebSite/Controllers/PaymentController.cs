@@ -3,17 +3,82 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GowWebSite.Models;
+using System.Configuration;
+using System.Net.Http;
+using System.Net;
+using System.IO;
 
 namespace GowWebSite.Controllers
 {
+    [Authorize]
     public class PaymentController : Controller
     {
+        private GowEntities db = new GowEntities();
+
         // GET: Payment
         public ActionResult Index()
         {
-            return View();
+            var userItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID) && !x.Paid);
+            var userUnpaidItems = userItems.Where(x => !x.Paid);
+            ViewBag.TotalCost = userItems.Sum(x => x.PayItem.Cost);
+            ViewBag.NewCost = userUnpaidItems.Sum(x => x.PayItem.Cost);
+
+            return View(userUnpaidItems);
         }
 
+                // GET: Payment
+        public ActionResult Confirm()
+        {
+            string authToken = ConfigurationManager.AppSettings["PDTToken"];
+
+            //read in txn token from querystring
+            string txToken = Request.QueryString.Get("tx");
+
+
+            string query = string.Format("cmd=_notify-synch&tx={0}&at={1}",
+                                  txToken, authToken);
+
+            // Create the request back
+            string url = ConfigurationManager.AppSettings["PayPalSubmitUrl"];
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+
+            // Set values for the request back
+            req.Method = "POST";
+            req.ContentType = "application/x-www-form-urlencoded";
+            req.ContentLength = query.Length;
+
+            // Write the request back IPN strings
+            StreamWriter stOut = new StreamWriter(req.GetRequestStream(), System.Text.Encoding.ASCII);
+            stOut.Write(query);
+            stOut.Close();
+
+            // Do the request to PayPal and get the response
+            StreamReader stIn = new StreamReader(req.GetResponse().GetResponseStream());
+            string strResponse = stIn.ReadToEnd();
+            stIn.Close();
+            string temp = string.Empty;
+
+            // If response was SUCCESS, parse response string and output details
+            if (strResponse.StartsWith("SUCCESS"))
+            {
+                PDTHolder pdt = PDTHolder.Parse(strResponse);
+                temp =
+                    string.Format("Thank you {0} {1} [{2}] for your subscription of {3} {4}!",
+                    pdt.PayerFirstName, pdt.PayerLastName,
+                    pdt.PayerEmail, pdt.GrossTotal, pdt.Currency);
+            }
+            else
+            {
+                temp = "Oooops, something went wrong...";
+            }
+            ViewBag.Message = temp;
+
+            return View();
+        }
+    
+
+        
         //public ActionResult Pay()
         //{
 
