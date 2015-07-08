@@ -25,16 +25,16 @@
                 <ul class="nav navbar-nav">
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Cities", "Index", "City")</li>
+                        <li>@Html.ActionLink("Cities", "Index", "City", null, new { @class = "navbar-brand" })</li>
                         if (User.IsInRole("Admin") || User.IsInRole("MachineOwner"))
                         {
-                            <li>@Html.ActionLink("Logs", "Index", "Log")</li>   
+                            <li>@Html.ActionLink("Logs", "Index", "Log", null, new { @class = "navbar-brand" })</li>   
                         }                 
                         if (User.IsInRole("Admin"))
                         {
-                            <li>@Html.ActionLink("Logins", "Index", "Login")</li>
+                            <li>@Html.ActionLink("Logins", "Index", "Login", null, new { @class = "navbar-brand" })</li>
                         }                    
-                        <li>@Html.ActionLink("Cart", "Index", "Payment")</li>
+                        <li>@Html.ActionLink("Cart", "Index", "Payment", null, new { @class = "navbar-brand" })</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -66,7 +66,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Gow Minion</p> <a>Terms of Service</a>
+            <div class="row">
+                <div class="col-md-3">&copy; @DateTime.Now.Year - Gow Minion</div>
+                <div class="col-md-offset-6 col-md-3"><a>Terms of Service</a></div>
+            </div> 
         </footer>
     </div>
 
