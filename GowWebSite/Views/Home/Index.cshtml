@@ -1,19 +1,104 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="row">
-    <div class="col-md-4">
-        <h2>Choose One:</h2>
-        <ul>
-            <li>@Html.ActionLink("Cities", "Index", "City")</li>
-            @if (User.IsInRole("Admin") || User.IsInRole("MachineOwner"))
-            {
-                <li>@Html.ActionLink("Logs", "Index", "Log")</li>
-            }
-            @if (User.IsInRole("Admin"))
-            {
-                <li>@Html.ActionLink("Logins", "Index", "Login")</li>
-            }
-        </ul>
+
+<head>
+    <!-- title and meta -->
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0" name="viewport">
+    <meta content="description" name="Game of war farm manager">
+
+    <title>GoW Minions</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab">
+    <link rel="stylesheet" href="../../Content/base.css" />
+    <link rel="stylesheet" href="../../Content/style.css" />
+    <link rel="stylesheet" href="../../Content/bootstrap.css" />
+
+    <!-- js -->
+    <script src="Scripts/modernizr.js"></script>
+</head>
+<div class="wrapper">
+
+    <div class="info-bar">
+        <div class="container">
+
+        </div>
     </div>
+
+    <main style="background-color:#E4F0EE;">
+
+        <section class="module parallax parallax-1">
+            <div class="container">
+                <h1>Have More Fun</h1>
+            </div>
+        </section>
+
+        <section class="module content">
+            <div class="container">
+                <h2>Play don't Grind</h2>
+                <p>Does logging into farms to bank rss and protect heros have you down? Do you spend more time in your farm alliance managing accounts than in your main playing?</p>
+            </div>
+        </section>
+
+        <section class="module parallax parallax-2">
+            <div class="container">
+                <h1>Grow Faster</h1>
+            </div>
+        </section>
+
+        <section class="module content">
+            <div class="container">
+                <h2>Protect Resources</h2>
+                <p>Want to protect all your farms resources? Make those farms produce more resources? Why login every few hours?</p>
+            </div>
+        </section>
+
+        <section class="module parallax parallax-3">
+            <div class="container">
+                <h1>Time Saver</h1>
+            </div>
+        </section>
+
+        <section class="module content">
+            <div class="container">
+                <h2>Basic Features</h2>
+                <div class="col-md-1"></div>
+                <div class="col col-md-10">
+                    <ul>
+                        <li>Collect daily and alliance quests so you get all the materials.</li>
+                        <li>Collect Athena's gift so you never miss free chests, gold and speedups.</li>
+                        <li>Collect Alliance gifts so they never expire while you are busy in RL.</li>
+                        <li>Click helps to help alliance members grow. Great for farm alliances.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="module parallax parallax-4">
+            <div class="container">
+                <h1>Stay Safe</h1>
+            </div>
+        </section>
+
+        <section class="module content">
+            <div class="container">
+                <h2>Advanced Features</h2>
+                <div class="col-md-1"></div>
+                <div class="col col-md-10">
+                    <ul>
+                        <li>Send your farms resources to your bank so you don't have to.</li>
+                        <li>Build the city so that your resource production grows.</li>
+                        <li>Rally so that hero keeps his bonuses in house.</li>
+                        <li>Shield to protect both your resources and your hero completely.</li>
+                        <li>Collect your treasury and start the next investment.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main><!-- /main -->
+
+
 </div>
