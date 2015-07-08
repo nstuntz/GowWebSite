@@ -30,6 +30,8 @@ namespace GowWebSite.Controllers
 
             var userUnpaidItems = userItems.Where(x => !x.Paid);
 
+            ViewBag.ExistingSubscription = userItems.Where(x => x.Paid).Count() > 0;
+
             if (userUnpaidItems == null || userUnpaidItems.Count() == 0)
             {
                 ViewBag.NewCost = 0;
@@ -37,6 +39,8 @@ namespace GowWebSite.Controllers
             }
 
             ViewBag.NewCost = userUnpaidItems.Sum(x => x.PayItem.Cost);
+
+            ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
 
             return View(userUnpaidItems);
         }

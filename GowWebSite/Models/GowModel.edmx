@@ -135,6 +135,10 @@
           <Property Name="Paid" Type="bit" Nullable="false" />
           <Property Name="TotalCost" Type="money" Nullable="false" />
           <Property Name="LastPaid" Type="datetime" />
+          <Property Name="PaypalEmail" Type="varchar" MaxLength="250" />
+          <Property Name="PaypalTxnID" Type="varchar" MaxLength="50" />
+          <Property Name="PaypalPayerID" Type="varchar" MaxLength="50" />
+          <Property Name="PaypalSubscriberID" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SubscriptionItems">
           <Key>
@@ -680,6 +684,10 @@
           <Property Name="TotalCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="LastPaid" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CityPayItems" Relationship="GowModel.SubscriptionItems" FromRole="Subscription" ToRole="CityPayItem" />
+          <Property Name="PaypalEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalTxnID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalPayerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalSubscriberID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_CityPayItems_City">
           <End Type="GowModel.City" Role="City" Multiplicity="1" />
@@ -880,6 +888,10 @@
           <EntitySetMapping Name="Subscriptions">
             <EntityTypeMapping TypeName="GowModel.Subscription">
               <MappingFragment StoreEntitySet="Subscription">
+                <ScalarProperty Name="PaypalSubscriberID" ColumnName="PaypalSubscriberID" />
+                <ScalarProperty Name="PaypalPayerID" ColumnName="PaypalPayerID" />
+                <ScalarProperty Name="PaypalTxnID" ColumnName="PaypalTxnID" />
+                <ScalarProperty Name="PaypalEmail" ColumnName="PaypalEmail" />
                 <ScalarProperty Name="LastPaid" ColumnName="LastPaid" />
                 <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
                 <ScalarProperty Name="Paid" ColumnName="Paid" />
