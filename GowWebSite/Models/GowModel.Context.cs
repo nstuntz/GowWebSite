@@ -34,9 +34,9 @@ namespace GowWebSite.Models
         public virtual DbSet<ResourceType> ResourceTypes { get; set; }
         public virtual DbSet<UserCity> UserCities { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Subscription> Subscriptions { get; set; }
         public virtual DbSet<CityPayItem> CityPayItems { get; set; }
         public virtual DbSet<PayItem> PayItems { get; set; }
-        public virtual DbSet<Subscription> Subscriptions { get; set; }
     
         public virtual int CreateExitingCitySetup(string userName, string password, string cityName, Nullable<int> cityX, Nullable<int> cityY, Nullable<int> allianceID, Nullable<int> rSSType, Nullable<int> sHLevel)
         {

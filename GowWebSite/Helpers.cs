@@ -30,6 +30,7 @@ namespace GowWebSite
         public string SubscriberId { get; set; }
         public string Custom { get; set; }
         public string RawData { get; set; }
+        public string PayerID { get; set; }
 
         public static PDTHolder Parse(string postData)
         {
@@ -119,6 +120,10 @@ namespace GowWebSite
 
                         case "subscr_id":
                             ph.SubscriberId = Convert.ToString(sValue);
+                            break;
+
+                        case "payer_id":
+                            ph.PayerID = Convert.ToString(sValue);
                             break;
                     }
                 }

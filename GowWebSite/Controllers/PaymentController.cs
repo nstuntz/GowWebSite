@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Net.Http;
 using System.Net;
 using System.IO;
+using System.Data.Entity.Validation;
 
 namespace GowWebSite.Controllers
 {
@@ -30,7 +31,7 @@ namespace GowWebSite.Controllers
 
             var userUnpaidItems = userItems.Where(x => !x.Paid);
 
-            ViewBag.ExistingSubscription = userItems.Where(x => x.Paid).Count() > 0;
+            ViewBag.ExistingSubscription = db.Subscriptions.Where(x => x.Email == User.Identity.Name).Count() > 0;
 
             if (userUnpaidItems == null || userUnpaidItems.Count() == 0)
             {
@@ -76,7 +77,7 @@ namespace GowWebSite.Controllers
             stIn.Close();
             string temp = string.Empty;
 
-            ViewBag.RawData = strResponse.Replace(" ","<br/>");
+            ViewBag.RawData = HttpUtility.UrlDecode(strResponse).Replace(" ","<br/>");
 
             // If response was SUCCESS, parse response string and output details
             if (strResponse.StartsWith("SUCCESS"))
@@ -87,7 +88,54 @@ namespace GowWebSite.Controllers
                     pdt.PayerFirstName, pdt.PayerLastName,
                     pdt.PayerEmail, pdt.GrossTotal, pdt.Currency);
 
-                //
+                //Update the DB now
+                var existingSubscritions = db.Subscriptions.Where(x => x.Email == pdt.Custom);
+                Subscription userSub;
+                if (existingSubscritions != null && existingSubscritions.Count() > 0)
+                {
+                    //Get existing subscription
+                    userSub = existingSubscritions.First();                    
+                }
+                else
+                {
+                    //Get a new one
+                    userSub = new Subscription();
+                }
+
+                //Update the subscription
+                userSub.TotalCost = (decimal)pdt.GrossTotal;
+                userSub.Email = User.Identity.Name;
+                userSub.LastPaid = DateTime.Today;
+                userSub.PaypalTxnID = pdt.TransactionId;
+                userSub.PaypalEmail = pdt.PayerEmail;
+                userSub.PaypalPayerID = pdt.PayerID;
+                userSub.PaypalSubscriberID = pdt.SubscriberId;
+
+                var unpaidItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID) && !x.Paid);
+                //Set all city items to paid
+                foreach (CityPayItem item in unpaidItems)
+                {
+                    item.Paid = true;
+                    item.Subscriptions.Add(userSub);
+                    // userSub.CityPayItems.Add(item);
+                }
+
+                //Set all cities to Paid
+                var userCities = db.Cities.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
+               
+                //Set all city items to paid
+                foreach (Login item in userCities.Where(x=> !x.Login.Paid).Select(x=> x.Login))
+                {
+                    item.Paid = true;
+                }
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    throw e;
+                }
             }
             else
             {
