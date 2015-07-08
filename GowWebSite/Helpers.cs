@@ -29,6 +29,7 @@ namespace GowWebSite
         public string TransactionId { get; set; }
         public string SubscriberId { get; set; }
         public string Custom { get; set; }
+        public string RawData { get; set; }
 
         public static PDTHolder Parse(string postData)
         {
@@ -37,6 +38,7 @@ namespace GowWebSite
 
             try
             {
+                ph.RawData = postData;
                 //split response into string array using whitespace delimeter
                 String[] StringArray = postData.Split('\n');
 

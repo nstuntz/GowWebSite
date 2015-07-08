@@ -19,9 +19,23 @@ namespace GowWebSite.Controllers
         // GET: Payment
         public ActionResult Index()
         {
-            var userItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID) && !x.Paid);
-            var userUnpaidItems = userItems.Where(x => !x.Paid);
+            var userItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
+            if (userItems == null || userItems.Count() == 0)
+            {
+                ViewBag.TotalCost = 0;
+                ViewBag.NewCost = 0;
+                return View(new List<CityPayItem>());
+            }
             ViewBag.TotalCost = userItems.Sum(x => x.PayItem.Cost);
+
+            var userUnpaidItems = userItems.Where(x => !x.Paid);
+
+            if (userUnpaidItems == null || userUnpaidItems.Count() == 0)
+            {
+                ViewBag.NewCost = 0;
+                return View(new List<CityPayItem>());
+            }
+
             ViewBag.NewCost = userUnpaidItems.Sum(x => x.PayItem.Cost);
 
             return View(userUnpaidItems);
@@ -36,8 +50,7 @@ namespace GowWebSite.Controllers
             string txToken = Request.QueryString.Get("tx");
 
 
-            string query = string.Format("cmd=_notify-synch&tx={0}&at={1}",
-                                  txToken, authToken);
+            string query = string.Format("cmd=_notify-synch&tx={0}&at={1}", txToken, authToken);
 
             // Create the request back
             string url = ConfigurationManager.AppSettings["PayPalSubmitUrl"];
@@ -59,6 +72,8 @@ namespace GowWebSite.Controllers
             stIn.Close();
             string temp = string.Empty;
 
+            ViewBag.RawData = strResponse.Replace(" ","<br/>");
+
             // If response was SUCCESS, parse response string and output details
             if (strResponse.StartsWith("SUCCESS"))
             {
@@ -67,10 +82,12 @@ namespace GowWebSite.Controllers
                     string.Format("Thank you {0} {1} [{2}] for your subscription of {3} {4}!",
                     pdt.PayerFirstName, pdt.PayerLastName,
                     pdt.PayerEmail, pdt.GrossTotal, pdt.Currency);
+
+                //
             }
             else
             {
-                temp = "Oooops, something went wrong...";
+                temp = "Something went wrong with the payment.  Your changes are still in your cart.";
             }
             ViewBag.Message = temp;
 
