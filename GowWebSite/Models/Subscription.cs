@@ -24,6 +24,10 @@ namespace GowWebSite.Models
         public bool Paid { get; set; }
         public decimal TotalCost { get; set; }
         public Nullable<System.DateTime> LastPaid { get; set; }
+        public string PaypalEmail { get; set; }
+        public string PaypalTxnID { get; set; }
+        public string PaypalPayerID { get; set; }
+        public string PaypalSubscriberID { get; set; }
     
         public virtual ICollection<CityPayItem> CityPayItems { get; set; }
     }

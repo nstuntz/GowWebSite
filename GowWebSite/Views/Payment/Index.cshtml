@@ -25,14 +25,20 @@
                     <input type="hidden" name="item_name" value="GoW Minion Subscription">
                     <input type="hidden" name="custom" value="@User.Identity.Name">
                     <input type="hidden" name="a1" value="@ViewBag.NewCost.ToString("F")">
-                    <input type="hidden" name="p1" value="5">
+                    <input type="hidden" name="p1" value="@ViewBag.TrialDays">
                     <input type="hidden" name="t1" value="D">
                     <input type="hidden" name="a3" value="@ViewBag.TotalCost.ToString("F")">
                     <input type="hidden" name="p3" value="1">
                     <input type="hidden" name="t3" value="M">
                     <input type="hidden" name="src" value="1">
-                    <input type="hidden" name="modify" value="1">
-
+                    @if (ViewBag.ExistingSubscription)
+                    { 
+                        <input type="hidden" name="modify" value="2">
+                    }
+                    else
+                    {
+                        <input type="hidden" name="modify" value="0">
+                    }
                     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
                 </form>
