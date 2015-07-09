@@ -12,7 +12,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a data-toggle="collapse" href="#LoginGroup">Login</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains basic login information needed to access your GoW account."></span>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains basic login information needed to access your GoW account. All prices are per month."></span>
             </div>
             <div id="LoginGroup" class="panel-collapse collapse in">
                 <div class="form-group"></div>
@@ -71,12 +71,15 @@
                     <div class="row">
 
                         <div class="col-md-2 col-sm-3" style="text-align:right;">
-                            @Html.Label("Login Timing", htmlAttributes: new { @class = "control-label" })
+                            @Html.Label("Login Timing", htmlAttributes: new { @class = "control-label" }) 
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the frequency with which the service will log into the account. This is also the basis for the 3 tiers of pricing. The basic functionality includes: Collecting Daily and Alliance Quests; Collecting Athenas gifts; Clicking on Helps; Collecting Alliance Gifts. The price is $.90/$1.50/$3.00 for 6/3/1 hrs respectively. All costs are on a monthly basis."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-10 col-sm-9">
                             @Html.EditorFor(model => model.Login.DelayTier, "RadioButtonListEnum")
                             @Html.ValidationMessageFor(model => model.Login.LoginDelayMin, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                            ($.90/$1.50/$3.00)
                         </div>
                     </div>
                 </div>
@@ -210,7 +213,7 @@
         <!-- This is the Banking Info-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" href="#BankGroup">Bank</a>
+                <a data-toggle="collapse" href="#BankGroup">Bank ($.30)</a>
                 <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. In order to properly bank, the city(ies) that you are banking two must be listed first alphabetically in your alliance. The cost is $.30 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="BankGroup">
@@ -289,7 +292,7 @@
         <!-- This is the Rally Info-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" href="#RallyGroup">Rally</a>
+                <a data-toggle="collapse" href="#RallyGroup">Rally ($.35)</a>
                 <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. The cost is $.35 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="RallyGroup">
@@ -342,7 +345,7 @@
         <!-- This is the Shield Info-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" href="#ShieldGroup">Shield</a>
+                <a data-toggle="collapse" href="#ShieldGroup">Shield ($.20)</a>
                 <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city shielding information. In order to shield, the city must either have 3d shields on hand, or enough gold to buy one. The cost is $.20 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="ShieldGroup">
@@ -368,7 +371,7 @@
         <!-- This is the Upgrade Info-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" href="#UpgradeGroup">Upgrade</a>
+                <a data-toggle="collapse" href="#UpgradeGroup">Upgrade ($.50)</a>
                 <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information. This will upgrade to SH 14, but in order to continue you must manually upgrade to SH 15 and update the Stronghold Level value. The cost is $.50 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="UpgradeGroup">
@@ -409,7 +412,7 @@
         <!-- This is the Treasury Info-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" href="#TreasuryGroup">Treasury</a>
+                <a data-toggle="collapse" href="#TreasuryGroup">Treasury ($.20)</a>
                 <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains treasury collection information. This will collect the treasury and then re-invest for another 30 days. The cost is $.20 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="TreasuryGroup">
