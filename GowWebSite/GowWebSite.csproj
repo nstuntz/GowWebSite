@@ -257,6 +257,12 @@
     <Content Include="Content\Images\2.jpg" />
     <Content Include="Content\Images\3.jpg" />
     <Content Include="Content\Images\FullStartupScreen.JPG" />
+    <Content Include="Content\Images\GoldMineLocation.JPG" />
+    <Content Include="Content\Images\GrowFaster.JPG" />
+    <Content Include="Content\Images\MarketLocation.JPG" />
+    <Content Include="Content\Images\MarketOrder.JPG" />
+    <Content Include="Content\Images\SaveTime.JPG" />
+    <Content Include="Content\Images\StaySafe.JPG" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
