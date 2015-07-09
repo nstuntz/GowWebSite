@@ -19,11 +19,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.Login.UserName, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the email address associated with the GoW Account."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7 form-control-static">
+                        <div class="col-md-8 col-sm-9 col-xs-7 form-control-static">
                             @if (!string.IsNullOrWhiteSpace(Model.Login.UserName))
                             {
                                 @Html.DisplayFor(model => model.Login.UserName)
@@ -41,11 +41,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.Login.Password, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the password associated with the Username."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.PasswordFor(model => model.Login.Password, new { @class = "form-control", value = Model.Login.Password })
                             @Html.ValidationMessageFor(model => model.Login.Password, "", new { @class = "text-danger" })
                         </div>
@@ -55,11 +55,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.Login.PIN, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the PIN associated with this UserName (preferably not on every login). If this does not match the service will not be able to login."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.Login.PIN, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Login.PIN, "", new { @class = "text-danger" })
                         </div>
@@ -70,7 +70,7 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.Label("Login Timing", htmlAttributes: new { @class = "control-label" }) 
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the frequency with which the service will log into the account. This is also the basis for the 3 tiers of pricing. The basic functionality includes: Collecting Daily and Alliance Quests; Collecting Athenas gifts; Clicking on Helps; Collecting Alliance Gifts. The price is $.90/$1.50/$3.00 for 6/3/1 hrs respectively. All costs are on a monthly basis."></span>
                         </div>
@@ -78,8 +78,8 @@
                             @Html.EditorFor(model => model.Login.DelayTier, "RadioButtonListEnum")
                             @Html.ValidationMessageFor(model => model.Login.LoginDelayMin, "", new { @class = "text-danger" })
                         </div>
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
-                            ($.90/$1.50/$3.00)
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                            ($3.00/$1.50/$.90)
                         </div>
                     </div>
                 </div>
@@ -96,11 +96,11 @@
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is a name for the city so you know which of your cities is which. Purely informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
                         </div>
@@ -110,11 +110,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.Kingdom, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the kingdom your city is in. Purely informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.Kingdom, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Kingdom, "", new { @class = "text-danger" })
                         </div>
@@ -124,11 +124,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.LocationX, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the X coordinates of your city. Purely informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.LocationX, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.LocationX, "", new { @class = "text-danger" })
                         </div>
@@ -138,11 +138,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.LocationY, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the Y coordinates of your city. Purely informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.LocationY, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.LocationY, "", new { @class = "text-danger" })
                         </div>
@@ -152,11 +152,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.ResourceTypeID, "ResourceTypeID", htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the resource type that this city produces. If you enable banking this will determine what is sent to the bank, otherwise it is purely informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.DropDownList("ResourceTypeID", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.ResourceTypeID, "", new { @class = "text-danger" })
                         </div>
@@ -166,11 +166,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.Alliance, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the alliance your city is in. Purely informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.Alliance, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Alliance, "", new { @class = "text-danger" })
                         </div>
@@ -180,11 +180,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.StrongHoldLevel, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the current level of your stronghold. This is used by the Upgrade component, otherwise it is just informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityInfo.StrongHoldLevel, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityInfo.StrongHoldLevel, "", new { @class = "text-danger" })
                         </div>
@@ -194,11 +194,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.HasGoldMine, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if your city has a gold mine. If you are using the upgrade component the goldmine should be moved to the top right most square outside the city. Otherwise this is purely informational."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.HasGoldMine)
                                 @Html.ValidationMessageFor(model => model.CityInfo.HasGoldMine, "", new { @class = "text-danger" })
@@ -214,18 +214,18 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a data-toggle="collapse" href="#BankGroup">Bank ($.30)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. Banking is complex to setup, for more detailed information please see the FAQs. The cost is $.30 per month."></span>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. Banking is complex to setup, for more detailed information please see the <a href='@Url.Action("FAQ", "Home")'>FAQs</a>. The cost is $.30 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="BankGroup">
                 <div class="form-group"></div>
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Bank, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if this city will bank resources."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.Bank)
                                 @Html.ValidationMessageFor(model => model.CityInfo.Bank, "", new { @class = "text-danger" })
@@ -236,11 +236,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.RSSBankNum, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the city in alphabetical order that your city will bank its non silver resources too. This cannot be greater than 4."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityInfo.RSSBankNum, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityInfo.RSSBankNum, "", new { @class = "text-danger" })
                         </div>
@@ -250,11 +250,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.RssMarches, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the number of marches of your non silver resource you will send to the bank on each login. If this matches or exceeds your max number of marches you will not bank silver."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityInfo.RssMarches, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityInfo.RssMarches, "", new { @class = "text-danger" })
                         </div>
@@ -263,11 +263,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.SilverBankNum, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the city in alphabetical order that your city will bank silver too. This cannot be greater than 4."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityInfo.SilverBankNum, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityInfo.SilverBankNum, "", new { @class = "text-danger" })
                         </div>
@@ -276,11 +276,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.SilverMarches, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the number of marches of your silver that you will send to the bank on each login."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityInfo.SilverMarches, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityInfo.SilverMarches, "", new { @class = "text-danger" })
                         </div>
@@ -300,11 +300,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Rally, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator of if this city will attempt to rally the hero."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.Rally)
                                 @Html.ValidationMessageFor(model => model.CityInfo.Rally, "", new { @class = "text-danger" })
@@ -316,11 +316,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.RallyX, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the X coordinates of the rally target."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityInfo.RallyX, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityInfo.RallyX, "", new { @class = "text-danger" })
                         </div>
@@ -329,11 +329,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.RallyY, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the Y coordinates of the rally target."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             @Html.EditorFor(model => model.CityInfo.RallyY, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.CityInfo.RallyY, "", new { @class = "text-danger" })
                         </div>
@@ -353,11 +353,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Shield, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if the city will be shielded."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.Shield)
                                 @Html.ValidationMessageFor(model => model.CityInfo.Shield, "", new { @class = "text-danger" })
@@ -379,11 +379,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Upgrade, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if this city will upgrade buildings."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.Upgrade)
                                 @Html.ValidationMessageFor(model => model.CityInfo.Upgrade, "", new { @class = "text-danger" })
@@ -394,11 +394,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.NeedRSS, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an information flag that is set when the service fails to upgrade any buildings, indicating that it needs additional rss to continue."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.NeedRSS)
                                 @Html.ValidationMessageFor(model => model.CityInfo.NeedRSS, "", new { @class = "text-danger" })
@@ -420,11 +420,11 @@
                 <div class="form-group">
                     <div class="row">
 
-                        <div class="col-md-2 col-sm-3" style="text-align:right;">
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label" })
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator of if this city will collect the treasury and reinvest."></span>
                         </div>
-                        <div class="col-md-8 col-sm-7">
+                        <div class="col-md-8 col-sm-9 col-xs-7">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.Treasury)
                                 @Html.ValidationMessageFor(model => model.CityInfo.Treasury, "", new { @class = "text-danger" })

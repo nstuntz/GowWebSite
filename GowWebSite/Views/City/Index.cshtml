@@ -11,7 +11,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CityName)
         </th>
-        <th>
+        <th class="hidden-xs hidden-sm">
             @Html.DisplayNameFor(model => model.Login.UserName)
         </th>
         <th>&nbsp;</th>
@@ -29,7 +29,7 @@
             @Html.DisplayNameFor(model => model.CityInfo.NeedRSS)
         </th>
         <th></th>
-        <th>
+        <th class="hidden-xs hidden-sm">
             RSS Image
         </th>
     </tr>
@@ -55,7 +55,7 @@
                 {<div class="glyphicon glyphicon-exclamation-sign"></div> }
                 @Html.ActionLink(item.CityName, "Edit", "City", new { id = item.CityID }, null)  
             </td>
-            <td>
+            <td class="hidden-xs hidden-sm">
                 @Html.DisplayFor(modelItem => item.Login.UserName)
             </td>
             <td>
@@ -91,7 +91,7 @@
                     <span class="glyphicon glyphicon-home"></span>
                 </a>
             </td>
-            <td>
+            <td class="hidden-xs hidden-sm">
                 <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
             </td>
         </tr>
