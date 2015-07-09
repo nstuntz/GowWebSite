@@ -253,9 +253,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomePage.css" />
+    <Content Include="Content\Images\FarmLocations.JPG" />
     <Content Include="Content\Images\FullStartupScreen.JPG" />
     <Content Include="Content\Images\GoldMineLocation.JPG" />
     <Content Include="Content\Images\GrowFaster.JPG" />
+    <Content Include="Content\Images\InsideLocations.JPG" />
     <Content Include="Content\Images\MarketLocation.JPG" />
     <Content Include="Content\Images\MarketOrder.JPG" />
     <Content Include="Content\Images\SaveTime.JPG" />

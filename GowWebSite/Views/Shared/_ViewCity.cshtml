@@ -57,7 +57,7 @@
 
                         <div class="col-md-2 col-sm-3" style="text-align:right;">
                             @Html.LabelFor(model => model.Login.PIN, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the PIN associated with this UserName (preferably not on every login)."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the PIN associated with this UserName (preferably not on every login). If this does not match the service will not be able to login."></span>
                         </div>
                         <div class="col-md-8 col-sm-7">
                             @Html.EditorFor(model => model.Login.PIN, new { htmlAttributes = new { @class = "form-control" } })
@@ -214,7 +214,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a data-toggle="collapse" href="#BankGroup">Bank ($.30)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. In order to properly bank, the city(ies) that you are banking two must be listed first alphabetically in your alliance. The cost is $.30 per month."></span>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. In order to properly bank, the city(ies) that you are banking too must be listed first alphabetically in your alliance. For more information please see the FAQs. The cost is $.30 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="BankGroup">
                 <div class="form-group"></div>
@@ -293,7 +293,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a data-toggle="collapse" href="#RallyGroup">Rally ($.35)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. The cost is $.35 per month."></span>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. This is complex to setup correctly, for more information see the FAQs. The cost is $.35 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="RallyGroup">
                 <div class="form-group"></div>
@@ -372,7 +372,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a data-toggle="collapse" href="#UpgradeGroup">Upgrade ($.50)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information. This will upgrade to SH 14, but in order to continue you must manually upgrade to SH 15 and update the Stronghold Level value. The cost is $.50 per month."></span>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information. This will upgrade to SH 14, but in order to continue you must manually upgrade to SH 15 and update the Stronghold Level value. For more information please see the FAQs. The cost is $.50 per month."></span>
             </div>
             <div class="panel-collapse collapse in" id="UpgradeGroup">
                 <div class="form-group"></div>
