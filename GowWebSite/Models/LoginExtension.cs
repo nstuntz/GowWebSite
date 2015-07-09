@@ -35,11 +35,11 @@ namespace GowWebSite.Models
         }
         public enum AllowDelays
         {
-            [Display(Name="1 Hour")]
+            [Display(Name="1 Hr")]
             Min60 = 60,
-            [Display(Name = "3 Hours")]
+            [Display(Name = "3 Hrs")]
             Min180 = 180,
-            [Display(Name = "6 Hours")]
+            [Display(Name = "6 Hrs")]
             Min360 = 360
         }
     }

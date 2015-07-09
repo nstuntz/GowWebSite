@@ -25,7 +25,7 @@
         <th>
             SH Lvl
         </th>
-        <th>
+        <th class="hidden-xs hidden-sm">
             @Html.DisplayNameFor(model => model.CityInfo.NeedRSS)
         </th>
         <th></th>
@@ -77,7 +77,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
             </td>
-            <td>
+            <td class="hidden-xs hidden-sm">
                 @if (item.CityInfo.Upgrade)
                 {
                     @Html.DisplayFor(modelItem => item.CityInfo.NeedRSS)
