@@ -258,16 +258,26 @@ namespace GowWebSite.Controllers
 
 
         // GET: City/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? cityID)
         {
-            if (id == null)
+            if (cityID == null || !cityID.HasValue)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            City city = db.Cities.Find(id);
+            City city = db.Cities.Find(cityID);
+
             if (city == null)
             {
                 return HttpNotFound();
+            }
+            
+            //Check city access if this is not an admin user
+            if (!User.IsInRole("Admin"))
+            {
+                if (city.UserCities.Where(x => x.Email == User.Identity.Name).Count() == 0)
+                {
+                    return HttpNotFound();
+                }
             }
             return View(city);
         }
@@ -275,11 +285,50 @@ namespace GowWebSite.Controllers
         // POST: City/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int cityID)
         {
-            //City city = db.Cities.Find(id);
-            //db.Cities.Remove(city);
-            //db.SaveChanges();
+            City city = db.Cities.Find(cityID);
+
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+
+            //Check city access if this is not an admin user
+            if (!User.IsInRole("Admin"))
+            {
+                if (city.UserCities.Where(x => x.Email == User.Identity.Name).Count() == 0)
+                {
+                    return HttpNotFound();
+                }
+            }
+
+            IEnumerable<Log> logs = db.Logs.Where(x => x.LoginID == city.LoginID);
+            db.Logs.RemoveRange(logs);
+
+            CityInfo ci = db.CityInfoes.Find(city.CityID);
+            db.CityInfoes.Remove(ci);
+
+            List<SubscriptionItem> subItems = new List<SubscriptionItem>();
+            foreach (CityPayItem  payItem in city.CityPayItems)
+            {
+                subItems.AddRange(payItem.SubscriptionItems);
+            }
+
+            db.SubscriptionItems.RemoveRange(subItems);
+
+            var cpi = db.CityPayItems.Where(x => x.CityID == city.CityID);
+            db.CityPayItems.RemoveRange(cpi);
+
+            var userCities = db.UserCities.Where(x=> x.CityID == city.CityID);
+            db.UserCities.RemoveRange(userCities);
+
+            db.Cities.Remove(city);
+
+            Login login = db.Logins.Find(city.LoginID);
+            db.Logins.Remove(login);
+            
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -446,6 +495,10 @@ namespace GowWebSite.Controllers
                 return HttpNotFound();
             }
             //Fill the Login
+            if (origLogin.Password != city.Login.Password)
+            {
+                origLogin.LoginAttempts = 0;
+            }
             origLogin.Password = city.Login.Password;
             origLogin.PIN = city.Login.PIN;
             origLogin.LoginDelayMin = city.Login.LoginDelayMin;

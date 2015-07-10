@@ -158,6 +158,7 @@ namespace GowWebSite.Controllers
                 dbLogin.LastRun = login.LastRun;
                 dbLogin.LoginDelayMin = login.LoginDelayMin;
                 dbLogin.PIN = login.PIN;
+                dbLogin.LoginAttempts = login.LoginAttempts;
 
                 //db.Entry(login).State = EntityState.Modified;
                 db.SaveChanges();

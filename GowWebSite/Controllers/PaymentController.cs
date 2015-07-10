@@ -116,8 +116,9 @@ namespace GowWebSite.Controllers
                 foreach (CityPayItem item in unpaidItems)
                 {
                     item.Paid = true;
-                    item.Subscriptions.Add(userSub);
-                    // userSub.CityPayItems.Add(item);
+                    SubscriptionItem sItem = new SubscriptionItem();
+                    sItem.Subscription = userSub;
+                    item.SubscriptionItems.Add(sItem);
                 }
 
                 //Set all cities to Paid

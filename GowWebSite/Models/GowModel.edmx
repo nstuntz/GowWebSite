@@ -148,6 +148,7 @@
           </Key>
           <Property Name="SubscriptionID" Type="int" Nullable="false" />
           <Property Name="CityPayItemID" Type="int" Nullable="false" />
+          <Property Name="fake" Type="int" />
         </EntityType>
         <EntityType Name="UserCity">
           <Key>
@@ -572,7 +573,6 @@
             <End Role="UserCity" EntitySet="UserCities" />
           </AssociationSet>
           <EntitySet Name="AspNetUsers" EntityType="GowModel.AspNetUser" />
-          <EntitySet Name="Subscriptions" EntityType="GowModel.Subscription" />
           <EntitySet Name="CityPayItems" EntityType="GowModel.CityPayItem" />
           <EntitySet Name="PayItems" EntityType="GowModel.PayItem" />
           <AssociationSet Name="FK_CityPayItem_City" Association="GowModel.FK_CityPayItem_City">
@@ -583,9 +583,15 @@
             <End Role="PayItem" EntitySet="PayItems" />
             <End Role="CityPayItem" EntitySet="CityPayItems" />
           </AssociationSet>
-          <AssociationSet Name="SubscriptionItem" Association="GowModel.SubscriptionItem">
+          <EntitySet Name="Subscriptions" EntityType="GowModel.Subscription" />
+          <EntitySet Name="SubscriptionItems" EntityType="GowModel.SubscriptionItem" />
+          <AssociationSet Name="FK_SubscriptionItem_CityPayItem" Association="GowModel.FK_SubscriptionItem_CityPayItem">
             <End Role="CityPayItem" EntitySet="CityPayItems" />
+            <End Role="SubscriptionItem" EntitySet="SubscriptionItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionItem_Subscription" Association="GowModel.FK_SubscriptionItem_Subscription">
             <End Role="Subscription" EntitySet="Subscriptions" />
+            <End Role="SubscriptionItem" EntitySet="SubscriptionItems" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
@@ -654,21 +660,6 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="AcceptedTermsOfService" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Subscription">
-          <Key>
-            <PropertyRef Name="SubscriptionID" />
-          </Key>
-          <Property Name="SubscriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="Paid" Type="Boolean" Nullable="false" />
-          <Property Name="TotalCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="LastPaid" Type="DateTime" Precision="3" />
-          <Property Name="PaypalEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="PaypalTxnID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PaypalPayerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PaypalSubscriberID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CityPayItems" Relationship="GowModel.SubscriptionItem" FromRole="Subscription" ToRole="CityPayItem" />
-        </EntityType>
         <EntityType Name="CityPayItem">
           <Key>
             <PropertyRef Name="CityPayItemID" />
@@ -679,7 +670,7 @@
           <Property Name="Paid" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="City" Relationship="GowModel.FK_CityPayItem_City" FromRole="CityPayItem" ToRole="City" />
           <NavigationProperty Name="PayItem" Relationship="GowModel.FK_CityPayItem_PayItem" FromRole="CityPayItem" ToRole="PayItem" />
-          <NavigationProperty Name="Subscriptions" Relationship="GowModel.SubscriptionItem" FromRole="CityPayItem" ToRole="Subscription" />
+          <NavigationProperty Name="SubscriptionItems" Relationship="GowModel.FK_SubscriptionItem_CityPayItem" FromRole="CityPayItem" ToRole="SubscriptionItem" />
         </EntityType>
         <EntityType Name="PayItem">
           <Key>
@@ -715,9 +706,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SubscriptionItem">
-          <End Type="GowModel.CityPayItem" Role="CityPayItem" Multiplicity="*" />
-          <End Type="GowModel.Subscription" Role="Subscription" Multiplicity="*" />
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="SubscriptionID" />
+          </Key>
+          <Property Name="SubscriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Paid" Type="Boolean" Nullable="false" />
+          <Property Name="TotalCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="LastPaid" Type="DateTime" Precision="3" />
+          <Property Name="PaypalEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalTxnID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalPayerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaypalSubscriberID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubscriptionItems" Relationship="GowModel.FK_SubscriptionItem_Subscription" FromRole="Subscription" ToRole="SubscriptionItem" />
+        </EntityType>
+        <EntityType Name="SubscriptionItem">
+          <Key>
+            <PropertyRef Name="SubscriptionID" />
+            <PropertyRef Name="CityPayItemID" />
+          </Key>
+          <Property Name="SubscriptionID" Type="Int32" Nullable="false" />
+          <Property Name="CityPayItemID" Type="Int32" Nullable="false" />
+          <Property Name="fake" Type="Int32" />
+          <NavigationProperty Name="CityPayItem" Relationship="GowModel.FK_SubscriptionItem_CityPayItem" FromRole="SubscriptionItem" ToRole="CityPayItem" />
+          <NavigationProperty Name="Subscription" Relationship="GowModel.FK_SubscriptionItem_Subscription" FromRole="SubscriptionItem" ToRole="Subscription" />
+        </EntityType>
+        <Association Name="FK_SubscriptionItem_CityPayItem">
+          <End Type="GowModel.CityPayItem" Role="CityPayItem" Multiplicity="1" />
+          <End Type="GowModel.SubscriptionItem" Role="SubscriptionItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityPayItem">
+              <PropertyRef Name="CityPayItemID" />
+            </Principal>
+            <Dependent Role="SubscriptionItem">
+              <PropertyRef Name="CityPayItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionItem_Subscription">
+          <End Type="GowModel.Subscription" Role="Subscription" Multiplicity="1" />
+          <End Type="GowModel.SubscriptionItem" Role="SubscriptionItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="SubscriptionID" />
+            </Principal>
+            <Dependent Role="SubscriptionItem">
+              <PropertyRef Name="SubscriptionID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -868,21 +905,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Subscriptions">
-            <EntityTypeMapping TypeName="GowModel.Subscription">
-              <MappingFragment StoreEntitySet="Subscription">
-                <ScalarProperty Name="PaypalSubscriberID" ColumnName="PaypalSubscriberID" />
-                <ScalarProperty Name="PaypalPayerID" ColumnName="PaypalPayerID" />
-                <ScalarProperty Name="PaypalTxnID" ColumnName="PaypalTxnID" />
-                <ScalarProperty Name="PaypalEmail" ColumnName="PaypalEmail" />
-                <ScalarProperty Name="LastPaid" ColumnName="LastPaid" />
-                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
-                <ScalarProperty Name="Paid" ColumnName="Paid" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CityPayItems">
             <EntityTypeMapping TypeName="GowModel.CityPayItem">
               <MappingFragment StoreEntitySet="CityPayItem">
@@ -903,14 +925,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="SubscriptionItem" TypeName="GowModel.SubscriptionItem" StoreEntitySet="SubscriptionItem">
-            <EndProperty Name="Subscription">
-              <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
-            </EndProperty>
-            <EndProperty Name="CityPayItem">
-              <ScalarProperty Name="CityPayItemID" ColumnName="CityPayItemID" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="Subscriptions">
+            <EntityTypeMapping TypeName="GowModel.Subscription">
+              <MappingFragment StoreEntitySet="Subscription">
+                <ScalarProperty Name="PaypalSubscriberID" ColumnName="PaypalSubscriberID" />
+                <ScalarProperty Name="PaypalPayerID" ColumnName="PaypalPayerID" />
+                <ScalarProperty Name="PaypalTxnID" ColumnName="PaypalTxnID" />
+                <ScalarProperty Name="PaypalEmail" ColumnName="PaypalEmail" />
+                <ScalarProperty Name="LastPaid" ColumnName="LastPaid" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionItems">
+            <EntityTypeMapping TypeName="GowModel.SubscriptionItem">
+              <MappingFragment StoreEntitySet="SubscriptionItem">
+                <ScalarProperty Name="fake" ColumnName="fake" />
+                <ScalarProperty Name="CityPayItemID" ColumnName="CityPayItemID" />
+                <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

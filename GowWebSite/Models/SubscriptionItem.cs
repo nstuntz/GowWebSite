@@ -12,20 +12,13 @@ namespace GowWebSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CityPayItem
+    public partial class SubscriptionItem
     {
-        public CityPayItem()
-        {
-            this.SubscriptionItems = new HashSet<SubscriptionItem>();
-        }
-    
+        public int SubscriptionID { get; set; }
         public int CityPayItemID { get; set; }
-        public int CityID { get; set; }
-        public int PayItemID { get; set; }
-        public bool Paid { get; set; }
+        public Nullable<int> fake { get; set; }
     
-        public virtual City City { get; set; }
-        public virtual PayItem PayItem { get; set; }
-        public virtual ICollection<SubscriptionItem> SubscriptionItems { get; set; }
+        public virtual CityPayItem CityPayItem { get; set; }
+        public virtual Subscription Subscription { get; set; }
     }
 }

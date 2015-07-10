@@ -60,6 +60,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.LoginAttempts, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
+            <div class="col-md-10 col-sm-9">
+                @Html.EditorFor(model => model.LoginAttempts, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LoginAttempts, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.InProcess, htmlAttributes: new { @class = "control-label col-md-2 col-sm-3" })
             <div class="col-md-10 col-sm-9">
                 @Html.EditorFor(model => model.InProcess, new { htmlAttributes = new { @class = "form-control" } })

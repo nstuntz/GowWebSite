@@ -16,7 +16,7 @@ namespace GowWebSite.Models
     {
         public Subscription()
         {
-            this.CityPayItems = new HashSet<CityPayItem>();
+            this.SubscriptionItems = new HashSet<SubscriptionItem>();
         }
     
         public int SubscriptionID { get; set; }
@@ -29,6 +29,6 @@ namespace GowWebSite.Models
         public string PaypalPayerID { get; set; }
         public string PaypalSubscriberID { get; set; }
     
-        public virtual ICollection<CityPayItem> CityPayItems { get; set; }
+        public virtual ICollection<SubscriptionItem> SubscriptionItems { get; set; }
     }
 }
