@@ -58,3 +58,8 @@ form-group {
  .modal-body ul li:last-child{
     border-right: 0px;
 }
+
+ .row-spacing{
+     margin-bottom:5px;
+     margin-top:5px;
+ }
