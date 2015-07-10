@@ -20,16 +20,7 @@ section.module p:last-child {
 section.module.content {
   padding: 40px 0;
 }
-section.module.parallax {
-  height: 500px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+
 section.module.parallax h1 {
   color: rgba(255, 255, 255, 0.8);
   font-size: 48px;
@@ -53,6 +44,16 @@ section.module.parallax-4 {
 }
 
 @media all and (min-width: 600px) {
+    section.module.parallax {
+  height: 200px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100%;
+}
   section.module h2 {
     font-size: 42px;
   }
@@ -64,6 +65,16 @@ section.module.parallax-4 {
   }
 }
 @media all and (min-width: 960px) {
+    section.module.parallax {
+  height: 500px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100%;
+}
   section.module.parallax h1 {
     font-size: 96px;
   }
