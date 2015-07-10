@@ -251,6 +251,7 @@
     <Compile Include="Models\UserCity.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PayPal\PaypalConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -376,6 +377,7 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\Confirm.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Payment\Pay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

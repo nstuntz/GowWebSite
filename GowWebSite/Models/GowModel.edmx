@@ -139,7 +139,7 @@
           <Property Name="PaypalEmail" Type="varchar" MaxLength="250" />
           <Property Name="PaypalTxnID" Type="varchar" MaxLength="50" />
           <Property Name="PaypalPayerID" Type="varchar" MaxLength="50" />
-          <Property Name="PaypalSubscriberID" Type="varchar" MaxLength="50" />
+          <Property Name="PaypalSubscriptionID" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SubscriptionItem">
           <Key>
@@ -718,8 +718,8 @@
           <Property Name="PaypalEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="PaypalTxnID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PaypalPayerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PaypalSubscriberID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SubscriptionItems" Relationship="GowModel.FK_SubscriptionItem_Subscription" FromRole="Subscription" ToRole="SubscriptionItem" />
+          <Property Name="PaypalSubscriptionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SubscriptionItem">
           <Key>
@@ -928,7 +928,7 @@
           <EntitySetMapping Name="Subscriptions">
             <EntityTypeMapping TypeName="GowModel.Subscription">
               <MappingFragment StoreEntitySet="Subscription">
-                <ScalarProperty Name="PaypalSubscriberID" ColumnName="PaypalSubscriberID" />
+                <ScalarProperty Name="PaypalSubscriptionID" ColumnName="PaypalSubscriptionID" />
                 <ScalarProperty Name="PaypalPayerID" ColumnName="PaypalPayerID" />
                 <ScalarProperty Name="PaypalTxnID" ColumnName="PaypalTxnID" />
                 <ScalarProperty Name="PaypalEmail" ColumnName="PaypalEmail" />
