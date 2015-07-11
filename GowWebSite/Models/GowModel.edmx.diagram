@@ -17,12 +17,14 @@
         <EntityTypeShape EntityType="GowModel.UserCity" Width="1.5" PointX="4.125" PointY="8.125" />
         <AssociationConnector Association="GowModel.FK_UserCity_City" />
         <EntityTypeShape EntityType="GowModel.AspNetUser" Width="1.5" PointX="6.75" PointY="0.625" />
-        <EntityTypeShape EntityType="GowModel.Subscription" Width="1.5" PointX="9.5" PointY="5.5" />
         <EntityTypeShape EntityType="GowModel.CityPayItem" Width="1.5" PointX="7.25" PointY="5.375" />
         <EntityTypeShape EntityType="GowModel.PayItem" Width="1.5" PointX="7.125" PointY="8.875" />
         <AssociationConnector Association="GowModel.FK_CityPayItem_City" />
         <AssociationConnector Association="GowModel.FK_CityPayItem_PayItem" />
-        <AssociationConnector Association="GowModel.SubscriptionItem" />
+        <EntityTypeShape EntityType="GowModel.Subscription" Width="1.875" PointX="7.375" PointY="11.125" />
+        <EntityTypeShape EntityType="GowModel.SubscriptionItem" Width="1.875" PointX="9.625" PointY="3.625" />
+        <AssociationConnector Association="GowModel.FK_SubscriptionItem_CityPayItem" />
+        <AssociationConnector Association="GowModel.FK_SubscriptionItem_Subscription" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

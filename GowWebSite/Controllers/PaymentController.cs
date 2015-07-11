@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Net;
 using System.IO;
 using System.Data.Entity.Validation;
+using GowWebSite.PayPal;
+using PayPal.Api;
 
 namespace GowWebSite.Controllers
 {
@@ -17,7 +19,7 @@ namespace GowWebSite.Controllers
     {
         private GowEntities db = new GowEntities();
 
-        // GET: Payment
+        [HttpGet]
         public ActionResult Index()
         {
             var userItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
@@ -46,6 +48,47 @@ namespace GowWebSite.Controllers
             return View(userUnpaidItems);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(IEnumerable<GowWebSite.Models.CityPayItem> items)
+        {            
+            //Delete the existing plan if one exists
+            if (db.Subscriptions.Where(x => x.Email == User.Identity.Name).Count() > 0)
+            {
+                Subscription sub = db.Subscriptions.Where(x => x.Email == User.Identity.Name).First();
+                var apiContext = PaypalConfiguration.GetAPIContext();
+
+                Agreement agreement = new Agreement();
+                agreement.id = sub.PaypalSubscriptionID;
+
+                AgreementStateDescriptor state = new AgreementStateDescriptor();
+                state.note = "Canceling to renew with new amounts.";
+
+                agreement.Cancel(apiContext, state);
+            }
+            return RedirectToAction("Pay");
+        }
+        
+        // GET: Payment
+        public ActionResult Pay()
+        {
+            var userItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
+            if (userItems == null || userItems.Count() == 0)
+            {
+                ViewBag.TotalCost = 0;
+                ViewBag.NewCost = 0;
+                return View(new List<CityPayItem>());
+            }
+
+            var userUnpaidItems = userItems.Where(x => !x.Paid);
+
+            ViewBag.TotalCost = userItems.Sum(x => x.PayItem.Cost);
+            ViewBag.ExistingSubscription = db.Subscriptions.Where(x => x.Email == User.Identity.Name).Count() > 0;
+            ViewBag.NewCost = userUnpaidItems.Sum(x => x.PayItem.Cost);
+            ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
+
+            return View();
+        }
                 // GET: Payment
         public ActionResult Confirm()
         {
@@ -109,15 +152,16 @@ namespace GowWebSite.Controllers
                 userSub.PaypalTxnID = pdt.TransactionId;
                 userSub.PaypalEmail = pdt.PayerEmail;
                 userSub.PaypalPayerID = pdt.PayerID;
-                userSub.PaypalSubscriberID = pdt.SubscriberId;
+                userSub.PaypalSubscriptionID = pdt.SubscriberId;
 
                 var unpaidItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID) && !x.Paid);
                 //Set all city items to paid
                 foreach (CityPayItem item in unpaidItems)
                 {
                     item.Paid = true;
-                    item.Subscriptions.Add(userSub);
-                    // userSub.CityPayItems.Add(item);
+                    SubscriptionItem sItem = new SubscriptionItem();
+                    sItem.Subscription = userSub;
+                    item.SubscriptionItems.Add(sItem);
                 }
 
                 //Set all cities to Paid
