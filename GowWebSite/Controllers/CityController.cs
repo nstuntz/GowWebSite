@@ -448,6 +448,7 @@ namespace GowWebSite.Controllers
             //Fill the Login
             origLogin.Password = city.Login.Password;
             origLogin.PIN = city.Login.PIN;
+            origLogin.Active = city.Login.Active;
             origLogin.LoginDelayMin = city.Login.LoginDelayMin;
 
             origCity.CityName = city.CityName;
@@ -462,6 +463,7 @@ namespace GowWebSite.Controllers
             origCityInfo.TreasuryLevel = city.CityInfo.TreasuryLevel;
             origCityInfo.HasGoldMine = city.CityInfo.HasGoldMine;
 
+            origCityInfo.Bank = city.CityInfo.Bank;
             origCityInfo.RssMarches = city.CityInfo.RssMarches;
             origCityInfo.RSSBankNum = city.CityInfo.RSSBankNum;
             origCityInfo.SilverBankNum = city.CityInfo.SilverBankNum;

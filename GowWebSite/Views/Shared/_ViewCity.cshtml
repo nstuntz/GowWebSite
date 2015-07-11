@@ -66,6 +66,21 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                            @Html.LabelFor(model => model.Login.Active, htmlAttributes: new { @class = "control-label" })
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This flag sets if this city will be tended to by minions. Non active cities are still charged for."></span>
+                        </div>
+                        <div class="col-md-8 col-sm-9 col-xs-6">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Login.Active)
+                                @Html.ValidationMessageFor(model => model.Login.Active, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="row">
