@@ -31,16 +31,16 @@ section.module.parallax h1 {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 section.module.parallax-1 {
-  background-image: url("../../Content/Images/FullStartupScreen.jpg");
+  background-image: url("../../Content/Images/FullStartupScreenSmall.jpg");
 }
 section.module.parallax-2 {
-  background-image: url("../../Content/Images/GrowFaster.jpg");
+  background-image: url("../../Content/Images/GrowFasterSmall.jpg");
 }
 section.module.parallax-3 {
-  background-image: url("../../Content/Images/SaveTime.jpg");
+  background-image: url("../../Content/Images/SaveTimeSmall.jpg");
 }
 section.module.parallax-4 {
-  background-image: url("../../Content/Images/StaySafe.jpg");
+  background-image: url("../../Content/Images/StaySafeSmall.jpg");
 }
 
 @media all and (min-width: 600px) {
@@ -78,4 +78,18 @@ section.module.parallax-4 {
   section.module.parallax h1 {
     font-size: 96px;
   }
+
+
+section.module.parallax-1 {
+  background-image: url("../../Content/Images/FullStartupScreen.jpg");
+}
+section.module.parallax-2 {
+  background-image: url("../../Content/Images/GrowFaster.jpg");
+}
+section.module.parallax-3 {
+  background-image: url("../../Content/Images/SaveTime.jpg");
+}
+    section.module.parallax-4 {
+        background-image: url("../../Content/Images/StaySafe.jpg");
+    }
 }
