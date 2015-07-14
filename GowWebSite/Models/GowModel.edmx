@@ -110,6 +110,7 @@
           <Property Name="LoginAttempts" Type="int" Nullable="false" />
           <Property Name="Paid" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="PaidThrough" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="PayItem">
           <Key>
@@ -448,6 +449,7 @@
           <Property Name="LoginAttempts" Type="Int32" Nullable="false" />
           <Property Name="Paid" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaidThrough" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="ResourceType">
           <Key>
@@ -831,6 +833,7 @@
           <EntitySetMapping Name="Logins">
             <EntityTypeMapping TypeName="GowModel.Login">
               <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="PaidThrough" ColumnName="PaidThrough" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Paid" ColumnName="Paid" />
                 <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
