@@ -31,6 +31,7 @@ namespace GowWebSite.Models
         public int LoginAttempts { get; set; }
         public bool Paid { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public System.DateTime PaidThrough { get; set; }
     
         public virtual ICollection<City> Cities { get; set; }
         public virtual ICollection<Log> Logs { get; set; }

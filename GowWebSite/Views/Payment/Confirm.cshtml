@@ -7,4 +7,7 @@
 
 <h5>@ViewBag.Message</h5>
 
-<div>@ViewBag.RawData</div>
+@if (User.IsInRole("Admin"))
+{ 
+    <div>@ViewBag.RawData</div> 
+}

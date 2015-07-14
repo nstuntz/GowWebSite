@@ -139,11 +139,13 @@ namespace GowWebSite.Controllers
 
             if (ModelState.IsValid)
             {
+                //Setup the Login defaults
                 city.Login.InProcess = "0";
-
-                //Set the dates so it doesn't get confused
                 city.Login.LastRun = DateTime.Now;
                 city.Login.CreateDate = DateTime.Now;
+                city.Login.Active = true;
+
+                //Set the CityInfo Defaults
                 city.CityInfo.LastAthenaGift = DateTime.Today;
                 city.CityInfo.LastBank = DateTime.Today;
                 city.CityInfo.LastRally = DateTime.Today;
@@ -152,6 +154,7 @@ namespace GowWebSite.Controllers
                 city.CityInfo.LastUpgrade = DateTime.Today;
                 city.CityInfo.TreasuryDue = DateTime.Today;
                 
+                //Add the userCity
                 UserCity uc = new UserCity();
                 uc.Email = User.Identity.Name;
                 city.UserCities.Add(uc);
