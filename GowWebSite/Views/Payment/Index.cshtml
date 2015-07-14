@@ -12,6 +12,7 @@
     </ul>
     <h5>Additional Costs = @ViewBag.NewCost.ToString("F")</h5>
 
+    <h5>Previous Subscription Cost = @ViewBag.PreviousCost.ToString("F")</h5>
     <h5>Total Subscription Cost = @ViewBag.TotalCost.ToString("F")</h5>
     <div class ="col-sm-12">
         <div class ="col-sm-2">@Html.ActionLink("Add Another City", "CreateFull", "City",null, new { @class = "btn btn-primary" })</div>

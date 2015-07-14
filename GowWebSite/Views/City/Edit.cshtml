@@ -14,8 +14,8 @@
     @Html.Partial("_ViewCity")
 
     <div class="col-md-12 col-sm-12">
-
-        <input id="CitySave" type="submit" value="Save" class="btn btn-primary" />
+        <div class="text-info">You will need to check out from the cart for any changes to take effect.  You can edit multiple cities and check out once.</div>
+        <input id="CitySave" type="submit" value="Save to Cart" class="btn btn-primary" />
         @Html.ActionLink("Delete", "Delete", new { cityID = Model.CityID }, new { @class = "btn btn-primary" })
         @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" })
     </div>

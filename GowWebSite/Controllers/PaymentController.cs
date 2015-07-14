@@ -38,9 +38,13 @@ namespace GowWebSite.Controllers
             if (userUnpaidItems == null || userUnpaidItems.Count() == 0)
             {
                 ViewBag.NewCost = 0;
+                ViewBag.PreviousCost = 0;
                 return View(new List<CityPayItem>());
             }
 
+            var sub = db.Subscriptions.Where(x => x.Email == User.Identity.Name).First();
+
+            ViewBag.PreviousCost = sub.TotalCost;
             ViewBag.NewCost = userUnpaidItems.Sum(x => x.PayItem.Cost);
 
             ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
@@ -168,7 +172,7 @@ namespace GowWebSite.Controllers
                 var userCities = db.Cities.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
                
                 //Set all city items to paid
-                foreach (Login item in userCities.Where(x=> !x.Login.Paid).Select(x=> x.Login))
+                foreach (Login item in userCities.Select(x=> x.Login))
                 {
                     item.Paid = true;
                     item.PaidThrough = DateTime.Today.AddDays(DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1);                    
