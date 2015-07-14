@@ -131,9 +131,9 @@ namespace GowWebSite.Controllers
             {
                 PDTHolder pdt = PDTHolder.Parse(strResponse);
                 temp =
-                    string.Format("Thank you {0} {1} [{2}] for your subscription of {3} {4}!",
+                    string.Format("Thank you {0} {1} for your subscription of {3} {4}!",
                     pdt.PayerFirstName, pdt.PayerLastName,
-                    pdt.PayerEmail, pdt.GrossTotal, pdt.Currency);
+                    pdt.PayerEmail, pdt.GrossTotal.ToString("F"), pdt.Currency);
 
                 //Update the DB now
                 var existingSubscritions = db.Subscriptions.Where(x => x.Email == pdt.Custom);
@@ -152,7 +152,7 @@ namespace GowWebSite.Controllers
                 //Update the subscription
                 userSub.TotalCost = (decimal)pdt.GrossTotal;
                 userSub.Email = User.Identity.Name;
-                userSub.LastPaid = DateTime.Today;
+                userSub.LastPaid = DateTime.Now;
                 userSub.PaypalTxnID = pdt.TransactionId;
                 userSub.PaypalEmail = pdt.PayerEmail;
                 userSub.PaypalPayerID = pdt.PayerID;
