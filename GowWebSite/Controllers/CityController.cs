@@ -119,6 +119,12 @@ namespace GowWebSite.Controllers
             {
                 ModelState.AddModelError(city.Login.UserName, "UserName is required.");
             }
+            
+            if (db.Logins.Where(x => x.UserName == city.Login.UserName).Count() > 0)
+            {
+                ModelState.AddModelError(city.Login.UserName, "UserName is already in use.  You must use a different one.");
+            }
+
 
             if (city.CityInfo.Rally)
             {
