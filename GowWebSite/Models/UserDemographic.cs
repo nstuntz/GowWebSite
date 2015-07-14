@@ -15,11 +15,9 @@ namespace GowWebSite.Models
     public partial class UserDemographic
     {
         public long UserDemographicsID { get; set; }
-        public string AspNetUserID { get; set; }
         public string UserName { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public string Gender { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
+        public string AspNetUserEmail { get; set; }
     }
 }

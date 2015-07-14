@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
@@ -164,7 +164,7 @@
             <PropertyRef Name="UserDemographicsID" />
           </Key>
           <Property Name="UserDemographicsID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AspNetUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AspNetUserEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="DOB" Type="date" />
           <Property Name="Gender" Type="char" MaxLength="1" />
@@ -277,18 +277,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserDemographics_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="UserDemographics" Type="Self.UserDemographics" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserDemographics">
-              <PropertyRef Name="AspNetUserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="CreateExistingCitySetup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -379,10 +367,6 @@
           <AssociationSet Name="FK_UserCity_City" Association="Self.FK_UserCity_City">
             <End Role="City" EntitySet="City" />
             <End Role="UserCity" EntitySet="UserCity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserDemographics_AspNetUsers" Association="Self.FK_UserDemographics_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="UserDemographics" EntitySet="UserDemographics" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -623,10 +607,6 @@
             <End Role="SubscriptionItem" EntitySet="SubscriptionItems" />
           </AssociationSet>
           <EntitySet Name="UserDemographics" EntityType="GowModel.UserDemographic" />
-          <AssociationSet Name="FK_UserDemographics_AspNetUsers" Association="GowModel.FK_UserDemographics_AspNetUsers">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="UserDemographic" EntitySet="UserDemographics" />
-          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -680,7 +660,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -693,7 +673,6 @@
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="AcceptedTermsOfService" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserDemographics" Relationship="GowModel.FK_UserDemographics_AspNetUsers" FromRole="AspNetUser" ToRole="UserDemographic" />
         </EntityType>
         <EntityType Name="CityPayItem">
           <Key>
@@ -796,24 +775,11 @@
             <PropertyRef Name="UserDemographicsID" />
           </Key>
           <Property Name="UserDemographicsID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AspNetUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="DOB" Type="DateTime" Precision="0" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="GowModel.FK_UserDemographics_AspNetUsers" FromRole="UserDemographic" ToRole="AspNetUser" />
+          <Property Name="AspNetUserEmail" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_UserDemographics_AspNetUsers">
-          <End Type="GowModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
-          <End Type="GowModel.UserDemographic" Role="UserDemographic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserDemographic">
-              <PropertyRef Name="AspNetUserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1011,10 +977,10 @@
           <EntitySetMapping Name="UserDemographics">
             <EntityTypeMapping TypeName="GowModel.UserDemographic">
               <MappingFragment StoreEntitySet="UserDemographics">
+                <ScalarProperty Name="AspNetUserEmail" ColumnName="AspNetUserEmail" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
                 <ScalarProperty Name="UserDemographicsID" ColumnName="UserDemographicsID" />
               </MappingFragment>
             </EntityTypeMapping>

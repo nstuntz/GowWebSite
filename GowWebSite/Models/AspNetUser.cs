@@ -14,11 +14,6 @@ namespace GowWebSite.Models
     
     public partial class AspNetUser
     {
-        public AspNetUser()
-        {
-            this.UserDemographics = new HashSet<UserDemographic>();
-        }
-    
         public string Id { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
@@ -32,7 +27,5 @@ namespace GowWebSite.Models
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
         public Nullable<System.DateTime> AcceptedTermsOfService { get; set; }
-    
-        public virtual ICollection<UserDemographic> UserDemographics { get; set; }
     }
 }
