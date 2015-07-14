@@ -251,6 +251,9 @@
     <Compile Include="Models\UserCity.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserDemographic.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PayPal\PaypalConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

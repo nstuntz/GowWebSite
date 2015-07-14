@@ -25,6 +25,8 @@
         <EntityTypeShape EntityType="GowModel.SubscriptionItem" Width="1.875" PointX="9.625" PointY="3.625" />
         <AssociationConnector Association="GowModel.FK_SubscriptionItem_CityPayItem" />
         <AssociationConnector Association="GowModel.FK_SubscriptionItem_Subscription" />
+        <EntityTypeShape EntityType="GowModel.UserDemographic" Width="1.5" PointX="9.375" PointY="0.75" />
+        <AssociationConnector Association="GowModel.FK_UserDemographics_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
