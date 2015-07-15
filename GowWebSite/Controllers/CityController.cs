@@ -119,6 +119,12 @@ namespace GowWebSite.Controllers
             {
                 ModelState.AddModelError(city.Login.UserName, "UserName is required.");
             }
+            
+            if (db.Logins.Where(x => x.UserName == city.Login.UserName).Count() > 0)
+            {
+                ModelState.AddModelError(city.Login.UserName, "UserName is already in use.  You must use a different one.");
+            }
+
 
             if (city.CityInfo.Rally)
             {
@@ -144,6 +150,7 @@ namespace GowWebSite.Controllers
                 city.Login.LastRun = DateTime.Now;
                 city.Login.CreateDate = DateTime.Now;
                 city.Login.Active = true;
+                city.Login.PaidThrough = DateTime.Today.AddMonths(-1);
 
                 //Set the CityInfo Defaults
                 city.CityInfo.LastAthenaGift = DateTime.Today;
@@ -572,24 +579,33 @@ namespace GowWebSite.Controllers
                 if (cpi.Where(x => x.PayItemID == (int)PayItems.Hour6).Count() > 0)
                 {
                     pi = cpi.Where(x => x.PayItemID == (int)PayItems.Hour6).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }
                 if (cpi.Where(x => x.PayItemID == (int)PayItems.Hour3).Count() > 0)
                 {
                     pi = cpi.Where(x => x.PayItemID == (int)PayItems.Hour3).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }
                 if (cpi.Where(x => x.PayItemID == (int)PayItems.Hour1).Count() > 0)
                 {
                     pi = cpi.Where(x => x.PayItemID == (int)PayItems.Hour1).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }
@@ -622,8 +638,11 @@ namespace GowWebSite.Controllers
                 {
                     //remove it
                     CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Bank).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }
@@ -644,8 +663,11 @@ namespace GowWebSite.Controllers
                 {
                     //remove it
                     CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Shield).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }
@@ -666,8 +688,11 @@ namespace GowWebSite.Controllers
                 {
                     //remove it
                     CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Rally).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }
@@ -688,8 +713,11 @@ namespace GowWebSite.Controllers
                 {
                     //remove it
                     CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Upgrade).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }
@@ -710,8 +738,11 @@ namespace GowWebSite.Controllers
                 {
                     //remove it
                     CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Treasury).First();
-                    SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                    db.SubscriptionItems.Remove(subItem);
+                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    {
+                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
+                        db.SubscriptionItems.Remove(subItem);
+                    }
                     origCity.CityPayItems.Remove(pi);
                     db.CityPayItems.Remove(pi);
                 }

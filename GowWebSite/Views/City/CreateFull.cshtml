@@ -14,14 +14,15 @@
     @Html.Partial("_ViewCity")
 
 
-    <div class="text-info">You will need to check out from the cart for this city to become active.  You can add multiple cities and check out once.</div>
-    <input id="CitySave" type="submit" value="Add to Cart" class="btn btn-primary" />
+    <div>
+        <div class="text-info">You will need to check out from the cart for this city to become active.  You can add multiple cities and check out once.</div>
+        <input id="CitySave" type="submit" value="Add to Cart" class="btn btn-primary" />
+
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+    </div>
 }
 
 
-<div>
-    @Html.ActionLink("Back to List", "Index", null, new { @class="btn btn-primary"} )
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
