@@ -17,13 +17,16 @@ namespace GowWebSite.Models
         public PayItem()
         {
             this.CityPayItems = new HashSet<CityPayItem>();
+            this.UserPayItems = new HashSet<UserPayItem>();
         }
     
         public int PayItemID { get; set; }
         public int ItemType { get; set; }
         public decimal Cost { get; set; }
         public string Description { get; set; }
+        public int Number { get; set; }
     
         public virtual ICollection<CityPayItem> CityPayItems { get; set; }
+        public virtual ICollection<UserPayItem> UserPayItems { get; set; }
     }
 }

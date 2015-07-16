@@ -245,13 +245,13 @@
     <Compile Include="Models\Subscription.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SubscriptionItem.cs">
-      <DependentUpon>GowModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserCity.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserDemographic.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserPayItem.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PayPal\PaypalConfiguration.cs" />

@@ -14,11 +14,6 @@ namespace GowWebSite.Models
     
     public partial class Subscription
     {
-        public Subscription()
-        {
-            this.SubscriptionItems = new HashSet<SubscriptionItem>();
-        }
-    
         public int SubscriptionID { get; set; }
         public string Email { get; set; }
         public bool Paid { get; set; }
@@ -28,7 +23,5 @@ namespace GowWebSite.Models
         public string PaypalTxnID { get; set; }
         public string PaypalPayerID { get; set; }
         public string PaypalSubscriptionID { get; set; }
-    
-        public virtual ICollection<SubscriptionItem> SubscriptionItems { get; set; }
     }
 }

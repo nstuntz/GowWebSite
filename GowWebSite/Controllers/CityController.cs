@@ -176,55 +176,33 @@ namespace GowWebSite.Controllers
                 switch (city.Login.LoginDelayMin)
                 {
                     case (int)Login.AllowDelays.Min360:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour6);
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour6);
                         break;
                     case (int)Login.AllowDelays.Min180:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour3);
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour3);
                         break;
                     case (int)Login.AllowDelays.Min60:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour1);
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
                         break;
                     default:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour1);
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
                         break;
                 }
                 db.CityPayItems.Add(itemHours);
                 city.CityPayItems.Add(itemHours);
 
-                if (city.CityInfo.Bank)
-                {
-                    CityPayItem itemBank = new CityPayItem();
-                    itemBank.PayItem = db.PayItems.Find((int)PayItems.Bank);
-                    db.CityPayItems.Add(itemBank);
-                    city.CityPayItems.Add(itemBank);
-                }
-                if (city.CityInfo.Rally)
-                {
-                    CityPayItem itemRally = new CityPayItem();
-                    itemRally.PayItem = db.PayItems.Find((int)PayItems.Rally);
-                    db.CityPayItems.Add(itemRally);
-                    city.CityPayItems.Add(itemRally);
-                }
                 if (city.CityInfo.Upgrade)
                 {
                     CityPayItem itemUpgrade = new CityPayItem();
-                    itemUpgrade.PayItem = db.PayItems.Find((int)PayItems.Upgrade);
+                    itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
                     db.CityPayItems.Add(itemUpgrade);
                     city.CityPayItems.Add(itemUpgrade);
                 }
-
-                if (city.CityInfo.Shield)
-                {
-                    CityPayItem itemShield = new CityPayItem();
-                    itemShield.PayItem = db.PayItems.Find((int)PayItems.Shield);
-                    db.CityPayItems.Add(itemShield);
-                    city.CityPayItems.Add(itemShield);
-                }
-
+                
                 if (city.CityInfo.Treasury)
                 {
                     CityPayItem itemTreasury = new CityPayItem();
-                    itemTreasury.PayItem = db.PayItems.Find((int)PayItems.Treasury);
+                    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
                     db.CityPayItems.Add(itemTreasury);
                     city.CityPayItems.Add(itemTreasury);
                 }
@@ -259,10 +237,12 @@ namespace GowWebSite.Controllers
             //Fixing because it wasn't trimmed when it was put in
             city.Alliance = city.Alliance.Trim();
 
-
             ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
+
+            ViewBag.PremiumCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.PremiumCity).Count() > 0;
+            ViewBag.BasicCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.BasicCity).Count() > 0;
             return View(city);
         }
 
@@ -318,15 +298,7 @@ namespace GowWebSite.Controllers
 
             CityInfo ci = db.CityInfoes.Find(city.CityID);
             db.CityInfoes.Remove(ci);
-
-            List<SubscriptionItem> subItems = new List<SubscriptionItem>();
-            foreach (CityPayItem  payItem in city.CityPayItems)
-            {
-                subItems.AddRange(payItem.SubscriptionItems);
-            }
-
-            db.SubscriptionItems.RemoveRange(subItems);
-
+            
             var cpi = db.CityPayItems.Where(x => x.CityID == city.CityID);
             db.CityPayItems.RemoveRange(cpi);
 
@@ -571,191 +543,99 @@ namespace GowWebSite.Controllers
         {
             IQueryable<CityPayItem> cpi = db.CityPayItems.Where(x => x.CityID == origCity.CityID);
 
-            //Check LoginDelay
-            if (origCity.Login.DelayTier != newCity.Login.DelayTier)
+            bool premiumCity = origCity.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.PremiumCity).Count() > 0;
+            bool basicCity = origCity.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.BasicCity).Count() > 0;
+
+            if (!premiumCity && !basicCity)
             {
-                //Out with the old
-                CityPayItem pi;
-                if (cpi.Where(x => x.PayItemID == (int)PayItems.Hour6).Count() > 0)
+                //Check LoginDelay
+                if (origCity.Login.DelayTier != newCity.Login.DelayTier)
                 {
-                    pi = cpi.Where(x => x.PayItemID == (int)PayItems.Hour6).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    //Out with the old
+                    CityPayItem pi;
+                    if (cpi.Where(x => x.PayItemID == (int)PayItemEnum.Hour6).Count() > 0)
                     {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
+                        pi = cpi.Where(x => x.PayItemID == (int)PayItemEnum.Hour6).First();
+                        origCity.CityPayItems.Remove(pi);
+                        db.CityPayItems.Remove(pi);
                     }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
-                }
-                if (cpi.Where(x => x.PayItemID == (int)PayItems.Hour3).Count() > 0)
-                {
-                    pi = cpi.Where(x => x.PayItemID == (int)PayItems.Hour3).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    if (cpi.Where(x => x.PayItemID == (int)PayItemEnum.Hour3).Count() > 0)
                     {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
+                        pi = cpi.Where(x => x.PayItemID == (int)PayItemEnum.Hour3).First();
+                        origCity.CityPayItems.Remove(pi);
+                        db.CityPayItems.Remove(pi);
                     }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
-                }
-                if (cpi.Where(x => x.PayItemID == (int)PayItems.Hour1).Count() > 0)
-                {
-                    pi = cpi.Where(x => x.PayItemID == (int)PayItems.Hour1).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    if (cpi.Where(x => x.PayItemID == (int)PayItemEnum.Hour1).Count() > 0)
                     {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
+                        pi = cpi.Where(x => x.PayItemID == (int)PayItemEnum.Hour1).First();
+                        origCity.CityPayItems.Remove(pi);
+                        db.CityPayItems.Remove(pi);
                     }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
-                }
 
-                //In with the new one
-                CityPayItem itemHours = new CityPayItem();
-                switch (newCity.Login.LoginDelayMin)
-                {
-                    case (int)Login.AllowDelays.Min360:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour6);
-                        break;
-                    case (int)Login.AllowDelays.Min180:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour3);
-                        break;
-                    case (int)Login.AllowDelays.Min60:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour1);
-                        break;
-                    default:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItems.Hour1);
-                        break;
-                }
-                db.CityPayItems.Add(itemHours);
-                origCity.CityPayItems.Add(itemHours);
-            }
-
-            //Check Bank
-            if (origCity.CityInfo.Bank != newCity.CityInfo.Bank)
-            {                
-                if (origCity.CityInfo.Bank)
-                {
-                    //remove it
-                    CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Bank).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    //In with the new one
+                    CityPayItem itemHours = new CityPayItem();
+                    switch (newCity.Login.LoginDelayMin)
                     {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
+                        case (int)Login.AllowDelays.Min360:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour6);
+                            break;
+                        case (int)Login.AllowDelays.Min180:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour3);
+                            break;
+                        case (int)Login.AllowDelays.Min60:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                            break;
+                        default:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                            break;
                     }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
-                }
-                else
-                {
-                    //Add it
-                    CityPayItem newPI = new CityPayItem();
-                    newPI.PayItem = db.PayItems.Find((int)PayItems.Bank);
-                    db.CityPayItems.Add(newPI);
-                    origCity.CityPayItems.Add(newPI);
+                    db.CityPayItems.Add(itemHours);
+                    origCity.CityPayItems.Add(itemHours);
                 }
             }
 
-            //Check Shield
-            if (origCity.CityInfo.Shield != newCity.CityInfo.Shield)
+            if (!premiumCity)
             {
-                if (origCity.CityInfo.Shield)
+                //Check Upgrade
+                if (origCity.CityInfo.Upgrade != newCity.CityInfo.Upgrade)
                 {
-                    //remove it
-                    CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Shield).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
+                    if (origCity.CityInfo.Upgrade)
                     {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
+                        //remove it
+                        CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItemEnum.Upgrade).First();
+                        origCity.CityPayItems.Remove(pi);
+                        db.CityPayItems.Remove(pi);
                     }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
+                    else
+                    {
+                        //Add it
+                        CityPayItem newPI = new CityPayItem();
+                        newPI.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
+                        db.CityPayItems.Add(newPI);
+                        origCity.CityPayItems.Add(newPI);
+                    }
                 }
-                else
+
+                //Check Treasury
+                if (origCity.CityInfo.Treasury != newCity.CityInfo.Treasury)
                 {
-                    //Add it
-                    CityPayItem newPI = new CityPayItem();
-                    newPI.PayItem = db.PayItems.Find((int)PayItems.Shield);
-                    db.CityPayItems.Add(newPI);
-                    origCity.CityPayItems.Add(newPI);
+                    if (origCity.CityInfo.Treasury)
+                    {
+                        //remove it
+                        CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItemEnum.Treasury).First();
+                        origCity.CityPayItems.Remove(pi);
+                        db.CityPayItems.Remove(pi);
+                    }
+                    else
+                    {
+                        //Add it
+                        CityPayItem newPI = new CityPayItem();
+                        newPI.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                        db.CityPayItems.Add(newPI);
+                        origCity.CityPayItems.Add(newPI);
+                    }
                 }
             }
-
-            //Check Rally
-            if (origCity.CityInfo.Rally != newCity.CityInfo.Rally)
-            {
-                if (origCity.CityInfo.Rally)
-                {
-                    //remove it
-                    CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Rally).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
-                    {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
-                    }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
-                }
-                else
-                {
-                    //Add it
-                    CityPayItem newPI = new CityPayItem();
-                    newPI.PayItem = db.PayItems.Find((int)PayItems.Rally);
-                    db.CityPayItems.Add(newPI);
-                    origCity.CityPayItems.Add(newPI);
-                }
-            }
-
-            //Check Upgrade
-            if (origCity.CityInfo.Upgrade != newCity.CityInfo.Upgrade)
-            {
-                if (origCity.CityInfo.Upgrade)
-                {
-                    //remove it
-                    CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Upgrade).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
-                    {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
-                    }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
-                }
-                else
-                {
-                    //Add it
-                    CityPayItem newPI = new CityPayItem();
-                    newPI.PayItem = db.PayItems.Find((int)PayItems.Upgrade);
-                    db.CityPayItems.Add(newPI);
-                    origCity.CityPayItems.Add(newPI);
-                }
-            }
-
-            //Check Treasury
-            if (origCity.CityInfo.Treasury != newCity.CityInfo.Treasury)
-            {
-                if (origCity.CityInfo.Treasury)
-                {
-                    //remove it
-                    CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItems.Treasury).First();
-                    if (db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).Count() > 0)
-                    {
-                        SubscriptionItem subItem = db.SubscriptionItems.Where(x => x.CityPayItemID == pi.CityPayItemID).First();
-                        db.SubscriptionItems.Remove(subItem);
-                    }
-                    origCity.CityPayItems.Remove(pi);
-                    db.CityPayItems.Remove(pi);
-                }
-                else
-                {
-                    //Add it
-                    CityPayItem newPI = new CityPayItem();
-                    newPI.PayItem = db.PayItems.Find((int)PayItems.Treasury);
-                    db.CityPayItems.Add(newPI);
-                    origCity.CityPayItems.Add(newPI);
-                }
-            }
-
         }
 
         protected override void Dispose(bool disposing)

@@ -12,13 +12,13 @@ namespace GowWebSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SubscriptionItem
+    public partial class UserPayItem
     {
-        public int SubscriptionID { get; set; }
-        public int CityPayItemID { get; set; }
-        public Nullable<int> fake { get; set; }
+        public string Email { get; set; }
+        public int PayItemID { get; set; }
+        public bool Paid { get; set; }
+        public int UserPayItemID { get; set; }
     
-        public virtual CityPayItem CityPayItem { get; set; }
-        public virtual Subscription Subscription { get; set; }
+        public virtual PayItem PayItem { get; set; }
     }
 }

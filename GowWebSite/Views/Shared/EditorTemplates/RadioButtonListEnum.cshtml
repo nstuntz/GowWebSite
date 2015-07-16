@@ -33,10 +33,33 @@
     foreach (var li in listItems)
     {
         string fieldName = string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}_{1}", prefix, index++);
-        <div class="radio-inline">
-            @Html.RadioButton(prefix, li.Value, li.Selected, new { @id = fieldName })
-            @Html.Label(fieldName, li.Text)
-        </div>
+        if (li.Value == GowWebSite.Models.Login.AllowDelays.Min60.ToString())
+        {
+            if (ViewBag.PremiumCity || ViewBag.BasicCity)
+            {
+                <div class="radio-inline">
+                    @Html.Label(fieldName, li.Text, new { @class="text-muted"})
+                </div>
+            }
+            else
+            {
+                <div class="radio-inline">
+                    @Html.RadioButton(prefix, li.Value, li.Selected, new { @id = fieldName })
+                    @Html.Label(fieldName, li.Text)
+                </div>
+            }
+        }
+        else
+        {
+            <div class="radio-inline">
+                @Html.RadioButton(prefix, li.Value, li.Selected, new { @id = fieldName })
+                @Html.Label(fieldName, li.Text)
+            </div>
+        }
+    }
+    if (ViewBag.PremiumCity || ViewBag.BasicCity)
+    {
+        <div class="text-muted">Cities in a Package may only choose 3 or 6 hour logins</div>
     }
     ViewData.TemplateInfo.HtmlFieldPrefix = prefix;
 }

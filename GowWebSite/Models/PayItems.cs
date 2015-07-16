@@ -5,16 +5,28 @@ using System.Web;
 
 namespace GowWebSite.Models
 {
-    public enum PayItems
+    public enum PayItemEnum
     {
         Hour6 = 1,
         Hour3,
         Hour1,
-        Bank,
         Upgrade,
-        Rally,
-        Shield,
-        Treasury
+        Treasury,
+        BetaCities,
+        InsaneGenieCities,
+        AdminUserCities,
+        BasicCity,
+        PremiumCity
+    }
+
+    public enum PayItemTypeEnum
+    {
+        LoginDurations = 1,
+        CityItems,
+        BasicCityPackage,
+        PremiumCityPackage,
+        BasicCity,
+        PremiumCity,
     }
 }
 

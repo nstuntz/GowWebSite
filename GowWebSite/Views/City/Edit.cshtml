@@ -5,8 +5,15 @@
 }
 
 <h2>City - @Model.CityName</h2>
+@if (ViewBag.PremiumCity)
+{
+    <h4>This city is part of a Premuim City package</h4>
+}
 
-
+@if (ViewBag.BasicCity)
+{
+    <h4>This city is part of a Basic City package</h4>
+}
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -14,7 +21,7 @@
     @Html.Partial("_ViewCity")
 
     <div class="col-md-12 col-sm-12">
-        <div class="text-info">You will need to check out from the cart for any changes to take effect.  You can edit multiple cities and check out once.</div>
+        <div class="text-info">Cost changes are reflected in your cart.  You can edit multiple cities and check out once.</div>
         <input id="CitySave" type="submit" value="Save to Cart" class="btn btn-primary" />
         @Html.ActionLink("Delete", "Delete", new { cityID = Model.CityID }, new { @class = "btn btn-primary" })
         @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" })

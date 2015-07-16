@@ -34,7 +34,7 @@ namespace GowWebSite
                 IQueryable<GowWebSite.Models.AspNetUser> users;
                 if (filterContext.HttpContext.User.IsInRole("Admin"))
                 {
-                    users = db.AspNetUsers;
+                    users = db.AspNetUsers.OrderBy(x => x.Email);
                 }
                 else
                 {

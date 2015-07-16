@@ -21,11 +21,10 @@
         <EntityTypeShape EntityType="GowModel.PayItem" Width="1.5" PointX="7.125" PointY="8.875" />
         <AssociationConnector Association="GowModel.FK_CityPayItem_City" />
         <AssociationConnector Association="GowModel.FK_CityPayItem_PayItem" />
-        <EntityTypeShape EntityType="GowModel.Subscription" Width="1.875" PointX="7.375" PointY="11.125" />
-        <EntityTypeShape EntityType="GowModel.SubscriptionItem" Width="1.875" PointX="9.625" PointY="3.625" />
-        <AssociationConnector Association="GowModel.FK_SubscriptionItem_CityPayItem" />
-        <AssociationConnector Association="GowModel.FK_SubscriptionItem_Subscription" />
-        <EntityTypeShape EntityType="GowModel.UserDemographic" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GowModel.Subscription" Width="1.875" PointX="9" PointY="9.25" />
+        <EntityTypeShape EntityType="GowModel.UserDemographic" Width="1.5" PointX="8.5" PointY="0.5" />
+        <EntityTypeShape EntityType="GowModel.UserPayItem" Width="1.5" PointX="5" PointY="10.375" />
+        <AssociationConnector Association="GowModel.FK_UserPayItem_PayItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

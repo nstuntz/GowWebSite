@@ -14,11 +14,6 @@ namespace GowWebSite.Models
     
     public partial class CityPayItem
     {
-        public CityPayItem()
-        {
-            this.SubscriptionItems = new HashSet<SubscriptionItem>();
-        }
-    
         public int CityPayItemID { get; set; }
         public int CityID { get; set; }
         public int PayItemID { get; set; }
@@ -26,6 +21,5 @@ namespace GowWebSite.Models
     
         public virtual City City { get; set; }
         public virtual PayItem PayItem { get; set; }
-        public virtual ICollection<SubscriptionItem> SubscriptionItems { get; set; }
     }
 }
