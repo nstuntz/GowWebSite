@@ -94,7 +94,7 @@
                             @Html.ValidationMessageFor(model => model.Login.LoginDelayMin, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            ($3.00/$1.50/$.90)
+                            ($7.00/$4.00/$2.50)
                         </div>
                     </div>
                 </div>
@@ -205,31 +205,14 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="row">
-
-                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.HasGoldMine, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if your city has a gold mine. If you are using the upgrade component the goldmine should be moved to the top right most square outside the city. Otherwise this is purely informational."></span>
-                        </div>
-                        <div class="col-md-8 col-sm-9 col-xs-6">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.CityInfo.HasGoldMine)
-                                @Html.ValidationMessageFor(model => model.CityInfo.HasGoldMine, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
         
         <!-- This is the Banking Info-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" href="#BankGroup">Bank ($.30)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. Banking is complex to setup, for more detailed information please see the <a href='@Url.Action("FAQ", "Home")'>FAQs</a>. The cost is $.30 per month."></span>
+                <a data-toggle="collapse" href="#BankGroup">Basic Features</a>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the setup information for the features include in the base rate."></span>
             </div>
             <div class="panel-collapse collapse in" id="BankGroup">
                 <div class="form-group"></div>
@@ -238,7 +221,7 @@
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Bank, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if this city will bank resources."></span>
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the additional information needed to bank your city resources. Banking is complex to setup, for more detailed information please see the FAQs."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             <div class="checkbox">
@@ -261,7 +244,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="row">
 
@@ -301,23 +283,20 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-       
-        <!-- This is the Rally Info-->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a data-toggle="collapse" href="#RallyGroup">Rally ($.35)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. Rallying is complex to setup correctly, for more information see the FAQs. The cost is $.35 per month."></span>
-            </div>
-            <div class="panel-collapse collapse in" id="RallyGroup">
-                <div class="form-group"></div>
+                
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-sm-10 col-xs-10">
+                            <hr style="margin-bottom:0px; margin-top:0px" />
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="row">
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Rally, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator of if this city will attempt to rally the hero."></span>
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. Rallying is complex to setup correctly, for more information see the FAQs."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             <div class="checkbox">
@@ -327,7 +306,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="row">
 
@@ -354,23 +332,20 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- This is the Shield Info-->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a data-toggle="collapse" href="#ShieldGroup">Shield ($.20)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city shielding information. In order to shield, the city must either have 3d shields on hand, or enough gold to buy one. The cost is $.20 per month."></span>
-            </div>
-            <div class="panel-collapse collapse in" id="ShieldGroup">
-                <div class="form-group"></div>
+            
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-sm-10 col-xs-10">
+                            <hr style="margin-bottom:0px; margin-top:0px" />
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="row">
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.Shield, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if the city will be shielded."></span>
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city shielding information. In order to shield, the city must either have 3d shields on hand, or enough gold to buy one."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             <div class="checkbox">
@@ -382,12 +357,13 @@
                 </div>
             </div>
         </div>
+
        
-        <!-- This is the Upgrade Info-->
+        <!-- This is the Premium Features section-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" href="#UpgradeGroup">Upgrade ($.50)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information. This will upgrade to SH 14, but in order to continue you must manually upgrade to SH 15 and update the Stronghold Level value. For more information please see the FAQs. The cost is $.50 per month."></span>
+                <a data-toggle="collapse" href="#UpgradeGroup">Premium Features</a>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains setup information for the two premium features."></span>
             </div>
             <div class="panel-collapse collapse in" id="UpgradeGroup">
                 <div class="form-group"></div>
@@ -395,13 +371,28 @@
                     <div class="row">
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.Upgrade, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if this city will upgrade buildings."></span>
+                            @Html.LabelFor(model => model.CityInfo.Upgrade, htmlAttributes: new { @class = "control-label" }) ($.75)
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains building upgrade information. This will upgrade to SH 14, but in order to continue you must manually upgrade to SH 15 and update the Stronghold Level value. For more information please see the FAQs. The cost is $.75 per month."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.CityInfo.Upgrade)
                                 @Html.ValidationMessageFor(model => model.CityInfo.Upgrade, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                            @Html.LabelFor(model => model.CityInfo.HasGoldMine, htmlAttributes: new { @class = "control-label" })
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator if your city has a gold mine. If you are using the upgrade component the goldmine should be moved to the top right most square outside the city. Otherwise this is purely informational."></span>
+                        </div>
+                        <div class="col-md-8 col-sm-9 col-xs-6">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.CityInfo.HasGoldMine)
+                                @Html.ValidationMessageFor(model => model.CityInfo.HasGoldMine, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -421,23 +412,20 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- This is the Treasury Info-->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a data-toggle="collapse" href="#TreasuryGroup">Treasury ($.20)</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains treasury collection information. This will collect the treasury and then re-invest for another 30 days. The cost is $.20 per month."></span>
-            </div>
-            <div class="panel-collapse collapse in" id="TreasuryGroup">
-                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-sm-10 col-xs-10">
+                            <hr style="margin-bottom:0px; margin-top:0px" />
+                        </div>                        
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="row">
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is an indicator of if this city will collect the treasury and reinvest."></span>
+                            @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label" }) ($.30)
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains treasury collection information. This will collect the treasury and then re-invest for another 30 days. The cost is $.30 per month."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             <div class="checkbox">
