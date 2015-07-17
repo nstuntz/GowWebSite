@@ -193,6 +193,7 @@
     <Compile Include="Models\City.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CityExtension.cs" />
     <Compile Include="Models\CityInfo.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>

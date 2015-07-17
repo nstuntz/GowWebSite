@@ -7,6 +7,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CityID)
         @Html.HiddenFor(model => model.LoginID)
+        @Html.HiddenFor(model => model.PremiumCity)
+        @Html.HiddenFor(model => model.BasicCity)
 
         <!-- This is the Login Data-->
         <div class="panel panel-default">

@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<GowWebSite.Models.City>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "City List";
 }
-
-<h2>Index</h2>
-
+<h2>City List</h2>
 <table class="table">
     <tr>
         <th>
@@ -103,28 +101,48 @@
 <div id="myModal" class="modal" role="dialog" tabindex="-1"></div>
 
 
-@Html.ActionLink("Create New", "CreateFull", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Create City", "CreateFull", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
+@if (ViewBag.BasicCitiesAllowed > 0)
+{
+    <p>
+        <div>You have used @ViewBag.BasicCitiesUsed of @ViewBag.BasicCitiesAllowed Basic cities from your paid packages</div>
+        @if (ViewBag.BasicCitiesUsed < ViewBag.BasicCitiesAllowed)
+        {
+            @Html.ActionLink("Create Basic City", "CreateFull", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
+        }
+    </p>
+}
+@if (ViewBag.PremiumCitiesAllowed > 0)
+{
+    <p>
+        <div>You have used @ViewBag.PremiumCitiesUsed of @ViewBag.PremiumCitiesAllowed Premium cities from your paid packages</div>
+        @if (ViewBag.PremiumCitiesUsed < ViewBag.PremiumCitiesAllowed)
+        {
+            @Html.ActionLink("Create Premium City", "CreateFull", new { premium = true, basic = false }, new { @class = "btn btn-primary" })
+        }
+    </p>
+}
 
 
-<script type="text/javascript">
-    $(function () {
-        // Initialize numeric spinner input boxes
-        //$(".numeric-spinner").spinedit();
-        // Initialize modal dialog
-        // attach modal-container bootstrap attributes to links with .modal-link class.
-        // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
-        $('body').on('click', '.modal-link', function (e) {
-            e.preventDefault();
-            $(this).attr('data-target', '#myModal');
-            $(this).attr('data-toggle', 'modal');
-        });
-        //clear modal cache, so that new content can be loaded
-        $('#myModal').on('hidden.bs.modal', function () {
-            $(this).removeData('bs.modal');
-        });
+        <script type="text/javascript">
+            $(function () {
+                // Initialize numeric spinner input boxes
+                //$(".numeric-spinner").spinedit();
+                // Initialize modal dialog
+                // attach modal-container bootstrap attributes to links with .modal-link class.
+                // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+                $('body').on('click', '.modal-link', function (e) {
+                    e.preventDefault();
+                    $(this).attr('data-target', '#myModal');
+                    $(this).attr('data-toggle', 'modal');
+                });
+                //clear modal cache, so that new content can be loaded
+                $('#myModal').on('hidden.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
 
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myModal').scrollTop(0);
-        });
-    });
-</script>
+                $('#myModal').on('shown.bs.modal', function () {
+                    $('#myModal').scrollTop(0);
+                });
+            });
+        </script>

@@ -26,6 +26,8 @@ namespace GowWebSite.Controllers
                 selectedUser = Request.Cookies["SelectedUser"].Value;
             }
 
+            AddAllowedUsedCitiesToViewBag();
+
             try
             {
                 var userCities = db.Cities.Where(x => db.UserCities.Where(y => y.Email == selectedUser).Select(id => id.CityID).Contains(x.CityID));
@@ -98,12 +100,19 @@ namespace GowWebSite.Controllers
 
 
         // GET: City/CreateFull
-        public ActionResult CreateFull()
+        public ActionResult CreateFull(bool premium = false, bool basic = false)
         {
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type");
             City newCity = new City();
             newCity.Login = new Login();
             newCity.Login.DelayTier = Login.AllowDelays.Min360;
+            newCity.PremiumCity = premium;
+            newCity.BasicCity = basic;
+            newCity.Login.Active = true;
+            newCity.Login.DelayTier = Login.AllowDelays.Min180;
+
+            ViewBag.PremiumCity = premium;
+            ViewBag.BasicCity = basic;
 
             newCity.CityInfo = new CityInfo();
 
@@ -145,13 +154,23 @@ namespace GowWebSite.Controllers
 
             if (ModelState.IsValid)
             {
+                bool isBasicCity = city.BasicCity && AllowBasicCityCreate();
+                bool isPremiumCity = city.PremiumCity && AllowPremiumCityCreate();
+
                 //Setup the Login defaults
                 city.Login.InProcess = "0";
                 city.Login.LastRun = DateTime.Now;
                 city.Login.CreateDate = DateTime.Now;
                 city.Login.Active = true;
-                city.Login.PaidThrough = DateTime.Today.AddMonths(-1);
 
+                if (isBasicCity || isPremiumCity)
+                {
+                    city.Login.PaidThrough = DateTime.Today.AddDays(DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1);
+                }
+                else
+                {
+                    city.Login.PaidThrough = DateTime.Today.AddMonths(-1);
+                }
                 //Set the CityInfo Defaults
                 city.CityInfo.LastAthenaGift = DateTime.Today;
                 city.CityInfo.LastBank = DateTime.Today;
@@ -171,40 +190,64 @@ namespace GowWebSite.Controllers
                 db.CityInfoes.Add(city.CityInfo);
                 db.UserCities.Add(uc);
 
-                //Now add the costs
-                CityPayItem itemHours = new CityPayItem();
-                switch (city.Login.LoginDelayMin)
-                {
-                    case (int)Login.AllowDelays.Min360:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour6);
-                        break;
-                    case (int)Login.AllowDelays.Min180:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour3);
-                        break;
-                    case (int)Login.AllowDelays.Min60:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
-                        break;
-                    default:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
-                        break;
-                }
-                db.CityPayItems.Add(itemHours);
-                city.CityPayItems.Add(itemHours);
 
-                if (city.CityInfo.Upgrade)
+                if (!(isBasicCity || isPremiumCity))
                 {
-                    CityPayItem itemUpgrade = new CityPayItem();
-                    itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
-                    db.CityPayItems.Add(itemUpgrade);
-                    city.CityPayItems.Add(itemUpgrade);
+                    //Now add the costs
+                    CityPayItem itemHours = new CityPayItem();
+                    switch (city.Login.LoginDelayMin)
+                    {
+                        case (int)Login.AllowDelays.Min360:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour6);
+                            break;
+                        case (int)Login.AllowDelays.Min180:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour3);
+                            break;
+                        case (int)Login.AllowDelays.Min60:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                            break;
+                        default:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                            break;
+                    }
+                    db.CityPayItems.Add(itemHours);
+                    city.CityPayItems.Add(itemHours);
                 }
-                
-                if (city.CityInfo.Treasury)
+                if (!city.PremiumCity)
                 {
-                    CityPayItem itemTreasury = new CityPayItem();
-                    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
-                    db.CityPayItems.Add(itemTreasury);
-                    city.CityPayItems.Add(itemTreasury);
+                    if (city.CityInfo.Upgrade)
+                    {
+                        CityPayItem itemUpgrade = new CityPayItem();
+                        itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
+                        db.CityPayItems.Add(itemUpgrade);
+                        city.CityPayItems.Add(itemUpgrade);
+                    }
+
+                    if (city.CityInfo.Treasury)
+                    {
+                        CityPayItem itemTreasury = new CityPayItem();
+                        itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                        db.CityPayItems.Add(itemTreasury);
+                        city.CityPayItems.Add(itemTreasury);
+                    }
+                }
+
+                if (city.BasicCity)
+                {
+                    CityPayItem item = new CityPayItem();
+                    item.PayItem = db.PayItems.Find((int)PayItemEnum.BasicCity); 
+                    item.Paid = true;
+                    db.CityPayItems.Add(item);
+                    city.CityPayItems.Add(item);
+                }
+
+                if (city.PremiumCity)
+                {
+                    CityPayItem item = new CityPayItem();
+                    item.PayItem = db.PayItems.Find((int)PayItemEnum.PremiumCity);
+                    item.Paid = true;
+                    db.CityPayItems.Add(item);
+                    city.CityPayItems.Add(item);
                 }
                 
                 try
@@ -480,7 +523,6 @@ namespace GowWebSite.Controllers
             //Get and Update city Pay items first
             UpdatePayItems(origCity, city);
 
-
             //Fill the Login
             if (origLogin.Password != city.Login.Password)
             {
@@ -645,6 +687,64 @@ namespace GowWebSite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private bool AllowBasicCityCreate()
+        {
+            var userPayBasicCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.BasicCityPackage);
+            if (userPayBasicCities.Count() == 0)
+            {
+                return false;
+            }
+
+            int used = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.BasicCity).Count() > 0);
+            int allowed = userPayBasicCities.Sum(x => x.PayItem.Number);
+
+            return used < allowed;
+        }
+
+        private bool AllowPremiumCityCreate()
+        {
+
+            var userPayBasicCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCityPackage);
+            if (userPayBasicCities.Count() == 0)
+            {
+                return false;
+            }
+
+            int used = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCity).Count() > 0);
+            int allowed = userPayBasicCities.Sum(x => x.PayItem.Number);
+
+            return used < allowed;
+        }
+
+        private void AddAllowedUsedCitiesToViewBag()
+        {
+            //Get user's basic cities count and # left
+            var userPayBasicCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.BasicCityPackage);
+            if (userPayBasicCities.Count() > 0)
+            {
+                ViewBag.BasicCitiesUsed = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.BasicCity).Count() > 0);
+                ViewBag.BasicCitiesAllowed = userPayBasicCities.Sum(x => x.PayItem.Number);
+            }
+            else
+            {
+                ViewBag.BasicCitiesUsed = 0;
+                ViewBag.BasicCitiesAllowed = 0;
+            }
+
+            //Get user's premium cities count and # left
+            var userPayPremCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCityPackage);
+            if (userPayPremCities.Count() > 0)
+            {
+                ViewBag.PremiumCitiesUsed = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCity).Count() > 0);
+                ViewBag.PremiumCitiesAllowed = userPayPremCities.Sum(x => x.PayItem.Number);
+            }
+            else
+            {
+                ViewBag.PremiumCitiesUsed = 0;
+                ViewBag.PremiumCitiesAllowed = 0;
+            }
         }
     }
 }

@@ -22,36 +22,63 @@ namespace GowWebSite.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var userItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
-            var userPay = db.UserPayItems.Where(y => y.Email == User.Identity.Name);
+            var cityPayItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
+            var userPayItems = db.UserPayItems.Where(y => y.Email == User.Identity.Name);
 
-            if (userItems == null || userItems.Count() == 0)
+            //If there are no items shoe a blanked page
+            if ((cityPayItems == null || cityPayItems.Count() == 0) && (userPayItems == null || userPayItems.Count() == 0))
             {
                 ViewBag.TotalCost = 0;
                 ViewBag.NewCost = 0;
-                return View(new List<CityPayItem>());
-            }
-            ViewBag.TotalCost = userItems.Sum(x => x.PayItem.Cost) + userPay.Sum(x => x.PayItem.Cost);
-
-            var userUnpaidItems = userItems.Where(x => !x.Paid);
-
-            ViewBag.ExistingSubscription = db.Subscriptions.Where(x => x.Email == User.Identity.Name).Count() > 0;
-
-            if (userUnpaidItems == null || userUnpaidItems.Count() == 0)
-            {
-                ViewBag.NewCost = 0;
                 ViewBag.PreviousCost = 0;
+                ViewBag.ExistingSubscription = false;
                 return View(new List<CityPayItem>());
             }
+            
+            decimal itemsCost = 0;
+            if (cityPayItems.Count() > 0)
+            {
+                itemsCost = cityPayItems.Sum(x => x.PayItem.Cost);
+            }
+            decimal userCost = 0;
+            if (userPayItems.Count() > 0)
+            {
+                userCost = userPayItems.Sum(x => x.PayItem.Cost);
+            }
+            ViewBag.TotalCost = itemsCost + userCost;
 
-            var sub = db.Subscriptions.Where(x => x.Email == User.Identity.Name).First();
+            decimal unpaidCityCost = 0;
+            var userUnpaidCityItems = cityPayItems.Where(x => !x.Paid);
+            if (userUnpaidCityItems.Count() > 0)
+            {
+                unpaidCityCost = userUnpaidCityItems.Sum(x => x.PayItem.Cost);
+            }            
 
-            ViewBag.PreviousCost = sub.TotalCost;
-            ViewBag.NewCost = userUnpaidItems.Sum(x => x.PayItem.Cost) + userPay.Where(x=>!x.Paid).Sum(x => x.PayItem.Cost);
+            decimal unpaidUserCost = 0;
+            var unpaidUserItems = userPayItems.Where(x => !x.Paid);
+            if (unpaidUserItems.Count() > 0)
+            {
+                unpaidUserCost = unpaidUserItems.Sum(x => x.PayItem.Cost);
+            }
+
+            ViewBag.NewCost = unpaidCityCost + unpaidUserCost;
+            
+
+            //Subscription cost
+            ViewBag.ExistingSubscription = db.Subscriptions.Where(x => x.Email == User.Identity.Name).Count() > 0;
+            var subs = db.Subscriptions.Where(x => x.Email == User.Identity.Name);
+            if (subs.Count() > 0)
+            {
+                ViewBag.PreviousCost = subs.First().TotalCost;
+            }
+            else
+            {
+                ViewBag.PreviousCost = 0;
+            }
 
             ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
 
-            return View(userUnpaidItems);
+            return View(userUnpaidCityItems);
         }
 
         [HttpPost]
@@ -78,20 +105,44 @@ namespace GowWebSite.Controllers
         // GET: Payment
         public ActionResult Pay()
         {
-            var userItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
-            var userPay = db.UserPayItems.Where(y => y.Email == User.Identity.Name);
-            if (userItems == null || userItems.Count() == 0)
+            var cityPayItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
+            var userPayItems = db.UserPayItems.Where(y => y.Email == User.Identity.Name);
+
+            //If there are no items shoe a blanked page
+            if ((cityPayItems == null || cityPayItems.Count() == 0) && (userPayItems == null || userPayItems.Count() == 0))
             {
-                ViewBag.TotalCost = 0;
-                ViewBag.NewCost = 0;
-                return View(new List<CityPayItem>());
+                RedirectToAction("Index");
             }
 
-            var userUnpaidItems = userItems.Where(x => !x.Paid);
 
-            ViewBag.TotalCost = userItems.Sum(x => x.PayItem.Cost) + userPay.Sum(x => x.PayItem.Cost);
-            ViewBag.ExistingSubscription = db.Subscriptions.Where(x => x.Email == User.Identity.Name).Count() > 0;
-            ViewBag.NewCost = userUnpaidItems.Sum(x => x.PayItem.Cost) + userPay.Where(x => !x.Paid).Sum(x => x.PayItem.Cost);
+            decimal itemsCost = 0;
+            if (cityPayItems.Count() > 0)
+            {
+                itemsCost = cityPayItems.Sum(x => x.PayItem.Cost);
+            }
+            decimal userCost = 0;
+            if (userPayItems.Count() > 0)
+            {
+                userCost = userPayItems.Sum(x => x.PayItem.Cost);
+            }
+            ViewBag.TotalCost = itemsCost + userCost;
+
+            decimal unpaidCityCost = 0;
+            var userUnpaidCityItems = cityPayItems.Where(x => !x.Paid);
+            if (userUnpaidCityItems.Count() > 0)
+            {
+                unpaidCityCost = userUnpaidCityItems.Sum(x => x.PayItem.Cost);
+            }
+
+            decimal unpaidUserCost = 0;
+            var unpaidUserItems = userPayItems.Where(x => !x.Paid);
+            if (unpaidUserItems.Count() > 0)
+            {
+                unpaidUserCost = unpaidUserItems.Sum(x => x.PayItem.Cost);
+            }
+
+            ViewBag.NewCost = unpaidCityCost + unpaidUserCost;
+            
             ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
 
             return View();
