@@ -131,6 +131,7 @@ namespace GowWebSite.Controllers
             ViewBag.NewCost = unpaidCityCost + unpaidUserCost;
             
             ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
+            ViewBag.PayEndPoint = ConfigurationManager.AppSettings["PayPalSubmitUrl"];
 
             return View();
         }

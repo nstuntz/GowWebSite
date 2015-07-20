@@ -322,14 +322,28 @@ namespace GowWebSite.Controllers
             }
 
             //Fixing because it wasn't trimmed when it was put in
-            city.Alliance = city.Alliance.Trim();
+            if (city.Alliance != null)
+            {
+                city.Alliance = city.Alliance.Trim();
+            }
+            else
+            {
+                city.Alliance = "";
+            }
 
             ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
-
-            ViewBag.PremiumCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.PremiumCity).Count() > 0;
-            ViewBag.BasicCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.BasicCity).Count() > 0;
+            if (city.CityPayItems.Count > 0)
+            {
+                ViewBag.PremiumCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.PremiumCity).Count() > 0;
+                ViewBag.BasicCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.BasicCity).Count() > 0;
+            }
+            else
+            {
+                ViewBag.PremiumCity = false;
+                ViewBag.BasicCity = false;
+            }
             return View(city);
         }
 
