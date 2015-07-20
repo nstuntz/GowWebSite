@@ -110,6 +110,9 @@ namespace GowWebSite.Controllers
             newCity.BasicCity = basic;
             newCity.Login.Active = true;
             newCity.Login.DelayTier = Login.AllowDelays.Min180;
+            newCity.CityInfo = new CityInfo();
+            newCity.CityInfo.RSSBankNum = 1;
+            newCity.CityInfo.SilverBankNum = 1;
 
             ViewBag.PremiumCity = premium;
             ViewBag.BasicCity = basic;
@@ -126,12 +129,12 @@ namespace GowWebSite.Controllers
         {
             if (string.IsNullOrWhiteSpace(city.Login.UserName))
             {
-                ModelState.AddModelError(city.Login.UserName, "UserName is required.");
+                ModelState.AddModelError(String.Empty, "UserName is required.");
             }
             
             if (db.Logins.Where(x => x.UserName == city.Login.UserName).Count() > 0)
             {
-                ModelState.AddModelError(city.Login.UserName, "UserName is already in use.  You must use a different one.");
+                ModelState.AddModelError(String.Empty, "UserName is already in use.  You must use a different one.");
             }
 
 
@@ -260,6 +263,10 @@ namespace GowWebSite.Controllers
                 }
                 return RedirectToAction("Index","Payment");
             }
+            
+            ViewBag.PremiumCity = city.PremiumCity;
+            ViewBag.BasicCity = city.BasicCity;
+
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             return View(city);
         }

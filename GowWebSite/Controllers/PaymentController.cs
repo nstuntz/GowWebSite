@@ -192,15 +192,18 @@ namespace GowWebSite.Controllers
                 //Update the DB now
                 var existingSubscritions = db.Subscriptions.Where(x => x.Email == pdt.Custom);
                 Subscription userSub;
+                bool newSub = true;
                 if (existingSubscritions != null && existingSubscritions.Count() > 0)
                 {
                     //Get existing subscription
-                    userSub = existingSubscritions.First();                    
+                    userSub = existingSubscritions.First();  
+                    newSub = false;
                 }
                 else
                 {
                     //Get a new one
                     userSub = new Subscription();
+                    newSub = true;
                 }
 
                 //Update the subscription
@@ -211,6 +214,11 @@ namespace GowWebSite.Controllers
                 userSub.PaypalEmail = pdt.PayerEmail;
                 userSub.PaypalPayerID = pdt.PayerID;
                 userSub.PaypalSubscriptionID = pdt.SubscriberId;
+
+                if (newSub)
+                {
+                    db.Subscriptions.Add(userSub);
+                }
 
                 var unpaidItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID) && !x.Paid);
                 //Set all city items to paid
