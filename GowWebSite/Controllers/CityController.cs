@@ -129,12 +129,12 @@ namespace GowWebSite.Controllers
         {
             if (string.IsNullOrWhiteSpace(city.Login.UserName))
             {
-                ModelState.AddModelError(String.Empty, "UserName is required.");
+                ModelState.AddModelError(city.Login.UserName, "UserName is required.");
             }
             
             if (db.Logins.Where(x => x.UserName == city.Login.UserName).Count() > 0)
             {
-                ModelState.AddModelError(String.Empty, "UserName is already in use.  You must use a different one.");
+                ModelState.AddModelError(city.Login.UserName, "UserName is already in use.  You must use a different one.");
             }
 
 
