@@ -32,9 +32,19 @@ namespace GowWebSite
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 IQueryable<GowWebSite.Models.AspNetUser> users;
+                //IQueryable<GowWebSite.Models.UserDemographic> demographics;
+                var demographics = db.UserDemographics
+                    .ToList()
+                    .Select(x => new
+                                {
+                                    AspNetUserEmail = x.AspNetUserEmail,
+                                    Description = string.Format("{0} ({1})", x.UserName, x.AspNetUserEmail)
+                                }
+                            );
                 if (filterContext.HttpContext.User.IsInRole("Admin"))
                 {
                     users = db.AspNetUsers.OrderBy(x => x.Email);
+
                 }
                 else
                 {
@@ -46,12 +56,14 @@ namespace GowWebSite
                 SelectList userDD;
                 if (filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"] != null && filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"].Value != null)
                 {
-                    string selectedUser = filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"].Value;
-                    userDD = new SelectList(db.AspNetUsers, "Email", "Email", selectedUser);
+                    string selectedUser = filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"].Value;                    
+                   // userDD = new SelectList(db.AspNetUsers, "Email", "Email", selectedUser);
+                    userDD = new SelectList(demographics, "AspNetUserEmail", "Description", selectedUser);
                 }
                 else
                 {
-                    userDD = new SelectList(users, "Email", "Email");
+                    //userDD = new SelectList(users, "Email", "Email");
+                    userDD = new SelectList(demographics, "AspNetUserEmail", "Description");
                 }
 
                 filterContext.Controller.ViewBag.UserIDs = userDD;
