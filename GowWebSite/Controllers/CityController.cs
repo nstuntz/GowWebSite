@@ -563,6 +563,18 @@ namespace GowWebSite.Controllers
                 city.Login.UserName = origLogin.UserName;
 
                 ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
+
+                if (city.CityPayItems.Count > 0)
+                {
+                    ViewBag.PremiumCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.PremiumCity).Count() > 0;
+                    ViewBag.BasicCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.BasicCity).Count() > 0;
+                }
+                else
+                {
+                    ViewBag.PremiumCity = false;
+                    ViewBag.BasicCity = false;
+                }
+
                 return View(city);
             }
             CityInfo origCityInfo = db.CityInfoes.Find(city.CityID);
@@ -636,6 +648,18 @@ namespace GowWebSite.Controllers
 
             city.Login.UserName = origLogin.UserName;
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
+
+            if (city.CityPayItems.Count > 0)
+            {
+                ViewBag.PremiumCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.PremiumCity).Count() > 0;
+                ViewBag.BasicCity = city.CityPayItems.Where(x => x.PayItemID == (int)PayItemEnum.BasicCity).Count() > 0;
+            }
+            else
+            {
+                ViewBag.PremiumCity = false;
+                ViewBag.BasicCity = false;
+            }
+
             return View(city);
         }
 
