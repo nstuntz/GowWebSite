@@ -162,12 +162,12 @@ namespace GowWebSite.Controllers
         {
             if (string.IsNullOrWhiteSpace(city.Login.UserName))
             {
-                ModelState.AddModelError(city.Login.UserName, "UserName is required.");
+                ModelState.AddModelError("Login.UserName", "UserName is required.");
             }
-            
-            if (db.Logins.Where(x => x.UserName == city.Login.UserName).Count() > 0)
+
+            if (db.Logins.Where(x => x.UserName.ToLower() == city.Login.UserName.ToLower()).Count() > 0)
             {
-                ModelState.AddModelError(city.Login.UserName, "UserName is already in use.  You must use a different one.");
+                ModelState.AddModelError("Login.UserName", "UserName is already in use.  You must use a different one.");
             }
 
 
@@ -175,11 +175,11 @@ namespace GowWebSite.Controllers
             {
                 if (!city.CityInfo.RallyX.HasValue)
                 {
-                    ModelState.AddModelError(String.Empty, "RallyX is required when rallying.");
+                    ModelState.AddModelError("CityInfo.RallyX", "RallyX is required when rallying.");
                 }
                 if (!city.CityInfo.RallyY.HasValue)
                 {
-                    ModelState.AddModelError(String.Empty, "RallyY is required when rallying.");
+                    ModelState.AddModelError("CityInfo.RallyY", "RallyY is required when rallying.");
                 }
             }
 
@@ -188,7 +188,11 @@ namespace GowWebSite.Controllers
                 ModelState.AddModelError(String.Empty, "You can not both rally and shield a city.");
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError(String.Empty, "Please scroll down for any additional errors.");
+            }
+            else
             {
                 bool isBasicCity = city.BasicCity && AllowBasicCityCreate();
                 bool isPremiumCity = city.PremiumCity && AllowPremiumCityCreate();

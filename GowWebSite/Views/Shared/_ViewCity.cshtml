@@ -26,7 +26,7 @@
                             <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the email address associated with the GoW Account."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-7 form-control-static">
-                            @if ((!string.IsNullOrWhiteSpace(Model.Login.UserName)) && !(ViewData.ModelState[Model.Login.UserName].Errors.Count > 0))
+                            @if ((!string.IsNullOrWhiteSpace(Model.Login.UserName)) && !(ViewData.ModelState["Login.UserName"].Errors.Count > 0))
                             {
                                 @Html.DisplayFor(model => model.Login.UserName)
                                 @Html.HiddenFor(model => model.Login.UserName)
