@@ -27,7 +27,5 @@ namespace GowWebSite.Models
         public Nullable<int> RallyX { get; set; }
         [Range(0, 1022)]
         public Nullable<int> RallyY { get; set; }
-        [MinLength(3)]
-        public string Alliance { get; set; }
     }
 }

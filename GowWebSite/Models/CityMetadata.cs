@@ -20,6 +20,7 @@ namespace GowWebSite.Models
         public int LocationX { get; set; }
         [Range(1, 1022)]
         public int LocationY { get; set; }
+        [MinLength(3)]
         [MaxLength(4)]
         public string Alliance { get; set; }
     }
