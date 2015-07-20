@@ -149,11 +149,9 @@ namespace GowWebSite.Controllers
             newCity.CityInfo.RSSBankNum = 1;
             newCity.CityInfo.SilverBankNum = 1;
 
-            ViewBag.PremiumCity = premium;
-            ViewBag.BasicCity = basic;
-
-            newCity.CityInfo = new CityInfo();
-
+            ViewBag.PremiumCity = newCity.PremiumCity;
+            ViewBag.BasicCity = newCity.BasicCity;
+            
             return View(newCity);
         }
         
