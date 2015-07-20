@@ -106,19 +106,52 @@ namespace GowWebSite.Controllers
             City newCity = new City();
             newCity.Login = new Login();
             newCity.Login.DelayTier = Login.AllowDelays.Min360;
-            newCity.PremiumCity = premium;
-            newCity.BasicCity = basic;
+
+
+            //Get user's basic cities count and # left
+            newCity.BasicCity = false;
+            if (basic)
+            {
+                var userPayBasicCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.BasicCityPackage);
+                if (userPayBasicCities.Count() > 0)
+                {
+                    int used = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.BasicCity).Count() > 0);
+                    int allowed = userPayBasicCities.Sum(x => x.PayItem.Number);
+
+                    if (used < allowed)
+                    {
+                        newCity.BasicCity = basic;
+                    }
+                }
+            }
+
+            //Get user's premium cities count and # left
+            newCity.PremiumCity = false;
+            if (premium)
+            {
+                var userPayPremCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCityPackage);
+                if (userPayPremCities.Count() > 0)
+                {
+                    int used = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCity).Count() > 0);
+                    int allowed = userPayPremCities.Sum(x => x.PayItem.Number);
+
+                    if (used < allowed)
+                    {
+                        newCity.PremiumCity = premium;
+                    }
+                }
+            }
+
+
             newCity.Login.Active = true;
             newCity.Login.DelayTier = Login.AllowDelays.Min180;
             newCity.CityInfo = new CityInfo();
             newCity.CityInfo.RSSBankNum = 1;
             newCity.CityInfo.SilverBankNum = 1;
 
-            ViewBag.PremiumCity = premium;
-            ViewBag.BasicCity = basic;
-
-            newCity.CityInfo = new CityInfo();
-
+            ViewBag.PremiumCity = newCity.PremiumCity;
+            ViewBag.BasicCity = newCity.BasicCity;
+            
             return View(newCity);
         }
         
