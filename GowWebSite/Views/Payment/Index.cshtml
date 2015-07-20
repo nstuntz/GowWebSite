@@ -10,9 +10,8 @@
             <li class="list-group-item">@item.City.CityName - @item.PayItem.Description<span class="badge">$@item.PayItem.Cost.ToString("F")</span></li>
         }
     </ul>
-    <h5>Additional Costs = @ViewBag.NewCost.ToString("F")</h5>
+    <h5>New Costs = @ViewBag.NewCost.ToString("F")</h5>
 
-    <h5>Previous Subscription Cost = @ViewBag.PreviousCost.ToString("F")</h5>
     <h5>Total Subscription Cost = @ViewBag.TotalCost.ToString("F")</h5>
     <div class ="col-sm-12">
         <div class="col-sm-10">

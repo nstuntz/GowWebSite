@@ -62,20 +62,7 @@ namespace GowWebSite.Controllers
             }
 
             ViewBag.NewCost = unpaidCityCost + unpaidUserCost;
-            
-
-            //Subscription cost
-            ViewBag.ExistingSubscription = db.Subscriptions.Where(x => x.Email == User.Identity.Name).Count() > 0;
-            var subs = db.Subscriptions.Where(x => x.Email == User.Identity.Name);
-            if (subs.Count() > 0)
-            {
-                ViewBag.PreviousCost = subs.First().TotalCost;
-            }
-            else
-            {
-                ViewBag.PreviousCost = 0;
-            }
-
+                        
             ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
 
             return View(userUnpaidCityItems);
@@ -185,7 +172,7 @@ namespace GowWebSite.Controllers
             {
                 PDTHolder pdt = PDTHolder.Parse(strResponse);
                 temp =
-                    string.Format("Thank you {0} {1} for your subscription of {3} {4}!",
+                    string.Format("Thank you {0} {1} for your subscription!",
                     pdt.PayerFirstName, pdt.PayerLastName,
                     pdt.PayerEmail, pdt.GrossTotal.ToString("F"), pdt.Currency);
 
