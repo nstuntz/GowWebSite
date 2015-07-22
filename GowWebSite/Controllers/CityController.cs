@@ -7,8 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using System.Text;
 using GowWebSite.Models;
 using System.Data.Entity.Validation;
+using Excel;
 
 namespace GowWebSite.Controllers
 {
@@ -306,6 +308,39 @@ namespace GowWebSite.Controllers
 
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             return View(city);
+        }
+
+
+        [HttpPost]
+        public ActionResult UploadCity(City city)
+        {
+            foreach (string upload in Request.Files)
+            {
+
+                IExcelDataReader excelReader = Excel.ExcelReaderFactory.CreateOpenXmlReader(Request.Files[upload].InputStream);
+                DataSet wb = excelReader.AsDataSet();
+                DataTable dt = wb.Tables[0];
+                StringBuilder results = new StringBuilder();
+                for(int i=4; i< dt.Rows.Count; i++)
+                {
+                    DataRow row = dt.Rows[i];
+                    
+                    //Only check the row if there is a login.
+                    if (!String.IsNullOrEmpty(row.Field<string>(0)))
+                    {                       
+                        string validationResult = ValidateAndLoadExcelRow(i, row);
+                        if (!String.IsNullOrEmpty(validationResult))
+                        {
+                            results.Append(String.Format("Row:{0} Error(s): {1} ", i, validationResult));
+                            results.Append(Environment.NewLine);
+                        }
+                    }
+                }
+
+            }
+
+            //This should show the city list again?
+            return Index();
         }
 
         // GET: City/Edit/5
@@ -827,6 +862,122 @@ namespace GowWebSite.Controllers
                 ViewBag.PremiumCitiesUsed = 0;
                 ViewBag.PremiumCitiesAllowed = 0;
             }
+        }
+    
+        private string ValidateAndLoadExcelRow(int rowNumber, DataRow row)
+        {
+            StringBuilder errors = new StringBuilder();
+            try
+            {
+                string userName = row[0].ToString();
+                string password = row[1].ToString();
+                string PIN = row[2].ToString();
+                string timing = row[3].ToString();
+                int loginDelay = 180;
+                string cityName = row[4].ToString();
+                int kingdom = Convert.ToInt32(row[5].ToString());
+                int locationX = Convert.ToInt32(row[6].ToString());
+                int locationY = Convert.ToInt32(row[7].ToString());
+                string resourceType = row[8].ToString();
+                int resourceTypeID = 5;
+                string alliance = row[9].ToString();
+                int SHLevel = Convert.ToInt32(row[10].ToString());
+                string bank = row[11].ToString();
+                int resourceBank =Convert.ToInt32( row[12].ToString());
+                int resourceMarches = Convert.ToInt32(row[13].ToString());
+                int silverBank = Convert.ToInt32(row[14].ToString());
+                int silverMarches = Convert.ToInt32(row[15].ToString());
+                string rally = row[16].ToString();
+                int rallyX = Convert.ToInt32(row[17].ToString());
+                int rallyY = Convert.ToInt32(row[18].ToString());
+                string shield = row[19].ToString();
+                string upgrade = row[20].ToString();
+                string goldMine = row[21].ToString();
+                string treasury = row[21].ToString();
+
+                //TODO: Now do the data validations. Have to figure out the response on an error. Thans help?
+                if (!userName.Contains('@'))
+                {
+                    errors.Append("UserName is not an email.  ");
+                }
+                if (password.Length < 8)
+                {
+                    errors.Append("Password is not long enough.  ");
+                }
+
+                //Validate the login delay
+                switch (timing)
+                {
+                    case "1 hr":
+                        loginDelay = 60;
+                        break;
+                    case "3 hr":
+                        loginDelay = 180;
+                        break;
+                    case "6 hr":
+                        loginDelay = 360;
+                        break;
+                    default:
+                        errors.Append("You must select 1, 3 or 6 hr.  ");
+                        break;
+                }
+
+                //Validate the resource type
+                switch(resourceType)
+                {
+                    case "stone":
+                        resourceTypeID = 1;
+                        break;
+                    case "wood":
+                        resourceTypeID = 2;
+                        break;
+                    case "ore":
+                        resourceTypeID = 3;
+                        break;
+                    case "food":
+                        resourceTypeID = 4;
+                        break;
+                    case "all":
+                        resourceTypeID = 5;
+                        break;
+                    default:
+                        errors.Append("You must select ore, food, wood, stone or all for your resource type.  ");
+                        break;
+                }
+
+                //Validate rally info
+                if(rally == "Yes")
+                {
+                    if ((rallyX < 1 || rallyX > 510) || (rallyY < 1 || rallyY > 1022))
+                    {
+                        errors.Append("Please choose valid Rally coordinates.  ");
+                    }
+                }
+
+                if (bank == "Yes")
+                {
+                    if (resourceBank < 1 || resourceBank > 4) 
+                    {
+                        errors.Append("Please choose a resource bank between 1 and 4.  ");
+                    }
+                    if (silverBank < 1 || silverBank > 4)
+                    {
+                        errors.Append("Please choose a silver bank between 1 and 4.  ");
+                    }                    
+                }
+            }
+            catch (Exception ex)
+            {
+                errors.Append("Please make sure no fields are red before uploading.  ");
+                return errors.ToString();
+
+            }
+
+            if (String.IsNullOrEmpty(errors.ToString()))
+            {
+                //If we have gotten here this is ready to load. But do we want to parse the whole file before failing it?
+            }
+            return errors.ToString();
         }
     }
 }

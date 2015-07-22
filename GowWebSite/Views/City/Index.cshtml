@@ -3,7 +3,26 @@
 @{
     ViewBag.Title = "City List";
 }
-<h2>City List</h2>
+
+<div class="row">
+    <div class="col-md-6 col-sm-4 col-xs-5">
+        <h2>City List</h2>
+    </div>
+    <div class="col-md-6">
+        @using (Html.BeginForm("UploadCity", "City", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="file" name="FileUpload1" />
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" />
+                </div>
+            </div>
+            
+        }
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
