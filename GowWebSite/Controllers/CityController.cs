@@ -868,7 +868,7 @@ namespace GowWebSite.Controllers
             }
             //This is if there is success
             List<City> cities = new List<City>();
-            return RedirectToAction("ConfirmUpload", cities);
+            return View("ConfirmUpload", cities);
 
             //This is if there are errors
             return View(errors);
@@ -877,8 +877,7 @@ namespace GowWebSite.Controllers
         
         public ActionResult ConfirmUpload(List<City> cities)
         {
-            Dictionary<int, string> errors = new Dictionary<int, string>();
-            return View(errors);
+            return View(cities);
         }
 
 
@@ -886,8 +885,7 @@ namespace GowWebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ConfirmUploadSubmit(List<City> cities)
         {
-            Dictionary<int, string> errors = new Dictionary<int, string>();
-            return View(errors);
+            return View(cities);
         }
 
         private string ValidateAndLoadExcelRow(int rowNumber, DataRow row)
