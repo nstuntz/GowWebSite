@@ -1,0 +1,16 @@
+﻿@model List<GowWebSite.Models.City>
+
+@foreach (GowWebSite.Models.City city in Model)
+{
+    <!-- Display all cities here -->
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Confirm" class="btn btn-primary" />
+        @Html.ActionLink("Back to City List", "Index", null, new { @class = "btn btn-primary" })
+    </div>
+}

@@ -310,39 +310,6 @@ namespace GowWebSite.Controllers
             return View(city);
         }
 
-
-        [HttpPost]
-        public ActionResult UploadCity(City city)
-        {
-            foreach (string upload in Request.Files)
-            {
-
-                IExcelDataReader excelReader = Excel.ExcelReaderFactory.CreateOpenXmlReader(Request.Files[upload].InputStream);
-                DataSet wb = excelReader.AsDataSet();
-                DataTable dt = wb.Tables[0];
-                StringBuilder results = new StringBuilder();
-                for(int i=4; i< dt.Rows.Count; i++)
-                {
-                    DataRow row = dt.Rows[i];
-                    
-                    //Only check the row if there is a login.
-                    if (!String.IsNullOrEmpty(row.Field<string>(0)))
-                    {                       
-                        string validationResult = ValidateAndLoadExcelRow(i, row);
-                        if (!String.IsNullOrEmpty(validationResult))
-                        {
-                            results.Append(String.Format("Row:{0} Error(s): {1} ", i, validationResult));
-                            results.Append(Environment.NewLine);
-                        }
-                    }
-                }
-
-            }
-
-            //This should show the city list again?
-            return Index();
-        }
-
         // GET: City/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -863,7 +830,66 @@ namespace GowWebSite.Controllers
                 ViewBag.PremiumCitiesAllowed = 0;
             }
         }
-    
+
+
+        #region FileUpload for bulk city creation
+        public ActionResult UploadCity()
+        {
+            Dictionary<int, string> errors = new Dictionary<int, string>();
+            return View(errors);
+        }
+
+        [HttpPost]
+        public ActionResult UploadCity(Dictionary<int, string> errors)
+        {
+            foreach (string upload in Request.Files)
+            {
+
+                IExcelDataReader excelReader = Excel.ExcelReaderFactory.CreateOpenXmlReader(Request.Files[upload].InputStream);
+                DataSet wb = excelReader.AsDataSet();
+                DataTable dt = wb.Tables[0];
+                StringBuilder results = new StringBuilder();
+                for (int i = 4; i < dt.Rows.Count; i++)
+                {
+                    DataRow row = dt.Rows[i];
+
+                    //Only check the row if there is a login.
+                    if (!String.IsNullOrEmpty(row.Field<string>(0)))
+                    {
+                        string validationResult = ValidateAndLoadExcelRow(i, row);
+                        if (!String.IsNullOrEmpty(validationResult))
+                        {
+                            results.Append(String.Format("Row:{0} Error(s): {1} ", i, validationResult));
+                            results.Append(Environment.NewLine);
+                        }
+                    }
+                }
+
+            }
+            //This is if there is success
+            List<City> cities = new List<City>();
+            return RedirectToAction("ConfirmUpload", cities);
+
+            //This is if there are errors
+            return View(errors);
+        }
+        
+        
+        public ActionResult ConfirmUpload(List<City> cities)
+        {
+            Dictionary<int, string> errors = new Dictionary<int, string>();
+            return View(errors);
+        }
+
+
+        [HttpPost, ActionName("ConfirmUpload")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmUploadSubmit(List<City> cities)
+        {
+            Dictionary<int, string> errors = new Dictionary<int, string>();
+            return View(errors);
+        }
+
         private string ValidateAndLoadExcelRow(int rowNumber, DataRow row)
         {
             StringBuilder errors = new StringBuilder();
@@ -979,5 +1005,6 @@ namespace GowWebSite.Controllers
             }
             return errors.ToString();
         }
+        #endregion FileUpload for bulk city creation
     }
 }
