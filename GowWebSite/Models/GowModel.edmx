@@ -30,9 +30,9 @@
           <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LoginID" Type="int" Nullable="false" />
           <Property Name="CityName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Kingdom" Type="int" Nullable="false" />
-          <Property Name="LocationX" Type="int" Nullable="false" />
-          <Property Name="LocationY" Type="int" Nullable="false" />
+          <Property Name="Kingdom" Type="int" />
+          <Property Name="LocationX" Type="int" />
+          <Property Name="LocationY" Type="int" />
           <Property Name="Created" Type="bit" Nullable="false" />
           <Property Name="Placed" Type="bit" Nullable="false" />
           <Property Name="ResourceTypeID" Type="int" Nullable="false" />
@@ -165,10 +165,10 @@
           <Key>
             <PropertyRef Name="UserPayItemID" />
           </Key>
+          <Property Name="UserPayItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="PayItemID" Type="int" Nullable="false" />
           <Property Name="Paid" Type="bit" Nullable="false" />
-          <Property Name="UserPayItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="FK_City_Login">
           <End Role="Login" Type="Self.Login" Multiplicity="1" />
@@ -365,9 +365,9 @@
           <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LoginID" Type="Int32" Nullable="false" />
           <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Kingdom" Type="Int32" Nullable="false" />
-          <Property Name="LocationX" Type="Int32" Nullable="false" />
-          <Property Name="LocationY" Type="Int32" Nullable="false" />
+          <Property Name="Kingdom" Type="Int32" />
+          <Property Name="LocationX" Type="Int32" />
+          <Property Name="LocationY" Type="Int32" />
           <Property Name="Created" Type="Boolean" Nullable="false" />
           <Property Name="Placed" Type="Boolean" Nullable="false" />
           <Property Name="ResourceTypeID" Type="Int32" Nullable="false" />

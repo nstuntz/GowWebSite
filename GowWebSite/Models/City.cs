@@ -23,9 +23,9 @@ namespace GowWebSite.Models
         public int CityID { get; set; }
         public int LoginID { get; set; }
         public string CityName { get; set; }
-        public int Kingdom { get; set; }
-        public int LocationX { get; set; }
-        public int LocationY { get; set; }
+        public Nullable<int> Kingdom { get; set; }
+        public Nullable<int> LocationX { get; set; }
+        public Nullable<int> LocationY { get; set; }
         public bool Created { get; set; }
         public bool Placed { get; set; }
         public int ResourceTypeID { get; set; }

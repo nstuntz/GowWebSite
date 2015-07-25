@@ -4,15 +4,15 @@
 }
 
 
-<div class="col-md-6">
+<div class="col-md-12">
     @using (Html.BeginForm("UploadCity", "City", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <input type="file" name="FileUpload1" />
             </div>
-            <div class="col-md-2">
-                <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" />
+            <div class="col-md-12">
+                <p><input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" /></p>
             </div>
         </div>
 
