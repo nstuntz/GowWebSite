@@ -118,7 +118,7 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is a name for the city so you know which of your cities is which. Purely informational."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is a name for the city so you know which of your cities is which. This will be displayed on your city list."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
@@ -132,7 +132,7 @@
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.Kingdom, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the kingdom your city is in. Purely informational."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="Optional: This is the kingdom your city is in."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             @Html.EditorFor(model => model.Kingdom, new { htmlAttributes = new { @class = "form-control" } })
@@ -146,7 +146,7 @@
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.LocationX, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the X coordinates of your city. Purely informational."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="Optional: This is the X coordinates of your city."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             @Html.EditorFor(model => model.LocationX, new { htmlAttributes = new { @class = "form-control" } })
@@ -160,7 +160,7 @@
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.LocationY, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the Y coordinates of your city. Purely informational."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="Optional: This is the Y coordinates of your city."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             @Html.EditorFor(model => model.LocationY, new { htmlAttributes = new { @class = "form-control" } })
@@ -174,7 +174,7 @@
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.ResourceTypeID, "ResourceTypeID", htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the resource type that this city produces. If you enable banking this will determine what is sent to the bank, otherwise it is purely informational."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the resource type that this city produces. If you enable banking this will determine what is sent to the bank."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             @Html.DropDownList("ResourceTypeID", null, htmlAttributes: new { @class = "form-control" })
@@ -188,7 +188,7 @@
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.Alliance, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the alliance your city is in. Purely informational."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="Optional: This is the alliance your city is in."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             @Html.EditorFor(model => model.Alliance, new { htmlAttributes = new { @class = "form-control" } })
@@ -202,7 +202,7 @@
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.LabelFor(model => model.CityInfo.StrongHoldLevel, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the current level of your stronghold. This is used by the Upgrade component, otherwise it is just informational."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the current level of your stronghold."></span>
                         </div>
                         <div class="col-md-8 col-sm-9 col-xs-6">
                             @Html.EditorFor(model => model.CityInfo.StrongHoldLevel, new { htmlAttributes = new { @class = "form-control" } })
@@ -217,7 +217,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a data-toggle="collapse" href="#BankGroup">Basic Features</a>
-                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the setup information for the features include in the base rate."></span>
+                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains the setup information for the features included in the base rate."></span>
             </div>
             <div class="panel-collapse collapse in" id="BankGroup">
                 <div class="form-group"></div>
