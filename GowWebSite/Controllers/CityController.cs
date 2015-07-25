@@ -36,6 +36,7 @@ namespace GowWebSite.Controllers
                 var orderedCities = userCities.OrderBy(x => x.CityName);
 
                 var cities = orderedCities.Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
+
                 return View(cities.ToList());
             }
             catch

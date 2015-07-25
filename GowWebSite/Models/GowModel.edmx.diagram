@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="803b31fc5de54aa5a45bd109e925b8f4" Name="Diagram1">
+      <Diagram DiagramId="803b31fc5de54aa5a45bd109e925b8f4" Name="Diagram1" ZoomLevel="91">
         <EntityTypeShape EntityType="GowModel.City" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GowModel.CityInfo" Width="1.5" PointX="4.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GowModel.Log" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
