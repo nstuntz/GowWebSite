@@ -209,6 +209,7 @@ namespace GowWebSite.Controllers
                 if (isBasicCity || isPremiumCity)
                 {
                     city.Login.PaidThrough = DateTime.Today.AddDays(DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1);
+                    city.Login.Paid = true;
                 }
                 else
                 {
@@ -291,6 +292,7 @@ namespace GowWebSite.Controllers
                     item.Paid = true;
                     db.CityPayItems.Add(item);
                     city.CityPayItems.Add(item);
+                    
                 }
                 
                 try
@@ -843,6 +845,7 @@ namespace GowWebSite.Controllers
         [HttpPost]
         public ActionResult UploadCity(Dictionary<int, string> errors)
         {
+            List<City> cities = new List<City>();
             foreach (string upload in Request.Files)
             {
 
@@ -853,24 +856,28 @@ namespace GowWebSite.Controllers
                 for (int i = 4; i < dt.Rows.Count; i++)
                 {
                     DataRow row = dt.Rows[i];
-
+                    City city = new City();
                     //Only check the row if there is a login.
                     if (!String.IsNullOrEmpty(row.Field<string>(0)))
                     {
-                        string validationResult = ValidateAndLoadExcelRow(i, row);
+                        string validationResult = ValidateAndLoadExcelRow(i, row, city);
                         if (!String.IsNullOrEmpty(validationResult))
                         {
-                            results.Append(String.Format("Row:{0} Error(s): {1} ", i, validationResult));
-                            results.Append(Environment.NewLine);
+                            errors.Add(i, validationResult);
+                        }
+                        else
+                        {
+                            cities.Add(city);
                         }
                     }
                 }
 
             }
             //This is if there is success
-            List<City> cities = new List<City>();
-            return View("ConfirmUpload", cities);
-
+            if (errors.Count == 0)
+            {
+                return View("ConfirmUpload", cities);
+            }
             //This is if there are errors
             return View(errors);
         }
@@ -889,7 +896,7 @@ namespace GowWebSite.Controllers
             return View(cities);
         }
 
-        private string ValidateAndLoadExcelRow(int rowNumber, DataRow row)
+        private string ValidateAndLoadExcelRow(int rowNumber, DataRow row, City city)
         {
             StringBuilder errors = new StringBuilder();
             try
@@ -900,25 +907,22 @@ namespace GowWebSite.Controllers
                 string timing = row[3].ToString();
                 int loginDelay = 180;
                 string cityName = row[4].ToString();
-                int kingdom = Convert.ToInt32(row[5].ToString());
-                int locationX = Convert.ToInt32(row[6].ToString());
-                int locationY = Convert.ToInt32(row[7].ToString());
-                string resourceType = row[8].ToString();
+                string resourceType = row[5].ToString();
                 int resourceTypeID = 5;
-                string alliance = row[9].ToString();
-                int SHLevel = Convert.ToInt32(row[10].ToString());
-                string bank = row[11].ToString();
-                int resourceBank =Convert.ToInt32( row[12].ToString());
-                int resourceMarches = Convert.ToInt32(row[13].ToString());
-                int silverBank = Convert.ToInt32(row[14].ToString());
-                int silverMarches = Convert.ToInt32(row[15].ToString());
-                string rally = row[16].ToString();
-                int rallyX = Convert.ToInt32(row[17].ToString());
-                int rallyY = Convert.ToInt32(row[18].ToString());
-                string shield = row[19].ToString();
-                string upgrade = row[20].ToString();
-                string goldMine = row[21].ToString();
-                string treasury = row[21].ToString();
+                string alliance = row[6].ToString();
+                int SHLevel = Convert.ToInt32(row[7].ToString());
+                string bank = row[8].ToString();
+                int resourceBank =Convert.ToInt32( row[9].ToString());
+                int resourceMarches = Convert.ToInt32(row[10].ToString());
+                int silverBank = Convert.ToInt32(row[11].ToString());
+                int silverMarches = Convert.ToInt32(row[12].ToString());
+                string rally = row[13].ToString();
+                int rallyX = Convert.ToInt32(row[14].ToString());
+                int rallyY = Convert.ToInt32(row[15].ToString());
+                string shield = row[16].ToString();
+                string upgrade = row[17].ToString();
+                string goldMine = row[18].ToString();
+                string treasury = row[19].ToString();
 
                 //TODO: Now do the data validations. Have to figure out the response on an error. Thans help?
                 if (!userName.Contains('@'))
@@ -950,19 +954,19 @@ namespace GowWebSite.Controllers
                 //Validate the resource type
                 switch(resourceType)
                 {
-                    case "stone":
+                    case "Stone":
                         resourceTypeID = 1;
                         break;
-                    case "wood":
+                    case "Wood":
                         resourceTypeID = 2;
                         break;
-                    case "ore":
+                    case "Ore":
                         resourceTypeID = 3;
                         break;
-                    case "food":
+                    case "Food":
                         resourceTypeID = 4;
                         break;
-                    case "all":
+                    case "All":
                         resourceTypeID = 5;
                         break;
                     default:
@@ -990,6 +994,33 @@ namespace GowWebSite.Controllers
                         errors.Append("Please choose a silver bank between 1 and 4.  ");
                     }                    
                 }
+
+                if (errors.Length == 0)
+                {
+                    //assign variables to the city.
+                    city.Login = new Login();
+                    city.CityInfo = new CityInfo();
+                    city.Login.UserName = userName;
+                    city.Login.Password = password;
+                    city.Login.PIN = PIN;
+                    city.Login.LoginDelayMin = loginDelay;
+                    city.CityName = cityName;
+                    city.ResourceTypeID = resourceTypeID;
+                    city.Alliance = alliance;
+                    city.CityInfo.StrongHoldLevel = SHLevel;
+                    city.CityInfo.Bank = bank == "Yes" ? true : false;
+                    city.CityInfo.RSSBankNum = resourceBank;
+                    city.CityInfo.RssMarches = resourceMarches;
+                    city.CityInfo.SilverBankNum = silverBank;
+                    city.CityInfo.SilverMarches = silverMarches;
+                    city.CityInfo.Rally = rally == "Yes" ? true : false;
+                    city.CityInfo.RallyX = rallyX;
+                    city.CityInfo.RallyY = rallyY;
+                    city.CityInfo.Shield = shield == "Yes" ? true : false;
+                    city.CityInfo.Upgrade = upgrade == "Yes" ? true : false;
+                    city.CityInfo.Treasury = treasury == "Yes" ? true : false;
+                    city.CityInfo.HasGoldMine = goldMine == "Yes" ? true : false;
+                }
             }
             catch (Exception ex)
             {
@@ -998,10 +1029,6 @@ namespace GowWebSite.Controllers
 
             }
 
-            if (String.IsNullOrEmpty(errors.ToString()))
-            {
-                //If we have gotten here this is ready to load. But do we want to parse the whole file before failing it?
-            }
             return errors.ToString();
         }
         #endregion FileUpload for bulk city creation
