@@ -306,6 +306,7 @@
       <DependentUpon>GowModel.edmx</DependentUpon>
       <LastGenOutput>GowModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\GoWTemplate.xlsx" />
     <None Include="Properties\PublishProfiles\ets-tfs.pubxml" />
     <None Include="Properties\PublishProfiles\GowMinion.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

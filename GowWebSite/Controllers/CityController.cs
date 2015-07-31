@@ -894,7 +894,22 @@ namespace GowWebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ConfirmUploadSubmit(List<City> cities)
         {
-            return View(cities);
+
+            //This is where we save to the database
+            foreach (City city in cities)
+            {
+                db.Cities.Add(city);
+            }
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                throw e;
+            }
+            return RedirectToAction("Index","Payment");
+            //return View();
         }
 
         private string ValidateAndLoadExcelRow(int rowNumber, DataRow row, City city)

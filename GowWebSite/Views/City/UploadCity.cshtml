@@ -8,39 +8,53 @@
     @using (Html.BeginForm("UploadCity", "City", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
-        <div class="row">
-            <div class="col-md-6">
-                <input type="file" name="FileUpload1" />
+        <div class="form-group">
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-10">
+                    In order to upload multiple cities at once please complete the linked <a href="@Url.Content("~/Content/GoWTemplate.xlsx")">spreadsheet</a> and upload it. Once it is uploaded you will be asked for confirmation and then the cities will be added to your account. If you have additional questions or concerns please email us as <a href="mailto:support@gowminion.com">support@gowminion.com</a>.
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <p><input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" /></p>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="file" name="FileUpload1" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <p><input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" /></p>
+                </div>
             </div>
         </div>
     }
 
-    if (Model.Count > 0)
+                @if (Model.Count > 0)
     {
-        <table class="table">
-            <tr>
-                <th>Row Number</th>
-                <th>Errors</th>
-            </tr>
-        @foreach (var item in Model)
+                    <table class="table">
+                        <tr>
+                            <th>Row Number</th>
+                            <th>Errors</th>
+                        </tr>
+                        @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @item.Key
-                </td>
-                <td>
-                    @item.Value
-                </td>
-            </tr>
+                            <tr>
+                                <td>
+                                    @item.Key
+                                </td>
+                                <td>
+                                    @item.Value
+                                </td>
+                            </tr>
         }
-        </table>
+                    </table>
     }
-    
-</div>
+
+            </div>
 
 <!-- Show error here -->

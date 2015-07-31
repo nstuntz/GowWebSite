@@ -1,6 +1,8 @@
 ﻿@model List<GowWebSite.Models.City>
 
-
+@using (Html.BeginForm("ConfirmUpload", "City", FormMethod.Post, new { model = Model, enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
     <table class="table">
         <tr>
             <th>Username</th>
@@ -28,35 +30,34 @@
         {
         <!-- Display all cities here -->
             <tr>
-                <td>@city.Login.UserName</td>
-                <td>@city.Login.Password</td>
-                <td>@city.Login.PIN</td>
-                <td>@city.Login.LoginDelayMin</td>
-                <td>@city.CityName</td>
-                <td>@city.ResourceTypeID</td>
-                <td>@city.Alliance</td>
-                <td>@city.CityInfo.StrongHoldLevel</td>
-                <td>@city.CityInfo.Bank</td>
-                <td>@city.CityInfo.RSSBankNum</td>
-                <td>@city.CityInfo.RssMarches</td>
-                <td>@city.CityInfo.SilverBankNum</td>
-                <td>@city.CityInfo.SilverMarches</td>
-                <td>@city.CityInfo.Rally</td>
-                <td>@city.CityInfo.RallyX</td>
-                <td>@city.CityInfo.RallyY</td>
-                <td>@city.CityInfo.Shield</td>
-                <td>@city.CityInfo.Upgrade</td>
-                <td>@city.CityInfo.Treasury</td>
-                <td>@city.CityInfo.HasGoldMine</td>
+                <td>@Html.DisplayFor(model => city.Login.UserName))</td>
+                <td>@Html.DisplayFor(model => city.Login.Password)</td>
+                <td>@Html.DisplayFor(model => city.Login.PIN)</td>
+                <td>@Html.DisplayFor(model => city.Login.LoginDelayMin)</td>
+                <td>@Html.DisplayFor(model => city.CityName)</td>
+                <td>@Html.DisplayFor(model => city.ResourceTypeID)</td>
+                <td>@Html.DisplayFor(model => city.Alliance)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.StrongHoldLevel)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.Bank)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.RSSBankNum)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.RssMarches)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.SilverBankNum)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.SilverMarches)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.Rally)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.RallyX)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.RallyY)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.Shield)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.Upgrade)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.Treasury)</td>
+                <td>@Html.DisplayFor(model => city.CityInfo.HasGoldMine)</td>
             </tr>
         }
     </table>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+   
+        
 
         <div class="form-actions no-color">
             <input type="submit" value="Confirm" class="btn btn-primary" />
             @Html.ActionLink("Back to City List", "Index", null, new { @class = "btn btn-primary" })
         </div>
-    }
+}
