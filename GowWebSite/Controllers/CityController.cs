@@ -843,6 +843,7 @@ namespace GowWebSite.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UploadCity(Dictionary<int, string> errors)
         {
             List<City> cities = new List<City>();
