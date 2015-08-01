@@ -854,6 +854,15 @@ namespace GowWebSite.Controllers
                 DataSet wb = excelReader.AsDataSet();
                 DataTable dt = wb.Tables[0];
                 StringBuilder results = new StringBuilder();
+
+                //Setup some validation dictionaries.
+                Dictionary<string, string> existingUserNames = new Dictionary<string, string>();
+                
+                foreach(City city in db.Cities)
+                {
+                    existingUserNames.Add(city.Login.UserName, city.CityName);
+                }
+
                 for (int i = 4; i < dt.Rows.Count; i++)
                 {
                     DataRow row = dt.Rows[i];
@@ -861,7 +870,7 @@ namespace GowWebSite.Controllers
                     //Only check the row if there is a login.
                     if (!String.IsNullOrEmpty(row.Field<string>(0)))
                     {
-                        string validationResult = ValidateAndLoadExcelRow(i, row, city);
+                        string validationResult = ValidateAndLoadExcelRow(i, row, city, cities, existingUserNames);
                         if (!String.IsNullOrEmpty(validationResult))
                         {
                             errors.Add(i, validationResult);
@@ -877,6 +886,7 @@ namespace GowWebSite.Controllers
             //This is if there is success
             if (errors.Count == 0)
             {
+                Session["LISTOFCITIES"] = cities;
                 return View("ConfirmUpload", cities);
             }
             //This is if there are errors
@@ -892,13 +902,22 @@ namespace GowWebSite.Controllers
 
         [HttpPost, ActionName("ConfirmUpload")]
         [ValidateAntiForgeryToken]
-        public ActionResult ConfirmUploadSubmit(List<City> cities)
+        public ActionResult ConfirmUploadSubmit()
         {
-
+            List<City> cities = (List<City>)Session["LISTOFCITIES"];
+            Session["LISTOFCITIES"] = null;
             //This is where we save to the database
             foreach (City city in cities)
             {
+                //Add the userCity
+                UserCity uc = new UserCity();
+                uc.Email = User.Identity.Name;
+                city.UserCities.Add(uc);
+
+                db.Logins.Add(city.Login);
                 db.Cities.Add(city);
+                db.CityInfoes.Add(city.CityInfo);
+                db.UserCities.Add(uc);
             }
             try
             {
@@ -912,7 +931,7 @@ namespace GowWebSite.Controllers
             //return View();
         }
 
-        private string ValidateAndLoadExcelRow(int rowNumber, DataRow row, City city)
+        private string ValidateAndLoadExcelRow(int rowNumber, DataRow row, City city, List<City> cities, Dictionary<string, string> existingUserNames)
         {
             StringBuilder errors = new StringBuilder();
             try
@@ -945,6 +964,20 @@ namespace GowWebSite.Controllers
                 {
                     errors.Append("UserName is not an email.  ");
                 }
+
+                if (existingUserNames.Keys.Contains(userName))
+                {
+                    errors.Append("Username already exists.  ");
+                }
+
+                foreach (City item in cities)
+                {
+                    if (item.Login.UserName == userName)
+                    {
+                        errors.Append("Username already in file.  ");
+                    }
+                }
+
                 if (password.Length < 8)
                 {
                     errors.Append("Password is not long enough.  ");
@@ -999,6 +1032,11 @@ namespace GowWebSite.Controllers
                     }
                 }
 
+                if((rally == "Yes") && (shield =="Yes"))
+                {
+                    errors.Append("Please choose either Rally OR Shield.  ");
+                }
+
                 if (bank == "Yes")
                 {
                     if (resourceBank < 1 || resourceBank > 4) 
@@ -1036,6 +1074,20 @@ namespace GowWebSite.Controllers
                     city.CityInfo.Upgrade = upgrade == "Yes" ? true : false;
                     city.CityInfo.Treasury = treasury == "Yes" ? true : false;
                     city.CityInfo.HasGoldMine = goldMine == "Yes" ? true : false;
+
+                    //Set the defaults
+                    city.Login.InProcess = "0";
+                    city.Login.LastRun = DateTime.Now;
+                    city.Login.CreateDate = DateTime.Now;
+                    city.Login.PaidThrough = Convert.ToDateTime("1/1/2015");
+                    city.Login.Active = true;
+                    city.CityInfo.LastAthenaGift = DateTime.Today;
+                    city.CityInfo.LastBank = DateTime.Today;
+                    city.CityInfo.LastRally = DateTime.Today;
+                    city.CityInfo.LastShield = DateTime.Today;
+                    city.CityInfo.LastTreasury = DateTime.Today;
+                    city.CityInfo.LastUpgrade = DateTime.Today;
+                    city.CityInfo.TreasuryDue = DateTime.Today;
                 }
             }
             catch (Exception ex)

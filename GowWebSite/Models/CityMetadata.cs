@@ -20,8 +20,6 @@ namespace GowWebSite.Models
         public int LocationX { get; set; }
         [Range(1, 1022)]
         public int LocationY { get; set; }
-        [MinLength(3,ErrorMessage = "Alliance must be at least 3 characters.")]
-        [MaxLength(4, ErrorMessage = "Alliance no more than 4 characters.")]
         public string Alliance { get; set; }
     }
 }
