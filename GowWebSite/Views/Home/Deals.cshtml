@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Deals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>GoW Minion FAQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-9 col-sm-8 col-xs-7"><h1>GoW Minion Deals</h1></div>
+                <div class="col-md-3 col-sm-4 col-xs-5" style="vertical-align:bottom">Contact: <a href="mailto:support@gowminion.com">support@gowminion.com</a></div>
+            </div>
+        </div>
+        <div class="container">
+            <br />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>Cities</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>Basic Package</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>Premium Package</h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>5</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (20.00)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (23.75)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>10</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (38.00)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (45.00)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>25</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (90.00)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (105.00)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>50</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (170.00)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>@Html.ActionLink("Add To Cart (200.00)", "UploadCity", null, new { @class = "btn btn-primary" })</h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>50+</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>Contact Us</h3></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4"><h3>Contact Us</h3></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>

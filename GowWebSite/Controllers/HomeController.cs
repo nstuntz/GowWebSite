@@ -33,5 +33,12 @@ namespace GowWebSite.Controllers
 
             return View();
         }
+
+        public ActionResult Deals()
+        {
+            ViewBag.Message = "Your Deals page.";
+
+            return View();
+        }
     }
 }
