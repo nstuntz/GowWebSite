@@ -849,37 +849,43 @@ namespace GowWebSite.Controllers
             List<City> cities = new List<City>();
             foreach (string upload in Request.Files)
             {
-
-                IExcelDataReader excelReader = Excel.ExcelReaderFactory.CreateOpenXmlReader(Request.Files[upload].InputStream);
-                DataSet wb = excelReader.AsDataSet();
-                DataTable dt = wb.Tables[0];
-                StringBuilder results = new StringBuilder();
-
-                //Setup some validation dictionaries.
-                Dictionary<string, string> existingUserNames = new Dictionary<string, string>();
-                
-                foreach(City city in db.Cities)
+                if (Request.Files[upload].ContentLength > 0)
                 {
-                    existingUserNames.Add(city.Login.UserName, city.CityName);
-                }
+                    IExcelDataReader excelReader = Excel.ExcelReaderFactory.CreateOpenXmlReader(Request.Files[upload].InputStream);
+                    DataSet wb = excelReader.AsDataSet();
+                    DataTable dt = wb.Tables[0];
+                    StringBuilder results = new StringBuilder();
 
-                for (int i = 4; i < dt.Rows.Count; i++)
-                {
-                    DataRow row = dt.Rows[i];
-                    City city = new City();
-                    //Only check the row if there is a login.
-                    if (!String.IsNullOrEmpty(row.Field<string>(0)))
+                    //Setup some validation dictionaries.
+                    Dictionary<string, string> existingUserNames = new Dictionary<string, string>();
+
+                    foreach (City city in db.Cities)
                     {
-                        string validationResult = ValidateAndLoadExcelRow(i, row, city, cities, existingUserNames);
-                        if (!String.IsNullOrEmpty(validationResult))
+                        existingUserNames.Add(city.Login.UserName, city.CityName);
+                    }
+
+                    for (int i = 4; i < dt.Rows.Count; i++)
+                    {
+                        DataRow row = dt.Rows[i];
+                        City city = new City();
+                        //Only check the row if there is a login.
+                        if (!String.IsNullOrEmpty(row.Field<string>(0)))
                         {
-                            errors.Add(i, validationResult);
-                        }
-                        else
-                        {
-                            cities.Add(city);
+                            string validationResult = ValidateAndLoadExcelRow(i, row, city, cities, existingUserNames);
+                            if (!String.IsNullOrEmpty(validationResult))
+                            {
+                                errors.Add(i + 1, validationResult);
+                            }
+                            else
+                            {
+                                cities.Add(city);
+                            }
                         }
                     }
+                }
+                else
+                {
+                    errors.Add(0, "Please select a file. The file should be a modification of the linked template above.");
                 }
 
             }
@@ -909,6 +915,50 @@ namespace GowWebSite.Controllers
             //This is where we save to the database
             foreach (City city in cities)
             {
+                //check for selected options on each city to determine payitems.
+                if (city.CityInfo.Treasury)
+                {
+                    CityPayItem itemTreasury = new CityPayItem();
+                    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                    db.CityPayItems.Add(itemTreasury);
+                    city.CityPayItems.Add(itemTreasury);
+                }
+
+                if (city.CityInfo.Upgrade)
+                {
+                    CityPayItem itemUpgrade = new CityPayItem();
+                    itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
+                    db.CityPayItems.Add(itemUpgrade);
+                    city.CityPayItems.Add(itemUpgrade);
+                }
+
+                //This is added for either basic or premium cities
+                CityPayItem itemHours = new CityPayItem();
+                switch (city.Login.LoginDelayMin)
+                {
+                    case (int)Login.AllowDelays.Min360:
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour6);
+                        break;
+                    case (int)Login.AllowDelays.Min180:
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour3);
+                        break;
+                    case (int)Login.AllowDelays.Min60:
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                        break;
+                    default:
+                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                        break;
+                }
+                db.CityPayItems.Add(itemHours);
+                city.CityPayItems.Add(itemHours);
+
+                //Add basic pay item
+                CityPayItem item = new CityPayItem();
+                item.PayItem = db.PayItems.Find((int)PayItemEnum.BasicCity);
+                item.Paid = true;
+                db.CityPayItems.Add(item);
+                city.CityPayItems.Add(item);
+
                 //Add the userCity
                 UserCity uc = new UserCity();
                 uc.Email = User.Identity.Name;
@@ -945,15 +995,22 @@ namespace GowWebSite.Controllers
                 string resourceType = row[5].ToString();
                 int resourceTypeID = 5;
                 string alliance = row[6].ToString();
-                int SHLevel = Convert.ToInt32(row[7].ToString());
+                string inSHLevel = row[7].ToString();
+                int SHLevel = 0;
                 string bank = row[8].ToString();
-                int resourceBank =Convert.ToInt32( row[9].ToString());
-                int resourceMarches = Convert.ToInt32(row[10].ToString());
-                int silverBank = Convert.ToInt32(row[11].ToString());
-                int silverMarches = Convert.ToInt32(row[12].ToString());
+                string inResourceBank = row[9].ToString();
+                string inResourceMarches = row[10].ToString();
+                string inSilverBank = row[11].ToString();
+                string inSilverMarches = row[12].ToString();
+                int resourceBank =1;
+                int resourceMarches = 0;
+                int silverBank = 1;
+                int silverMarches = 0;
                 string rally = row[13].ToString();
-                int rallyX = Convert.ToInt32(row[14].ToString());
-                int rallyY = Convert.ToInt32(row[15].ToString());
+                string inRallyX = row[14].ToString();
+                string inRallyY = row[15].ToString();
+                int? rallyX = null;
+                int? rallyY = null;
                 string shield = row[16].ToString();
                 string upgrade = row[17].ToString();
                 string goldMine = row[18].ToString();
@@ -1023,10 +1080,33 @@ namespace GowWebSite.Controllers
                         break;
                 }
 
-                //Validate rally info
+                if (!Int32.TryParse(inSHLevel, out SHLevel))
+                {
+                    errors.Append("Please choose an integer for the Stronghold Level.  ");
+                }
+
+                if(SHLevel<1 || SHLevel>21)
+                {
+                    errors.Append("Please enter a Stronghold Level between 1 and 21.  ");
+                }
+
+                //Validate rally info - only if rally is yes.
                 if(rally == "Yes")
                 {
-                    if ((rallyX < 1 || rallyX > 510) || (rallyY < 1 || rallyY > 1022))
+                    int tempX;
+                    int tempY;
+
+                    if ((!Int32.TryParse(inRallyX, out tempX)) || (!Int32.TryParse(inRallyY, out tempY)))
+                    {
+                        errors.Append("Please choose integers for the Rally X/Rally Y coordinate.  ");
+                    }
+                    else
+                    {
+                        rallyX = tempX;
+                        rallyY = tempY;
+                    }
+
+                    if ((rallyX != null && rallyY != null) && ((rallyX < 1 || rallyX > 510) || (rallyY < 1 || rallyY > 1022)))
                     {
                         errors.Append("Please choose valid Rally coordinates.  ");
                     }
@@ -1039,14 +1119,73 @@ namespace GowWebSite.Controllers
 
                 if (bank == "Yes")
                 {
-                    if (resourceBank < 1 || resourceBank > 4) 
+                    if(!Int32.TryParse(inResourceBank, out resourceBank))
+                    {
+                        errors.Append("Please choose an integer for your resource bank.  ");
+                    }
+                    else if (resourceBank < 1 || resourceBank > 4) 
                     {
                         errors.Append("Please choose a resource bank between 1 and 4.  ");
                     }
-                    if (silverBank < 1 || silverBank > 4)
+
+                    if (!Int32.TryParse(inSilverBank, out silverBank))
+                    {
+                        errors.Append("Please choose an integer for your silver bank.  ");
+                    }
+                    else if (silverBank < 1 || silverBank > 4)
                     {
                         errors.Append("Please choose a silver bank between 1 and 4.  ");
-                    }                    
+                    }     
+               
+                    if ((!Int32.TryParse(inSilverMarches, out silverMarches)) || (!Int32.TryParse(inResourceMarches, out resourceMarches)))
+                    {
+                        errors.Append("Please choose integers for your silver/resource marches.  ");
+                    }
+
+                    int marchCount = 0;
+                    if(rally=="Yes")
+                    {
+                        marchCount = 1;
+                    }
+                    marchCount = marchCount + silverMarches + resourceMarches;
+
+                    if(SHLevel<6)
+                    { //one march
+                        if (marchCount>1)
+                        {
+                            errors.Append("Your Stronghold only allows for 1 march. Please check your Rally flag and marches counts.  ");
+                        }
+                    }
+                    else if (SHLevel < 11)
+                    { //two marches
+                        if (marchCount > 2)
+                        {
+                            errors.Append("Your Stronghold only allows for 2 marches. Please check your Rally flag and marches counts.  ");
+                        }
+                    }
+                    else if (SHLevel < 16)
+                    { //three marches
+                        if (marchCount > 3)
+                        {
+                            errors.Append("Your Stronghold only allows for 3 marches. Please check your Rally flag and marches counts.  ");
+                        }
+
+                    }
+                    else if (SHLevel < 21)
+                    { //four marches
+                        if (marchCount > 4)
+                        {
+                            errors.Append("Your Stronghold only allows for 4 marches. Please check your Rally flag and marches counts.  ");
+                        }
+
+                    }
+                    else
+                    {
+                        if (marchCount > 5)
+                        {
+                            errors.Append("Your Stronghold only allows for 5 marches. Please check your Rally flag and marches counts. If you have researched additional marches please make the total 5 and adjust it within the city screen.  ");
+                        }
+                    }
                 }
 
                 if (errors.Length == 0)
