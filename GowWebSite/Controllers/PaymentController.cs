@@ -83,8 +83,10 @@ namespace GowWebSite.Controllers
 
                 AgreementStateDescriptor state = new AgreementStateDescriptor();
                 state.note = "Canceling to renew with new amounts.";
-
-                agreement.Cancel(apiContext, state);
+                if (!string.IsNullOrWhiteSpace(sub.PaypalSubscriptionID))
+                {
+                    agreement.Cancel(apiContext, state);
+                }
             }
             return RedirectToAction("Pay");
         }
