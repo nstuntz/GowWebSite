@@ -16,7 +16,15 @@ namespace GowWebSite.Models
         InsaneGenieCities,
         AdminUserCities,
         BasicCity,
-        PremiumCity
+        PremiumCity,
+        Basic5 = 1011,
+        Basic10 = 1012,
+        Basic25 = 1014,
+        Basic50 = 1015,
+        Premium5 = 1016,
+        Premium10 = 1017,
+        Premium25 = 1018,
+        Premium50 = 1019
     }
 
     public enum PayItemTypeEnum
