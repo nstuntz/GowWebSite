@@ -919,9 +919,12 @@ namespace GowWebSite.Controllers
         {
             List<City> cities = (List<City>)Session["LISTOFCITIES"];
             Session["LISTOFCITIES"] = null;
+            AddAllowedUsedCitiesToViewBag();
             //This is where we save to the database
             foreach (City city in cities)
             {
+                
+
                 //First get city type:
                 bool isPremium = city.CityInfo.Treasury || city.CityInfo.Upgrade;
                 bool addAsRegular = false;
@@ -942,6 +945,13 @@ namespace GowWebSite.Controllers
                     {
                         addAsRegular = true;
                     }
+
+                    if ((ViewBag.PremiumCitiesUsed < ViewBag.PremiumCitiesAllowed) && (!isPremium) &&
+                        (ViewBag.BasicCitiesUsed >= ViewBag.BasicCitiesAllowed))
+                    {
+                        isPremium = true;
+                    }
+
                 }
 
                 if(addAsRegular)
@@ -1003,6 +1013,7 @@ namespace GowWebSite.Controllers
                         item.Paid = true;
                         db.CityPayItems.Add(item);
                         city.CityPayItems.Add(item);
+                        ViewBag.PremiumCitiesUsed++;
                     }
                     else
                     {
@@ -1011,6 +1022,7 @@ namespace GowWebSite.Controllers
                         item.Paid = true;
                         db.CityPayItems.Add(item);
                         city.CityPayItems.Add(item);
+                        ViewBag.BasicCitiesUsed++;
                     }
 
                 }
@@ -1025,6 +1037,7 @@ namespace GowWebSite.Controllers
                 db.Cities.Add(city);
                 db.CityInfoes.Add(city.CityInfo);
                 db.UserCities.Add(uc);
+
             }
             try
             {
