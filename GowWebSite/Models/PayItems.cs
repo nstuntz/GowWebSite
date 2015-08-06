@@ -5,6 +5,12 @@ using System.Web;
 
 namespace GowWebSite.Models
 {
+    public class AllPayItems
+    {
+        public List<UserPayItem> UserItems = new List<UserPayItem>();
+        public List<CityPayItem> CityItems = new List<CityPayItem>();
+    }
+
     public enum PayItemEnum
     {
         Hour6 = 1,

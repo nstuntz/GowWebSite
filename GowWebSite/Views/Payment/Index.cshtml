@@ -1,13 +1,19 @@
 ﻿
-@model IEnumerable<GowWebSite.Models.CityPayItem>
+@model GowWebSite.Models.AllPayItems
 <div class="col-sm-12">
     <h3>Cart</h3>
 
     <h4>New Items</h4>
     <ul class="list-group">
-        @foreach (GowWebSite.Models.CityPayItem item in Model)
+        @foreach (GowWebSite.Models.CityPayItem item in Model.CityItems)
         {
             <li class="list-group-item">@item.City.CityName - @item.PayItem.Description<span class="badge">$@item.PayItem.Cost.ToString("F")</span></li>
+        }
+    </ul>
+    <ul class="list-group">
+        @foreach (GowWebSite.Models.UserPayItem item in Model.UserItems)
+        {
+            <li class="list-group-item">@item.PayItem.Description<span class="badge">$@item.PayItem.Cost.ToString("F")</span></li>
         }
     </ul>
     <h5>New Costs = @ViewBag.NewCost.ToString("F")</h5>
@@ -18,7 +24,7 @@
             <p>
                 @Html.ActionLink("Add New City", "CreateFull", "City", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
             </p>
-            @if (Model.Count() > 0)
+            @if (Model.UserItems.Count() + Model.CityItems.Count() > 0)
             {
                 using (Html.BeginForm()) {
                     @Html.AntiForgeryToken()

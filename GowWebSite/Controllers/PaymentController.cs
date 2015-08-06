@@ -22,8 +22,9 @@ namespace GowWebSite.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var cityPayItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == User.Identity.Name).Select(id => id.CityID).Contains(x.CityID));
-            var userPayItems = db.UserPayItems.Where(y => y.Email == User.Identity.Name);
+            string userEmail = User.Identity.Name;
+            var cityPayItems = db.CityPayItems.Where(x => db.UserCities.Where(y => y.Email == userEmail).Select(id => id.CityID).Contains(x.CityID));
+            var userPayItems = db.UserPayItems.Where(y => y.Email == userEmail);
 
             //If there are no items shoe a blanked page
             if ((cityPayItems == null || cityPayItems.Count() == 0) && (userPayItems == null || userPayItems.Count() == 0))
@@ -65,7 +66,11 @@ namespace GowWebSite.Controllers
                         
             ViewBag.TrialDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day;
 
-            return View(userUnpaidCityItems);
+            AllPayItems payitems = new AllPayItems();
+            payitems.CityItems = userUnpaidCityItems.ToList();
+            payitems.UserItems = unpaidUserItems.ToList();
+
+            return View(payitems);
         }
 
         [HttpPost]
