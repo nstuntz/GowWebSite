@@ -613,7 +613,14 @@ namespace GowWebSite.Controllers
             origCity.LocationX = city.LocationX;
             origCity.LocationY = city.LocationY;
             origCity.Kingdom = city.Kingdom;
-            origCity.Alliance = city.Alliance.Trim();
+            if (!string.IsNullOrWhiteSpace(city.Alliance))
+            {
+                origCity.Alliance = city.Alliance.Trim();
+            }
+            else
+            {
+                origCity.Alliance = null;
+            }
 
             //Fill the City Info
             origCityInfo.StrongHoldLevel = city.CityInfo.StrongHoldLevel;
