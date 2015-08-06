@@ -915,49 +915,99 @@ namespace GowWebSite.Controllers
             //This is where we save to the database
             foreach (City city in cities)
             {
-                //check for selected options on each city to determine payitems.
-                if (city.CityInfo.Treasury)
+                //First get city type:
+                bool isPremium = city.CityInfo.Treasury || city.CityInfo.Upgrade;
+                bool addAsRegular = false;
+                //Add as regular city
+                if (city.Login.DelayTier == Login.AllowDelays.Min60)
                 {
-                    CityPayItem itemTreasury = new CityPayItem();
-                    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
-                    db.CityPayItems.Add(itemTreasury);
-                    city.CityPayItems.Add(itemTreasury);
+                    addAsRegular = true;
+                }
+                else
+                {
+                    if ((ViewBag.PremiumCitiesUsed >= ViewBag.PremiumCitiesAllowed) && (isPremium))
+                    {
+                        addAsRegular = true;
+                    }
+
+                    if ((ViewBag.BasicCitiesUsed >= ViewBag.BasicCitiesAllowed) &&
+                        (ViewBag.PremiumCitiesUsed >= ViewBag.PremiumCitiesAllowed))
+                    {
+                        addAsRegular = true;
+                    }
                 }
 
-                if (city.CityInfo.Upgrade)
+                if(addAsRegular)
                 {
-                    CityPayItem itemUpgrade = new CityPayItem();
-                    itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
-                    db.CityPayItems.Add(itemUpgrade);
-                    city.CityPayItems.Add(itemUpgrade);
-                }
+                    //check for selected options on each city to determine payitems.
+                    if (city.CityInfo.Treasury)
+                    {
+                        CityPayItem itemTreasury = new CityPayItem();
+                        itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                        db.CityPayItems.Add(itemTreasury);
+                        city.CityPayItems.Add(itemTreasury);
+                    }
 
-                //This is added for either basic or premium cities
-                CityPayItem itemHours = new CityPayItem();
-                switch (city.Login.LoginDelayMin)
+                    if (city.CityInfo.Upgrade)
+                    {
+                        CityPayItem itemUpgrade = new CityPayItem();
+                        itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
+                        db.CityPayItems.Add(itemUpgrade);
+                        city.CityPayItems.Add(itemUpgrade);
+                    }
+
+                    //This is added for either basic or premium cities
+                    CityPayItem itemHours = new CityPayItem();
+                    switch (city.Login.LoginDelayMin)
+                    {
+                        case (int)Login.AllowDelays.Min360:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour6);
+                            break;
+                        case (int)Login.AllowDelays.Min180:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour3);
+                            break;
+                        case (int)Login.AllowDelays.Min60:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                            break;
+                        default:
+                            itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
+                            break;
+                    }
+                    db.CityPayItems.Add(itemHours);
+                    city.CityPayItems.Add(itemHours);
+
+                    //Add basic pay item
+                    CityPayItem item = new CityPayItem();
+                    item.PayItem = db.PayItems.Find((int)PayItemEnum.BasicCity);
+                    item.Paid = true;
+                    db.CityPayItems.Add(item);
+                    city.CityPayItems.Add(item);
+                }
+                else
                 {
-                    case (int)Login.AllowDelays.Min360:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour6);
-                        break;
-                    case (int)Login.AllowDelays.Min180:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour3);
-                        break;
-                    case (int)Login.AllowDelays.Min60:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
-                        break;
-                    default:
-                        itemHours.PayItem = db.PayItems.Find((int)PayItemEnum.Hour1);
-                        break;
-                }
-                db.CityPayItems.Add(itemHours);
-                city.CityPayItems.Add(itemHours);
+                    //Because this is a package. Set the Paid Through and Paid flags correctly.
+                    city.Login.PaidThrough = DateTime.Today.AddDays(DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1);
+                    city.Login.Paid = true;
 
-                //Add basic pay item
-                CityPayItem item = new CityPayItem();
-                item.PayItem = db.PayItems.Find((int)PayItemEnum.BasicCity);
-                item.Paid = true;
-                db.CityPayItems.Add(item);
-                city.CityPayItems.Add(item);
+                    if(isPremium)
+                    {
+                        CityPayItem item = new CityPayItem();
+                        item.PayItem = db.PayItems.Find((int)PayItemEnum.PremiumCity);
+                        item.Paid = true;
+                        db.CityPayItems.Add(item);
+                        city.CityPayItems.Add(item);
+                    }
+                    else
+                    {
+                        CityPayItem item = new CityPayItem();
+                        item.PayItem = db.PayItems.Find((int)PayItemEnum.BasicCity);
+                        item.Paid = true;
+                        db.CityPayItems.Add(item);
+                        city.CityPayItems.Add(item);
+                    }
+
+                }
+                
 
                 //Add the userCity
                 UserCity uc = new UserCity();
