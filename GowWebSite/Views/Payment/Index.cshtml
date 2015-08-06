@@ -24,6 +24,26 @@
             <p>
                 @Html.ActionLink("Add New City", "CreateFull", "City", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
             </p>
+            @if (ViewBag.BasicCitiesAllowed > 0)
+            {
+                <p>
+                    <div>You have used @ViewBag.BasicCitiesUsed of @ViewBag.BasicCitiesAllowed Basic cities from your paid packages</div>
+                    @if (ViewBag.BasicCitiesUsed < ViewBag.BasicCitiesAllowed)
+                    {
+                        @Html.ActionLink("Create Basic City", "CreateFull", "City", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
+                    }
+                </p>
+            }
+            @if (ViewBag.PremiumCitiesAllowed > 0)
+            {
+                <p>
+                    <div>You have used @ViewBag.PremiumCitiesUsed of @ViewBag.PremiumCitiesAllowed Premium cities from your paid packages</div>
+                    @if (ViewBag.PremiumCitiesUsed < ViewBag.PremiumCitiesAllowed)
+                    {
+                        @Html.ActionLink("Create Premium City", "CreateFull", "City", new { premium = true, basic = false }, new { @class = "btn btn-primary" })
+                    }
+                </p>
+            }
             @if (Model.UserItems.Count() + Model.CityItems.Count() > 0)
             {
                 using (Html.BeginForm()) {

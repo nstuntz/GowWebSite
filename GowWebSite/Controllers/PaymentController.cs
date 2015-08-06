@@ -70,6 +70,8 @@ namespace GowWebSite.Controllers
             payitems.CityItems = userUnpaidCityItems.ToList();
             payitems.UserItems = unpaidUserItems.ToList();
 
+            AddAllowedUsedCitiesToViewBag();
+
             return View(payitems);
         }
 
@@ -235,7 +237,7 @@ namespace GowWebSite.Controllers
                 foreach (Login item in userCities.Select(x=> x.Login))
                 {
                     item.Paid = true;
-                    item.PaidThrough = DateTime.Today.AddDays(DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1);                    
+                    item.PaidThrough = DateTime.Today.AddDays(DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 3);                    
                 }
                 try
                 {
@@ -248,11 +250,41 @@ namespace GowWebSite.Controllers
             }
             else
             {
-                temp = "Something went wrong with the payment.  Your changes are still in your cart.";
+                temp = "Something went wrong with the payment.  Your charges are still in your cart.";
             }
             ViewBag.Message = temp;
 
             return View();
+        }
+
+
+        private void AddAllowedUsedCitiesToViewBag()
+        {
+            //Get user's basic cities count and # left
+            var userPayBasicCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.BasicCityPackage);
+            if (userPayBasicCities.Count() > 0)
+            {
+                ViewBag.BasicCitiesUsed = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.BasicCity).Count() > 0);
+                ViewBag.BasicCitiesAllowed = userPayBasicCities.Sum(x => x.PayItem.Number);
+            }
+            else
+            {
+                ViewBag.BasicCitiesUsed = 0;
+                ViewBag.BasicCitiesAllowed = 0;
+            }
+
+            //Get user's premium cities count and # left
+            var userPayPremCities = db.UserPayItems.Where(x => x.Email == User.Identity.Name && x.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCityPackage);
+            if (userPayPremCities.Count() > 0)
+            {
+                ViewBag.PremiumCitiesUsed = db.UserCities.Where(x => x.Email == User.Identity.Name).Count(x => x.City.CityPayItems.Where(z => z.PayItem.ItemType == (int)PayItemTypeEnum.PremiumCity).Count() > 0);
+                ViewBag.PremiumCitiesAllowed = userPayPremCities.Sum(x => x.PayItem.Number);
+            }
+            else
+            {
+                ViewBag.PremiumCitiesUsed = 0;
+                ViewBag.PremiumCitiesAllowed = 0;
+            }
         }
     }
 }
