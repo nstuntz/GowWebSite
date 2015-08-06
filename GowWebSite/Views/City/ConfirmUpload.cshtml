@@ -1,4 +1,7 @@
 ﻿@model List<GowWebSite.Models.City>
+@{
+    ViewBag.Title = "Confirm";
+}
 
 @using (Html.BeginForm("ConfirmUpload", "City", FormMethod.Post, new { model = Model, enctype = "multipart/form-data" }))
 {
