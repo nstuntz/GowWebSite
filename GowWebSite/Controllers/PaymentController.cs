@@ -258,6 +258,18 @@ namespace GowWebSite.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            UserPayItem delItem = db.UserPayItems.Find(id);
+            if( delItem != null && delItem.Email == User.Identity.Name)
+            {
+                db.UserPayItems.Remove(delItem);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
         private void AddAllowedUsedCitiesToViewBag()
         {
             //Get user's basic cities count and # left

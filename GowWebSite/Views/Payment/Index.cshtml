@@ -16,7 +16,7 @@
     <ul class="list-group">
         @foreach (GowWebSite.Models.UserPayItem item in Model.UserItems)
         {
-            <li class="list-group-item">@item.PayItem.Description<span class="badge">$@item.PayItem.Cost.ToString("F")</span></li>
+            <li class="list-group-item">@item.PayItem.Description<span class="badge">$@item.PayItem.Cost.ToString("F")</span><span class="pull-right ">@Html.ActionLink("Remove", "Delete", new { id = item.UserPayItemID }, new { @class = "btn btn-xs btn-primary" })&nbsp;</span></li>
         }
     </ul>
     <h5>New Costs = @ViewBag.NewCost.ToString("F")</h5>
