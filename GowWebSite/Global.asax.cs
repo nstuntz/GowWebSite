@@ -31,27 +31,26 @@ namespace GowWebSite
         {
             if (filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                IQueryable<GowWebSite.Models.AspNetUser> users;
                 //IQueryable<GowWebSite.Models.UserDemographic> demographics;
                 var demographics = db.UserDemographics
+                    .OrderBy(y=>y.UserName)
                     .ToList()
                     .Select(x => new
                                 {
                                     AspNetUserEmail = x.AspNetUserEmail,
-                                    Description = string.Format("{0} ({1})", x.UserName, x.AspNetUserEmail)
+                                    Description = string.Format("{0} ({1})", x.UserName, x.AspNetUserEmail)                                    
                                 }
                             );
-                if (filterContext.HttpContext.User.IsInRole("Admin"))
-                {
-                    users = db.AspNetUsers.OrderBy(x => x.Email);
 
-                }
-                else
+                demographics = demographics.Where(x => db.UserCities.Select(y => y.Email).Contains(x.AspNetUserEmail));
+
+                if (!filterContext.HttpContext.User.IsInRole("Admin"))
                 {
                     filterContext.RequestContext.HttpContext.Response.Cookies["SelectedUser"].Value = filterContext.HttpContext.User.Identity.Name;
                     filterContext.RequestContext.HttpContext.Response.Cookies["SelectedUser"].Expires = DateTime.Now.AddYears(1);
                     return;
                 }
+                //Only admins here
 
                 SelectList userDD;
                 if (filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"] != null && filterContext.RequestContext.HttpContext.Request.Cookies["SelectedUser"].Value != null)
