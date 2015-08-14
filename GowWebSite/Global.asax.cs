@@ -48,6 +48,8 @@ namespace GowWebSite
                 {
                     filterContext.RequestContext.HttpContext.Response.Cookies["SelectedUser"].Value = filterContext.HttpContext.User.Identity.Name;
                     filterContext.RequestContext.HttpContext.Response.Cookies["SelectedUser"].Expires = DateTime.Now.AddYears(1);
+
+                    filterContext.Controller.ViewBag.UserIDs = new SelectList(new List<string>());
                     return;
                 }
                 //Only admins here
