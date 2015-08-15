@@ -206,6 +206,9 @@ namespace GowWebSite.Controllers
                 city.Login.CreateDate = DateTime.Now;
                 city.Login.Active = true;
 
+                //Setup the encrypted login info
+                city.Login.Password = GowWebSite.Helpers.Encrypt(city.Login.Password);
+
                 if (isBasicCity || isPremiumCity)
                 {
                     city.Login.PaidThrough = DateTime.Today.AddDays(DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1);
@@ -336,6 +339,7 @@ namespace GowWebSite.Controllers
                 city.Alliance = "";
             }
 
+            //city.Login.Password = "********";
             ViewBag.LoginID = new SelectList(db.Logins, "LoginID", "UserName", city.LoginID);
             ViewBag.ResourceTypeID = new SelectList(db.ResourceTypes, "ResourceTypeID", "Type", city.ResourceTypeID);
             ViewBag.CityID = new SelectList(db.CityInfoes, "CityID", "RedeemCode", city.CityID);
@@ -601,9 +605,15 @@ namespace GowWebSite.Controllers
             //Fill the Login
             if (origLogin.Password != city.Login.Password)
             {
+                //This means there was a change.
                 origLogin.LoginAttempts = 0;
+                origLogin.Password = Helpers.Encrypt(city.Login.Password);
             }
-            origLogin.Password = city.Login.Password;
+            else
+            {
+                origLogin.Password = origLogin.Password;
+            }
+
             origLogin.PIN = city.Login.PIN;
             origLogin.Active = city.Login.Active;
             if (city.Login.LoginDelayMin != 0)
@@ -1035,6 +1045,9 @@ namespace GowWebSite.Controllers
                 UserCity uc = new UserCity();
                 uc.Email = User.Identity.Name;
                 city.UserCities.Add(uc);
+
+                //encrypt password
+                city.Login.Password = Helpers.Encrypt(city.Login.Password);
 
                 db.Logins.Add(city.Login);
                 db.Cities.Add(city);

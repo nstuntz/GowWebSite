@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.IO;
+using System.Text;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,8 +11,51 @@ namespace GowWebSite
 {
     public class Helpers
     {
+        public static string Encrypt(string password)
+        {
+            byte[] toEncrypt = Encoding.UTF8.GetBytes(password);
+            PasswordDeriveBytes cdk = new PasswordDeriveBytes("April May Blue Red Key for th3 encypt1on", null);
+            byte[] iv = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            byte[] key = cdk.CryptDeriveKey("RC2", "MD5", 0, iv);
+            RC2CryptoServiceProvider rc2 = new RC2CryptoServiceProvider();
+            rc2.Key = key;
+            rc2.IV = iv;    //IV MUST be specified with Zeroes, or it will be defaulted to a random value
+            MemoryStream ms = new MemoryStream();
+            CryptoStream cs = new CryptoStream(ms, rc2.CreateEncryptor(), CryptoStreamMode.Write);
+            cs.Write(toEncrypt, 0, toEncrypt.Length);
+            cs.Close();
+            string str = BitConverter.ToString(ms.ToArray());
+            str = str.Replace("-", "");  //formats output of BitConvertor to AutoIT binary formatted as string
+            //System.Windows.Forms.MessageBox.Show("0x" + str);
+            return str;
+        }
 
+        public static string Decrypt(string password)
+        {
+            //byte[] toDecrypt = Encoding.UTF8.GetBytes(password);
+            byte[] encrypted = Enumerable.Range(0, password.Length)
+                .Where(x => x % 2 == 0)
+                .Select(x => Convert.ToByte(password.Substring(x, 2), 16))
+                .ToArray();
+
+            PasswordDeriveBytes cdk = new PasswordDeriveBytes("April May Blue Red Key for th3 encypt1on", null);
+            byte[] iv = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            byte[] key = cdk.CryptDeriveKey("RC2", "MD5", 0, iv);
+            RC2CryptoServiceProvider rc2 = new RC2CryptoServiceProvider();
+            rc2.Key = key;
+            rc2.IV = iv;
+
+            // Now decrypt the previously encrypted message using the decryptor 
+            // obtained in the above step.
+            MemoryStream msDecrypt = new MemoryStream(encrypted);
+            CryptoStream cs = new CryptoStream(msDecrypt, rc2.CreateDecryptor(), CryptoStreamMode.Read);
+            StreamReader srDecrypt = new StreamReader(cs);
+            string roundtrip = srDecrypt.ReadToEnd();
+
+            return roundtrip.ToString();
+        }
     }
+
 
 
     public class PDTHolder
