@@ -222,7 +222,7 @@ namespace GowWebSite.Controllers
                 city.CityInfo.LastAthenaGift = DateTime.Today;
                 city.CityInfo.LastBank = DateTime.Today;
                 city.CityInfo.LastRally = DateTime.Today;
-                city.CityInfo.LastShield = DateTime.Today;
+                city.CityInfo.LastShield = DateTime.Today.AddDays(-4);
                 city.CityInfo.LastTreasury = DateTime.Today;
                 city.CityInfo.LastUpgrade = DateTime.Today;
                 city.CityInfo.TreasuryDue = DateTime.Today;
