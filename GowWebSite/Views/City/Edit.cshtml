@@ -26,10 +26,19 @@
         @Html.ActionLink("Delete", "Delete", new { cityID = Model.CityID }, new { @class = "btn btn-primary" })
         @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" })
     </div>
+
+}
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <div class="col-md-12 col-sm-12">
+            @Html.ActionLink("Change City Owner", "ChangeCityOwner", new { cityid = Model.CityID }, new { @class = "btn btn-primary" })
+        </div>
+    </p>
 }
 
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="popover"]').popover({ container: 'body' });
-    });
-</script>
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="popover"]').popover({ container: 'body' });
+            });
+        </script>

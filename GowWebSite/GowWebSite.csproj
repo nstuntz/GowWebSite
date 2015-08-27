@@ -394,6 +394,7 @@
     <Content Include="Views\City\UploadCity.cshtml" />
     <Content Include="Views\City\ConfirmUpload.cshtml" />
     <Content Include="Views\Home\Deals.cshtml" />
+    <Content Include="Views\City\ChangeCityOwner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

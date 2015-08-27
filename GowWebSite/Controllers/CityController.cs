@@ -786,7 +786,56 @@ namespace GowWebSite.Controllers
                 }
             }
         }
+        // GET: City
+        public ActionResult ChangeCityOwner(int cityid)
+        {
+            City city = db.Cities.Find(cityid);
 
+            if (city == null)
+            {
+                RedirectToAction("Index");
+            }
+            var demographics = db.UserDemographics
+                    .OrderBy(y => y.UserName)
+                    .ToList()
+                    .Select(x => new
+                                {
+                                    AspNetUserEmail = x.AspNetUserEmail,
+                                    Description = string.Format("{0} ({1})", x.UserName, x.AspNetUserEmail)
+                                }
+                            );
+
+            ViewBag.Users = new SelectList(demographics, "AspNetUserEmail", "Description"); ;
+
+            return View(city);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeCityOwner(int cityid, string users)
+        {
+            City city = db.Cities.Find(cityid);
+
+            if (city == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            if (db.AspNetUsers.Where(x=>x.Email == users).Count() != 1)
+            {
+                RedirectToAction("Index");
+            }
+
+            UserCity uc = db.UserCities.Where(x => x.CityID == cityid).First();
+            if (uc != null)
+            {
+                db.UserCities.Remove(uc);
+
+                db.UserCities.Add(new UserCity() { CityID = cityid, Email = users });
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "City");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
