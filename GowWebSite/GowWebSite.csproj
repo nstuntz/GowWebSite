@@ -241,6 +241,9 @@
     </Compile>
     <Compile Include="Models\LoginExtension.cs" />
     <Compile Include="Models\LoginMetadata.cs" />
+    <Compile Include="Models\MachineLoginTracker.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PayItem.cs">
       <DependentUpon>GowModel.tt</DependentUpon>

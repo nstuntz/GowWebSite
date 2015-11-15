@@ -39,6 +39,7 @@ namespace GowWebSite.Models
         public virtual DbSet<Subscription> Subscriptions { get; set; }
         public virtual DbSet<UserDemographic> UserDemographics { get; set; }
         public virtual DbSet<UserPayItem> UserPayItems { get; set; }
+        public virtual DbSet<MachineLoginTracker> MachineLoginTrackers { get; set; }
     
         public virtual int CreateExitingCitySetup(string userName, string password, string cityName, Nullable<int> cityX, Nullable<int> cityY, Nullable<int> allianceID, Nullable<int> rSSType, Nullable<int> sHLevel)
         {

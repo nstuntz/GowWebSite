@@ -101,7 +101,7 @@
           </Key>
           <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="LastRun" Type="datetime" Nullable="false" />
           <Property Name="InProcess" Type="varchar" MaxLength="50" Nullable="false" />
@@ -170,6 +170,18 @@
           <Property Name="PayItemID" Type="int" Nullable="false" />
           <Property Name="Paid" Type="bit" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MachineLoginTracker">
+          <Key>
+            <PropertyRef Name="MachineID" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="LogDate" />
+          </Key>
+          <Property Name="MachineID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK_City_Login">
           <End Role="Login" Type="Self.Login" Multiplicity="1" />
           <End Role="City" Type="Self.City" Multiplicity="*" />
@@ -227,18 +239,6 @@
             </Principal>
             <Dependent Role="CityPayItem">
               <PropertyRef Name="PayItemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Log_Login">
-          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
-          <End Role="Log" Type="Self.Log" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Login">
-              <PropertyRef Name="LoginID" />
-            </Principal>
-            <Dependent Role="Log">
-              <PropertyRef Name="LoginID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -321,6 +321,13 @@
           <EntitySet Name="UserCity" EntityType="Self.UserCity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserDemographics" EntityType="Self.UserDemographics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserPayItem" EntityType="Self.UserPayItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MachineLoginTracker" EntityType="Self.MachineLoginTracker" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MachineLoginTracker].[MachineID] AS [MachineID], 
+    [MachineLoginTracker].[Message] AS [Message], 
+    [MachineLoginTracker].[LogDate] AS [LogDate]
+    FROM [dbo].[MachineLoginTracker] AS [MachineLoginTracker]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_City_Login" Association="Self.FK_City_Login">
             <End Role="Login" EntitySet="Login" />
             <End Role="City" EntitySet="City" />
@@ -340,10 +347,6 @@
           <AssociationSet Name="FK_CityPayItem_PayItem" Association="Self.FK_CityPayItem_PayItem">
             <End Role="PayItem" EntitySet="PayItem" />
             <End Role="CityPayItem" EntitySet="CityPayItem" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Log_Login" Association="Self.FK_Log_Login">
-            <End Role="Login" EntitySet="Login" />
-            <End Role="Log" EntitySet="Log" />
           </AssociationSet>
           <AssociationSet Name="FK_UserCity_City" Association="Self.FK_UserCity_City">
             <End Role="City" EntitySet="City" />
@@ -434,7 +437,7 @@
           </Key>
           <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="LastRun" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="InProcess" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
@@ -588,6 +591,7 @@
             <End Role="PayItem" EntitySet="PayItems" />
             <End Role="UserPayItem" EntitySet="UserPayItems" />
           </AssociationSet>
+          <EntitySet Name="MachineLoginTrackers" EntityType="GowModel.MachineLoginTracker" />
           </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -748,6 +752,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MachineLoginTracker">
+          <Key>
+            <PropertyRef Name="MachineID" />
+            <PropertyRef Name="Message" />
+            <PropertyRef Name="LogDate" />
+          </Key>
+          <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -952,6 +966,15 @@
                 <ScalarProperty Name="Paid" ColumnName="Paid" />
                 <ScalarProperty Name="PayItemID" ColumnName="PayItemID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MachineLoginTrackers">
+            <EntityTypeMapping TypeName="GowModel.MachineLoginTracker">
+              <MappingFragment StoreEntitySet="MachineLoginTracker">
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
