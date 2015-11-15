@@ -2,54 +2,65 @@
 
 @{
     ViewBag.Title = "Index";
+    int timeFromZero = Model.First().LoginDelayMin - (int)Model.First().RunSince;
 }
+
+
 
 <h2>Logins</h2>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Active)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoginDelayMin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastRun)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InProcess)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoginDelayMin)
-        </td>
-        <td>
-            <div style="  display: inline-flex;">
-                @Html.Raw(item.RunSince.ToString("F0"))  <div class="text-muted">&nbsp;&nbsp;( @Html.Raw(item.LastRun) )</div>
-            </div>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InProcess)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LoginID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LoginID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LoginID })
-        </td>
-    </tr>
+Running @Math.Abs(timeFromZero) minutes @{if (timeFromZero > 0)
+{ @Html.Raw("ahead");
 }
+else
+{ @Html.Raw("behind");
+}}
 
-</table>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoginDelayMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastRun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InProcess)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoginDelayMin)
+                </td>
+                <td>
+                    <div style="  display: inline-flex;">
+                        @Html.Raw(item.RunSince.ToString("F0"))  <div class="text-muted">&nbsp;&nbsp;( @Html.Raw(item.LastRun) )</div>
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InProcess)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LoginID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.LoginID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LoginID })
+                </td>
+            </tr>
+        }
+
+    </table>
