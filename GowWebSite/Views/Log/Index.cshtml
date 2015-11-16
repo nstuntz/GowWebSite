@@ -7,17 +7,11 @@
 <h2>Logs</h2>
 <p>Last 100 Shown</p>
 <table class="table">
-    <tr>
-        <th> Machine Name</th>
-        <th> Last City</th>
-        <th> Last Login</th>
-        <th> Last Bluestacks Restart</th>
-    </tr>
     @foreach (var machine in ViewBag.Machines as IEnumerable<GowWebSite.Models.MachineLoginTracker>)
     {
         bool error = false;
         string errorClass = "";
-        if (machine.LoginDate.Value.AddHours(1) < DateTime.Now)
+        if (machine.LogDate.AddHours(1) < DateTime.Now)
         {
             error = true;
             errorClass = "danger";
@@ -29,8 +23,7 @@
                 @machine.MachineID
             </td>
             <td>@machine.Message.Substring(15)</td>
-            <td>@machine.LoginDate</td>
-            <td>@machine.RestartBlueStacksDate</td>
+            <td>@machine.LogDate</td>
         </tr>
     }
 </table>

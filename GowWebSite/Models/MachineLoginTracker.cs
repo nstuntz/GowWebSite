@@ -15,8 +15,7 @@ namespace GowWebSite.Models
     public partial class MachineLoginTracker
     {
         public string MachineID { get; set; }
-        public Nullable<System.DateTime> LoginDate { get; set; }
-        public Nullable<System.DateTime> RestartBlueStacksDate { get; set; }
         public string Message { get; set; }
+        public System.DateTime LogDate { get; set; }
     }
 }

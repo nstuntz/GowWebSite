@@ -176,11 +176,11 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Key>
             <PropertyRef Name="MachineID" />
             <PropertyRef Name="Message" />
+            <PropertyRef Name="LogDate" />
           </Key>
           <Property Name="MachineID" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LoginDate" Type="datetime" />
-          <Property Name="RestartBlueStacksDate" Type="datetime" />
           <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_City_Login">
           <End Role="Login" Type="Self.Login" Multiplicity="1" />
@@ -324,9 +324,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySet Name="MachineLoginTracker" EntityType="Self.MachineLoginTracker" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [MachineLoginTracker].[MachineID] AS [MachineID], 
-    [MachineLoginTracker].[LoginDate] AS [LoginDate], 
-    [MachineLoginTracker].[RestartBlueStacksDate] AS [RestartBlueStacksDate], 
-    [MachineLoginTracker].[Message] AS [Message]
+    [MachineLoginTracker].[Message] AS [Message], 
+    [MachineLoginTracker].[LogDate] AS [LogDate]
     FROM [dbo].[MachineLoginTracker] AS [MachineLoginTracker]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_City_Login" Association="Self.FK_City_Login">
@@ -757,11 +756,11 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Key>
             <PropertyRef Name="MachineID" />
             <PropertyRef Name="Message" />
+            <PropertyRef Name="LogDate" />
           </Key>
           <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LoginDate" Type="DateTime" Precision="3" />
-          <Property Name="RestartBlueStacksDate" Type="DateTime" Precision="3" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -973,9 +972,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="MachineLoginTrackers">
             <EntityTypeMapping TypeName="GowModel.MachineLoginTracker">
               <MappingFragment StoreEntitySet="MachineLoginTracker">
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="RestartBlueStacksDate" ColumnName="RestartBlueStacksDate" />
-                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
                 <ScalarProperty Name="MachineID" ColumnName="MachineID" />
               </MappingFragment>
             </EntityTypeMapping>

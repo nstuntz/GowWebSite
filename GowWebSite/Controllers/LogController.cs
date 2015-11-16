@@ -19,7 +19,7 @@ namespace GowWebSite.Views
         [Authorize(Roles = "Admin,MachineOwner")]
         public ActionResult Index(string machineID)
         {
-            ViewBag.Machines = db.MachineLoginTrackers.OrderBy(x => x.LoginDate).ToList();
+            ViewBag.Machines = db.MachineLoginTrackers.OrderBy(x => x.LogDate).ToList();
             var logs = db.Logs.Include(l => l.Login);
             if (!string.IsNullOrWhiteSpace(machineID))
             {
