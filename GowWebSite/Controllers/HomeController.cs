@@ -117,76 +117,76 @@ namespace GowWebSite.Controllers
             return RedirectToAction("Index", "Payment");
         }
 
-        public ActionResult Premium5()
-        {
-            UserPayItem package = new UserPayItem();
-            package.Email = User.Identity.Name;
-            package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium5);
-            package.Paid = false;
-            db.UserPayItems.Add(package);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                throw e;
-            }
-            return RedirectToAction("Index", "Payment");
-        }
+        //public ActionResult Premium5()
+        //{
+        //    UserPayItem package = new UserPayItem();
+        //    package.Email = User.Identity.Name;
+        //    package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium5);
+        //    package.Paid = false;
+        //    db.UserPayItems.Add(package);
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbEntityValidationException e)
+        //    {
+        //        throw e;
+        //    }
+        //    return RedirectToAction("Index", "Payment");
+        //}
 
-        public ActionResult Premium10()
-        {
-            UserPayItem package = new UserPayItem();
-            package.Email = User.Identity.Name;
-            package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium10);
-            package.Paid = false;
-            db.UserPayItems.Add(package);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                throw e;
-            }
-            return RedirectToAction("Index", "Payment");
-        }
+        //public ActionResult Premium10()
+        //{
+        //    UserPayItem package = new UserPayItem();
+        //    package.Email = User.Identity.Name;
+        //    package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium10);
+        //    package.Paid = false;
+        //    db.UserPayItems.Add(package);
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbEntityValidationException e)
+        //    {
+        //        throw e;
+        //    }
+        //    return RedirectToAction("Index", "Payment");
+        //}
 
-        public ActionResult Premium25()
-        {
-            UserPayItem package = new UserPayItem();
-            package.Email = User.Identity.Name;
-            package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium25);
-            package.Paid = false;
-            db.UserPayItems.Add(package);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                throw e;
-            }
-            return RedirectToAction("Index", "Payment");
-        }
+        //public ActionResult Premium25()
+        //{
+        //    UserPayItem package = new UserPayItem();
+        //    package.Email = User.Identity.Name;
+        //    package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium25);
+        //    package.Paid = false;
+        //    db.UserPayItems.Add(package);
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbEntityValidationException e)
+        //    {
+        //        throw e;
+        //    }
+        //    return RedirectToAction("Index", "Payment");
+        //}
 
-        public ActionResult Premium50()
-        {
-            UserPayItem package = new UserPayItem();
-            package.Email = User.Identity.Name;
-            package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium50);
-            package.Paid = false;
-            db.UserPayItems.Add(package);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-                throw e;
-            }
-            return RedirectToAction("Index", "Payment");
-        }
+        //public ActionResult Premium50()
+        //{
+        //    UserPayItem package = new UserPayItem();
+        //    package.Email = User.Identity.Name;
+        //    package.PayItem = db.PayItems.Find((int)PayItemEnum.Premium50);
+        //    package.Paid = false;
+        //    db.UserPayItems.Add(package);
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbEntityValidationException e)
+        //    {
+        //        throw e;
+        //    }
+        //    return RedirectToAction("Index", "Payment");
+        //}
     }
 }

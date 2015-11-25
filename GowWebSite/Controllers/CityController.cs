@@ -269,14 +269,14 @@ namespace GowWebSite.Controllers
                         db.CityPayItems.Add(itemUpgrade);
                         city.CityPayItems.Add(itemUpgrade);
                     }
+                }
 
-                    if (city.CityInfo.Treasury)
-                    {
-                        CityPayItem itemTreasury = new CityPayItem();
-                        itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
-                        db.CityPayItems.Add(itemTreasury);
-                        city.CityPayItems.Add(itemTreasury);
-                    }
+                if (city.CityInfo.Treasury)
+                {
+                    CityPayItem itemTreasury = new CityPayItem();
+                    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                    db.CityPayItems.Add(itemTreasury);
+                    city.CityPayItems.Add(itemTreasury);
                 }
 
                 if (city.BasicCity)
@@ -765,25 +765,25 @@ namespace GowWebSite.Controllers
                     }
                 }
 
-                //Check Treasury
-                if (origCity.CityInfo.Treasury != newCity.CityInfo.Treasury)
-                {
-                    if (origCity.CityInfo.Treasury)
-                    {
-                        //remove it
-                        CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItemEnum.Treasury).First();
-                        origCity.CityPayItems.Remove(pi);
-                        db.CityPayItems.Remove(pi);
-                    }
-                    else
-                    {
-                        //Add it
-                        CityPayItem newPI = new CityPayItem();
-                        newPI.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
-                        db.CityPayItems.Add(newPI);
-                        origCity.CityPayItems.Add(newPI);
-                    }
-                }
+                //Check Treasury - 11-22-2015 Treasury is no longer a premium item since we are now just all basic cities
+                //if (origCity.CityInfo.Treasury != newCity.CityInfo.Treasury)
+                //{
+                //    if (origCity.CityInfo.Treasury)
+                //    {
+                //        //remove it
+                //        CityPayItem pi = cpi.Where(x => x.PayItemID == (int)PayItemEnum.Treasury).First();
+                //        origCity.CityPayItems.Remove(pi);
+                //        db.CityPayItems.Remove(pi);
+                //    }
+                //    else
+                //    {
+                //        //Add it
+                //        CityPayItem newPI = new CityPayItem();
+                //        newPI.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                //        db.CityPayItems.Add(newPI);
+                //        origCity.CityPayItems.Add(newPI);
+                //    }
+                //}
             }
         }
         // GET: City

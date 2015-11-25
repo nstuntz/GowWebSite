@@ -109,14 +109,14 @@
 <div id="myModal" class="modal" role="dialog" tabindex="-1"></div>
 
 
-@Html.ActionLink("Create City", "CreateFull", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Create Single City", "CreateFull", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
 @if (ViewBag.BasicCitiesAllowed > 0)
 {
     <p>
         <div>You have used @ViewBag.BasicCitiesUsed of @ViewBag.BasicCitiesAllowed Basic cities from your paid packages</div>
         @if (ViewBag.BasicCitiesUsed < ViewBag.BasicCitiesAllowed)
         {
-            @Html.ActionLink("Create Basic City", "CreateFull", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Create Package City", "CreateFull", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
         }
     </p>
 }
