@@ -1,0 +1,1441 @@
+﻿
+
+@{
+    ViewBag.Title = "Cores Information Center";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<head>
+    <meta charset="utf-8" />
+    <title>GoW Minion FAQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+        <div id="nav">
+            <table class="table-condensed">
+                <tr>
+                    <th width="60"></th>
+                    <th width="60">H</th>
+                    <th width="60">W</th>
+                    <th width="60">B</th>
+                    <th width="60">F</th>
+                    <th width="60">A1</th>
+                    <th width="60">A2</th>
+                    <th width="60">A3</th>
+                    <th width="60">Total</th>
+                </tr>
+                <tr>
+                    <td>RA</td>
+                    <td>
+                        <label id="HelmSummaryRangedAttackSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryRangedAttackSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryRangedAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryRangedAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryRangedAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryRangedAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryRangedAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryRangedAttackSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>CA</td>
+                    <td>
+                        <label id="HelmSummaryCalvaryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryCalvaryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryCalvaryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryCalvaryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryCalvaryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryCalvaryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryCalvaryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryCalvaryAttackSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>IA</td>
+                    <td>
+                        <label id="HelmSummaryInfantryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryInfantryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryInfantryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryInfantryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryInfantryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryInfantryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryInfantryAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryInfantryAttackSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>TA</td>
+                    <td>
+                        <label id="HelmSummaryTroopAttackSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryTroopAttackSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryTroopAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryTroopAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryTroopAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryTroopAttackSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryTroopAttackSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryTroopAttackSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>TD</td>
+                    <td>
+                        <label id="HelmSummaryTroopDefenseSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryTroopDefenseSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryTroopDefenseSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryTroopDefenseSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryTroopDefenseSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryTroopDefenseSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryTroopDefenseSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryTroopDefenseSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>TH</td>
+                    <td>
+                        <label id="HelmSummaryTroopHealthSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryTroopHealthSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryTroopHealthSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryTroopHealthSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryTroopHealthSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryTroopHealthSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryTroopHealthSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryTroopHealthSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>AD</td>
+                    <td>
+                        <label id="HelmSummaryAttackDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryAttackDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryAttackDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryAttackDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryAttackDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryAttackDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryAttackDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryAttackDebuffSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>HD</td>
+                    <td>
+                        <label id="HelmSummaryHealthDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryHealthDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryHealthDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryHealthDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryHealthDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryHealthDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryHealthDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryHealthDebuffSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>DD</td>
+                    <td>
+                        <label id="HelmSummaryDefenseDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryDefenseDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryDefenseDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryDefenseDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryDefenseDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryDefenseDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryDefenseDebuffSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryDefenseDebuffSB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>MS</td>
+                    <td>
+                        <label id="HelmSummaryMarchSpeedSB" />
+                    </td>
+                    <td>
+                        <label id="WeaponSummaryMarchSpeedSB" />
+                    </td>
+                    <td>
+                        <label id="BodySummaryMarchSpeedSB" />
+                    </td>
+                    <td>
+                        <label id="FootSummaryMarchSpeedSB" />
+                    </td>
+                    <td>
+                        <label id="A1SummaryMarchSpeedSB" />
+                    </td>
+                    <td>
+                        <label id="A2SummaryMarchSpeedSB" />
+                    </td>
+                    <td>
+                        <label id="A3SummaryMarchSpeedSB" />
+                    </td>
+                    <td>
+                        <label id="FullSummaryMarchSpeedSB" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-9 col-sm-8 col-xs-7"><h1>Core Creation Information</h1></div>
+                <div class="col-md-3 col-sm-4 col-xs-5" style="vertical-align:bottom">Contact: <a href="mailto:support@gowminion.com">support@gowminion.com</a></div>
+            </div>
+        </div>
+        <!-- Bootstrap FAQ - START -->
+        <div class="container">
+
+            <div class="panel-group" id="accordion">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        RA = Ranged Attack; CA = Calvary Attack; IA = Infantry Attack; TA = Troop Attack; TD = Troop Defense; TH = Troop Health; AD = Attack Debuff; HD = Health Debuff; DD = Defense Debuff; MS = March Speed;
+                    </div>
+                </div>
+                <!--Minion Section-->
+                <div class="faqHeader">Core Builder</div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseHelms">Helms</a>
+                        </h4>
+                    </div>
+                    <div id="collapseHelms" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table-condensed">
+                                <tr>
+                                    <th width="60"></th>
+                                    <th>Core</th>
+                                    <th>Piece1</th>
+                                    <th>Piece2</th>
+                                    <th>Piece3</th>
+                                    <th>Piece4</th>
+                                    <th>Piece5</th>
+                                    <th>Piece6</th>
+                                    <th>Summary</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td width="60"></td>
+                                    <td>
+                                        @Html.DropDownList("HelmCores", (IEnumerable<SelectListItem>)ViewBag.CoreList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece1", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece2", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece3", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece4", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece5", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece6", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <!-- This is where the level selection drop down will go default to level 6 for everything -->
+                                </tr>
+                                <tr>
+                                    <td>RA</td>
+                                    <td>
+                                        <label id="HelmCoreRangedAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1RangedAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2RangedAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3RangedAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4RangedAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5RangedAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6RangedAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryRangedAttack" />
+                                    </td>
+                                    <td>RA</td>
+                                </tr>
+                                <tr>
+                                    <td>CA</td>
+                                    <td>
+                                        <label id="HelmCoreCalvaryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1CalvaryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2CalvaryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3CalvaryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4CalvaryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5CalvaryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6CalvaryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryCalvaryAttack" />
+                                    </td>
+                                    <td>CA</td>
+                                </tr>
+                                <tr>
+                                    <td>IA</td>
+                                    <td>
+                                        <label id="HelmCoreInfantryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1InfantryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2InfantryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3InfantryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4InfantryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5InfantryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6InfantryAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryInfantryAttack" />
+                                    </td>
+                                    <td>IA</td>
+                                </tr>
+                                <tr>
+                                    <td>TA</td>
+                                    <td>
+                                        <label id="HelmCoreTroopAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1TroopAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2TroopAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3TroopAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4TroopAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5TroopAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6TroopAttack" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryTroopAttack" />
+                                    </td>
+                                    <td>TA</td>
+                                </tr>
+                                <tr>
+                                    <td>TD</td>
+                                    <td>
+                                        <label id="HelmCoreTroopDefense" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1TroopDefense" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2TroopDefense" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3TroopDefense" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4TroopDefense" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5TroopDefense" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6TroopDefense" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryTroopDefense" />
+                                    </td>
+                                    <td>TD</td>
+                                </tr>
+                                <tr>
+                                    <td>TH</td>
+                                    <td>
+                                        <label id="HelmCoreTroopHealth" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1TroopHealth" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2TroopHealth" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3TroopHealth" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4TroopHealth" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5TroopHealth" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6TroopHealth" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryTroopHealth" />
+                                    </td>
+                                    <td>TH</td>
+                                </tr>
+                                <tr>
+                                    <td>AD</td>
+                                    <td>
+                                        <label id="HelmCoreAttackDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1AttackDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2AttackDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3AttackDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4AttackDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5AttackDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6AttackDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryAttackDebuff" />
+                                    </td>
+                                    <td>AD</td>
+                                </tr>
+                                <tr>
+                                    <td>HD</td>
+                                    <td>
+                                        <label id="HelmCoreHealthDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1HealthDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2HealthDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3HealthDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4HealthDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5HealthDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6HealthDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryHealthDebuff" />
+                                    </td>
+                                    <td>HD</td>
+                                </tr>
+                                <tr>
+                                    <td>DD</td>
+                                    <td>
+                                        <label id="HelmCoreDefenseDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1DefenseDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2DefenseDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3DefenseDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4DefenseDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5DefenseDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6DefenseDebuff" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryDefenseDebuff" />
+                                    </td>
+                                    <td>DD</td>
+                                </tr>
+                                <tr>
+                                    <td>MS</td>
+                                    <td>
+                                        <label id="HelmCoreMarchSpeed" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece1MarchSpeed" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece2MarchSpeed" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece3MarchSpeed" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece4MarchSpeed" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece5MarchSpeed" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmPiece6MarchSpeed" />
+                                    </td>
+                                    <td>
+                                        <label id="HelmSummaryMarchSpeed" />
+                                    </td>
+                                    <td>MS</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+        <style>
+            .faqHeader {
+                font-size: 20px;
+                margin: 20px;
+            }
+        </style>
+        <!-- Bootstrap FAQ - END -->
+    </div>
+</body>
+}
+
+<script>
+    
+    var HelmRangedAttackLow = 0; 
+    var HelmRangedAttackHigh = 0; 
+    var HelmCalvaryAttackLow = 0; 
+    var HelmCalvaryAttackHigh = 0; 
+    var HelmInfantryAttackLow = 0; 
+    var HelmInfantryAttackHigh = 0; 
+    var HelmTroopAttackLow = 0; 
+    var HelmTroopAttackHigh = 0; 
+    var HelmTroopDefenseLow = 0; 
+    var HelmTroopDefenseHigh = 0; 
+    var HelmTroopHealthLow = 0; 
+    var HelmTroopHealthHigh = 0; 
+    var HelmAttackDebufLow = 0; 
+    var HelmAttackDebuffHigh = 0; 
+    var HelmHealthDebuffLow = 0; 
+    var HelmHealthDebuffHigh = 0; 
+    var HelmDefenseDebuffLow = 0; 
+    var HelmDefenseDebuffHigh = 0; 
+    var HelmMarchSpeedLow = 0; 
+    var HelmMarchSpeedHigh = 0;
+
+    var FullSummaryRangedAttackLow = 0; 
+    var FullSummaryRangedAttackHigh = 0; 
+    var FullSummaryCalvaryAttackLow = 0; 
+    var FullSummaryCalvaryAttackHigh = 0; 
+    var FullSummaryInfantryAttackLow = 0; 
+    var FullSummaryInfantryAttackHigh = 0; 
+    var FullSummaryTroopAttackLow = 0; 
+    var FullSummaryTroopAttackHigh = 0; 
+    var FullSummaryTroopDefenseLow = 0; 
+    var FullSummaryTroopDefenseHigh = 0; 
+    var FullSummaryTroopHealthLow = 0; 
+    var FullSummaryTroopHealthHigh = 0; 
+    var FullSummaryAttackDebufLow = 0; 
+    var FullSummaryAttackDebuffHigh = 0; 
+    var FullSummaryHealthDebuffLow = 0; 
+    var FullSummaryHealthDebuffHigh = 0; 
+    var FullSummaryDefenseDebuffLow = 0; 
+    var FullSummaryDefenseDebuffHigh = 0; 
+    var FullSummaryMarchSpeedLow = 0; 
+    var FullSummaryMarchSpeedHigh = 0;
+
+    $(function(){
+        $('#nav').hover(function(){
+            $(this).animate({width:'500px'},500);
+        },function(){
+            $(this).animate({width:'35px'},500);
+        }).trigger('mouseleave');
+    });
+
+    var model = @Html.Raw(Json.Encode(@ViewBag.Cores));
+    var modelPiece = @Html.Raw(Json.Encode(@ViewBag.Pieces));
+
+    $(function () {
+        $("[name='HelmCores']").change(function () {
+            if (model[document.getElementById("HelmCores").selectedIndex-1].RangedAttackLow == model[document.getElementById("HelmCores").selectedIndex-1].RangedAttackHigh)
+            {
+                document.getElementById("HelmCoreRangedAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].RangedAttackLow;
+            } else{
+                document.getElementById("HelmCoreRangedAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].RangedAttackLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].RangedAttackHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].CalvaryAttackLow == model[document.getElementById("HelmCores").selectedIndex-1].CalvaryAttackHigh)
+            {
+                document.getElementById("HelmCoreCalvaryAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].CalvaryAttackLow;
+            } else{
+                document.getElementById("HelmCoreCalvaryAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].CalvaryAttackLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].CalvaryAttackHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].InfantryAttackLow == model[document.getElementById("HelmCores").selectedIndex-1].InfantryAttackHigh)
+            {
+                document.getElementById("HelmCoreInfantryAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].InfantryAttackLow;
+            } else{
+                document.getElementById("HelmCoreInfantryAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].InfantryAttackLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].InfantryAttackHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].TroopAttackLow == model[document.getElementById("HelmCores").selectedIndex-1].TroopAttackHigh)
+            {
+                document.getElementById("HelmCoreTroopAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].TroopAttackLow;
+            } else{
+                document.getElementById("HelmCoreTroopAttack").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].TroopAttackLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].TroopAttackHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].TroopDefenseLow == model[document.getElementById("HelmCores").selectedIndex-1].TroopDefenseHigh)
+            {
+                document.getElementById("HelmCoreTroopDefense").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].TroopDefenseLow;
+            } else{
+                document.getElementById("HelmCoreTroopDefense").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].TroopDefenseLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].TroopDefenseHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].TroopHealthLow == model[document.getElementById("HelmCores").selectedIndex-1].TroopHealthHigh)
+            {
+                document.getElementById("HelmCoreTroopHealth").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].TroopHealthLow;
+            } else{
+                document.getElementById("HelmCoreTroopHealth").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].TroopHealthLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].TroopHealthHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].AttackDebufLow == model[document.getElementById("HelmCores").selectedIndex-1].AttackDebuffHigh)
+            {
+                document.getElementById("HelmCoreAttackDebuff").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].AttackDebufLow;
+            } else{
+                document.getElementById("HelmCoreAttackDebuff").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].AttackDebufLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].AttackDebuffHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].HealthDebuffLow == model[document.getElementById("HelmCores").selectedIndex-1].HealthDebuffHigh)
+            {
+                document.getElementById("HelmCoreHealthDebuff").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].HealthDebuffLow;
+            } else{
+                document.getElementById("HelmCoreHealthDebuff").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].HealthDebuffLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].HealthDebuffHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].DefenseDebuffLow == model[document.getElementById("HelmCores").selectedIndex-1].DefenseDebuffHigh)
+            {
+                document.getElementById("HelmCoreDefenseDebuff").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].DefenseDebuffLow;
+            } else{
+                document.getElementById("HelmCoreDefenseDebuff").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].DefenseDebuffLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].DefenseDebuffHigh;
+            }
+            if (model[document.getElementById("HelmCores").selectedIndex-1].MarchSpeedLow == model[document.getElementById("HelmCores").selectedIndex-1].MarchSpeedHigh)
+            {
+                document.getElementById("HelmCoreMarchSpeed").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].MarchSpeedLow;
+            } else{
+                document.getElementById("HelmCoreMarchSpeed").innerHTML= model[document.getElementById("HelmCores").selectedIndex-1].MarchSpeedLow + "-" + model[document.getElementById("HelmCores").selectedIndex-1].MarchSpeedHigh;
+            }
+            helmSummary();
+        });
+        $("[name='HelmPiece1']").change(function () {            
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].RangedAttackLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].RangedAttackHigh)
+            {
+                document.getElementById("HelmPiece1RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].RangedAttackLow;
+            } else{
+                document.getElementById("HelmPiece1RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].RangedAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].CalvaryAttackLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].CalvaryAttackHigh)
+            {
+                document.getElementById("HelmPiece1CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].CalvaryAttackLow;
+            } else{
+                document.getElementById("HelmPiece1CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].CalvaryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].CalvaryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].InfantryAttackLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].InfantryAttackHigh)
+            {
+                document.getElementById("HelmPiece1InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].InfantryAttackLow;
+            } else{
+                document.getElementById("HelmPiece1InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].InfantryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopAttackLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopAttackHigh)
+            {
+                document.getElementById("HelmPiece1TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopAttackLow;
+            } else{
+                document.getElementById("HelmPiece1TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopDefenseLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopDefenseHigh)
+            {
+                document.getElementById("HelmPiece1TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopDefenseLow;
+            } else{
+                document.getElementById("HelmPiece1TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopDefenseHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopHealthLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopHealthHigh)
+            {
+                document.getElementById("HelmPiece1TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopHealthLow;
+            } else{
+                document.getElementById("HelmPiece1TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopHealthHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].AttackDebufLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].AttackDebuffHigh)
+            {
+                document.getElementById("HelmPiece1AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].AttackDebufLow;
+            } else{
+                document.getElementById("HelmPiece1AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].AttackDebufLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].AttackDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].HealthDebuffLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].HealthDebuffHigh)
+            {
+                document.getElementById("HelmPiece1HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].HealthDebuffLow;
+            } else{
+                document.getElementById("HelmPiece1HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].HealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].HealthDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].DefenseDebuffLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].DefenseDebuffHigh)
+            {
+                document.getElementById("HelmPiece1DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].DefenseDebuffLow;
+            } else{
+                document.getElementById("HelmPiece1DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].DefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].DefenseDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].MarchSpeedLow == modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].MarchSpeedHigh)
+            {
+                document.getElementById("HelmPiece1MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].MarchSpeedLow;
+            } else{
+                document.getElementById("HelmPiece1MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].MarchSpeedHigh;
+            }
+            helmSummary();
+        });
+        $("[name='HelmPiece2']").change(function () {            
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].RangedAttackLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].RangedAttackHigh)
+            {
+                document.getElementById("HelmPiece2RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].RangedAttackLow;
+            } else{
+                document.getElementById("HelmPiece2RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].RangedAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].CalvaryAttackLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].CalvaryAttackHigh)
+            {
+                document.getElementById("HelmPiece2CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].CalvaryAttackLow;
+            } else{
+                document.getElementById("HelmPiece2CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].CalvaryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].CalvaryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].InfantryAttackLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].InfantryAttackHigh)
+            {
+                document.getElementById("HelmPiece2InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].InfantryAttackLow;
+            } else{
+                document.getElementById("HelmPiece2InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].InfantryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopAttackLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopAttackHigh)
+            {
+                document.getElementById("HelmPiece2TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopAttackLow;
+            } else{
+                document.getElementById("HelmPiece2TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopDefenseLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopDefenseHigh)
+            {
+                document.getElementById("HelmPiece2TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopDefenseLow;
+            } else{
+                document.getElementById("HelmPiece2TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopDefenseHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopHealthLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopHealthHigh)
+            {
+                document.getElementById("HelmPiece2TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopHealthLow;
+            } else{
+                document.getElementById("HelmPiece2TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopHealthHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].AttackDebufLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].AttackDebuffHigh)
+            {
+                document.getElementById("HelmPiece2AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].AttackDebufLow;
+            } else{
+                document.getElementById("HelmPiece2AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].AttackDebufLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].AttackDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].HealthDebuffLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].HealthDebuffHigh)
+            {
+                document.getElementById("HelmPiece2HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].HealthDebuffLow;
+            } else{
+                document.getElementById("HelmPiece2HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].HealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].HealthDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].DefenseDebuffLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].DefenseDebuffHigh)
+            {
+                document.getElementById("HelmPiece2DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].DefenseDebuffLow;
+            } else{
+                document.getElementById("HelmPiece2DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].DefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].DefenseDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].MarchSpeedLow == modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].MarchSpeedHigh)
+            {
+                document.getElementById("HelmPiece2MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].MarchSpeedLow;
+            } else{
+                document.getElementById("HelmPiece2MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].MarchSpeedHigh;
+            }
+            helmSummary();
+        });
+        $("[name='HelmPiece3']").change(function () {            
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].RangedAttackLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].RangedAttackHigh)
+            {
+                document.getElementById("HelmPiece3RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].RangedAttackLow;
+            } else{
+                document.getElementById("HelmPiece3RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].RangedAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].CalvaryAttackLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].CalvaryAttackHigh)
+            {
+                document.getElementById("HelmPiece3CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].CalvaryAttackLow;
+            } else{
+                document.getElementById("HelmPiece3CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].CalvaryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].CalvaryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].InfantryAttackLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].InfantryAttackHigh)
+            {
+                document.getElementById("HelmPiece3InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].InfantryAttackLow;
+            } else{
+                document.getElementById("HelmPiece3InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].InfantryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopAttackLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopAttackHigh)
+            {
+                document.getElementById("HelmPiece3TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopAttackLow;
+            } else{
+                document.getElementById("HelmPiece3TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopDefenseLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopDefenseHigh)
+            {
+                document.getElementById("HelmPiece3TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopDefenseLow;
+            } else{
+                document.getElementById("HelmPiece3TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopDefenseHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopHealthLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopHealthHigh)
+            {
+                document.getElementById("HelmPiece3TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopHealthLow;
+            } else{
+                document.getElementById("HelmPiece3TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopHealthHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].AttackDebufLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].AttackDebuffHigh)
+            {
+                document.getElementById("HelmPiece3AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].AttackDebufLow;
+            } else{
+                document.getElementById("HelmPiece3AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].AttackDebufLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].AttackDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].HealthDebuffLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].HealthDebuffHigh)
+            {
+                document.getElementById("HelmPiece3HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].HealthDebuffLow;
+            } else{
+                document.getElementById("HelmPiece3HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].HealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].HealthDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].DefenseDebuffLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].DefenseDebuffHigh)
+            {
+                document.getElementById("HelmPiece3DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].DefenseDebuffLow;
+            } else{
+                document.getElementById("HelmPiece3DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].DefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].DefenseDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].MarchSpeedLow == modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].MarchSpeedHigh)
+            {
+                document.getElementById("HelmPiece3MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].MarchSpeedLow;
+            } else{
+                document.getElementById("HelmPiece3MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].MarchSpeedHigh;
+            }
+            helmSummary();
+        });
+        $("[name='HelmPiece4']").change(function () {            
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].RangedAttackLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].RangedAttackHigh)
+            {
+                document.getElementById("HelmPiece4RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].RangedAttackLow;
+            } else{
+                document.getElementById("HelmPiece4RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].RangedAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].CalvaryAttackLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].CalvaryAttackHigh)
+            {
+                document.getElementById("HelmPiece4CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].CalvaryAttackLow;
+            } else{
+                document.getElementById("HelmPiece4CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].CalvaryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].CalvaryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].InfantryAttackLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].InfantryAttackHigh)
+            {
+                document.getElementById("HelmPiece4InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].InfantryAttackLow;
+            } else{
+                document.getElementById("HelmPiece4InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].InfantryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopAttackLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopAttackHigh)
+            {
+                document.getElementById("HelmPiece4TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopAttackLow;
+            } else{
+                document.getElementById("HelmPiece4TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopDefenseLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopDefenseHigh)
+            {
+                document.getElementById("HelmPiece4TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopDefenseLow;
+            } else{
+                document.getElementById("HelmPiece4TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopDefenseHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopHealthLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopHealthHigh)
+            {
+                document.getElementById("HelmPiece4TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopHealthLow;
+            } else{
+                document.getElementById("HelmPiece4TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopHealthHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].AttackDebufLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].AttackDebuffHigh)
+            {
+                document.getElementById("HelmPiece4AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].AttackDebufLow;
+            } else{
+                document.getElementById("HelmPiece4AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].AttackDebufLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].AttackDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].HealthDebuffLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].HealthDebuffHigh)
+            {
+                document.getElementById("HelmPiece4HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].HealthDebuffLow;
+            } else{
+                document.getElementById("HelmPiece4HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].HealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].HealthDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].DefenseDebuffLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].DefenseDebuffHigh)
+            {
+                document.getElementById("HelmPiece4DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].DefenseDebuffLow;
+            } else{
+                document.getElementById("HelmPiece4DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].DefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].DefenseDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].MarchSpeedLow == modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].MarchSpeedHigh)
+            {
+                document.getElementById("HelmPiece4MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].MarchSpeedLow;
+            } else{
+                document.getElementById("HelmPiece4MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].MarchSpeedHigh;
+            }
+            helmSummary();
+        });
+        $("[name='HelmPiece5']").change(function () {            
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].RangedAttackLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].RangedAttackHigh)
+            {
+                document.getElementById("HelmPiece5RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].RangedAttackLow;
+            } else{
+                document.getElementById("HelmPiece5RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].RangedAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].CalvaryAttackLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].CalvaryAttackHigh)
+            {
+                document.getElementById("HelmPiece5CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].CalvaryAttackLow;
+            } else{
+                document.getElementById("HelmPiece5CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].CalvaryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].CalvaryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].InfantryAttackLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].InfantryAttackHigh)
+            {
+                document.getElementById("HelmPiece5InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].InfantryAttackLow;
+            } else{
+                document.getElementById("HelmPiece5InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].InfantryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopAttackLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopAttackHigh)
+            {
+                document.getElementById("HelmPiece5TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopAttackLow;
+            } else{
+                document.getElementById("HelmPiece5TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopDefenseLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopDefenseHigh)
+            {
+                document.getElementById("HelmPiece5TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopDefenseLow;
+            } else{
+                document.getElementById("HelmPiece5TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopDefenseHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopHealthLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopHealthHigh)
+            {
+                document.getElementById("HelmPiece5TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopHealthLow;
+            } else{
+                document.getElementById("HelmPiece5TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopHealthHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].AttackDebufLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].AttackDebuffHigh)
+            {
+                document.getElementById("HelmPiece5AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].AttackDebufLow;
+            } else{
+                document.getElementById("HelmPiece5AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].AttackDebufLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].AttackDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].HealthDebuffLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].HealthDebuffHigh)
+            {
+                document.getElementById("HelmPiece5HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].HealthDebuffLow;
+            } else{
+                document.getElementById("HelmPiece5HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].HealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].HealthDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].DefenseDebuffLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].DefenseDebuffHigh)
+            {
+                document.getElementById("HelmPiece5DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].DefenseDebuffLow;
+            } else{
+                document.getElementById("HelmPiece5DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].DefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].DefenseDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].MarchSpeedLow == modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].MarchSpeedHigh)
+            {
+                document.getElementById("HelmPiece5MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].MarchSpeedLow;
+            } else{
+                document.getElementById("HelmPiece5MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].MarchSpeedHigh;
+            }
+            helmSummary();
+        });
+        $("[name='HelmPiece6']").change(function () {            
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackHigh)
+            {
+                document.getElementById("HelmPiece6RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow;
+            } else{
+                document.getElementById("HelmPiece6RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackHigh)
+            {
+                document.getElementById("HelmPiece6CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackLow;
+            } else{
+                document.getElementById("HelmPiece6CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackHigh)
+            {
+                document.getElementById("HelmPiece6InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow;
+            } else{
+                document.getElementById("HelmPiece6InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackHigh)
+            {
+                document.getElementById("HelmPiece6TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackLow;
+            } else{
+                document.getElementById("HelmPiece6TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseHigh)
+            {
+                document.getElementById("HelmPiece6TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow;
+            } else{
+                document.getElementById("HelmPiece6TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthHigh)
+            {
+                document.getElementById("HelmPiece6TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow;
+            } else{
+                document.getElementById("HelmPiece6TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebufLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebuffHigh)
+            {
+                document.getElementById("HelmPiece6AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebufLow;
+            } else{
+                document.getElementById("HelmPiece6AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebufLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffHigh)
+            {
+                document.getElementById("HelmPiece6HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffLow;
+            } else{
+                document.getElementById("HelmPiece6HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffHigh)
+            {
+                document.getElementById("HelmPiece6DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffLow;
+            } else{
+                document.getElementById("HelmPiece6DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffHigh;
+            }
+            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedHigh)
+            {
+                document.getElementById("HelmPiece6MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow;
+            } else{
+                document.getElementById("HelmPiece6MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedHigh;
+            }
+            helmSummary();
+        });
+
+    });
+
+
+    function helmSummary()
+    { 
+        HelmRangedAttackLow = 0; 
+        HelmRangedAttackHigh = 0; 
+        HelmCalvaryAttackLow = 0; 
+        HelmCalvaryAttackHigh = 0; 
+        HelmInfantryAttackLow = 0; 
+        HelmInfantryAttackHigh = 0; 
+        HelmTroopAttackLow = 0; 
+        HelmTroopAttackHigh = 0; 
+        HelmTroopDefenseLow = 0; 
+        HelmTroopDefenseHigh = 0; 
+        HelmTroopHealthLow = 0; 
+        HelmTroopHealthHigh = 0; 
+        HelmAttackDebufLow = 0; 
+        HelmAttackDebuffHigh = 0; 
+        HelmHealthDebuffLow = 0; 
+        HelmHealthDebuffHigh = 0; 
+        HelmDefenseDebuffLow = 0; 
+        HelmDefenseDebuffHigh = 0; 
+        HelmMarchSpeedLow = 0; 
+        HelmMarchSpeedHigh = 0;
+
+        if(document.getElementById("HelmCores").selectedIndex >0)
+        { 
+            HelmRangedAttackLow = HelmRangedAttackLow +model[document.getElementById("HelmCores").selectedIndex-1].RangedAttackLow; 
+            HelmRangedAttackHigh = HelmRangedAttackHigh +model[document.getElementById("HelmCores").selectedIndex-1].RangedAttackHigh; 
+            HelmCalvaryAttackLow = HelmCalvaryAttackLow +model[document.getElementById("HelmCores").selectedIndex-1].CalvaryAttackLow; 
+            HelmCalvaryAttackHigh = HelmCalvaryAttackHigh +model[document.getElementById("HelmCores").selectedIndex-1].CalvaryAttackHigh; 
+            HelmInfantryAttackLow = HelmInfantryAttackLow +model[document.getElementById("HelmCores").selectedIndex-1].InfantryAttackLow; 
+            HelmInfantryAttackHigh = HelmInfantryAttackHigh +model[document.getElementById("HelmCores").selectedIndex-1].InfantryAttackHigh; 
+            HelmTroopAttackLow = HelmTroopAttackLow +model[document.getElementById("HelmCores").selectedIndex-1].TroopAttackLow; 
+            HelmTroopAttackHigh = HelmTroopAttackHigh +model[document.getElementById("HelmCores").selectedIndex-1].TroopAttackHigh; 
+            HelmTroopDefenseLow = HelmTroopDefenseLow +model[document.getElementById("HelmCores").selectedIndex-1].TroopDefenseLow; 
+            HelmTroopDefenseHigh =  HelmTroopDefenseHigh+model[document.getElementById("HelmCores").selectedIndex-1].TroopDefenseHigh; 
+            HelmTroopHealthLow =  HelmTroopHealthLow+model[document.getElementById("HelmCores").selectedIndex-1].TroopHealthLow; 
+            HelmTroopHealthHigh =  HelmTroopHealthHigh+model[document.getElementById("HelmCores").selectedIndex-1].TroopHealthHigh; 
+            HelmAttackDebufLow =  HelmAttackDebufLow+model[document.getElementById("HelmCores").selectedIndex-1].AttackDebufLow; 
+            HelmAttackDebuffHigh =  HelmAttackDebuffHigh+model[document.getElementById("HelmCores").selectedIndex-1].AttackDebuffHigh; 
+            HelmHealthDebuffLow =  HelmHealthDebuffLow+model[document.getElementById("HelmCores").selectedIndex-1].HealthDebuffLow; 
+            HelmHealthDebuffHigh =  HelmHealthDebuffHigh+model[document.getElementById("HelmCores").selectedIndex-1].HealthDebuffHigh; 
+            HelmDefenseDebuffLow =  HelmDefenseDebuffLow+model[document.getElementById("HelmCores").selectedIndex-1].DefenseDebuffLow; 
+            HelmDefenseDebuffHigh =  HelmDefenseDebuffHigh+model[document.getElementById("HelmCores").selectedIndex-1].DefenseDebuffHigh; 
+            HelmMarchSpeedLow =  HelmMarchSpeedLow+model[document.getElementById("HelmCores").selectedIndex-1].MarchSpeedLow; 
+            HelmMarchSpeedHigh =  HelmMarchSpeedHigh+model[document.getElementById("HelmCores").selectedIndex-1].MarchSpeedHigh; 
+        }
+        if(document.getElementById("HelmPiece1").selectedIndex >0)
+        { 
+            HelmRangedAttackLow = HelmRangedAttackLow +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].RangedAttackLow; 
+            HelmRangedAttackHigh = HelmRangedAttackHigh +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].RangedAttackHigh; 
+            HelmCalvaryAttackLow = HelmCalvaryAttackLow +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].CalvaryAttackLow; 
+            HelmCalvaryAttackHigh = HelmCalvaryAttackHigh +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].CalvaryAttackHigh; 
+            HelmInfantryAttackLow = HelmInfantryAttackLow +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].InfantryAttackLow; 
+            HelmInfantryAttackHigh = HelmInfantryAttackHigh +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].InfantryAttackHigh; 
+            HelmTroopAttackLow = HelmTroopAttackLow +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopAttackLow; 
+            HelmTroopAttackHigh = HelmTroopAttackHigh +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopAttackHigh; 
+            HelmTroopDefenseLow = HelmTroopDefenseLow +modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopDefenseLow; 
+            HelmTroopDefenseHigh =  HelmTroopDefenseHigh+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopDefenseHigh; 
+            HelmTroopHealthLow =  HelmTroopHealthLow+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopHealthLow; 
+            HelmTroopHealthHigh =  HelmTroopHealthHigh+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].TroopHealthHigh; 
+            HelmAttackDebufLow =  HelmAttackDebufLow+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].AttackDebufLow; 
+            HelmAttackDebuffHigh =  HelmAttackDebuffHigh+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].AttackDebuffHigh; 
+            HelmHealthDebuffLow =  HelmHealthDebuffLow+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].HealthDebuffLow; 
+            HelmHealthDebuffHigh =  HelmHealthDebuffHigh+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].HealthDebuffHigh; 
+            HelmDefenseDebuffLow =  HelmDefenseDebuffLow+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].DefenseDebuffLow; 
+            HelmDefenseDebuffHigh =  HelmDefenseDebuffHigh+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].DefenseDebuffHigh; 
+            HelmMarchSpeedLow =  HelmMarchSpeedLow+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].MarchSpeedLow; 
+            HelmMarchSpeedHigh =  HelmMarchSpeedHigh+modelPiece[document.getElementById("HelmPiece1").selectedIndex-1].MarchSpeedHigh; 
+        }
+        if(document.getElementById("HelmPiece2").selectedIndex >0)
+        { 
+            HelmRangedAttackLow = HelmRangedAttackLow +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].RangedAttackLow; 
+            HelmRangedAttackHigh = HelmRangedAttackHigh +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].RangedAttackHigh; 
+            HelmCalvaryAttackLow = HelmCalvaryAttackLow +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].CalvaryAttackLow; 
+            HelmCalvaryAttackHigh = HelmCalvaryAttackHigh +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].CalvaryAttackHigh; 
+            HelmInfantryAttackLow = HelmInfantryAttackLow +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].InfantryAttackLow; 
+            HelmInfantryAttackHigh = HelmInfantryAttackHigh +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].InfantryAttackHigh; 
+            HelmTroopAttackLow = HelmTroopAttackLow +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopAttackLow; 
+            HelmTroopAttackHigh = HelmTroopAttackHigh +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopAttackHigh; 
+            HelmTroopDefenseLow = HelmTroopDefenseLow +modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopDefenseLow; 
+            HelmTroopDefenseHigh =  HelmTroopDefenseHigh+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopDefenseHigh; 
+            HelmTroopHealthLow =  HelmTroopHealthLow+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopHealthLow; 
+            HelmTroopHealthHigh =  HelmTroopHealthHigh+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].TroopHealthHigh; 
+            HelmAttackDebufLow =  HelmAttackDebufLow+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].AttackDebufLow; 
+            HelmAttackDebuffHigh =  HelmAttackDebuffHigh+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].AttackDebuffHigh; 
+            HelmHealthDebuffLow =  HelmHealthDebuffLow+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].HealthDebuffLow; 
+            HelmHealthDebuffHigh =  HelmHealthDebuffHigh+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].HealthDebuffHigh; 
+            HelmDefenseDebuffLow =  HelmDefenseDebuffLow+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].DefenseDebuffLow; 
+            HelmDefenseDebuffHigh =  HelmDefenseDebuffHigh+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].DefenseDebuffHigh; 
+            HelmMarchSpeedLow =  HelmMarchSpeedLow+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].MarchSpeedLow; 
+            HelmMarchSpeedHigh =  HelmMarchSpeedHigh+modelPiece[document.getElementById("HelmPiece2").selectedIndex-1].MarchSpeedHigh; 
+        }
+        if(document.getElementById("HelmPiece3").selectedIndex >0)
+        { 
+            HelmRangedAttackLow = HelmRangedAttackLow +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].RangedAttackLow; 
+            HelmRangedAttackHigh = HelmRangedAttackHigh +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].RangedAttackHigh; 
+            HelmCalvaryAttackLow = HelmCalvaryAttackLow +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].CalvaryAttackLow; 
+            HelmCalvaryAttackHigh = HelmCalvaryAttackHigh +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].CalvaryAttackHigh; 
+            HelmInfantryAttackLow = HelmInfantryAttackLow +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].InfantryAttackLow; 
+            HelmInfantryAttackHigh = HelmInfantryAttackHigh +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].InfantryAttackHigh; 
+            HelmTroopAttackLow = HelmTroopAttackLow +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopAttackLow; 
+            HelmTroopAttackHigh = HelmTroopAttackHigh +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopAttackHigh; 
+            HelmTroopDefenseLow = HelmTroopDefenseLow +modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopDefenseLow; 
+            HelmTroopDefenseHigh =  HelmTroopDefenseHigh+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopDefenseHigh; 
+            HelmTroopHealthLow =  HelmTroopHealthLow+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopHealthLow; 
+            HelmTroopHealthHigh =  HelmTroopHealthHigh+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].TroopHealthHigh; 
+            HelmAttackDebufLow =  HelmAttackDebufLow+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].AttackDebufLow; 
+            HelmAttackDebuffHigh =  HelmAttackDebuffHigh+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].AttackDebuffHigh; 
+            HelmHealthDebuffLow =  HelmHealthDebuffLow+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].HealthDebuffLow; 
+            HelmHealthDebuffHigh =  HelmHealthDebuffHigh+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].HealthDebuffHigh; 
+            HelmDefenseDebuffLow =  HelmDefenseDebuffLow+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].DefenseDebuffLow; 
+            HelmDefenseDebuffHigh =  HelmDefenseDebuffHigh+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].DefenseDebuffHigh; 
+            HelmMarchSpeedLow =  HelmMarchSpeedLow+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].MarchSpeedLow; 
+            HelmMarchSpeedHigh =  HelmMarchSpeedHigh+modelPiece[document.getElementById("HelmPiece3").selectedIndex-1].MarchSpeedHigh; 
+        }
+        if(document.getElementById("HelmPiece4").selectedIndex >0)
+        { 
+            HelmRangedAttackLow = HelmRangedAttackLow +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].RangedAttackLow; 
+            HelmRangedAttackHigh = HelmRangedAttackHigh +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].RangedAttackHigh; 
+            HelmCalvaryAttackLow = HelmCalvaryAttackLow +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].CalvaryAttackLow; 
+            HelmCalvaryAttackHigh = HelmCalvaryAttackHigh +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].CalvaryAttackHigh; 
+            HelmInfantryAttackLow = HelmInfantryAttackLow +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].InfantryAttackLow; 
+            HelmInfantryAttackHigh = HelmInfantryAttackHigh +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].InfantryAttackHigh; 
+            HelmTroopAttackLow = HelmTroopAttackLow +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopAttackLow; 
+            HelmTroopAttackHigh = HelmTroopAttackHigh +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopAttackHigh; 
+            HelmTroopDefenseLow = HelmTroopDefenseLow +modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopDefenseLow; 
+            HelmTroopDefenseHigh =  HelmTroopDefenseHigh+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopDefenseHigh; 
+            HelmTroopHealthLow =  HelmTroopHealthLow+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopHealthLow; 
+            HelmTroopHealthHigh =  HelmTroopHealthHigh+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].TroopHealthHigh; 
+            HelmAttackDebufLow =  HelmAttackDebufLow+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].AttackDebufLow; 
+            HelmAttackDebuffHigh =  HelmAttackDebuffHigh+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].AttackDebuffHigh; 
+            HelmHealthDebuffLow =  HelmHealthDebuffLow+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].HealthDebuffLow; 
+            HelmHealthDebuffHigh =  HelmHealthDebuffHigh+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].HealthDebuffHigh; 
+            HelmDefenseDebuffLow =  HelmDefenseDebuffLow+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].DefenseDebuffLow; 
+            HelmDefenseDebuffHigh =  HelmDefenseDebuffHigh+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].DefenseDebuffHigh; 
+            HelmMarchSpeedLow =  HelmMarchSpeedLow+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].MarchSpeedLow; 
+            HelmMarchSpeedHigh =  HelmMarchSpeedHigh+modelPiece[document.getElementById("HelmPiece4").selectedIndex-1].MarchSpeedHigh; 
+        }
+        if(document.getElementById("HelmPiece5").selectedIndex >0)
+        { 
+            HelmRangedAttackLow = HelmRangedAttackLow +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].RangedAttackLow; 
+            HelmRangedAttackHigh = HelmRangedAttackHigh +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].RangedAttackHigh; 
+            HelmCalvaryAttackLow = HelmCalvaryAttackLow +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].CalvaryAttackLow; 
+            HelmCalvaryAttackHigh = HelmCalvaryAttackHigh +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].CalvaryAttackHigh; 
+            HelmInfantryAttackLow = HelmInfantryAttackLow +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].InfantryAttackLow; 
+            HelmInfantryAttackHigh = HelmInfantryAttackHigh +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].InfantryAttackHigh; 
+            HelmTroopAttackLow = HelmTroopAttackLow +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopAttackLow; 
+            HelmTroopAttackHigh = HelmTroopAttackHigh +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopAttackHigh; 
+            HelmTroopDefenseLow = HelmTroopDefenseLow +modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopDefenseLow; 
+            HelmTroopDefenseHigh =  HelmTroopDefenseHigh+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopDefenseHigh; 
+            HelmTroopHealthLow =  HelmTroopHealthLow+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopHealthLow; 
+            HelmTroopHealthHigh =  HelmTroopHealthHigh+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].TroopHealthHigh; 
+            HelmAttackDebufLow =  HelmAttackDebufLow+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].AttackDebufLow; 
+            HelmAttackDebuffHigh =  HelmAttackDebuffHigh+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].AttackDebuffHigh; 
+            HelmHealthDebuffLow =  HelmHealthDebuffLow+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].HealthDebuffLow; 
+            HelmHealthDebuffHigh =  HelmHealthDebuffHigh+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].HealthDebuffHigh; 
+            HelmDefenseDebuffLow =  HelmDefenseDebuffLow+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].DefenseDebuffLow; 
+            HelmDefenseDebuffHigh =  HelmDefenseDebuffHigh+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].DefenseDebuffHigh; 
+            HelmMarchSpeedLow =  HelmMarchSpeedLow+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].MarchSpeedLow; 
+            HelmMarchSpeedHigh =  HelmMarchSpeedHigh+modelPiece[document.getElementById("HelmPiece5").selectedIndex-1].MarchSpeedHigh; 
+        }
+        if(document.getElementById("HelmPiece6").selectedIndex >0)
+        { 
+            HelmRangedAttackLow = HelmRangedAttackLow +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow; 
+            HelmRangedAttackHigh = HelmRangedAttackHigh +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackHigh; 
+            HelmCalvaryAttackLow = HelmCalvaryAttackLow +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackLow; 
+            HelmCalvaryAttackHigh = HelmCalvaryAttackHigh +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackHigh; 
+            HelmInfantryAttackLow = HelmInfantryAttackLow +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow; 
+            HelmInfantryAttackHigh = HelmInfantryAttackHigh +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackHigh; 
+            HelmTroopAttackLow = HelmTroopAttackLow +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackLow; 
+            HelmTroopAttackHigh = HelmTroopAttackHigh +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackHigh; 
+            HelmTroopDefenseLow = HelmTroopDefenseLow +modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow; 
+            HelmTroopDefenseHigh =  HelmTroopDefenseHigh+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseHigh; 
+            HelmTroopHealthLow =  HelmTroopHealthLow+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow; 
+            HelmTroopHealthHigh =  HelmTroopHealthHigh+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthHigh; 
+            HelmAttackDebufLow =  HelmAttackDebufLow+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebufLow; 
+            HelmAttackDebuffHigh =  HelmAttackDebuffHigh+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebuffHigh; 
+            HelmHealthDebuffLow =  HelmHealthDebuffLow+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffLow; 
+            HelmHealthDebuffHigh =  HelmHealthDebuffHigh+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffHigh; 
+            HelmDefenseDebuffLow =  HelmDefenseDebuffLow+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffLow; 
+            HelmDefenseDebuffHigh =  HelmDefenseDebuffHigh+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffHigh; 
+            HelmMarchSpeedLow =  HelmMarchSpeedLow+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow; 
+            HelmMarchSpeedHigh =  HelmMarchSpeedHigh+modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedHigh; 
+        }
+
+
+        document.getElementById("HelmSummaryRangedAttack").innerHTML= HelmRangedAttackLow + "-" +HelmRangedAttackHigh;
+        document.getElementById("HelmSummaryCalvaryAttack").innerHTML= HelmCalvaryAttackLow + "-" +HelmCalvaryAttackHigh;
+        document.getElementById("HelmSummaryInfantryAttack").innerHTML= HelmInfantryAttackLow + "-" +HelmInfantryAttackHigh;
+        document.getElementById("HelmSummaryTroopAttack").innerHTML= HelmTroopAttackLow + "-" +HelmTroopAttackHigh;
+        document.getElementById("HelmSummaryTroopDefense").innerHTML= HelmTroopDefenseLow + "-" +HelmTroopDefenseHigh;
+        document.getElementById("HelmSummaryTroopHealth").innerHTML= HelmTroopHealthLow + "-" +HelmTroopHealthHigh;
+        document.getElementById("HelmSummaryAttackDebuff").innerHTML= HelmAttackDebufLow + "-" +HelmAttackDebuffHigh;
+        document.getElementById("HelmSummaryHealthDebuff").innerHTML= HelmHealthDebuffLow + "-" +HelmHealthDebuffHigh;
+        document.getElementById("HelmSummaryDefenseDebuff").innerHTML= HelmDefenseDebuffLow + "-" +HelmDefenseDebuffHigh;
+        document.getElementById("HelmSummaryMarchSpeed").innerHTML= HelmMarchSpeedLow + "-" +HelmMarchSpeedHigh;
+
+        fullSummary();
+    }
+
+    function fullSummary()
+    {
+
+        FullSummaryRangedAttackLow = 0; 
+        FullSummaryRangedAttackHigh = 0; 
+        FullSummaryCalvaryAttackLow = 0; 
+        FullSummaryCalvaryAttackHigh = 0; 
+        FullSummaryInfantryAttackLow = 0; 
+        FullSummaryInfantryAttackHigh = 0; 
+        FullSummaryTroopAttackLow = 0; 
+        FullSummaryTroopAttackHigh = 0; 
+        FullSummaryTroopDefenseLow = 0; 
+        FullSummaryTroopDefenseHigh = 0; 
+        FullSummaryTroopHealthLow = 0; 
+        FullSummaryTroopHealthHigh = 0; 
+        FullSummaryAttackDebufLow = 0; 
+        FullSummaryAttackDebuffHigh = 0; 
+        FullSummaryHealthDebuffLow = 0; 
+        FullSummaryHealthDebuffHigh = 0; 
+        FullSummaryDefenseDebuffLow = 0; 
+        FullSummaryDefenseDebuffHigh = 0; 
+        FullSummaryMarchSpeedLow = 0; 
+        FullSummaryMarchSpeedHigh = 0;
+
+        document.getElementById("HelmSummaryRangedAttackSB").innerHTML= HelmRangedAttackLow + "-" +HelmRangedAttackHigh;
+        document.getElementById("HelmSummaryCalvaryAttackSB").innerHTML= HelmCalvaryAttackLow + "-" +HelmCalvaryAttackHigh;
+        document.getElementById("HelmSummaryInfantryAttackSB").innerHTML= HelmInfantryAttackLow + "-" +HelmInfantryAttackHigh;
+        document.getElementById("HelmSummaryTroopAttackSB").innerHTML= HelmTroopAttackLow + "-" +HelmTroopAttackHigh;
+        document.getElementById("HelmSummaryTroopDefenseSB").innerHTML= HelmTroopDefenseLow + "-" +HelmTroopDefenseHigh;
+        document.getElementById("HelmSummaryTroopHealthSB").innerHTML= HelmTroopHealthLow + "-" +HelmTroopHealthHigh;
+        document.getElementById("HelmSummaryAttackDebuffSB").innerHTML= HelmAttackDebufLow + "-" +HelmAttackDebuffHigh;
+        document.getElementById("HelmSummaryHealthDebuffSB").innerHTML= HelmHealthDebuffLow + "-" +HelmHealthDebuffHigh;
+        document.getElementById("HelmSummaryDefenseDebuffSB").innerHTML= HelmDefenseDebuffLow + "-" +HelmDefenseDebuffHigh;
+        document.getElementById("HelmSummaryMarchSpeedSB").innerHTML= HelmMarchSpeedLow + "-" +HelmMarchSpeedHigh;
+
+        FullSummaryRangedAttackLow = HelmRangedAttackLow; 
+        FullSummaryRangedAttackHigh = HelmRangedAttackHigh; 
+        FullSummaryCalvaryAttackLow = HelmCalvaryAttackLow; 
+        FullSummaryCalvaryAttackHigh = HelmCalvaryAttackHigh; 
+        FullSummaryInfantryAttackLow = HelmInfantryAttackLow; 
+        FullSummaryInfantryAttackHigh = HelmInfantryAttackHigh; 
+        FullSummaryTroopAttackLow = HelmTroopAttackLow; 
+        FullSummaryTroopAttackHigh = HelmTroopAttackHigh; 
+        FullSummaryTroopDefenseLow = HelmTroopDefenseLow; 
+        FullSummaryTroopDefenseHigh = HelmTroopDefenseHigh; 
+        FullSummaryTroopHealthLow = HelmTroopHealthLow; 
+        FullSummaryTroopHealthHigh = HelmTroopHealthHigh; 
+        FullSummaryAttackDebufLow = HelmAttackDebufLow; 
+        FullSummaryAttackDebuffHigh = HelmAttackDebuffHigh; 
+        FullSummaryHealthDebuffLow = HelmHealthDebuffLow; 
+        FullSummaryHealthDebuffHigh = HelmHealthDebuffHigh; 
+        FullSummaryDefenseDebuffLow = HelmDefenseDebuffLow; 
+        FullSummaryDefenseDebuffHigh = HelmDefenseDebuffHigh; 
+        FullSummaryMarchSpeedLow = HelmMarchSpeedLow; 
+        FullSummaryMarchSpeedHigh = HelmMarchSpeedHigh;
+
+
+        document.getElementById("FullSummaryRangedAttackSB").innerHTML= FullSummaryRangedAttackLow + "-" +FullSummaryRangedAttackHigh;
+        document.getElementById("FullSummaryCalvaryAttackSB").innerHTML= FullSummaryCalvaryAttackLow + "-" +FullSummaryCalvaryAttackHigh;
+        document.getElementById("FullSummaryInfantryAttackSB").innerHTML= FullSummaryInfantryAttackLow + "-" +FullSummaryInfantryAttackHigh;
+        document.getElementById("FullSummaryTroopAttackSB").innerHTML= FullSummaryTroopAttackLow + "-" +FullSummaryTroopAttackHigh;
+        document.getElementById("FullSummaryTroopDefenseSB").innerHTML= FullSummaryTroopDefenseLow + "-" +FullSummaryTroopDefenseHigh;
+        document.getElementById("FullSummaryTroopHealthSB").innerHTML= FullSummaryTroopHealthLow + "-" +FullSummaryTroopHealthHigh;
+        document.getElementById("FullSummaryAttackDebuffSB").innerHTML= FullSummaryAttackDebufLow + "-" +FullSummaryAttackDebuffHigh;
+        document.getElementById("FullSummaryHealthDebuffSB").innerHTML= FullSummaryHealthDebuffLow + "-" +FullSummaryHealthDebuffHigh;
+        document.getElementById("FullSummaryDefenseDebuffSB").innerHTML= FullSummaryDefenseDebuffLow + "-" +FullSummaryDefenseDebuffHigh;
+        document.getElementById("FullSummaryMarchSpeedSB").innerHTML= FullSummaryMarchSpeedLow + "-" +FullSummaryMarchSpeedHigh;
+
+    }
+</script>

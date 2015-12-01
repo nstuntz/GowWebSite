@@ -32,6 +32,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cores", "Cores", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -41,7 +42,7 @@
                         if (User.IsInRole("Admin") || User.IsInRole("MachineOwner"))
                         {
                             <li>@Html.ActionLink("Logs", "Index", "Log", null, new { @class = "navbar-brand" })</li>   
-                        }                 
+                        }
                         if (User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Logins", "Index", "Login", null, new { @class = "navbar-brand" })</li>
@@ -60,7 +61,7 @@
     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
     {
         <div class="nav navbar-form text-center">
-            @using (Html.BeginForm("SelectUser", "City", FormMethod.Post, new {@class="form-horizontal"}))
+            @using (Html.BeginForm("SelectUser", "City", FormMethod.Post, new { @class = "form-horizontal" }))
             {
 
                 @Html.AntiForgeryToken()

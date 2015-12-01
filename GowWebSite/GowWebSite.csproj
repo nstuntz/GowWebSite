@@ -209,6 +209,9 @@
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CityPayItemsMetadata.cs" />
+    <Compile Include="Models\Core.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CreateCityFullModel.cs" />
     <Compile Include="Models\CreateCityModel.cs" />
     <Compile Include="Models\GetOldestLogin2_Result.cs">
@@ -249,6 +252,9 @@
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PayItems.cs" />
+    <Compile Include="Models\Piece.cs">
+      <DependentUpon>GowModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ResourceType.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
@@ -398,6 +404,7 @@
     <Content Include="Views\City\ConfirmUpload.cshtml" />
     <Content Include="Views\Home\Deals.cshtml" />
     <Content Include="Views\City\ChangeCityOwner.cshtml" />
+    <Content Include="Views\Home\Cores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

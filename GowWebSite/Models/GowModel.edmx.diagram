@@ -26,6 +26,8 @@
         <EntityTypeShape EntityType="GowModel.UserPayItem" Width="1.5" PointX="5" PointY="10.375" />
         <AssociationConnector Association="GowModel.FK_UserPayItem_PayItem" />
         <EntityTypeShape EntityType="GowModel.MachineLoginTracker" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GowModel.Core" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="GowModel.Piece" Width="1.5" PointX="11.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

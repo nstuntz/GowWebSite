@@ -38,6 +38,17 @@ namespace GowWebSite.Controllers
             return View();
         }
 
+        public ActionResult Cores()
+        {
+            ViewBag.Message = "Your Cores Information Center.";
+            ViewBag.PiecesList = db.Pieces.Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
+            ViewBag.Pieces = db.Pieces;
+
+            ViewBag.CoreList = db.Cores.Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName }); 
+            ViewBag.Cores = db.Cores.Where(m => m.GearSlot == "Helm");
+            return View();
+        }
+
         public ActionResult Deals()
         {
             ViewBag.Message = "Your Deals page.";

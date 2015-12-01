@@ -84,6 +84,36 @@
           <Property Name="PayItemID" Type="int" Nullable="false" />
           <Property Name="Paid" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Cores">
+          <Key>
+            <PropertyRef Name="GearID" />
+          </Key>
+          <Property Name="GearID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GearSlot" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GearName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SetName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BoostType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CalvaryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CalvaryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenseLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenseHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="AttackDebufLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="AttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="DefenseDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="DefenseDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MarchSpeedLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MarchSpeedHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+        </EntityType>
         <EntityType Name="Log">
           <Key>
             <PropertyRef Name="LogID" />
@@ -121,6 +151,34 @@
           <Property Name="Cost" Type="money" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pieces">
+          <Key>
+            <PropertyRef Name="PieceID" />
+          </Key>
+          <Property Name="PieceID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PieceName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BoostType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CalvaryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CalvaryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenseLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenseHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="AttackDebufLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="AttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="DefenseDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="DefenseDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MarchSpeedLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MarchSpeedHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="ResourceType">
           <Key>
@@ -181,6 +239,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="LoginDate" Type="datetime" />
           <Property Name="RestartBlueStacksDate" Type="datetime" />
           <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" />
         </EntityType>
         <Association Name="FK_City_Login">
           <End Role="Login" Type="Self.Login" Multiplicity="1" />
@@ -313,9 +372,11 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CityInfo" EntityType="Self.CityInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CityPayItem" EntityType="Self.CityPayItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cores" EntityType="Self.Cores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayItem" EntityType="Self.PayItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pieces" EntityType="Self.Pieces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResourceType" EntityType="Self.ResourceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscription" EntityType="Self.Subscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCity" EntityType="Self.UserCity" Schema="dbo" store:Type="Tables" />
@@ -326,7 +387,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
     [MachineLoginTracker].[MachineID] AS [MachineID], 
     [MachineLoginTracker].[LoginDate] AS [LoginDate], 
     [MachineLoginTracker].[RestartBlueStacksDate] AS [RestartBlueStacksDate], 
-    [MachineLoginTracker].[Message] AS [Message]
+    [MachineLoginTracker].[Message] AS [Message], 
+    [MachineLoginTracker].[LogDate] AS [LogDate]
     FROM [dbo].[MachineLoginTracker] AS [MachineLoginTracker]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_City_Login" Association="Self.FK_City_Login">
@@ -593,6 +655,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
             <End Role="UserPayItem" EntitySet="UserPayItems" />
           </AssociationSet>
           <EntitySet Name="MachineLoginTrackers" EntityType="GowModel.MachineLoginTracker" />
+          <EntitySet Name="Cores" EntityType="GowModel.Core" />
+          <EntitySet Name="Pieces" EntityType="GowModel.Piece" />
           </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -762,6 +826,65 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="LoginDate" Type="DateTime" Precision="3" />
           <Property Name="RestartBlueStacksDate" Type="DateTime" Precision="3" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Core">
+          <Key>
+            <PropertyRef Name="GearID" />
+          </Key>
+          <Property Name="GearID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GearSlot" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GearName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SetName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BoostType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CalvaryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CalvaryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenseLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenseHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="AttackDebufLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="AttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="DefenseDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="DefenseDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MarchSpeedLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MarchSpeedHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="Piece">
+          <Key>
+            <PropertyRef Name="PieceID" />
+          </Key>
+          <Property Name="PieceID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PieceName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BoostType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CalvaryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CalvaryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenseLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenseHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="AttackDebufLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="AttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="DefenseDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="DefenseDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MarchSpeedLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MarchSpeedHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -973,10 +1096,71 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="MachineLoginTrackers">
             <EntityTypeMapping TypeName="GowModel.MachineLoginTracker">
               <MappingFragment StoreEntitySet="MachineLoginTracker">
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="RestartBlueStacksDate" ColumnName="RestartBlueStacksDate" />
                 <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
                 <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cores">
+            <EntityTypeMapping TypeName="GowModel.Core">
+              <MappingFragment StoreEntitySet="Cores">
+                <ScalarProperty Name="MarchSpeedHigh" ColumnName="MarchSpeedHigh" />
+                <ScalarProperty Name="MarchSpeedLow" ColumnName="MarchSpeedLow" />
+                <ScalarProperty Name="DefenseDebuffHigh" ColumnName="DefenseDebuffHigh" />
+                <ScalarProperty Name="DefenseDebuffLow" ColumnName="DefenseDebuffLow" />
+                <ScalarProperty Name="HealthDebuffHigh" ColumnName="HealthDebuffHigh" />
+                <ScalarProperty Name="HealthDebuffLow" ColumnName="HealthDebuffLow" />
+                <ScalarProperty Name="AttackDebuffHigh" ColumnName="AttackDebuffHigh" />
+                <ScalarProperty Name="AttackDebufLow" ColumnName="AttackDebufLow" />
+                <ScalarProperty Name="TroopHealthHigh" ColumnName="TroopHealthHigh" />
+                <ScalarProperty Name="TroopHealthLow" ColumnName="TroopHealthLow" />
+                <ScalarProperty Name="TroopDefenseHigh" ColumnName="TroopDefenseHigh" />
+                <ScalarProperty Name="TroopDefenseLow" ColumnName="TroopDefenseLow" />
+                <ScalarProperty Name="TroopAttackHigh" ColumnName="TroopAttackHigh" />
+                <ScalarProperty Name="TroopAttackLow" ColumnName="TroopAttackLow" />
+                <ScalarProperty Name="InfantryAttackHigh" ColumnName="InfantryAttackHigh" />
+                <ScalarProperty Name="InfantryAttackLow" ColumnName="InfantryAttackLow" />
+                <ScalarProperty Name="CalvaryAttackHigh" ColumnName="CalvaryAttackHigh" />
+                <ScalarProperty Name="CalvaryAttackLow" ColumnName="CalvaryAttackLow" />
+                <ScalarProperty Name="RangedAttackHigh" ColumnName="RangedAttackHigh" />
+                <ScalarProperty Name="RangedAttackLow" ColumnName="RangedAttackLow" />
+                <ScalarProperty Name="BoostType" ColumnName="BoostType" />
+                <ScalarProperty Name="SetName" ColumnName="SetName" />
+                <ScalarProperty Name="GearName" ColumnName="GearName" />
+                <ScalarProperty Name="GearSlot" ColumnName="GearSlot" />
+                <ScalarProperty Name="GearID" ColumnName="GearID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pieces">
+            <EntityTypeMapping TypeName="GowModel.Piece">
+              <MappingFragment StoreEntitySet="Pieces">
+                <ScalarProperty Name="MarchSpeedHigh" ColumnName="MarchSpeedHigh" />
+                <ScalarProperty Name="MarchSpeedLow" ColumnName="MarchSpeedLow" />
+                <ScalarProperty Name="DefenseDebuffHigh" ColumnName="DefenseDebuffHigh" />
+                <ScalarProperty Name="DefenseDebuffLow" ColumnName="DefenseDebuffLow" />
+                <ScalarProperty Name="HealthDebuffHigh" ColumnName="HealthDebuffHigh" />
+                <ScalarProperty Name="HealthDebuffLow" ColumnName="HealthDebuffLow" />
+                <ScalarProperty Name="AttackDebuffHigh" ColumnName="AttackDebuffHigh" />
+                <ScalarProperty Name="AttackDebufLow" ColumnName="AttackDebufLow" />
+                <ScalarProperty Name="TroopHealthHigh" ColumnName="TroopHealthHigh" />
+                <ScalarProperty Name="TroopHealthLow" ColumnName="TroopHealthLow" />
+                <ScalarProperty Name="TroopDefenseHigh" ColumnName="TroopDefenseHigh" />
+                <ScalarProperty Name="TroopDefenseLow" ColumnName="TroopDefenseLow" />
+                <ScalarProperty Name="TroopAttackHigh" ColumnName="TroopAttackHigh" />
+                <ScalarProperty Name="TroopAttackLow" ColumnName="TroopAttackLow" />
+                <ScalarProperty Name="InfantryAttackHigh" ColumnName="InfantryAttackHigh" />
+                <ScalarProperty Name="InfantryAttackLow" ColumnName="InfantryAttackLow" />
+                <ScalarProperty Name="CalvaryAttackHigh" ColumnName="CalvaryAttackHigh" />
+                <ScalarProperty Name="CalvaryAttackLow" ColumnName="CalvaryAttackLow" />
+                <ScalarProperty Name="RangedAttackHigh" ColumnName="RangedAttackHigh" />
+                <ScalarProperty Name="RangedAttackLow" ColumnName="RangedAttackLow" />
+                <ScalarProperty Name="BoostType" ColumnName="BoostType" />
+                <ScalarProperty Name="PieceName" ColumnName="PieceName" />
+                <ScalarProperty Name="PieceID" ColumnName="PieceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
