@@ -41,13 +41,34 @@ namespace GowWebSite.Controllers
         public ActionResult Cores()
         {
             ViewBag.Message = "Your Cores Information Center.";
-            ViewBag.PiecesList = db.Pieces.Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
-            ViewBag.Pieces = db.Pieces;
+            ViewBag.PiecesList = db.Pieces.GroupBy(m=>m.PieceName).Select(grp=>grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
+            //ViewBag.Pieces = new GowWebSite.Models.CoresModel(db);
 
-            ViewBag.CoreList = db.Cores.Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName }); 
-            ViewBag.Cores = db.Cores.Where(m => m.GearSlot == "Helm");
+            ViewBag.HelmCoreList = db.Cores.Where(m=> m.GearSlot == "Helm").Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+           // ViewBag.Cores = new GowWebSite.Models.CoresModel(db, true);
+
+            var levels = new Dictionary<int, string>()
+                {                   
+                    {1,"White (1)"},
+                    {2,"Grey (2)"},
+                    {3,"Green (3)"},
+                    {4,"Blue (4)"},
+                    {5,"Purple (5)"},
+                    {6,"Gold (6)"}
+                };
+
+            ViewBag.Levels = levels;
+
             return View();
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult GetPieceBoosts(string PieceName, int PieceLevel)
+        {
+            Piece p = db.Pieces.Where(m => m.PieceName == PieceName && m.PieceLevel == PieceLevel).FirstOrDefault();
+            return Json(p, JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult Deals()
         {

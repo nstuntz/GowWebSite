@@ -344,32 +344,54 @@
                                     <th></th>
                                 </tr>
                                 <tr>
-                                    <td width="60"></td>
+                                    <td width="60">Item</td>
                                     <td>
-                                        @Html.DropDownList("HelmCores", (IEnumerable<SelectListItem>)ViewBag.CoreList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("HelmCores", (IEnumerable<SelectListItem>)ViewBag.HelmCoreList, "Select One", htmlAttributes: new { @class = "form-control" })
                                     </td>
                                     <td>
-                                        @Html.DropDownList("HelmPiece1", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("HelmPiece1", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "Select One", htmlAttributes: new { @class = "form-control" })
                                     </td>
                                     <td>
-                                        @Html.DropDownList("HelmPiece2", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("HelmPiece2", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "Select One", htmlAttributes: new { @class = "form-control" })
                                     </td>
                                     <td>
-                                        @Html.DropDownList("HelmPiece3", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("HelmPiece3", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "Select One", htmlAttributes: new { @class = "form-control" })
                                     </td>
                                     <td>
-                                        @Html.DropDownList("HelmPiece4", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("HelmPiece4", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "Select One", htmlAttributes: new { @class = "form-control" })
                                     </td>
                                     <td>
-                                        @Html.DropDownList("HelmPiece5", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("HelmPiece5", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "Select One", htmlAttributes: new { @class = "form-control" })
                                     </td>
                                     <td>
-                                        @Html.DropDownList("HelmPiece6", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "-- Select One --", htmlAttributes: new { @class = "form-control" })
+                                        @Html.DropDownList("HelmPiece6", (IEnumerable<SelectListItem>)ViewBag.PiecesList, "Select One", htmlAttributes: new { @class = "form-control" })
                                     </td>
 
                                 </tr>
                                 <tr>
+                                    <td width="60">Level</td>
                                     <!-- This is where the level selection drop down will go default to level 6 for everything -->
+                                    <td>
+                                        @Html.DropDownList("HelmCoresLevel", new SelectList(ViewBag.Levels, "Key", "Value"), "Select One", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece1Level", new SelectList(ViewBag.Levels, "Key", "Value"), "Select One", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece2Level", new SelectList(ViewBag.Levels, "Key", "Value"), "Select One", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece3Level", new SelectList(ViewBag.Levels, "Key", "Value"), "Select One", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece4Level", new SelectList(ViewBag.Levels, "Key", "Value"), "Select One", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece5Level", new SelectList(ViewBag.Levels, "Key", "Value"), "Select One", htmlAttributes: new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("HelmPiece6Level", new SelectList(ViewBag.Levels, "Key", "Value"), "Select One", htmlAttributes: new { @class = "form-control" })
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>RA</td>
@@ -670,47 +692,883 @@
 
 <script>
     
-    var HelmRangedAttackLow = 0; 
-    var HelmRangedAttackHigh = 0; 
-    var HelmCalvaryAttackLow = 0; 
-    var HelmCalvaryAttackHigh = 0; 
-    var HelmInfantryAttackLow = 0; 
-    var HelmInfantryAttackHigh = 0; 
-    var HelmTroopAttackLow = 0; 
-    var HelmTroopAttackHigh = 0; 
-    var HelmTroopDefenseLow = 0; 
-    var HelmTroopDefenseHigh = 0; 
-    var HelmTroopHealthLow = 0; 
-    var HelmTroopHealthHigh = 0; 
-    var HelmAttackDebufLow = 0; 
-    var HelmAttackDebuffHigh = 0; 
-    var HelmHealthDebuffLow = 0; 
-    var HelmHealthDebuffHigh = 0; 
-    var HelmDefenseDebuffLow = 0; 
-    var HelmDefenseDebuffHigh = 0; 
-    var HelmMarchSpeedLow = 0; 
+    var HelmTroopAttackLow = 0;
+    var HelmTroopAttackHigh = 0;
+    var HelmTroopDefenseLow = 0;
+    var HelmTroopDefenseHigh = 0;
+    var HelmTroopHealthLow = 0;
+    var HelmTroopHealthHigh = 0;
+    var HelmStrategicTroopAttackLow = 0;
+    var HelmStrategicTroopAttackHigh = 0;
+    var HelmStrategicTroopDefenseLow = 0;
+    var HelmStrategicTroopDefenseHigh = 0;
+    var HelmStrategicTroopHealthLow = 0;
+    var HelmStrategicTroopHealthHigh = 0;
+    var HelmEnemyAttackDebuffLow = 0;
+    var HelmEnemyAttackDebuffHigh = 0;
+    var HelmEnemyStrategicAttackDebuffLow = 0;
+    var HelmEnemyStrategicAttackDebuffHigh = 0;
+    var HelmEnemyDefenseDebuffLow = 0;
+    var HelmEnemyDefenseDebuffHigh = 0;
+    var HelmEnemyStrategicDefenseDebuffLow = 0;
+    var HelmEnemyStrategicDefenseDebuffHigh = 0;
+    var HelmEnemyHealthDebuffLow = 0;
+    var HelmEnemyHealthDebuffHigh = 0;
+    var HelmEnemyStrategicHealthDebuffLow = 0;
+    var HelmEnemyStrategicHealthDebuffHigh = 0;
+    var HelmMarchSpeedLow = 0;
     var HelmMarchSpeedHigh = 0;
+    var HelmInfantryAttackLow = 0;
+    var HelmInfantryAttackHigh = 0;
+    var HelmInfantryDefenseLow = 0;
+    var HelmInfantryDefenseHigh = 0;
+    var HelmStrategicInfantryAttackLow = 0;
+    var HelmStrategicInfantryAttackHigh = 0;
+    var HelmStrategicInfantryDefenseLow = 0;
+    var HelmStrategicInfantryDefenseHigh = 0;
+    var HelmInfantryHealthLow = 0;
+    var HelmInfantryHealthHigh = 0;
+    var HelmStrategicInfantryHealthLow = 0;
+    var HelmStrategicInfantryHealthHigh = 0;
+    var HelmEnemyInfantryAttackDebuffLow = 0;
+    var HelmEnemyInfantryAttackDebuffHigh = 0;
+    var HelmStratEnemyInfantryAttackDebuffLow = 0;
+    var HelmStratEnemyInfantryAttackDebuffHigh = 0;
+    var HelmEnemyInfantryDefenseDebuffLow = 0;
+    var HelmEnemyInfantryDefenseDebuffHigh = 0;
+    var HelmEnemyStrategicInfantryDefenseDebuffLow = 0;
+    var HelmEnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var HelmEnemyStrategicInfantryHealthDebuffLow = 0;
+    var HelmEnemyStrategicInfantryHealthDebuffHigh = 0;
+    var HelmEnemyInfantryHealthDebuffLow = 0;
+    var HelmEnemyInfantryHealthDebuffHigh = 0;
+    var HelmRangedAttackLow = 0;
+    var HelmRangedAttackHigh = 0;
+    var HelmRangedDefenseLow = 0;
+    var HelmRangedDefenseHigh = 0;
+    var HelmStrategicRangedAttackLow = 0;
+    var HelmStrategicRangedAttackHigh = 0;
+    var HelmStrategicRangedDefenseLow = 0;
+    var HelmStrategicRangedDefenseHigh = 0;
+    var HelmRangedHealthLow = 0;
+    var HelmRangedHealthHigh = 0;
+    var HelmStrategicRangedHealthLow = 0;
+    var HelmStrategicRangedHealthHigh = 0;
+    var HelmEnemyRangedAttackDebuffLow = 0;
+    var HelmEnemyRangedAttackDebuffHigh = 0;
+    var HelmEnemyStrategicRangedAttackDebuffLow = 0;
+    var HelmEnemyStrategicRangedAttackDebuffHigh = 0;
+    var HelmEnemyRangedDefenseDebuffLow = 0;
+    var HelmEnemyRangedDefenseDebuffHigh = 0;
+    var HelmEnemyStrategicRangedDefenseDebuffLow = 0;
+    var HelmEnemyStrategicRangedDefenseDebuffHigh = 0;
+    var HelmEnemyRangedHealthDebuffLow = 0;
+    var HelmEnemyRangedHealthDebuffHigh = 0;
+    var HelmEnemyStrategicRangedHealthDebuffLow = 0;
+    var HelmEnemyStrategicRangedHealthDebuffHigh = 0;
+    var HelmCavalryAttackLow = 0;
+    var HelmCavalryAttackHigh = 0;
+    var HelmCavalryDefenseLow = 0;
+    var HelmCavalryDefenseHigh = 0;
+    var HelmStrategicCavalryAttackLow = 0;
+    var HelmStrategicCavalryAttackHigh = 0;
+    var HelmStrategicCavalryDefenseLow = 0;
+    var HelmStrategicCavalryDefenseHigh = 0;
+    var HelmCavalryHealthLow = 0;
+    var HelmCavalryHealthHigh = 0;
+    var HelmStrategicCavalryHealthLow = 0;
+    var HelmStrategicCavalryHealthHigh = 0;
+    var HelmEnemyCavalryAttackDebuffLow = 0;
+    var HelmEnemyCavalryAttackDebuffHigh = 0;
+    var HelmStrategicEnemyCavalryAttackDebuffLow = 0;
+    var HelmStrategicEnemyCavalryAttackDebuffHigh = 0;
+    var HelmEnemyCavalryDefenseDebuffLow = 0;
+    var HelmEnemyCavalryDefenseDebuffHigh = 0;
+    var HelmStrategicEnemyCavalryDefenseDebuffLow = 0;
+    var HelmStrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var HelmEnemyCavalryHealthDebuffLow = 0;
+    var HelmEnemyCavalryHealthDebuffHigh = 0;
+    var HelmStrategicEnemyCavalryHealthDebuffLow = 0;
+    var HelmStrategicEnemyCavalryHealthDebuffHigh = 0;
+    var HelmSiegeAttackLow = 0;
+    var HelmSiegeAttackHigh = 0;
+    var HelmSiegeDefenseLow = 0;
+    var HelmSiegeDefenseHigh = 0;
+    var HelmTrapDefenseLow = 0;
+    var HelmTrapDefenseHigh = 0;
+    var HelmStrategicTrapDefenseLow = 0;
+    var HelmStrategicTrapDefenseHigh = 0;
+    var HelmTroopTrainingSpeedLow = 0;
+    var HelmTroopTrainingSpeedHigh = 0;
+    
+    var WeaponTroopAttackLow = 0;
+    var WeaponTroopAttackHigh = 0;
+    var WeaponTroopDefenseLow = 0;
+    var WeaponTroopDefenseHigh = 0;
+    var WeaponTroopHealthLow = 0;
+    var WeaponTroopHealthHigh = 0;
+    var WeaponStrategicTroopAttackLow = 0;
+    var WeaponStrategicTroopAttackHigh = 0;
+    var WeaponStrategicTroopDefenseLow = 0;
+    var WeaponStrategicTroopDefenseHigh = 0;
+    var WeaponStrategicTroopHealthLow = 0;
+    var WeaponStrategicTroopHealthHigh = 0;
+    var WeaponEnemyAttackDebuffLow = 0;
+    var WeaponEnemyAttackDebuffHigh = 0;
+    var WeaponEnemyStrategicAttackDebuffLow = 0;
+    var WeaponEnemyStrategicAttackDebuffHigh = 0;
+    var WeaponEnemyDefenseDebuffLow = 0;
+    var WeaponEnemyDefenseDebuffHigh = 0;
+    var WeaponEnemyStrategicDefenseDebuffLow = 0;
+    var WeaponEnemyStrategicDefenseDebuffHigh = 0;
+    var WeaponEnemyHealthDebuffLow = 0;
+    var WeaponEnemyHealthDebuffHigh = 0;
+    var WeaponEnemyStrategicHealthDebuffLow = 0;
+    var WeaponEnemyStrategicHealthDebuffHigh = 0;
+    var WeaponMarchSpeedLow = 0;
+    var WeaponMarchSpeedHigh = 0;
+    var WeaponInfantryAttackLow = 0;
+    var WeaponInfantryAttackHigh = 0;
+    var WeaponInfantryDefenseLow = 0;
+    var WeaponInfantryDefenseHigh = 0;
+    var WeaponStrategicInfantryAttackLow = 0;
+    var WeaponStrategicInfantryAttackHigh = 0;
+    var WeaponStrategicInfantryDefenseLow = 0;
+    var WeaponStrategicInfantryDefenseHigh = 0;
+    var WeaponInfantryHealthLow = 0;
+    var WeaponInfantryHealthHigh = 0;
+    var WeaponStrategicInfantryHealthLow = 0;
+    var WeaponStrategicInfantryHealthHigh = 0;
+    var WeaponEnemyInfantryAttackDebuffLow = 0;
+    var WeaponEnemyInfantryAttackDebuffHigh = 0;
+    var WeaponStratEnemyInfantryAttackDebuffLow = 0;
+    var WeaponStratEnemyInfantryAttackDebuffHigh = 0;
+    var WeaponEnemyInfantryDefenseDebuffLow = 0;
+    var WeaponEnemyInfantryDefenseDebuffHigh = 0;
+    var WeaponEnemyStrategicInfantryDefenseDebuffLow = 0;
+    var WeaponEnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var WeaponEnemyStrategicInfantryHealthDebuffLow = 0;
+    var WeaponEnemyStrategicInfantryHealthDebuffHigh = 0;
+    var WeaponEnemyInfantryHealthDebuffLow = 0;
+    var WeaponEnemyInfantryHealthDebuffHigh = 0;
+    var WeaponRangedAttackLow = 0;
+    var WeaponRangedAttackHigh = 0;
+    var WeaponRangedDefenseLow = 0;
+    var WeaponRangedDefenseHigh = 0;
+    var WeaponStrategicRangedAttackLow = 0;
+    var WeaponStrategicRangedAttackHigh = 0;
+    var WeaponStrategicRangedDefenseLow = 0;
+    var WeaponStrategicRangedDefenseHigh = 0;
+    var WeaponRangedHealthLow = 0;
+    var WeaponRangedHealthHigh = 0;
+    var WeaponStrategicRangedHealthLow = 0;
+    var WeaponStrategicRangedHealthHigh = 0;
+    var WeaponEnemyRangedAttackDebuffLow = 0;
+    var WeaponEnemyRangedAttackDebuffHigh = 0;
+    var WeaponEnemyStrategicRangedAttackDebuffLow = 0;
+    var WeaponEnemyStrategicRangedAttackDebuffHigh = 0;
+    var WeaponEnemyRangedDefenseDebuffLow = 0;
+    var WeaponEnemyRangedDefenseDebuffHigh = 0;
+    var WeaponEnemyStrategicRangedDefenseDebuffLow = 0;
+    var WeaponEnemyStrategicRangedDefenseDebuffHigh = 0;
+    var WeaponEnemyRangedHealthDebuffLow = 0;
+    var WeaponEnemyRangedHealthDebuffHigh = 0;
+    var WeaponEnemyStrategicRangedHealthDebuffLow = 0;
+    var WeaponEnemyStrategicRangedHealthDebuffHigh = 0;
+    var WeaponCavalryAttackLow = 0;
+    var WeaponCavalryAttackHigh = 0;
+    var WeaponCavalryDefenseLow = 0;
+    var WeaponCavalryDefenseHigh = 0;
+    var WeaponStrategicCavalryAttackLow = 0;
+    var WeaponStrategicCavalryAttackHigh = 0;
+    var WeaponStrategicCavalryDefenseLow = 0;
+    var WeaponStrategicCavalryDefenseHigh = 0;
+    var WeaponCavalryHealthLow = 0;
+    var WeaponCavalryHealthHigh = 0;
+    var WeaponStrategicCavalryHealthLow = 0;
+    var WeaponStrategicCavalryHealthHigh = 0;
+    var WeaponEnemyCavalryAttackDebuffLow = 0;
+    var WeaponEnemyCavalryAttackDebuffHigh = 0;
+    var WeaponStrategicEnemyCavalryAttackDebuffLow = 0;
+    var WeaponStrategicEnemyCavalryAttackDebuffHigh = 0;
+    var WeaponEnemyCavalryDefenseDebuffLow = 0;
+    var WeaponEnemyCavalryDefenseDebuffHigh = 0;
+    var WeaponStrategicEnemyCavalryDefenseDebuffLow = 0;
+    var WeaponStrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var WeaponEnemyCavalryHealthDebuffLow = 0;
+    var WeaponEnemyCavalryHealthDebuffHigh = 0;
+    var WeaponStrategicEnemyCavalryHealthDebuffLow = 0;
+    var WeaponStrategicEnemyCavalryHealthDebuffHigh = 0;
+    var WeaponSiegeAttackLow = 0;
+    var WeaponSiegeAttackHigh = 0;
+    var WeaponSiegeDefenseLow = 0;
+    var WeaponSiegeDefenseHigh = 0;
+    var WeaponTrapDefenseLow = 0;
+    var WeaponTrapDefenseHigh = 0;
+    var WeaponStrategicTrapDefenseLow = 0;
+    var WeaponStrategicTrapDefenseHigh = 0;
+    var WeaponTroopTrainingSpeedLow = 0;
+    var WeaponTroopTrainingSpeedHigh = 0;
 
-    var FullSummaryRangedAttackLow = 0; 
-    var FullSummaryRangedAttackHigh = 0; 
-    var FullSummaryCalvaryAttackLow = 0; 
-    var FullSummaryCalvaryAttackHigh = 0; 
-    var FullSummaryInfantryAttackLow = 0; 
-    var FullSummaryInfantryAttackHigh = 0; 
-    var FullSummaryTroopAttackLow = 0; 
-    var FullSummaryTroopAttackHigh = 0; 
-    var FullSummaryTroopDefenseLow = 0; 
-    var FullSummaryTroopDefenseHigh = 0; 
-    var FullSummaryTroopHealthLow = 0; 
-    var FullSummaryTroopHealthHigh = 0; 
-    var FullSummaryAttackDebufLow = 0; 
-    var FullSummaryAttackDebuffHigh = 0; 
-    var FullSummaryHealthDebuffLow = 0; 
-    var FullSummaryHealthDebuffHigh = 0; 
-    var FullSummaryDefenseDebuffLow = 0; 
-    var FullSummaryDefenseDebuffHigh = 0; 
-    var FullSummaryMarchSpeedLow = 0; 
+    
+    var BodyTroopAttackLow = 0;
+    var BodyTroopAttackHigh = 0;
+    var BodyTroopDefenseLow = 0;
+    var BodyTroopDefenseHigh = 0;
+    var BodyTroopHealthLow = 0;
+    var BodyTroopHealthHigh = 0;
+    var BodyStrategicTroopAttackLow = 0;
+    var BodyStrategicTroopAttackHigh = 0;
+    var BodyStrategicTroopDefenseLow = 0;
+    var BodyStrategicTroopDefenseHigh = 0;
+    var BodyStrategicTroopHealthLow = 0;
+    var BodyStrategicTroopHealthHigh = 0;
+    var BodyEnemyAttackDebuffLow = 0;
+    var BodyEnemyAttackDebuffHigh = 0;
+    var BodyEnemyStrategicAttackDebuffLow = 0;
+    var BodyEnemyStrategicAttackDebuffHigh = 0;
+    var BodyEnemyDefenseDebuffLow = 0;
+    var BodyEnemyDefenseDebuffHigh = 0;
+    var BodyEnemyStrategicDefenseDebuffLow = 0;
+    var BodyEnemyStrategicDefenseDebuffHigh = 0;
+    var BodyEnemyHealthDebuffLow = 0;
+    var BodyEnemyHealthDebuffHigh = 0;
+    var BodyEnemyStrategicHealthDebuffLow = 0;
+    var BodyEnemyStrategicHealthDebuffHigh = 0;
+    var BodyMarchSpeedLow = 0;
+    var BodyMarchSpeedHigh = 0;
+    var BodyInfantryAttackLow = 0;
+    var BodyInfantryAttackHigh = 0;
+    var BodyInfantryDefenseLow = 0;
+    var BodyInfantryDefenseHigh = 0;
+    var BodyStrategicInfantryAttackLow = 0;
+    var BodyStrategicInfantryAttackHigh = 0;
+    var BodyStrategicInfantryDefenseLow = 0;
+    var BodyStrategicInfantryDefenseHigh = 0;
+    var BodyInfantryHealthLow = 0;
+    var BodyInfantryHealthHigh = 0;
+    var BodyStrategicInfantryHealthLow = 0;
+    var BodyStrategicInfantryHealthHigh = 0;
+    var BodyEnemyInfantryAttackDebuffLow = 0;
+    var BodyEnemyInfantryAttackDebuffHigh = 0;
+    var BodyStratEnemyInfantryAttackDebuffLow = 0;
+    var BodyStratEnemyInfantryAttackDebuffHigh = 0;
+    var BodyEnemyInfantryDefenseDebuffLow = 0;
+    var BodyEnemyInfantryDefenseDebuffHigh = 0;
+    var BodyEnemyStrategicInfantryDefenseDebuffLow = 0;
+    var BodyEnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var BodyEnemyStrategicInfantryHealthDebuffLow = 0;
+    var BodyEnemyStrategicInfantryHealthDebuffHigh = 0;
+    var BodyEnemyInfantryHealthDebuffLow = 0;
+    var BodyEnemyInfantryHealthDebuffHigh = 0;
+    var BodyRangedAttackLow = 0;
+    var BodyRangedAttackHigh = 0;
+    var BodyRangedDefenseLow = 0;
+    var BodyRangedDefenseHigh = 0;
+    var BodyStrategicRangedAttackLow = 0;
+    var BodyStrategicRangedAttackHigh = 0;
+    var BodyStrategicRangedDefenseLow = 0;
+    var BodyStrategicRangedDefenseHigh = 0;
+    var BodyRangedHealthLow = 0;
+    var BodyRangedHealthHigh = 0;
+    var BodyStrategicRangedHealthLow = 0;
+    var BodyStrategicRangedHealthHigh = 0;
+    var BodyEnemyRangedAttackDebuffLow = 0;
+    var BodyEnemyRangedAttackDebuffHigh = 0;
+    var BodyEnemyStrategicRangedAttackDebuffLow = 0;
+    var BodyEnemyStrategicRangedAttackDebuffHigh = 0;
+    var BodyEnemyRangedDefenseDebuffLow = 0;
+    var BodyEnemyRangedDefenseDebuffHigh = 0;
+    var BodyEnemyStrategicRangedDefenseDebuffLow = 0;
+    var BodyEnemyStrategicRangedDefenseDebuffHigh = 0;
+    var BodyEnemyRangedHealthDebuffLow = 0;
+    var BodyEnemyRangedHealthDebuffHigh = 0;
+    var BodyEnemyStrategicRangedHealthDebuffLow = 0;
+    var BodyEnemyStrategicRangedHealthDebuffHigh = 0;
+    var BodyCavalryAttackLow = 0;
+    var BodyCavalryAttackHigh = 0;
+    var BodyCavalryDefenseLow = 0;
+    var BodyCavalryDefenseHigh = 0;
+    var BodyStrategicCavalryAttackLow = 0;
+    var BodyStrategicCavalryAttackHigh = 0;
+    var BodyStrategicCavalryDefenseLow = 0;
+    var BodyStrategicCavalryDefenseHigh = 0;
+    var BodyCavalryHealthLow = 0;
+    var BodyCavalryHealthHigh = 0;
+    var BodyStrategicCavalryHealthLow = 0;
+    var BodyStrategicCavalryHealthHigh = 0;
+    var BodyEnemyCavalryAttackDebuffLow = 0;
+    var BodyEnemyCavalryAttackDebuffHigh = 0;
+    var BodyStrategicEnemyCavalryAttackDebuffLow = 0;
+    var BodyStrategicEnemyCavalryAttackDebuffHigh = 0;
+    var BodyEnemyCavalryDefenseDebuffLow = 0;
+    var BodyEnemyCavalryDefenseDebuffHigh = 0;
+    var BodyStrategicEnemyCavalryDefenseDebuffLow = 0;
+    var BodyStrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var BodyEnemyCavalryHealthDebuffLow = 0;
+    var BodyEnemyCavalryHealthDebuffHigh = 0;
+    var BodyStrategicEnemyCavalryHealthDebuffLow = 0;
+    var BodyStrategicEnemyCavalryHealthDebuffHigh = 0;
+    var BodySiegeAttackLow = 0;
+    var BodySiegeAttackHigh = 0;
+    var BodySiegeDefenseLow = 0;
+    var BodySiegeDefenseHigh = 0;
+    var BodyTrapDefenseLow = 0;
+    var BodyTrapDefenseHigh = 0;
+    var BodyStrategicTrapDefenseLow = 0;
+    var BodyStrategicTrapDefenseHigh = 0;
+    var BodyTroopTrainingSpeedLow = 0;
+    var BodyTroopTrainingSpeedHigh = 0;
+
+    
+    var FeetTroopAttackLow = 0;
+    var FeetTroopAttackHigh = 0;
+    var FeetTroopDefenseLow = 0;
+    var FeetTroopDefenseHigh = 0;
+    var FeetTroopHealthLow = 0;
+    var FeetTroopHealthHigh = 0;
+    var FeetStrategicTroopAttackLow = 0;
+    var FeetStrategicTroopAttackHigh = 0;
+    var FeetStrategicTroopDefenseLow = 0;
+    var FeetStrategicTroopDefenseHigh = 0;
+    var FeetStrategicTroopHealthLow = 0;
+    var FeetStrategicTroopHealthHigh = 0;
+    var FeetEnemyAttackDebuffLow = 0;
+    var FeetEnemyAttackDebuffHigh = 0;
+    var FeetEnemyStrategicAttackDebuffLow = 0;
+    var FeetEnemyStrategicAttackDebuffHigh = 0;
+    var FeetEnemyDefenseDebuffLow = 0;
+    var FeetEnemyDefenseDebuffHigh = 0;
+    var FeetEnemyStrategicDefenseDebuffLow = 0;
+    var FeetEnemyStrategicDefenseDebuffHigh = 0;
+    var FeetEnemyHealthDebuffLow = 0;
+    var FeetEnemyHealthDebuffHigh = 0;
+    var FeetEnemyStrategicHealthDebuffLow = 0;
+    var FeetEnemyStrategicHealthDebuffHigh = 0;
+    var FeetMarchSpeedLow = 0;
+    var FeetMarchSpeedHigh = 0;
+    var FeetInfantryAttackLow = 0;
+    var FeetInfantryAttackHigh = 0;
+    var FeetInfantryDefenseLow = 0;
+    var FeetInfantryDefenseHigh = 0;
+    var FeetStrategicInfantryAttackLow = 0;
+    var FeetStrategicInfantryAttackHigh = 0;
+    var FeetStrategicInfantryDefenseLow = 0;
+    var FeetStrategicInfantryDefenseHigh = 0;
+    var FeetInfantryHealthLow = 0;
+    var FeetInfantryHealthHigh = 0;
+    var FeetStrategicInfantryHealthLow = 0;
+    var FeetStrategicInfantryHealthHigh = 0;
+    var FeetEnemyInfantryAttackDebuffLow = 0;
+    var FeetEnemyInfantryAttackDebuffHigh = 0;
+    var FeetStratEnemyInfantryAttackDebuffLow = 0;
+    var FeetStratEnemyInfantryAttackDebuffHigh = 0;
+    var FeetEnemyInfantryDefenseDebuffLow = 0;
+    var FeetEnemyInfantryDefenseDebuffHigh = 0;
+    var FeetEnemyStrategicInfantryDefenseDebuffLow = 0;
+    var FeetEnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var FeetEnemyStrategicInfantryHealthDebuffLow = 0;
+    var FeetEnemyStrategicInfantryHealthDebuffHigh = 0;
+    var FeetEnemyInfantryHealthDebuffLow = 0;
+    var FeetEnemyInfantryHealthDebuffHigh = 0;
+    var FeetRangedAttackLow = 0;
+    var FeetRangedAttackHigh = 0;
+    var FeetRangedDefenseLow = 0;
+    var FeetRangedDefenseHigh = 0;
+    var FeetStrategicRangedAttackLow = 0;
+    var FeetStrategicRangedAttackHigh = 0;
+    var FeetStrategicRangedDefenseLow = 0;
+    var FeetStrategicRangedDefenseHigh = 0;
+    var FeetRangedHealthLow = 0;
+    var FeetRangedHealthHigh = 0;
+    var FeetStrategicRangedHealthLow = 0;
+    var FeetStrategicRangedHealthHigh = 0;
+    var FeetEnemyRangedAttackDebuffLow = 0;
+    var FeetEnemyRangedAttackDebuffHigh = 0;
+    var FeetEnemyStrategicRangedAttackDebuffLow = 0;
+    var FeetEnemyStrategicRangedAttackDebuffHigh = 0;
+    var FeetEnemyRangedDefenseDebuffLow = 0;
+    var FeetEnemyRangedDefenseDebuffHigh = 0;
+    var FeetEnemyStrategicRangedDefenseDebuffLow = 0;
+    var FeetEnemyStrategicRangedDefenseDebuffHigh = 0;
+    var FeetEnemyRangedHealthDebuffLow = 0;
+    var FeetEnemyRangedHealthDebuffHigh = 0;
+    var FeetEnemyStrategicRangedHealthDebuffLow = 0;
+    var FeetEnemyStrategicRangedHealthDebuffHigh = 0;
+    var FeetCavalryAttackLow = 0;
+    var FeetCavalryAttackHigh = 0;
+    var FeetCavalryDefenseLow = 0;
+    var FeetCavalryDefenseHigh = 0;
+    var FeetStrategicCavalryAttackLow = 0;
+    var FeetStrategicCavalryAttackHigh = 0;
+    var FeetStrategicCavalryDefenseLow = 0;
+    var FeetStrategicCavalryDefenseHigh = 0;
+    var FeetCavalryHealthLow = 0;
+    var FeetCavalryHealthHigh = 0;
+    var FeetStrategicCavalryHealthLow = 0;
+    var FeetStrategicCavalryHealthHigh = 0;
+    var FeetEnemyCavalryAttackDebuffLow = 0;
+    var FeetEnemyCavalryAttackDebuffHigh = 0;
+    var FeetStrategicEnemyCavalryAttackDebuffLow = 0;
+    var FeetStrategicEnemyCavalryAttackDebuffHigh = 0;
+    var FeetEnemyCavalryDefenseDebuffLow = 0;
+    var FeetEnemyCavalryDefenseDebuffHigh = 0;
+    var FeetStrategicEnemyCavalryDefenseDebuffLow = 0;
+    var FeetStrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var FeetEnemyCavalryHealthDebuffLow = 0;
+    var FeetEnemyCavalryHealthDebuffHigh = 0;
+    var FeetStrategicEnemyCavalryHealthDebuffLow = 0;
+    var FeetStrategicEnemyCavalryHealthDebuffHigh = 0;
+    var FeetSiegeAttackLow = 0;
+    var FeetSiegeAttackHigh = 0;
+    var FeetSiegeDefenseLow = 0;
+    var FeetSiegeDefenseHigh = 0;
+    var FeetTrapDefenseLow = 0;
+    var FeetTrapDefenseHigh = 0;
+    var FeetStrategicTrapDefenseLow = 0;
+    var FeetStrategicTrapDefenseHigh = 0;
+    var FeetTroopTrainingSpeedLow = 0;
+    var FeetTroopTrainingSpeedHigh = 0;
+
+    
+    var A1TroopAttackLow = 0;
+    var A1TroopAttackHigh = 0;
+    var A1TroopDefenseLow = 0;
+    var A1TroopDefenseHigh = 0;
+    var A1TroopHealthLow = 0;
+    var A1TroopHealthHigh = 0;
+    var A1StrategicTroopAttackLow = 0;
+    var A1StrategicTroopAttackHigh = 0;
+    var A1StrategicTroopDefenseLow = 0;
+    var A1StrategicTroopDefenseHigh = 0;
+    var A1StrategicTroopHealthLow = 0;
+    var A1StrategicTroopHealthHigh = 0;
+    var A1EnemyAttackDebuffLow = 0;
+    var A1EnemyAttackDebuffHigh = 0;
+    var A1EnemyStrategicAttackDebuffLow = 0;
+    var A1EnemyStrategicAttackDebuffHigh = 0;
+    var A1EnemyDefenseDebuffLow = 0;
+    var A1EnemyDefenseDebuffHigh = 0;
+    var A1EnemyStrategicDefenseDebuffLow = 0;
+    var A1EnemyStrategicDefenseDebuffHigh = 0;
+    var A1EnemyHealthDebuffLow = 0;
+    var A1EnemyHealthDebuffHigh = 0;
+    var A1EnemyStrategicHealthDebuffLow = 0;
+    var A1EnemyStrategicHealthDebuffHigh = 0;
+    var A1MarchSpeedLow = 0;
+    var A1MarchSpeedHigh = 0;
+    var A1InfantryAttackLow = 0;
+    var A1InfantryAttackHigh = 0;
+    var A1InfantryDefenseLow = 0;
+    var A1InfantryDefenseHigh = 0;
+    var A1StrategicInfantryAttackLow = 0;
+    var A1StrategicInfantryAttackHigh = 0;
+    var A1StrategicInfantryDefenseLow = 0;
+    var A1StrategicInfantryDefenseHigh = 0;
+    var A1InfantryHealthLow = 0;
+    var A1InfantryHealthHigh = 0;
+    var A1StrategicInfantryHealthLow = 0;
+    var A1StrategicInfantryHealthHigh = 0;
+    var A1EnemyInfantryAttackDebuffLow = 0;
+    var A1EnemyInfantryAttackDebuffHigh = 0;
+    var A1StratEnemyInfantryAttackDebuffLow = 0;
+    var A1StratEnemyInfantryAttackDebuffHigh = 0;
+    var A1EnemyInfantryDefenseDebuffLow = 0;
+    var A1EnemyInfantryDefenseDebuffHigh = 0;
+    var A1EnemyStrategicInfantryDefenseDebuffLow = 0;
+    var A1EnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var A1EnemyStrategicInfantryHealthDebuffLow = 0;
+    var A1EnemyStrategicInfantryHealthDebuffHigh = 0;
+    var A1EnemyInfantryHealthDebuffLow = 0;
+    var A1EnemyInfantryHealthDebuffHigh = 0;
+    var A1RangedAttackLow = 0;
+    var A1RangedAttackHigh = 0;
+    var A1RangedDefenseLow = 0;
+    var A1RangedDefenseHigh = 0;
+    var A1StrategicRangedAttackLow = 0;
+    var A1StrategicRangedAttackHigh = 0;
+    var A1StrategicRangedDefenseLow = 0;
+    var A1StrategicRangedDefenseHigh = 0;
+    var A1RangedHealthLow = 0;
+    var A1RangedHealthHigh = 0;
+    var A1StrategicRangedHealthLow = 0;
+    var A1StrategicRangedHealthHigh = 0;
+    var A1EnemyRangedAttackDebuffLow = 0;
+    var A1EnemyRangedAttackDebuffHigh = 0;
+    var A1EnemyStrategicRangedAttackDebuffLow = 0;
+    var A1EnemyStrategicRangedAttackDebuffHigh = 0;
+    var A1EnemyRangedDefenseDebuffLow = 0;
+    var A1EnemyRangedDefenseDebuffHigh = 0;
+    var A1EnemyStrategicRangedDefenseDebuffLow = 0;
+    var A1EnemyStrategicRangedDefenseDebuffHigh = 0;
+    var A1EnemyRangedHealthDebuffLow = 0;
+    var A1EnemyRangedHealthDebuffHigh = 0;
+    var A1EnemyStrategicRangedHealthDebuffLow = 0;
+    var A1EnemyStrategicRangedHealthDebuffHigh = 0;
+    var A1CavalryAttackLow = 0;
+    var A1CavalryAttackHigh = 0;
+    var A1CavalryDefenseLow = 0;
+    var A1CavalryDefenseHigh = 0;
+    var A1StrategicCavalryAttackLow = 0;
+    var A1StrategicCavalryAttackHigh = 0;
+    var A1StrategicCavalryDefenseLow = 0;
+    var A1StrategicCavalryDefenseHigh = 0;
+    var A1CavalryHealthLow = 0;
+    var A1CavalryHealthHigh = 0;
+    var A1StrategicCavalryHealthLow = 0;
+    var A1StrategicCavalryHealthHigh = 0;
+    var A1EnemyCavalryAttackDebuffLow = 0;
+    var A1EnemyCavalryAttackDebuffHigh = 0;
+    var A1StrategicEnemyCavalryAttackDebuffLow = 0;
+    var A1StrategicEnemyCavalryAttackDebuffHigh = 0;
+    var A1EnemyCavalryDefenseDebuffLow = 0;
+    var A1EnemyCavalryDefenseDebuffHigh = 0;
+    var A1StrategicEnemyCavalryDefenseDebuffLow = 0;
+    var A1StrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var A1EnemyCavalryHealthDebuffLow = 0;
+    var A1EnemyCavalryHealthDebuffHigh = 0;
+    var A1StrategicEnemyCavalryHealthDebuffLow = 0;
+    var A1StrategicEnemyCavalryHealthDebuffHigh = 0;
+    var A1SiegeAttackLow = 0;
+    var A1SiegeAttackHigh = 0;
+    var A1SiegeDefenseLow = 0;
+    var A1SiegeDefenseHigh = 0;
+    var A1TrapDefenseLow = 0;
+    var A1TrapDefenseHigh = 0;
+    var A1StrategicTrapDefenseLow = 0;
+    var A1StrategicTrapDefenseHigh = 0;
+    var A1TroopTrainingSpeedLow = 0;
+    var A1TroopTrainingSpeedHigh = 0;
+
+    
+    var A2TroopAttackLow = 0;
+    var A2TroopAttackHigh = 0;
+    var A2TroopDefenseLow = 0;
+    var A2TroopDefenseHigh = 0;
+    var A2TroopHealthLow = 0;
+    var A2TroopHealthHigh = 0;
+    var A2StrategicTroopAttackLow = 0;
+    var A2StrategicTroopAttackHigh = 0;
+    var A2StrategicTroopDefenseLow = 0;
+    var A2StrategicTroopDefenseHigh = 0;
+    var A2StrategicTroopHealthLow = 0;
+    var A2StrategicTroopHealthHigh = 0;
+    var A2EnemyAttackDebuffLow = 0;
+    var A2EnemyAttackDebuffHigh = 0;
+    var A2EnemyStrategicAttackDebuffLow = 0;
+    var A2EnemyStrategicAttackDebuffHigh = 0;
+    var A2EnemyDefenseDebuffLow = 0;
+    var A2EnemyDefenseDebuffHigh = 0;
+    var A2EnemyStrategicDefenseDebuffLow = 0;
+    var A2EnemyStrategicDefenseDebuffHigh = 0;
+    var A2EnemyHealthDebuffLow = 0;
+    var A2EnemyHealthDebuffHigh = 0;
+    var A2EnemyStrategicHealthDebuffLow = 0;
+    var A2EnemyStrategicHealthDebuffHigh = 0;
+    var A2MarchSpeedLow = 0;
+    var A2MarchSpeedHigh = 0;
+    var A2InfantryAttackLow = 0;
+    var A2InfantryAttackHigh = 0;
+    var A2InfantryDefenseLow = 0;
+    var A2InfantryDefenseHigh = 0;
+    var A2StrategicInfantryAttackLow = 0;
+    var A2StrategicInfantryAttackHigh = 0;
+    var A2StrategicInfantryDefenseLow = 0;
+    var A2StrategicInfantryDefenseHigh = 0;
+    var A2InfantryHealthLow = 0;
+    var A2InfantryHealthHigh = 0;
+    var A2StrategicInfantryHealthLow = 0;
+    var A2StrategicInfantryHealthHigh = 0;
+    var A2EnemyInfantryAttackDebuffLow = 0;
+    var A2EnemyInfantryAttackDebuffHigh = 0;
+    var A2StratEnemyInfantryAttackDebuffLow = 0;
+    var A2StratEnemyInfantryAttackDebuffHigh = 0;
+    var A2EnemyInfantryDefenseDebuffLow = 0;
+    var A2EnemyInfantryDefenseDebuffHigh = 0;
+    var A2EnemyStrategicInfantryDefenseDebuffLow = 0;
+    var A2EnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var A2EnemyStrategicInfantryHealthDebuffLow = 0;
+    var A2EnemyStrategicInfantryHealthDebuffHigh = 0;
+    var A2EnemyInfantryHealthDebuffLow = 0;
+    var A2EnemyInfantryHealthDebuffHigh = 0;
+    var A2RangedAttackLow = 0;
+    var A2RangedAttackHigh = 0;
+    var A2RangedDefenseLow = 0;
+    var A2RangedDefenseHigh = 0;
+    var A2StrategicRangedAttackLow = 0;
+    var A2StrategicRangedAttackHigh = 0;
+    var A2StrategicRangedDefenseLow = 0;
+    var A2StrategicRangedDefenseHigh = 0;
+    var A2RangedHealthLow = 0;
+    var A2RangedHealthHigh = 0;
+    var A2StrategicRangedHealthLow = 0;
+    var A2StrategicRangedHealthHigh = 0;
+    var A2EnemyRangedAttackDebuffLow = 0;
+    var A2EnemyRangedAttackDebuffHigh = 0;
+    var A2EnemyStrategicRangedAttackDebuffLow = 0;
+    var A2EnemyStrategicRangedAttackDebuffHigh = 0;
+    var A2EnemyRangedDefenseDebuffLow = 0;
+    var A2EnemyRangedDefenseDebuffHigh = 0;
+    var A2EnemyStrategicRangedDefenseDebuffLow = 0;
+    var A2EnemyStrategicRangedDefenseDebuffHigh = 0;
+    var A2EnemyRangedHealthDebuffLow = 0;
+    var A2EnemyRangedHealthDebuffHigh = 0;
+    var A2EnemyStrategicRangedHealthDebuffLow = 0;
+    var A2EnemyStrategicRangedHealthDebuffHigh = 0;
+    var A2CavalryAttackLow = 0;
+    var A2CavalryAttackHigh = 0;
+    var A2CavalryDefenseLow = 0;
+    var A2CavalryDefenseHigh = 0;
+    var A2StrategicCavalryAttackLow = 0;
+    var A2StrategicCavalryAttackHigh = 0;
+    var A2StrategicCavalryDefenseLow = 0;
+    var A2StrategicCavalryDefenseHigh = 0;
+    var A2CavalryHealthLow = 0;
+    var A2CavalryHealthHigh = 0;
+    var A2StrategicCavalryHealthLow = 0;
+    var A2StrategicCavalryHealthHigh = 0;
+    var A2EnemyCavalryAttackDebuffLow = 0;
+    var A2EnemyCavalryAttackDebuffHigh = 0;
+    var A2StrategicEnemyCavalryAttackDebuffLow = 0;
+    var A2StrategicEnemyCavalryAttackDebuffHigh = 0;
+    var A2EnemyCavalryDefenseDebuffLow = 0;
+    var A2EnemyCavalryDefenseDebuffHigh = 0;
+    var A2StrategicEnemyCavalryDefenseDebuffLow = 0;
+    var A2StrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var A2EnemyCavalryHealthDebuffLow = 0;
+    var A2EnemyCavalryHealthDebuffHigh = 0;
+    var A2StrategicEnemyCavalryHealthDebuffLow = 0;
+    var A2StrategicEnemyCavalryHealthDebuffHigh = 0;
+    var A2SiegeAttackLow = 0;
+    var A2SiegeAttackHigh = 0;
+    var A2SiegeDefenseLow = 0;
+    var A2SiegeDefenseHigh = 0;
+    var A2TrapDefenseLow = 0;
+    var A2TrapDefenseHigh = 0;
+    var A2StrategicTrapDefenseLow = 0;
+    var A2StrategicTrapDefenseHigh = 0;
+    var A2TroopTrainingSpeedLow = 0;
+    var A2TroopTrainingSpeedHigh = 0;
+
+    
+    var A3TroopAttackLow = 0;
+    var A3TroopAttackHigh = 0;
+    var A3TroopDefenseLow = 0;
+    var A3TroopDefenseHigh = 0;
+    var A3TroopHealthLow = 0;
+    var A3TroopHealthHigh = 0;
+    var A3StrategicTroopAttackLow = 0;
+    var A3StrategicTroopAttackHigh = 0;
+    var A3StrategicTroopDefenseLow = 0;
+    var A3StrategicTroopDefenseHigh = 0;
+    var A3StrategicTroopHealthLow = 0;
+    var A3StrategicTroopHealthHigh = 0;
+    var A3EnemyAttackDebuffLow = 0;
+    var A3EnemyAttackDebuffHigh = 0;
+    var A3EnemyStrategicAttackDebuffLow = 0;
+    var A3EnemyStrategicAttackDebuffHigh = 0;
+    var A3EnemyDefenseDebuffLow = 0;
+    var A3EnemyDefenseDebuffHigh = 0;
+    var A3EnemyStrategicDefenseDebuffLow = 0;
+    var A3EnemyStrategicDefenseDebuffHigh = 0;
+    var A3EnemyHealthDebuffLow = 0;
+    var A3EnemyHealthDebuffHigh = 0;
+    var A3EnemyStrategicHealthDebuffLow = 0;
+    var A3EnemyStrategicHealthDebuffHigh = 0;
+    var A3MarchSpeedLow = 0;
+    var A3MarchSpeedHigh = 0;
+    var A3InfantryAttackLow = 0;
+    var A3InfantryAttackHigh = 0;
+    var A3InfantryDefenseLow = 0;
+    var A3InfantryDefenseHigh = 0;
+    var A3StrategicInfantryAttackLow = 0;
+    var A3StrategicInfantryAttackHigh = 0;
+    var A3StrategicInfantryDefenseLow = 0;
+    var A3StrategicInfantryDefenseHigh = 0;
+    var A3InfantryHealthLow = 0;
+    var A3InfantryHealthHigh = 0;
+    var A3StrategicInfantryHealthLow = 0;
+    var A3StrategicInfantryHealthHigh = 0;
+    var A3EnemyInfantryAttackDebuffLow = 0;
+    var A3EnemyInfantryAttackDebuffHigh = 0;
+    var A3StratEnemyInfantryAttackDebuffLow = 0;
+    var A3StratEnemyInfantryAttackDebuffHigh = 0;
+    var A3EnemyInfantryDefenseDebuffLow = 0;
+    var A3EnemyInfantryDefenseDebuffHigh = 0;
+    var A3EnemyStrategicInfantryDefenseDebuffLow = 0;
+    var A3EnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var A3EnemyStrategicInfantryHealthDebuffLow = 0;
+    var A3EnemyStrategicInfantryHealthDebuffHigh = 0;
+    var A3EnemyInfantryHealthDebuffLow = 0;
+    var A3EnemyInfantryHealthDebuffHigh = 0;
+    var A3RangedAttackLow = 0;
+    var A3RangedAttackHigh = 0;
+    var A3RangedDefenseLow = 0;
+    var A3RangedDefenseHigh = 0;
+    var A3StrategicRangedAttackLow = 0;
+    var A3StrategicRangedAttackHigh = 0;
+    var A3StrategicRangedDefenseLow = 0;
+    var A3StrategicRangedDefenseHigh = 0;
+    var A3RangedHealthLow = 0;
+    var A3RangedHealthHigh = 0;
+    var A3StrategicRangedHealthLow = 0;
+    var A3StrategicRangedHealthHigh = 0;
+    var A3EnemyRangedAttackDebuffLow = 0;
+    var A3EnemyRangedAttackDebuffHigh = 0;
+    var A3EnemyStrategicRangedAttackDebuffLow = 0;
+    var A3EnemyStrategicRangedAttackDebuffHigh = 0;
+    var A3EnemyRangedDefenseDebuffLow = 0;
+    var A3EnemyRangedDefenseDebuffHigh = 0;
+    var A3EnemyStrategicRangedDefenseDebuffLow = 0;
+    var A3EnemyStrategicRangedDefenseDebuffHigh = 0;
+    var A3EnemyRangedHealthDebuffLow = 0;
+    var A3EnemyRangedHealthDebuffHigh = 0;
+    var A3EnemyStrategicRangedHealthDebuffLow = 0;
+    var A3EnemyStrategicRangedHealthDebuffHigh = 0;
+    var A3CavalryAttackLow = 0;
+    var A3CavalryAttackHigh = 0;
+    var A3CavalryDefenseLow = 0;
+    var A3CavalryDefenseHigh = 0;
+    var A3StrategicCavalryAttackLow = 0;
+    var A3StrategicCavalryAttackHigh = 0;
+    var A3StrategicCavalryDefenseLow = 0;
+    var A3StrategicCavalryDefenseHigh = 0;
+    var A3CavalryHealthLow = 0;
+    var A3CavalryHealthHigh = 0;
+    var A3StrategicCavalryHealthLow = 0;
+    var A3StrategicCavalryHealthHigh = 0;
+    var A3EnemyCavalryAttackDebuffLow = 0;
+    var A3EnemyCavalryAttackDebuffHigh = 0;
+    var A3StrategicEnemyCavalryAttackDebuffLow = 0;
+    var A3StrategicEnemyCavalryAttackDebuffHigh = 0;
+    var A3EnemyCavalryDefenseDebuffLow = 0;
+    var A3EnemyCavalryDefenseDebuffHigh = 0;
+    var A3StrategicEnemyCavalryDefenseDebuffLow = 0;
+    var A3StrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var A3EnemyCavalryHealthDebuffLow = 0;
+    var A3EnemyCavalryHealthDebuffHigh = 0;
+    var A3StrategicEnemyCavalryHealthDebuffLow = 0;
+    var A3StrategicEnemyCavalryHealthDebuffHigh = 0;
+    var A3SiegeAttackLow = 0;
+    var A3SiegeAttackHigh = 0;
+    var A3SiegeDefenseLow = 0;
+    var A3SiegeDefenseHigh = 0;
+    var A3TrapDefenseLow = 0;
+    var A3TrapDefenseHigh = 0;
+    var A3StrategicTrapDefenseLow = 0;
+    var A3StrategicTrapDefenseHigh = 0;
+    var A3TroopTrainingSpeedLow = 0;
+    var A3TroopTrainingSpeedHigh = 0;
+
+    
+    var FullSummaryTroopAttackLow = 0;
+    var FullSummaryTroopAttackHigh = 0;
+    var FullSummaryTroopDefenseLow = 0;
+    var FullSummaryTroopDefenseHigh = 0;
+    var FullSummaryTroopHealthLow = 0;
+    var FullSummaryTroopHealthHigh = 0;
+    var FullSummaryStrategicTroopAttackLow = 0;
+    var FullSummaryStrategicTroopAttackHigh = 0;
+    var FullSummaryStrategicTroopDefenseLow = 0;
+    var FullSummaryStrategicTroopDefenseHigh = 0;
+    var FullSummaryStrategicTroopHealthLow = 0;
+    var FullSummaryStrategicTroopHealthHigh = 0;
+    var FullSummaryEnemyAttackDebuffLow = 0;
+    var FullSummaryEnemyAttackDebuffHigh = 0;
+    var FullSummaryEnemyStrategicAttackDebuffLow = 0;
+    var FullSummaryEnemyStrategicAttackDebuffHigh = 0;
+    var FullSummaryEnemyDefenseDebuffLow = 0;
+    var FullSummaryEnemyDefenseDebuffHigh = 0;
+    var FullSummaryEnemyStrategicDefenseDebuffLow = 0;
+    var FullSummaryEnemyStrategicDefenseDebuffHigh = 0;
+    var FullSummaryEnemyHealthDebuffLow = 0;
+    var FullSummaryEnemyHealthDebuffHigh = 0;
+    var FullSummaryEnemyStrategicHealthDebuffLow = 0;
+    var FullSummaryEnemyStrategicHealthDebuffHigh = 0;
+    var FullSummaryMarchSpeedLow = 0;
     var FullSummaryMarchSpeedHigh = 0;
+    var FullSummaryInfantryAttackLow = 0;
+    var FullSummaryInfantryAttackHigh = 0;
+    var FullSummaryInfantryDefenseLow = 0;
+    var FullSummaryInfantryDefenseHigh = 0;
+    var FullSummaryStrategicInfantryAttackLow = 0;
+    var FullSummaryStrategicInfantryAttackHigh = 0;
+    var FullSummaryStrategicInfantryDefenseLow = 0;
+    var FullSummaryStrategicInfantryDefenseHigh = 0;
+    var FullSummaryInfantryHealthLow = 0;
+    var FullSummaryInfantryHealthHigh = 0;
+    var FullSummaryStrategicInfantryHealthLow = 0;
+    var FullSummaryStrategicInfantryHealthHigh = 0;
+    var FullSummaryEnemyInfantryAttackDebuffLow = 0;
+    var FullSummaryEnemyInfantryAttackDebuffHigh = 0;
+    var FullSummaryStratEnemyInfantryAttackDebuffLow = 0;
+    var FullSummaryStratEnemyInfantryAttackDebuffHigh = 0;
+    var FullSummaryEnemyInfantryDefenseDebuffLow = 0;
+    var FullSummaryEnemyInfantryDefenseDebuffHigh = 0;
+    var FullSummaryEnemyStrategicInfantryDefenseDebuffLow = 0;
+    var FullSummaryEnemyStrategicInfantryDefenseDebuffHigh = 0;
+    var FullSummaryEnemyStrategicInfantryHealthDebuffLow = 0;
+    var FullSummaryEnemyStrategicInfantryHealthDebuffHigh = 0;
+    var FullSummaryEnemyInfantryHealthDebuffLow = 0;
+    var FullSummaryEnemyInfantryHealthDebuffHigh = 0;
+    var FullSummaryRangedAttackLow = 0;
+    var FullSummaryRangedAttackHigh = 0;
+    var FullSummaryRangedDefenseLow = 0;
+    var FullSummaryRangedDefenseHigh = 0;
+    var FullSummaryStrategicRangedAttackLow = 0;
+    var FullSummaryStrategicRangedAttackHigh = 0;
+    var FullSummaryStrategicRangedDefenseLow = 0;
+    var FullSummaryStrategicRangedDefenseHigh = 0;
+    var FullSummaryRangedHealthLow = 0;
+    var FullSummaryRangedHealthHigh = 0;
+    var FullSummaryStrategicRangedHealthLow = 0;
+    var FullSummaryStrategicRangedHealthHigh = 0;
+    var FullSummaryEnemyRangedAttackDebuffLow = 0;
+    var FullSummaryEnemyRangedAttackDebuffHigh = 0;
+    var FullSummaryEnemyStrategicRangedAttackDebuffLow = 0;
+    var FullSummaryEnemyStrategicRangedAttackDebuffHigh = 0;
+    var FullSummaryEnemyRangedDefenseDebuffLow = 0;
+    var FullSummaryEnemyRangedDefenseDebuffHigh = 0;
+    var FullSummaryEnemyStrategicRangedDefenseDebuffLow = 0;
+    var FullSummaryEnemyStrategicRangedDefenseDebuffHigh = 0;
+    var FullSummaryEnemyRangedHealthDebuffLow = 0;
+    var FullSummaryEnemyRangedHealthDebuffHigh = 0;
+    var FullSummaryEnemyStrategicRangedHealthDebuffLow = 0;
+    var FullSummaryEnemyStrategicRangedHealthDebuffHigh = 0;
+    var FullSummaryCavalryAttackLow = 0;
+    var FullSummaryCavalryAttackHigh = 0;
+    var FullSummaryCavalryDefenseLow = 0;
+    var FullSummaryCavalryDefenseHigh = 0;
+    var FullSummaryStrategicCavalryAttackLow = 0;
+    var FullSummaryStrategicCavalryAttackHigh = 0;
+    var FullSummaryStrategicCavalryDefenseLow = 0;
+    var FullSummaryStrategicCavalryDefenseHigh = 0;
+    var FullSummaryCavalryHealthLow = 0;
+    var FullSummaryCavalryHealthHigh = 0;
+    var FullSummaryStrategicCavalryHealthLow = 0;
+    var FullSummaryStrategicCavalryHealthHigh = 0;
+    var FullSummaryEnemyCavalryAttackDebuffLow = 0;
+    var FullSummaryEnemyCavalryAttackDebuffHigh = 0;
+    var FullSummaryStrategicEnemyCavalryAttackDebuffLow = 0;
+    var FullSummaryStrategicEnemyCavalryAttackDebuffHigh = 0;
+    var FullSummaryEnemyCavalryDefenseDebuffLow = 0;
+    var FullSummaryEnemyCavalryDefenseDebuffHigh = 0;
+    var FullSummaryStrategicEnemyCavalryDefenseDebuffLow = 0;
+    var FullSummaryStrategicEnemyCavalryDefenseDebuffHigh = 0;
+    var FullSummaryEnemyCavalryHealthDebuffLow = 0;
+    var FullSummaryEnemyCavalryHealthDebuffHigh = 0;
+    var FullSummaryStrategicEnemyCavalryHealthDebuffLow = 0;
+    var FullSummaryStrategicEnemyCavalryHealthDebuffHigh = 0;
+    var FullSummarySiegeAttackLow = 0;
+    var FullSummarySiegeAttackHigh = 0;
+    var FullSummarySiegeDefenseLow = 0;
+    var FullSummarySiegeDefenseHigh = 0;
+    var FullSummaryTrapDefenseLow = 0;
+    var FullSummaryTrapDefenseHigh = 0;
+    var FullSummaryStrategicTrapDefenseLow = 0;
+    var FullSummaryStrategicTrapDefenseHigh = 0;
+    var FullSummaryTroopTrainingSpeedLow = 0;
+    var FullSummaryTroopTrainingSpeedHigh = 0;
 
     $(function(){
         $('#nav').hover(function(){
@@ -720,8 +1578,8 @@
         }).trigger('mouseleave');
     });
 
-    var model = @Html.Raw(Json.Encode(@ViewBag.Cores));
-    var modelPiece = @Html.Raw(Json.Encode(@ViewBag.Pieces));
+    //var model = @Html.Raw(Json.Encode(@ViewBag.Cores));
+    //var modelPiece = @Html.Raw(Json.Encode(@ViewBag.Pieces));
 
     $(function () {
         $("[name='HelmCores']").change(function () {
@@ -1102,67 +1960,67 @@
             }
             helmSummary();
         });
-        $("[name='HelmPiece6']").change(function () {            
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackHigh)
-            {
-                document.getElementById("HelmPiece6RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow;
-            } else{
-                document.getElementById("HelmPiece6RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackHigh)
-            {
-                document.getElementById("HelmPiece6CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackLow;
-            } else{
-                document.getElementById("HelmPiece6CalvaryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CalvaryAttackHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackHigh)
-            {
-                document.getElementById("HelmPiece6InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow;
-            } else{
-                document.getElementById("HelmPiece6InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackHigh)
-            {
-                document.getElementById("HelmPiece6TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackLow;
-            } else{
-                document.getElementById("HelmPiece6TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopAttackHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseHigh)
-            {
-                document.getElementById("HelmPiece6TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow;
-            } else{
-                document.getElementById("HelmPiece6TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthHigh)
-            {
-                document.getElementById("HelmPiece6TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow;
-            } else{
-                document.getElementById("HelmPiece6TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebufLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebuffHigh)
-            {
-                document.getElementById("HelmPiece6AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebufLow;
-            } else{
-                document.getElementById("HelmPiece6AttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebufLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].AttackDebuffHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffHigh)
-            {
-                document.getElementById("HelmPiece6HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffLow;
-            } else{
-                document.getElementById("HelmPiece6HealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].HealthDebuffHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffHigh)
-            {
-                document.getElementById("HelmPiece6DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffLow;
-            } else{
-                document.getElementById("HelmPiece6DefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].DefenseDebuffHigh;
-            }
-            if (modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow == modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedHigh)
-            {
-                document.getElementById("HelmPiece6MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow;
-            } else{
-                document.getElementById("HelmPiece6MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedHigh;
-            }
+        $("[name='HelmPiece6']").change(function () { 
+            
+            alert(document.getElementById("HelmPiece6").selectedValue);
+            alert(document.getElementById("HelmPiece6Level").selectedIndex);
+            alert(modelPiece.Items[document.getElementById("HelmPiece6").selectedIndex-1].Levels[document.getElementById("HelmPiece6Level").selectedIndex].TroopAttackLow)
+            //alert(modelPiece.Items[document.getElementById("HelmPiece6").selectedIndex+1].Levels[document.getElementById("HelmPiece6Level").selectedIndex].TroopAttackLow);
+            //document.getElementById("HelmPiece6TroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].Levels[document.getElementById("HelmPiece6Level").selectedIndex-1].TroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].Levels[document.getElementById("HelmPiece6Level").selectedIndex-1].TroopAttackHigh
+            document.getElementById("HelmPiece6TroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopDefenseHigh
+            document.getElementById("HelmPiece6TroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopHealthHigh
+            document.getElementById("HelmPiece6StrategicTroopAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTroopAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTroopAttackHigh
+            document.getElementById("HelmPiece6StrategicTroopDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTroopDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTroopDefenseHigh
+            document.getElementById("HelmPiece6StrategicTroopHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTroopHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTroopHealthHigh
+            document.getElementById("HelmPiece6EnemyAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyAttackDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicAttackDebuffHigh
+            document.getElementById("HelmPiece6EnemyDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyDefenseDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicDefenseDebuffHigh
+            document.getElementById("HelmPiece6EnemyHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyHealthDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicHealthDebuffHigh
+            document.getElementById("HelmPiece6MarchSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].MarchSpeedHigh
+            document.getElementById("HelmPiece6InfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryAttackHigh
+            document.getElementById("HelmPiece6InfantryDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryDefenseHigh
+            document.getElementById("HelmPiece6StrategicInfantryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicInfantryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicInfantryAttackHigh
+            document.getElementById("HelmPiece6StrategicInfantryDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicInfantryDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicInfantryDefenseHigh
+            document.getElementById("HelmPiece6InfantryHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].InfantryHealthHigh
+            document.getElementById("HelmPiece6StrategicInfantryHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicInfantryHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicInfantryHealthHigh
+            document.getElementById("HelmPiece6EnemyInfantryAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyInfantryAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyInfantryAttackDebuffHigh
+            document.getElementById("HelmPiece6StratEnemyInfantryAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StratEnemyInfantryAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StratEnemyInfantryAttackDebuffHigh
+            document.getElementById("HelmPiece6EnemyInfantryDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyInfantryDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyInfantryDefenseDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicInfantryDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicInfantryDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicInfantryDefenseDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicInfantryHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicInfantryHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicInfantryHealthDebuffHigh
+            document.getElementById("HelmPiece6EnemyInfantryHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyInfantryHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyInfantryHealthDebuffHigh
+            document.getElementById("HelmPiece6RangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedAttackHigh
+            document.getElementById("HelmPiece6RangedDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedDefenseHigh
+            document.getElementById("HelmPiece6StrategicRangedAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicRangedAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicRangedAttackHigh
+            document.getElementById("HelmPiece6StrategicRangedDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicRangedDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicRangedDefenseHigh
+            document.getElementById("HelmPiece6RangedHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].RangedHealthHigh
+            document.getElementById("HelmPiece6StrategicRangedHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicRangedHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicRangedHealthHigh
+            document.getElementById("HelmPiece6EnemyRangedAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyRangedAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyRangedAttackDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicRangedAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicRangedAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicRangedAttackDebuffHigh
+            document.getElementById("HelmPiece6EnemyRangedDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyRangedDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyRangedDefenseDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicRangedDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicRangedDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicRangedDefenseDebuffHigh
+            document.getElementById("HelmPiece6EnemyRangedHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyRangedHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyRangedHealthDebuffHigh
+            document.getElementById("HelmPiece6EnemyStrategicRangedHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicRangedHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyStrategicRangedHealthDebuffHigh
+            document.getElementById("HelmPiece6CavalryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CavalryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CavalryAttackHigh
+            document.getElementById("HelmPiece6CavalryDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CavalryDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CavalryDefenseHigh
+            document.getElementById("HelmPiece6StrategicCavalryAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicCavalryAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicCavalryAttackHigh
+            document.getElementById("HelmPiece6StrategicCavalryDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicCavalryDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicCavalryDefenseHigh
+            document.getElementById("HelmPiece6CavalryHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CavalryHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].CavalryHealthHigh
+            document.getElementById("HelmPiece6StrategicCavalryHealth").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicCavalryHealthLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicCavalryHealthHigh
+            document.getElementById("HelmPiece6EnemyCavalryAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyCavalryAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyCavalryAttackDebuffHigh
+            document.getElementById("HelmPiece6StrategicEnemyCavalryAttackDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicEnemyCavalryAttackDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicEnemyCavalryAttackDebuffHigh
+            document.getElementById("HelmPiece6EnemyCavalryDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyCavalryDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyCavalryDefenseDebuffHigh
+            document.getElementById("HelmPiece6StrategicEnemyCavalryDefenseDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicEnemyCavalryDefenseDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicEnemyCavalryDefenseDebuffHigh
+            document.getElementById("HelmPiece6EnemyCavalryHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyCavalryHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].EnemyCavalryHealthDebuffHigh
+            document.getElementById("HelmPiece6StrategicEnemyCavalryHealthDebuff").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicEnemyCavalryHealthDebuffLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicEnemyCavalryHealthDebuffHigh
+            document.getElementById("HelmPiece6SiegeAttack").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].SiegeAttackLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].SiegeAttackHigh
+            document.getElementById("HelmPiece6SiegeDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].SiegeDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].SiegeDefenseHigh
+            document.getElementById("HelmPiece6TrapDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TrapDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TrapDefenseHigh
+            document.getElementById("HelmPiece6StrategicTrapDefense").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTrapDefenseLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].StrategicTrapDefenseHigh
+            document.getElementById("HelmPiece6TroopTrainingSpeed").innerHTML= modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopTrainingSpeedLow + "-" + modelPiece[document.getElementById("HelmPiece6").selectedIndex-1].TroopTrainingSpeed
+            
             helmSummary();
         });
 
@@ -1170,7 +2028,7 @@
 
 
     function helmSummary()
-    { 
+    {         
         HelmRangedAttackLow = 0; 
         HelmRangedAttackHigh = 0; 
         HelmCalvaryAttackLow = 0; 

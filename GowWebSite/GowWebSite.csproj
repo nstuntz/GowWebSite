@@ -212,6 +212,7 @@
     <Compile Include="Models\Core.cs">
       <DependentUpon>GowModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CoresModel.cs" />
     <Compile Include="Models\CreateCityFullModel.cs" />
     <Compile Include="Models\CreateCityModel.cs" />
     <Compile Include="Models\GetOldestLogin2_Result.cs">

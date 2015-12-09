@@ -91,28 +91,133 @@
           <Property Name="GearID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GearSlot" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="GearName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GearLevel" Type="int" Nullable="false" />
           <Property Name="SetName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="BoostType" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="RangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="RangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="CalvaryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="CalvaryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="InfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="InfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="TroopDefenseLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="TroopDefenseHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="AttackDebufLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="AttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="HealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="HealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="DefenseDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="DefenseDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="MarchSpeedLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="MarchSpeedHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StratEnemyInfantryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StratEnemyInfantryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapDefenseLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapDefenseHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapDefenseLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapDefenseHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopTrainingSpeedLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopTrainingSpeedHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopTrainingSpeedLow1" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopTrainingSpeedHigh1" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemySiegeAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemySiegeAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HeroCriticalLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HeroCriticalHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MonsterDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MonsterDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="Log">
           <Key>
@@ -158,27 +263,126 @@
           </Key>
           <Property Name="PieceID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PieceName" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="BoostType" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="RangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="RangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="CalvaryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="CalvaryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="InfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="InfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="BoostType" Type="varchar" MaxLength="255" />
+          <Property Name="PieceLevel" Type="int" Nullable="false" />
           <Property Name="TroopAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="TroopDefenseLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="TroopDefenseHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="AttackDebufLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="AttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="HealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="HealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="DefenseDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="DefenseDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTroopHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="MarchSpeedLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="MarchSpeedHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="InfantryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicInfantryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StratEnemyInfantryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StratEnemyInfantryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyInfantryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="RangedHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicRangedHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyRangedHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyStrategicRangedHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="CavalryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryHealthLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicCavalryHealthHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemyCavalryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="SiegeDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapDefenceHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopTrainingSpeedLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TroopTrainingSpeedHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemySiegeAttackDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EnemySiegeAttackDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="StrategicTrapAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TrapAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HeroCriticalLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="HeroCriticalHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MonsterDebuffLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MonsterDebuffHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="ResourceType">
           <Key>
@@ -835,28 +1039,133 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="GearID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GearSlot" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="GearName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GearLevel" Type="Int32" Nullable="false" />
           <Property Name="SetName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="BoostType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="RangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="RangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="CalvaryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="CalvaryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="InfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="InfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="TroopDefenseLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="TroopDefenseHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="AttackDebufLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="AttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="HealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="HealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="DefenseDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="DefenseDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="MarchSpeedLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="MarchSpeedHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StratEnemyInfantryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StratEnemyInfantryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapDefenseLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapDefenseHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapDefenseLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapDefenseHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopTrainingSpeedLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopTrainingSpeedHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopTrainingSpeedLow1" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopTrainingSpeedHigh1" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemySiegeAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemySiegeAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HeroCriticalLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HeroCriticalHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MonsterDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MonsterDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
         </EntityType>
         <EntityType Name="Piece">
           <Key>
@@ -864,27 +1173,126 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           </Key>
           <Property Name="PieceID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PieceName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="BoostType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="RangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="RangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="CalvaryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="CalvaryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="InfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="InfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="BoostType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PieceLevel" Type="Int32" Nullable="false" />
           <Property Name="TroopAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="TroopDefenseLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="TroopDefenseHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="AttackDebufLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="AttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="HealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="HealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="DefenseDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="DefenseDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTroopHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="MarchSpeedLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="MarchSpeedHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="InfantryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicInfantryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StratEnemyInfantryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StratEnemyInfantryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicInfantryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyInfantryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="RangedHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicRangedHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyRangedHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyStrategicRangedHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CavalryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryHealthLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicCavalryHealthHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryDefenceDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemyCavalryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicEnemyCavalryHealthDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="SiegeDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapDefenceHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopTrainingSpeedLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TroopTrainingSpeedHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemySiegeAttackDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="EnemySiegeAttackDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StrategicTrapAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="TrapAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HeroCriticalLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="HeroCriticalHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MonsterDebuffLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="MonsterDebuffHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1107,28 +1515,133 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="Cores">
             <EntityTypeMapping TypeName="GowModel.Core">
               <MappingFragment StoreEntitySet="Cores">
-                <ScalarProperty Name="MarchSpeedHigh" ColumnName="MarchSpeedHigh" />
-                <ScalarProperty Name="MarchSpeedLow" ColumnName="MarchSpeedLow" />
-                <ScalarProperty Name="DefenseDebuffHigh" ColumnName="DefenseDebuffHigh" />
-                <ScalarProperty Name="DefenseDebuffLow" ColumnName="DefenseDebuffLow" />
-                <ScalarProperty Name="HealthDebuffHigh" ColumnName="HealthDebuffHigh" />
-                <ScalarProperty Name="HealthDebuffLow" ColumnName="HealthDebuffLow" />
-                <ScalarProperty Name="AttackDebuffHigh" ColumnName="AttackDebuffHigh" />
-                <ScalarProperty Name="AttackDebufLow" ColumnName="AttackDebufLow" />
-                <ScalarProperty Name="TroopHealthHigh" ColumnName="TroopHealthHigh" />
-                <ScalarProperty Name="TroopHealthLow" ColumnName="TroopHealthLow" />
-                <ScalarProperty Name="TroopDefenseHigh" ColumnName="TroopDefenseHigh" />
-                <ScalarProperty Name="TroopDefenseLow" ColumnName="TroopDefenseLow" />
-                <ScalarProperty Name="TroopAttackHigh" ColumnName="TroopAttackHigh" />
-                <ScalarProperty Name="TroopAttackLow" ColumnName="TroopAttackLow" />
-                <ScalarProperty Name="InfantryAttackHigh" ColumnName="InfantryAttackHigh" />
-                <ScalarProperty Name="InfantryAttackLow" ColumnName="InfantryAttackLow" />
-                <ScalarProperty Name="CalvaryAttackHigh" ColumnName="CalvaryAttackHigh" />
-                <ScalarProperty Name="CalvaryAttackLow" ColumnName="CalvaryAttackLow" />
+                <ScalarProperty Name="MonsterDebuffHigh" ColumnName="MonsterDebuffHigh" />
+                <ScalarProperty Name="MonsterDebuffLow" ColumnName="MonsterDebuffLow" />
+                <ScalarProperty Name="HeroCriticalHigh" ColumnName="HeroCriticalHigh" />
+                <ScalarProperty Name="HeroCriticalLow" ColumnName="HeroCriticalLow" />
+                <ScalarProperty Name="TrapAttackHigh" ColumnName="TrapAttackHigh" />
+                <ScalarProperty Name="TrapAttackLow" ColumnName="TrapAttackLow" />
+                <ScalarProperty Name="StrategicTrapAttackHigh" ColumnName="StrategicTrapAttackHigh" />
+                <ScalarProperty Name="StrategicTrapAttackLow" ColumnName="StrategicTrapAttackLow" />
+                <ScalarProperty Name="EnemySiegeAttackDebuffHigh" ColumnName="EnemySiegeAttackDebuffHigh" />
+                <ScalarProperty Name="EnemySiegeAttackDebuffLow" ColumnName="EnemySiegeAttackDebuffLow" />
+                <ScalarProperty Name="TroopTrainingSpeedHigh1" ColumnName="TroopTrainingSpeedHigh1" />
+                <ScalarProperty Name="TroopTrainingSpeedLow1" ColumnName="TroopTrainingSpeedLow1" />
+                <ScalarProperty Name="StrategicTrapDefenceHigh" ColumnName="StrategicTrapDefenceHigh" />
+                <ScalarProperty Name="StrategicTrapDefenceLow" ColumnName="StrategicTrapDefenceLow" />
+                <ScalarProperty Name="TrapDefenceHigh" ColumnName="TrapDefenceHigh" />
+                <ScalarProperty Name="TrapDefenceLow" ColumnName="TrapDefenceLow" />
+                <ScalarProperty Name="TroopTrainingSpeedHigh" ColumnName="TroopTrainingSpeedHigh" />
+                <ScalarProperty Name="TroopTrainingSpeedLow" ColumnName="TroopTrainingSpeedLow" />
+                <ScalarProperty Name="StrategicTrapDefenseHigh" ColumnName="StrategicTrapDefenseHigh" />
+                <ScalarProperty Name="StrategicTrapDefenseLow" ColumnName="StrategicTrapDefenseLow" />
+                <ScalarProperty Name="TrapDefenseHigh" ColumnName="TrapDefenseHigh" />
+                <ScalarProperty Name="TrapDefenseLow" ColumnName="TrapDefenseLow" />
+                <ScalarProperty Name="SiegeDefenceHigh" ColumnName="SiegeDefenceHigh" />
+                <ScalarProperty Name="SiegeDefenceLow" ColumnName="SiegeDefenceLow" />
+                <ScalarProperty Name="SiegeAttackHigh" ColumnName="SiegeAttackHigh" />
+                <ScalarProperty Name="SiegeAttackLow" ColumnName="SiegeAttackLow" />
+                <ScalarProperty Name="StrategicEnemyCavalryHealthDebuffHigh" ColumnName="StrategicEnemyCavalryHealthDebuffHigh" />
+                <ScalarProperty Name="StrategicEnemyCavalryHealthDebuffLow" ColumnName="StrategicEnemyCavalryHealthDebuffLow" />
+                <ScalarProperty Name="EnemyCavalryHealthDebuffHigh" ColumnName="EnemyCavalryHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyCavalryHealthDebuffLow" ColumnName="EnemyCavalryHealthDebuffLow" />
+                <ScalarProperty Name="StrategicEnemyCavalryDefenceDebuffHigh" ColumnName="StrategicEnemyCavalryDefenceDebuffHigh" />
+                <ScalarProperty Name="StrategicEnemyCavalryDefenceDebuffLow" ColumnName="StrategicEnemyCavalryDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyCavalryDefenceDebuffHigh" ColumnName="EnemyCavalryDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyCavalryDefenceDebuffLow" ColumnName="EnemyCavalryDefenceDebuffLow" />
+                <ScalarProperty Name="StrategicEnemyCavalryAttackDebuffHigh" ColumnName="StrategicEnemyCavalryAttackDebuffHigh" />
+                <ScalarProperty Name="StrategicEnemyCavalryAttackDebuffLow" ColumnName="StrategicEnemyCavalryAttackDebuffLow" />
+                <ScalarProperty Name="EnemyCavalryAttackDebuffHigh" ColumnName="EnemyCavalryAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyCavalryAttackDebuffLow" ColumnName="EnemyCavalryAttackDebuffLow" />
+                <ScalarProperty Name="StrategicCavalryHealthHigh" ColumnName="StrategicCavalryHealthHigh" />
+                <ScalarProperty Name="StrategicCavalryHealthLow" ColumnName="StrategicCavalryHealthLow" />
+                <ScalarProperty Name="CavalryHealthHigh" ColumnName="CavalryHealthHigh" />
+                <ScalarProperty Name="CavalryHealthLow" ColumnName="CavalryHealthLow" />
+                <ScalarProperty Name="StrategicCavalryDefenceHigh" ColumnName="StrategicCavalryDefenceHigh" />
+                <ScalarProperty Name="StrategicCavalryDefenceLow" ColumnName="StrategicCavalryDefenceLow" />
+                <ScalarProperty Name="StrategicCavalryAttackHigh" ColumnName="StrategicCavalryAttackHigh" />
+                <ScalarProperty Name="StrategicCavalryAttackLow" ColumnName="StrategicCavalryAttackLow" />
+                <ScalarProperty Name="CavalryDefenceHigh" ColumnName="CavalryDefenceHigh" />
+                <ScalarProperty Name="CavalryDefenceLow" ColumnName="CavalryDefenceLow" />
+                <ScalarProperty Name="CavalryAttackHigh" ColumnName="CavalryAttackHigh" />
+                <ScalarProperty Name="CavalryAttackLow" ColumnName="CavalryAttackLow" />
+                <ScalarProperty Name="EnemyStrategicRangedHealthDebuffHigh" ColumnName="EnemyStrategicRangedHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicRangedHealthDebuffLow" ColumnName="EnemyStrategicRangedHealthDebuffLow" />
+                <ScalarProperty Name="EnemyRangedHealthDebuffHigh" ColumnName="EnemyRangedHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyRangedHealthDebuffLow" ColumnName="EnemyRangedHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicRangedDefenceDebuffHigh" ColumnName="EnemyStrategicRangedDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicRangedDefenceDebuffLow" ColumnName="EnemyStrategicRangedDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyRangedDefenceDebuffHigh" ColumnName="EnemyRangedDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyRangedDefenceDebuffLow" ColumnName="EnemyRangedDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicRangedAttackDebuffHigh" ColumnName="EnemyStrategicRangedAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicRangedAttackDebuffLow" ColumnName="EnemyStrategicRangedAttackDebuffLow" />
+                <ScalarProperty Name="EnemyRangedAttackDebuffHigh" ColumnName="EnemyRangedAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyRangedAttackDebuffLow" ColumnName="EnemyRangedAttackDebuffLow" />
+                <ScalarProperty Name="StrategicRangedHealthHigh" ColumnName="StrategicRangedHealthHigh" />
+                <ScalarProperty Name="StrategicRangedHealthLow" ColumnName="StrategicRangedHealthLow" />
+                <ScalarProperty Name="RangedHealthHigh" ColumnName="RangedHealthHigh" />
+                <ScalarProperty Name="RangedHealthLow" ColumnName="RangedHealthLow" />
+                <ScalarProperty Name="StrategicRangedDefenceHigh" ColumnName="StrategicRangedDefenceHigh" />
+                <ScalarProperty Name="StrategicRangedDefenceLow" ColumnName="StrategicRangedDefenceLow" />
+                <ScalarProperty Name="StrategicRangedAttackHigh" ColumnName="StrategicRangedAttackHigh" />
+                <ScalarProperty Name="StrategicRangedAttackLow" ColumnName="StrategicRangedAttackLow" />
+                <ScalarProperty Name="RangedDefenceHigh" ColumnName="RangedDefenceHigh" />
+                <ScalarProperty Name="RangedDefenceLow" ColumnName="RangedDefenceLow" />
                 <ScalarProperty Name="RangedAttackHigh" ColumnName="RangedAttackHigh" />
                 <ScalarProperty Name="RangedAttackLow" ColumnName="RangedAttackLow" />
+                <ScalarProperty Name="EnemyInfantryHealthDebuffHigh" ColumnName="EnemyInfantryHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyInfantryHealthDebuffLow" ColumnName="EnemyInfantryHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicInfantryHealthDebuffHigh" ColumnName="EnemyStrategicInfantryHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicInfantryHealthDebuffLow" ColumnName="EnemyStrategicInfantryHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicInfantryDefenceDebuffHigh" ColumnName="EnemyStrategicInfantryDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicInfantryDefenceDebuffLow" ColumnName="EnemyStrategicInfantryDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyInfantryDefenceDebuffHigh" ColumnName="EnemyInfantryDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyInfantryDefenceDebuffLow" ColumnName="EnemyInfantryDefenceDebuffLow" />
+                <ScalarProperty Name="StratEnemyInfantryAttackDebuffHigh" ColumnName="StratEnemyInfantryAttackDebuffHigh" />
+                <ScalarProperty Name="StratEnemyInfantryAttackDebuffLow" ColumnName="StratEnemyInfantryAttackDebuffLow" />
+                <ScalarProperty Name="EnemyInfantryAttackDebuffHigh" ColumnName="EnemyInfantryAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyInfantryAttackDebuffLow" ColumnName="EnemyInfantryAttackDebuffLow" />
+                <ScalarProperty Name="StrategicInfantryHealthHigh" ColumnName="StrategicInfantryHealthHigh" />
+                <ScalarProperty Name="StrategicInfantryHealthLow" ColumnName="StrategicInfantryHealthLow" />
+                <ScalarProperty Name="InfantryHealthHigh" ColumnName="InfantryHealthHigh" />
+                <ScalarProperty Name="InfantryHealthLow" ColumnName="InfantryHealthLow" />
+                <ScalarProperty Name="StrategicInfantryDefenceHigh" ColumnName="StrategicInfantryDefenceHigh" />
+                <ScalarProperty Name="StrategicInfantryDefenceLow" ColumnName="StrategicInfantryDefenceLow" />
+                <ScalarProperty Name="StrategicInfantryAttackHigh" ColumnName="StrategicInfantryAttackHigh" />
+                <ScalarProperty Name="StrategicInfantryAttackLow" ColumnName="StrategicInfantryAttackLow" />
+                <ScalarProperty Name="InfantryDefenceHigh" ColumnName="InfantryDefenceHigh" />
+                <ScalarProperty Name="InfantryDefenceLow" ColumnName="InfantryDefenceLow" />
+                <ScalarProperty Name="InfantryAttackHigh" ColumnName="InfantryAttackHigh" />
+                <ScalarProperty Name="InfantryAttackLow" ColumnName="InfantryAttackLow" />
+                <ScalarProperty Name="MarchSpeedHigh" ColumnName="MarchSpeedHigh" />
+                <ScalarProperty Name="MarchSpeedLow" ColumnName="MarchSpeedLow" />
+                <ScalarProperty Name="EnemyStrategicHealthDebuffHigh" ColumnName="EnemyStrategicHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicHealthDebuffLow" ColumnName="EnemyStrategicHealthDebuffLow" />
+                <ScalarProperty Name="EnemyHealthDebuffHigh" ColumnName="EnemyHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyHealthDebuffLow" ColumnName="EnemyHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicDefenceDebuffHigh" ColumnName="EnemyStrategicDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicDefenceDebuffLow" ColumnName="EnemyStrategicDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyDefenceDebuffHigh" ColumnName="EnemyDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyDefenceDebuffLow" ColumnName="EnemyDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicAttackDebuffHigh" ColumnName="EnemyStrategicAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicAttackDebuffLow" ColumnName="EnemyStrategicAttackDebuffLow" />
+                <ScalarProperty Name="EnemyAttackDebuffHigh" ColumnName="EnemyAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyAttackDebuffLow" ColumnName="EnemyAttackDebuffLow" />
+                <ScalarProperty Name="StrategicTroopHealthHigh" ColumnName="StrategicTroopHealthHigh" />
+                <ScalarProperty Name="StrategicTroopHealthLow" ColumnName="StrategicTroopHealthLow" />
+                <ScalarProperty Name="StrategicTroopDefenceHigh" ColumnName="StrategicTroopDefenceHigh" />
+                <ScalarProperty Name="StrategicTroopDefenceLow" ColumnName="StrategicTroopDefenceLow" />
+                <ScalarProperty Name="StrategicTroopAttackHigh" ColumnName="StrategicTroopAttackHigh" />
+                <ScalarProperty Name="StrategicTroopAttackLow" ColumnName="StrategicTroopAttackLow" />
+                <ScalarProperty Name="TroopHealthHigh" ColumnName="TroopHealthHigh" />
+                <ScalarProperty Name="TroopHealthLow" ColumnName="TroopHealthLow" />
+                <ScalarProperty Name="TroopDefenceHigh" ColumnName="TroopDefenceHigh" />
+                <ScalarProperty Name="TroopDefenceLow" ColumnName="TroopDefenceLow" />
+                <ScalarProperty Name="TroopAttackHigh" ColumnName="TroopAttackHigh" />
+                <ScalarProperty Name="TroopAttackLow" ColumnName="TroopAttackLow" />
                 <ScalarProperty Name="BoostType" ColumnName="BoostType" />
                 <ScalarProperty Name="SetName" ColumnName="SetName" />
+                <ScalarProperty Name="GearLevel" ColumnName="GearLevel" />
                 <ScalarProperty Name="GearName" ColumnName="GearName" />
                 <ScalarProperty Name="GearSlot" ColumnName="GearSlot" />
                 <ScalarProperty Name="GearID" ColumnName="GearID" />
@@ -1138,26 +1651,125 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="Pieces">
             <EntityTypeMapping TypeName="GowModel.Piece">
               <MappingFragment StoreEntitySet="Pieces">
-                <ScalarProperty Name="MarchSpeedHigh" ColumnName="MarchSpeedHigh" />
-                <ScalarProperty Name="MarchSpeedLow" ColumnName="MarchSpeedLow" />
-                <ScalarProperty Name="DefenseDebuffHigh" ColumnName="DefenseDebuffHigh" />
-                <ScalarProperty Name="DefenseDebuffLow" ColumnName="DefenseDebuffLow" />
-                <ScalarProperty Name="HealthDebuffHigh" ColumnName="HealthDebuffHigh" />
-                <ScalarProperty Name="HealthDebuffLow" ColumnName="HealthDebuffLow" />
-                <ScalarProperty Name="AttackDebuffHigh" ColumnName="AttackDebuffHigh" />
-                <ScalarProperty Name="AttackDebufLow" ColumnName="AttackDebufLow" />
-                <ScalarProperty Name="TroopHealthHigh" ColumnName="TroopHealthHigh" />
-                <ScalarProperty Name="TroopHealthLow" ColumnName="TroopHealthLow" />
-                <ScalarProperty Name="TroopDefenseHigh" ColumnName="TroopDefenseHigh" />
-                <ScalarProperty Name="TroopDefenseLow" ColumnName="TroopDefenseLow" />
-                <ScalarProperty Name="TroopAttackHigh" ColumnName="TroopAttackHigh" />
-                <ScalarProperty Name="TroopAttackLow" ColumnName="TroopAttackLow" />
-                <ScalarProperty Name="InfantryAttackHigh" ColumnName="InfantryAttackHigh" />
-                <ScalarProperty Name="InfantryAttackLow" ColumnName="InfantryAttackLow" />
-                <ScalarProperty Name="CalvaryAttackHigh" ColumnName="CalvaryAttackHigh" />
-                <ScalarProperty Name="CalvaryAttackLow" ColumnName="CalvaryAttackLow" />
+                <ScalarProperty Name="MonsterDebuffHigh" ColumnName="MonsterDebuffHigh" />
+                <ScalarProperty Name="MonsterDebuffLow" ColumnName="MonsterDebuffLow" />
+                <ScalarProperty Name="HeroCriticalHigh" ColumnName="HeroCriticalHigh" />
+                <ScalarProperty Name="HeroCriticalLow" ColumnName="HeroCriticalLow" />
+                <ScalarProperty Name="TrapAttackHigh" ColumnName="TrapAttackHigh" />
+                <ScalarProperty Name="TrapAttackLow" ColumnName="TrapAttackLow" />
+                <ScalarProperty Name="StrategicTrapAttackHigh" ColumnName="StrategicTrapAttackHigh" />
+                <ScalarProperty Name="StrategicTrapAttackLow" ColumnName="StrategicTrapAttackLow" />
+                <ScalarProperty Name="EnemySiegeAttackDebuffHigh" ColumnName="EnemySiegeAttackDebuffHigh" />
+                <ScalarProperty Name="EnemySiegeAttackDebuffLow" ColumnName="EnemySiegeAttackDebuffLow" />
+                <ScalarProperty Name="TroopTrainingSpeedHigh" ColumnName="TroopTrainingSpeedHigh" />
+                <ScalarProperty Name="TroopTrainingSpeedLow" ColumnName="TroopTrainingSpeedLow" />
+                <ScalarProperty Name="StrategicTrapDefenceHigh" ColumnName="StrategicTrapDefenceHigh" />
+                <ScalarProperty Name="StrategicTrapDefenceLow" ColumnName="StrategicTrapDefenceLow" />
+                <ScalarProperty Name="TrapDefenceHigh" ColumnName="TrapDefenceHigh" />
+                <ScalarProperty Name="TrapDefenceLow" ColumnName="TrapDefenceLow" />
+                <ScalarProperty Name="SiegeDefenceHigh" ColumnName="SiegeDefenceHigh" />
+                <ScalarProperty Name="SiegeDefenceLow" ColumnName="SiegeDefenceLow" />
+                <ScalarProperty Name="SiegeAttackHigh" ColumnName="SiegeAttackHigh" />
+                <ScalarProperty Name="SiegeAttackLow" ColumnName="SiegeAttackLow" />
+                <ScalarProperty Name="StrategicEnemyCavalryHealthDebuffHigh" ColumnName="StrategicEnemyCavalryHealthDebuffHigh" />
+                <ScalarProperty Name="StrategicEnemyCavalryHealthDebuffLow" ColumnName="StrategicEnemyCavalryHealthDebuffLow" />
+                <ScalarProperty Name="EnemyCavalryHealthDebuffHigh" ColumnName="EnemyCavalryHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyCavalryHealthDebuffLow" ColumnName="EnemyCavalryHealthDebuffLow" />
+                <ScalarProperty Name="StrategicEnemyCavalryDefenceDebuffHigh" ColumnName="StrategicEnemyCavalryDefenceDebuffHigh" />
+                <ScalarProperty Name="StrategicEnemyCavalryDefenceDebuffLow" ColumnName="StrategicEnemyCavalryDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyCavalryDefenceDebuffHigh" ColumnName="EnemyCavalryDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyCavalryDefenceDebuffLow" ColumnName="EnemyCavalryDefenceDebuffLow" />
+                <ScalarProperty Name="StrategicEnemyCavalryAttackDebuffHigh" ColumnName="StrategicEnemyCavalryAttackDebuffHigh" />
+                <ScalarProperty Name="StrategicEnemyCavalryAttackDebuffLow" ColumnName="StrategicEnemyCavalryAttackDebuffLow" />
+                <ScalarProperty Name="EnemyCavalryAttackDebuffHigh" ColumnName="EnemyCavalryAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyCavalryAttackDebuffLow" ColumnName="EnemyCavalryAttackDebuffLow" />
+                <ScalarProperty Name="StrategicCavalryHealthHigh" ColumnName="StrategicCavalryHealthHigh" />
+                <ScalarProperty Name="StrategicCavalryHealthLow" ColumnName="StrategicCavalryHealthLow" />
+                <ScalarProperty Name="CavalryHealthHigh" ColumnName="CavalryHealthHigh" />
+                <ScalarProperty Name="CavalryHealthLow" ColumnName="CavalryHealthLow" />
+                <ScalarProperty Name="StrategicCavalryDefenceHigh" ColumnName="StrategicCavalryDefenceHigh" />
+                <ScalarProperty Name="StrategicCavalryDefenceLow" ColumnName="StrategicCavalryDefenceLow" />
+                <ScalarProperty Name="StrategicCavalryAttackHigh" ColumnName="StrategicCavalryAttackHigh" />
+                <ScalarProperty Name="StrategicCavalryAttackLow" ColumnName="StrategicCavalryAttackLow" />
+                <ScalarProperty Name="CavalryDefenceHigh" ColumnName="CavalryDefenceHigh" />
+                <ScalarProperty Name="CavalryDefenceLow" ColumnName="CavalryDefenceLow" />
+                <ScalarProperty Name="CavalryAttackHigh" ColumnName="CavalryAttackHigh" />
+                <ScalarProperty Name="CavalryAttackLow" ColumnName="CavalryAttackLow" />
+                <ScalarProperty Name="EnemyStrategicRangedHealthDebuffHigh" ColumnName="EnemyStrategicRangedHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicRangedHealthDebuffLow" ColumnName="EnemyStrategicRangedHealthDebuffLow" />
+                <ScalarProperty Name="EnemyRangedHealthDebuffHigh" ColumnName="EnemyRangedHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyRangedHealthDebuffLow" ColumnName="EnemyRangedHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicRangedDefenceDebuffHigh" ColumnName="EnemyStrategicRangedDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicRangedDefenceDebuffLow" ColumnName="EnemyStrategicRangedDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyRangedDefenceDebuffHigh" ColumnName="EnemyRangedDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyRangedDefenceDebuffLow" ColumnName="EnemyRangedDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicRangedAttackDebuffHigh" ColumnName="EnemyStrategicRangedAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicRangedAttackDebuffLow" ColumnName="EnemyStrategicRangedAttackDebuffLow" />
+                <ScalarProperty Name="EnemyRangedAttackDebuffHigh" ColumnName="EnemyRangedAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyRangedAttackDebuffLow" ColumnName="EnemyRangedAttackDebuffLow" />
+                <ScalarProperty Name="StrategicRangedHealthHigh" ColumnName="StrategicRangedHealthHigh" />
+                <ScalarProperty Name="StrategicRangedHealthLow" ColumnName="StrategicRangedHealthLow" />
+                <ScalarProperty Name="RangedHealthHigh" ColumnName="RangedHealthHigh" />
+                <ScalarProperty Name="RangedHealthLow" ColumnName="RangedHealthLow" />
+                <ScalarProperty Name="StrategicRangedDefenceHigh" ColumnName="StrategicRangedDefenceHigh" />
+                <ScalarProperty Name="StrategicRangedDefenceLow" ColumnName="StrategicRangedDefenceLow" />
+                <ScalarProperty Name="StrategicRangedAttackHigh" ColumnName="StrategicRangedAttackHigh" />
+                <ScalarProperty Name="StrategicRangedAttackLow" ColumnName="StrategicRangedAttackLow" />
+                <ScalarProperty Name="RangedDefenceHigh" ColumnName="RangedDefenceHigh" />
+                <ScalarProperty Name="RangedDefenceLow" ColumnName="RangedDefenceLow" />
                 <ScalarProperty Name="RangedAttackHigh" ColumnName="RangedAttackHigh" />
                 <ScalarProperty Name="RangedAttackLow" ColumnName="RangedAttackLow" />
+                <ScalarProperty Name="EnemyInfantryHealthDebuffHigh" ColumnName="EnemyInfantryHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyInfantryHealthDebuffLow" ColumnName="EnemyInfantryHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicInfantryHealthDebuffHigh" ColumnName="EnemyStrategicInfantryHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicInfantryHealthDebuffLow" ColumnName="EnemyStrategicInfantryHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicInfantryDefenceDebuffHigh" ColumnName="EnemyStrategicInfantryDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicInfantryDefenceDebuffLow" ColumnName="EnemyStrategicInfantryDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyInfantryDefenceDebuffHigh" ColumnName="EnemyInfantryDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyInfantryDefenceDebuffLow" ColumnName="EnemyInfantryDefenceDebuffLow" />
+                <ScalarProperty Name="StratEnemyInfantryAttackDebuffHigh" ColumnName="StratEnemyInfantryAttackDebuffHigh" />
+                <ScalarProperty Name="StratEnemyInfantryAttackDebuffLow" ColumnName="StratEnemyInfantryAttackDebuffLow" />
+                <ScalarProperty Name="EnemyInfantryAttackDebuffHigh" ColumnName="EnemyInfantryAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyInfantryAttackDebuffLow" ColumnName="EnemyInfantryAttackDebuffLow" />
+                <ScalarProperty Name="StrategicInfantryHealthHigh" ColumnName="StrategicInfantryHealthHigh" />
+                <ScalarProperty Name="StrategicInfantryHealthLow" ColumnName="StrategicInfantryHealthLow" />
+                <ScalarProperty Name="InfantryHealthHigh" ColumnName="InfantryHealthHigh" />
+                <ScalarProperty Name="InfantryHealthLow" ColumnName="InfantryHealthLow" />
+                <ScalarProperty Name="StrategicInfantryDefenceHigh" ColumnName="StrategicInfantryDefenceHigh" />
+                <ScalarProperty Name="StrategicInfantryDefenceLow" ColumnName="StrategicInfantryDefenceLow" />
+                <ScalarProperty Name="StrategicInfantryAttackHigh" ColumnName="StrategicInfantryAttackHigh" />
+                <ScalarProperty Name="StrategicInfantryAttackLow" ColumnName="StrategicInfantryAttackLow" />
+                <ScalarProperty Name="InfantryDefenceHigh" ColumnName="InfantryDefenceHigh" />
+                <ScalarProperty Name="InfantryDefenceLow" ColumnName="InfantryDefenceLow" />
+                <ScalarProperty Name="InfantryAttackHigh" ColumnName="InfantryAttackHigh" />
+                <ScalarProperty Name="InfantryAttackLow" ColumnName="InfantryAttackLow" />
+                <ScalarProperty Name="MarchSpeedHigh" ColumnName="MarchSpeedHigh" />
+                <ScalarProperty Name="MarchSpeedLow" ColumnName="MarchSpeedLow" />
+                <ScalarProperty Name="EnemyStrategicHealthDebuffHigh" ColumnName="EnemyStrategicHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicHealthDebuffLow" ColumnName="EnemyStrategicHealthDebuffLow" />
+                <ScalarProperty Name="EnemyHealthDebuffHigh" ColumnName="EnemyHealthDebuffHigh" />
+                <ScalarProperty Name="EnemyHealthDebuffLow" ColumnName="EnemyHealthDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicDefenceDebuffHigh" ColumnName="EnemyStrategicDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicDefenceDebuffLow" ColumnName="EnemyStrategicDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyDefenceDebuffHigh" ColumnName="EnemyDefenceDebuffHigh" />
+                <ScalarProperty Name="EnemyDefenceDebuffLow" ColumnName="EnemyDefenceDebuffLow" />
+                <ScalarProperty Name="EnemyStrategicAttackDebuffHigh" ColumnName="EnemyStrategicAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyStrategicAttackDebuffLow" ColumnName="EnemyStrategicAttackDebuffLow" />
+                <ScalarProperty Name="EnemyAttackDebuffHigh" ColumnName="EnemyAttackDebuffHigh" />
+                <ScalarProperty Name="EnemyAttackDebuffLow" ColumnName="EnemyAttackDebuffLow" />
+                <ScalarProperty Name="StrategicTroopHealthHigh" ColumnName="StrategicTroopHealthHigh" />
+                <ScalarProperty Name="StrategicTroopHealthLow" ColumnName="StrategicTroopHealthLow" />
+                <ScalarProperty Name="StrategicTroopDefenceHigh" ColumnName="StrategicTroopDefenceHigh" />
+                <ScalarProperty Name="StrategicTroopDefenceLow" ColumnName="StrategicTroopDefenceLow" />
+                <ScalarProperty Name="StrategicTroopAttackHigh" ColumnName="StrategicTroopAttackHigh" />
+                <ScalarProperty Name="StrategicTroopAttackLow" ColumnName="StrategicTroopAttackLow" />
+                <ScalarProperty Name="TroopHealthHigh" ColumnName="TroopHealthHigh" />
+                <ScalarProperty Name="TroopHealthLow" ColumnName="TroopHealthLow" />
+                <ScalarProperty Name="TroopDefenceHigh" ColumnName="TroopDefenceHigh" />
+                <ScalarProperty Name="TroopDefenceLow" ColumnName="TroopDefenceLow" />
+                <ScalarProperty Name="TroopAttackHigh" ColumnName="TroopAttackHigh" />
+                <ScalarProperty Name="TroopAttackLow" ColumnName="TroopAttackLow" />
+                <ScalarProperty Name="PieceLevel" ColumnName="PieceLevel" />
                 <ScalarProperty Name="BoostType" ColumnName="BoostType" />
                 <ScalarProperty Name="PieceName" ColumnName="PieceName" />
                 <ScalarProperty Name="PieceID" ColumnName="PieceID" />
