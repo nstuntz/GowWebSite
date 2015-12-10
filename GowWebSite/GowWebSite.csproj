@@ -280,6 +280,7 @@
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\Helm.js" />
     <Content Include="Content\HomePage.css" />
     <Content Include="Content\Images\FarmLocations.JPG" />
     <Content Include="Content\Images\FullStartupScreen.JPG" />
@@ -332,6 +333,7 @@
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SummaryVariables.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
