@@ -247,7 +247,6 @@ function setHelmHelmCoreBuffs(buffs)
     HelmCoreBuffs.MonsterDebuffLow = buffs.MonsterDebuffLow;
     HelmCoreBuffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
-
 function setHelmPiece6Buffs(buffs) {
     HelmPiece6Buffs.TroopAttackLow = buffs.TroopAttackLow;
     HelmPiece6Buffs.TroopAttackHigh = buffs.TroopAttackHigh;
@@ -488,7 +487,6 @@ function setHelmPiece5Buffs(buffs) {
     HelmPiece5Buffs.MonsterDebuffLow = buffs.MonsterDebuffLow;
     HelmPiece5Buffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
-
 function setHelmPiece4Buffs(buffs) {
     HelmPiece4Buffs.TroopAttackLow = buffs.TroopAttackLow;
     HelmPiece4Buffs.TroopAttackHigh = buffs.TroopAttackHigh;
@@ -609,7 +607,6 @@ function setHelmPiece4Buffs(buffs) {
     HelmPiece4Buffs.MonsterDebuffLow = buffs.MonsterDebuffLow;
     HelmPiece4Buffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
-
 function setHelmPiece3Buffs(buffs) {
     HelmPiece3Buffs.TroopAttackLow = buffs.TroopAttackLow;
     HelmPiece3Buffs.TroopAttackHigh = buffs.TroopAttackHigh;
@@ -730,7 +727,6 @@ function setHelmPiece3Buffs(buffs) {
     HelmPiece3Buffs.MonsterDebuffLow = buffs.MonsterDebuffLow;
     HelmPiece3Buffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
-
 function setHelmPiece2Buffs(buffs) {
     HelmPiece2Buffs.TroopAttackLow = buffs.TroopAttackLow;
     HelmPiece2Buffs.TroopAttackHigh = buffs.TroopAttackHigh;
@@ -851,7 +847,6 @@ function setHelmPiece2Buffs(buffs) {
     HelmPiece2Buffs.MonsterDebuffLow = buffs.MonsterDebuffLow;
     HelmPiece2Buffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
-
 function setHelmPiece1Buffs(buffs) {
     HelmPiece1Buffs.TroopAttackLow = buffs.TroopAttackLow;
     HelmPiece1Buffs.TroopAttackHigh = buffs.TroopAttackHigh;
@@ -973,7 +968,846 @@ function setHelmPiece1Buffs(buffs) {
     HelmPiece1Buffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
 
-
+function resetHelmHelmCoreBuffs(buffs) {
+    HelmCoreBuffs.TroopAttackLow = 0;
+    HelmCoreBuffs.TroopAttackHigh = 0;
+    HelmCoreBuffs.TroopDefenceLow = 0;
+    HelmCoreBuffs.TroopDefenceHigh = 0;
+    HelmCoreBuffs.TroopHealthLow = 0;
+    HelmCoreBuffs.TroopHealthHigh = 0;
+    HelmCoreBuffs.StrategicTroopAttackLow = 0;
+    HelmCoreBuffs.StrategicTroopAttackHigh = 0;
+    HelmCoreBuffs.StrategicTroopDefenceLow = 0;
+    HelmCoreBuffs.StrategicTroopDefenceHigh = 0;
+    HelmCoreBuffs.StrategicTroopHealthLow = 0;
+    HelmCoreBuffs.StrategicTroopHealthHigh = 0;
+    HelmCoreBuffs.EnemyAttackDebuffLow = 0;
+    HelmCoreBuffs.EnemyAttackDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicAttackDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicAttackDebuffHigh = 0;
+    HelmCoreBuffs.EnemyDefenceDebuffLow = 0;
+    HelmCoreBuffs.EnemyDefenceDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicDefenceDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicDefenceDebuffHigh = 0;
+    HelmCoreBuffs.EnemyHealthDebuffLow = 0;
+    HelmCoreBuffs.EnemyHealthDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicHealthDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicHealthDebuffHigh = 0;
+    HelmCoreBuffs.MarchSpeedLow = 0;
+    HelmCoreBuffs.MarchSpeedHigh = 0;
+    HelmCoreBuffs.InfantryAttackLow = 0;
+    HelmCoreBuffs.InfantryAttackHigh = 0;
+    HelmCoreBuffs.InfantryDefenceLow = 0;
+    HelmCoreBuffs.InfantryDefenceHigh = 0;
+    HelmCoreBuffs.StrategicInfantryAttackLow = 0;
+    HelmCoreBuffs.StrategicInfantryAttackHigh = 0;
+    HelmCoreBuffs.StrategicInfantryDefenceLow = 0;
+    HelmCoreBuffs.StrategicInfantryDefenceHigh = 0;
+    HelmCoreBuffs.InfantryHealthLow = 0;
+    HelmCoreBuffs.InfantryHealthHigh = 0;
+    HelmCoreBuffs.StrategicInfantryHealthLow = 0;
+    HelmCoreBuffs.StrategicInfantryHealthHigh = 0;
+    HelmCoreBuffs.EnemyInfantryAttackDebuffLow = 0;
+    HelmCoreBuffs.EnemyInfantryAttackDebuffHigh = 0;
+    HelmCoreBuffs.StratEnemyInfantryAttackDebuffLow = 0;
+    HelmCoreBuffs.StratEnemyInfantryAttackDebuffHigh = 0;
+    HelmCoreBuffs.EnemyInfantryDefenceDebuffLow = 0;
+    HelmCoreBuffs.EnemyInfantryDefenceDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicInfantryDefenceDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicInfantryDefenceDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicInfantryHealthDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicInfantryHealthDebuffHigh = 0;
+    HelmCoreBuffs.EnemyInfantryHealthDebuffLow = 0;
+    HelmCoreBuffs.EnemyInfantryHealthDebuffHigh = 0;
+    HelmCoreBuffs.RangedAttackLow = 0;
+    HelmCoreBuffs.RangedAttackHigh = 0;
+    HelmCoreBuffs.RangedDefenceLow = 0;
+    HelmCoreBuffs.RangedDefenceHigh = 0;
+    HelmCoreBuffs.StrategicRangedAttackLow = 0;
+    HelmCoreBuffs.StrategicRangedAttackHigh = 0;
+    HelmCoreBuffs.StrategicRangedDefenceLow = 0;
+    HelmCoreBuffs.StrategicRangedDefenceHigh = 0;
+    HelmCoreBuffs.RangedHealthLow = 0;
+    HelmCoreBuffs.RangedHealthHigh = 0;
+    HelmCoreBuffs.StrategicRangedHealthLow = 0;
+    HelmCoreBuffs.StrategicRangedHealthHigh = 0;
+    HelmCoreBuffs.EnemyRangedAttackDebuffLow = 0;
+    HelmCoreBuffs.EnemyRangedAttackDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicRangedAttackDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicRangedAttackDebuffHigh = 0;
+    HelmCoreBuffs.EnemyRangedDefenceDebuffLow = 0;
+    HelmCoreBuffs.EnemyRangedDefenceDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicRangedDefenceDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicRangedDefenceDebuffHigh = 0;
+    HelmCoreBuffs.EnemyRangedHealthDebuffLow = 0;
+    HelmCoreBuffs.EnemyRangedHealthDebuffHigh = 0;
+    HelmCoreBuffs.EnemyStrategicRangedHealthDebuffLow = 0;
+    HelmCoreBuffs.EnemyStrategicRangedHealthDebuffHigh = 0;
+    HelmCoreBuffs.CavalryAttackLow = 0;
+    HelmCoreBuffs.CavalryAttackHigh = 0;
+    HelmCoreBuffs.CavalryDefenceLow = 0;
+    HelmCoreBuffs.CavalryDefenceHigh = 0;
+    HelmCoreBuffs.StrategicCavalryAttackLow = 0;
+    HelmCoreBuffs.StrategicCavalryAttackHigh = 0;
+    HelmCoreBuffs.StrategicCavalryDefenceLow = 0;
+    HelmCoreBuffs.StrategicCavalryDefenceHigh = 0;
+    HelmCoreBuffs.CavalryHealthLow = 0;
+    HelmCoreBuffs.CavalryHealthHigh = 0;
+    HelmCoreBuffs.StrategicCavalryHealthLow = 0;
+    HelmCoreBuffs.StrategicCavalryHealthHigh = 0;
+    HelmCoreBuffs.EnemyCavalryAttackDebuffLow = 0;
+    HelmCoreBuffs.EnemyCavalryAttackDebuffHigh = 0;
+    HelmCoreBuffs.StrategicEnemyCavalryAttackDebuffLow = 0;
+    HelmCoreBuffs.StrategicEnemyCavalryAttackDebuffHigh = 0;
+    HelmCoreBuffs.EnemyCavalryDefenceDebuffLow = 0;
+    HelmCoreBuffs.EnemyCavalryDefenceDebuffHigh = 0;
+    HelmCoreBuffs.StrategicEnemyCavalryDefenceDebuffLow = 0;
+    HelmCoreBuffs.StrategicEnemyCavalryDefenceDebuffHigh = 0;
+    HelmCoreBuffs.EnemyCavalryHealthDebuffLow = 0;
+    HelmCoreBuffs.EnemyCavalryHealthDebuffHigh = 0;
+    HelmCoreBuffs.StrategicEnemyCavalryHealthDebuffLow = 0;
+    HelmCoreBuffs.StrategicEnemyCavalryHealthDebuffHigh = 0;
+    HelmCoreBuffs.SiegeAttackLow = 0;
+    HelmCoreBuffs.SiegeAttackHigh = 0;
+    HelmCoreBuffs.SiegeDefenceLow = 0;
+    HelmCoreBuffs.SiegeDefenceHigh = 0;
+    HelmCoreBuffs.TrapDefenceLow = 0;
+    HelmCoreBuffs.TrapDefenceHigh = 0;
+    HelmCoreBuffs.StrategicTrapDefenceLow = 0;
+    HelmCoreBuffs.StrategicTrapDefenceHigh = 0;
+    HelmCoreBuffs.TroopTrainingSpeedLow = 0;
+    HelmCoreBuffs.TroopTrainingSpeedHigh = 0;
+    HelmCoreBuffs.EnemySiegeAttackDebuffLow = 0;
+    HelmCoreBuffs.EnemySiegeAttackDebuffHigh = 0;
+    HelmCoreBuffs.StrategicTrapAttackLow = 0;
+    HelmCoreBuffs.StrategicTrapAttackHigh = 0;
+    HelmCoreBuffs.TrapAttackLow = 0;
+    HelmCoreBuffs.TrapAttackHigh = 0;
+    HelmCoreBuffs.HeroCriticalLow = 0;
+    HelmCoreBuffs.HeroCriticalHigh = 0;
+    HelmCoreBuffs.MonsterDebuffLow = 0;
+    HelmCoreBuffs.MonsterDebuffHigh = 0;
+}
+function resetHelmPiece6Buffs(buffs) {
+    HelmPiece6Buffs.TroopAttackLow = 0;
+    HelmPiece6Buffs.TroopAttackHigh = 0;
+    HelmPiece6Buffs.TroopDefenceLow = 0;
+    HelmPiece6Buffs.TroopDefenceHigh = 0;
+    HelmPiece6Buffs.TroopHealthLow = 0;
+    HelmPiece6Buffs.TroopHealthHigh = 0;
+    HelmPiece6Buffs.StrategicTroopAttackLow = 0;
+    HelmPiece6Buffs.StrategicTroopAttackHigh = 0;
+    HelmPiece6Buffs.StrategicTroopDefenceLow = 0;
+    HelmPiece6Buffs.StrategicTroopDefenceHigh = 0;
+    HelmPiece6Buffs.StrategicTroopHealthLow = 0;
+    HelmPiece6Buffs.StrategicTroopHealthHigh = 0;
+    HelmPiece6Buffs.EnemyAttackDebuffLow = 0;
+    HelmPiece6Buffs.EnemyAttackDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicAttackDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicAttackDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyDefenceDebuffLow = 0;
+    HelmPiece6Buffs.EnemyDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicDefenceDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyHealthDebuffLow = 0;
+    HelmPiece6Buffs.EnemyHealthDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicHealthDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicHealthDebuffHigh = 0;
+    HelmPiece6Buffs.MarchSpeedLow = 0;
+    HelmPiece6Buffs.MarchSpeedHigh = 0;
+    HelmPiece6Buffs.InfantryAttackLow = 0;
+    HelmPiece6Buffs.InfantryAttackHigh = 0;
+    HelmPiece6Buffs.InfantryDefenceLow = 0;
+    HelmPiece6Buffs.InfantryDefenceHigh = 0;
+    HelmPiece6Buffs.StrategicInfantryAttackLow = 0;
+    HelmPiece6Buffs.StrategicInfantryAttackHigh = 0;
+    HelmPiece6Buffs.StrategicInfantryDefenceLow = 0;
+    HelmPiece6Buffs.StrategicInfantryDefenceHigh = 0;
+    HelmPiece6Buffs.InfantryHealthLow = 0;
+    HelmPiece6Buffs.InfantryHealthHigh = 0;
+    HelmPiece6Buffs.StrategicInfantryHealthLow = 0;
+    HelmPiece6Buffs.StrategicInfantryHealthHigh = 0;
+    HelmPiece6Buffs.EnemyInfantryAttackDebuffLow = 0;
+    HelmPiece6Buffs.EnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece6Buffs.StratEnemyInfantryAttackDebuffLow = 0;
+    HelmPiece6Buffs.StratEnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyInfantryDefenceDebuffLow = 0;
+    HelmPiece6Buffs.EnemyInfantryDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicInfantryDefenceDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicInfantryDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicInfantryHealthDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicInfantryHealthDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyInfantryHealthDebuffLow = 0;
+    HelmPiece6Buffs.EnemyInfantryHealthDebuffHigh = 0;
+    HelmPiece6Buffs.RangedAttackLow = 0;
+    HelmPiece6Buffs.RangedAttackHigh = 0;
+    HelmPiece6Buffs.RangedDefenceLow = 0;
+    HelmPiece6Buffs.RangedDefenceHigh = 0;
+    HelmPiece6Buffs.StrategicRangedAttackLow = 0;
+    HelmPiece6Buffs.StrategicRangedAttackHigh = 0;
+    HelmPiece6Buffs.StrategicRangedDefenceLow = 0;
+    HelmPiece6Buffs.StrategicRangedDefenceHigh = 0;
+    HelmPiece6Buffs.RangedHealthLow = 0;
+    HelmPiece6Buffs.RangedHealthHigh = 0;
+    HelmPiece6Buffs.StrategicRangedHealthLow = 0;
+    HelmPiece6Buffs.StrategicRangedHealthHigh = 0;
+    HelmPiece6Buffs.EnemyRangedAttackDebuffLow = 0;
+    HelmPiece6Buffs.EnemyRangedAttackDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicRangedAttackDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicRangedAttackDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyRangedDefenceDebuffLow = 0;
+    HelmPiece6Buffs.EnemyRangedDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicRangedDefenceDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicRangedDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyRangedHealthDebuffLow = 0;
+    HelmPiece6Buffs.EnemyRangedHealthDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyStrategicRangedHealthDebuffLow = 0;
+    HelmPiece6Buffs.EnemyStrategicRangedHealthDebuffHigh = 0;
+    HelmPiece6Buffs.CavalryAttackLow = 0;
+    HelmPiece6Buffs.CavalryAttackHigh = 0;
+    HelmPiece6Buffs.CavalryDefenceLow = 0;
+    HelmPiece6Buffs.CavalryDefenceHigh = 0;
+    HelmPiece6Buffs.StrategicCavalryAttackLow = 0;
+    HelmPiece6Buffs.StrategicCavalryAttackHigh = 0;
+    HelmPiece6Buffs.StrategicCavalryDefenceLow = 0;
+    HelmPiece6Buffs.StrategicCavalryDefenceHigh = 0;
+    HelmPiece6Buffs.CavalryHealthLow = 0;
+    HelmPiece6Buffs.CavalryHealthHigh = 0;
+    HelmPiece6Buffs.StrategicCavalryHealthLow = 0;
+    HelmPiece6Buffs.StrategicCavalryHealthHigh = 0;
+    HelmPiece6Buffs.EnemyCavalryAttackDebuffLow = 0;
+    HelmPiece6Buffs.EnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece6Buffs.StrategicEnemyCavalryAttackDebuffLow = 0;
+    HelmPiece6Buffs.StrategicEnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece6Buffs.EnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.StrategicEnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece6Buffs.StrategicEnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece6Buffs.EnemyCavalryHealthDebuffLow = 0;
+    HelmPiece6Buffs.EnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece6Buffs.StrategicEnemyCavalryHealthDebuffLow = 0;
+    HelmPiece6Buffs.StrategicEnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece6Buffs.SiegeAttackLow = 0;
+    HelmPiece6Buffs.SiegeAttackHigh = 0;
+    HelmPiece6Buffs.SiegeDefenceLow = 0;
+    HelmPiece6Buffs.SiegeDefenceHigh = 0;
+    HelmPiece6Buffs.TrapDefenceLow = 0;
+    HelmPiece6Buffs.TrapDefenceHigh = 0;
+    HelmPiece6Buffs.StrategicTrapDefenceLow = 0;
+    HelmPiece6Buffs.StrategicTrapDefenceHigh = 0;
+    HelmPiece6Buffs.TroopTrainingSpeedLow = 0;
+    HelmPiece6Buffs.TroopTrainingSpeedHigh = 0;
+    HelmPiece6Buffs.EnemySiegeAttackDebuffLow = 0;
+    HelmPiece6Buffs.EnemySiegeAttackDebuffHigh = 0;
+    HelmPiece6Buffs.StrategicTrapAttackLow = 0;
+    HelmPiece6Buffs.StrategicTrapAttackHigh = 0;
+    HelmPiece6Buffs.TrapAttackLow = 0;
+    HelmPiece6Buffs.TrapAttackHigh = 0;
+    HelmPiece6Buffs.HeroCriticalLow = 0;
+    HelmPiece6Buffs.HeroCriticalHigh = 0;
+    HelmPiece6Buffs.MonsterDebuffLow = 0;
+    HelmPiece6Buffs.MonsterDebuffHigh = 0;
+}
+function resetHelmPiece5Buffs(buffs) {
+    HelmPiece5Buffs.TroopAttackLow = 0;
+    HelmPiece5Buffs.TroopAttackHigh = 0;
+    HelmPiece5Buffs.TroopDefenceLow = 0;
+    HelmPiece5Buffs.TroopDefenceHigh = 0;
+    HelmPiece5Buffs.TroopHealthLow = 0;
+    HelmPiece5Buffs.TroopHealthHigh = 0;
+    HelmPiece5Buffs.StrategicTroopAttackLow = 0;
+    HelmPiece5Buffs.StrategicTroopAttackHigh = 0;
+    HelmPiece5Buffs.StrategicTroopDefenceLow = 0;
+    HelmPiece5Buffs.StrategicTroopDefenceHigh = 0;
+    HelmPiece5Buffs.StrategicTroopHealthLow = 0;
+    HelmPiece5Buffs.StrategicTroopHealthHigh = 0;
+    HelmPiece5Buffs.EnemyAttackDebuffLow = 0;
+    HelmPiece5Buffs.EnemyAttackDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicAttackDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicAttackDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyDefenceDebuffLow = 0;
+    HelmPiece5Buffs.EnemyDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicDefenceDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyHealthDebuffLow = 0;
+    HelmPiece5Buffs.EnemyHealthDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicHealthDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicHealthDebuffHigh = 0;
+    HelmPiece5Buffs.MarchSpeedLow = 0;
+    HelmPiece5Buffs.MarchSpeedHigh = 0;
+    HelmPiece5Buffs.InfantryAttackLow = 0;
+    HelmPiece5Buffs.InfantryAttackHigh = 0;
+    HelmPiece5Buffs.InfantryDefenceLow = 0;
+    HelmPiece5Buffs.InfantryDefenceHigh = 0;
+    HelmPiece5Buffs.StrategicInfantryAttackLow = 0;
+    HelmPiece5Buffs.StrategicInfantryAttackHigh = 0;
+    HelmPiece5Buffs.StrategicInfantryDefenceLow = 0;
+    HelmPiece5Buffs.StrategicInfantryDefenceHigh = 0;
+    HelmPiece5Buffs.InfantryHealthLow = 0;
+    HelmPiece5Buffs.InfantryHealthHigh = 0;
+    HelmPiece5Buffs.StrategicInfantryHealthLow = 0;
+    HelmPiece5Buffs.StrategicInfantryHealthHigh = 0;
+    HelmPiece5Buffs.EnemyInfantryAttackDebuffLow = 0;
+    HelmPiece5Buffs.EnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece5Buffs.StratEnemyInfantryAttackDebuffLow = 0;
+    HelmPiece5Buffs.StratEnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyInfantryDefenceDebuffLow = 0;
+    HelmPiece5Buffs.EnemyInfantryDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicInfantryDefenceDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicInfantryDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicInfantryHealthDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicInfantryHealthDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyInfantryHealthDebuffLow = 0;
+    HelmPiece5Buffs.EnemyInfantryHealthDebuffHigh = 0;
+    HelmPiece5Buffs.RangedAttackLow = 0;
+    HelmPiece5Buffs.RangedAttackHigh = 0;
+    HelmPiece5Buffs.RangedDefenceLow = 0;
+    HelmPiece5Buffs.RangedDefenceHigh = 0;
+    HelmPiece5Buffs.StrategicRangedAttackLow = 0;
+    HelmPiece5Buffs.StrategicRangedAttackHigh = 0;
+    HelmPiece5Buffs.StrategicRangedDefenceLow = 0;
+    HelmPiece5Buffs.StrategicRangedDefenceHigh = 0;
+    HelmPiece5Buffs.RangedHealthLow = 0;
+    HelmPiece5Buffs.RangedHealthHigh = 0;
+    HelmPiece5Buffs.StrategicRangedHealthLow = 0;
+    HelmPiece5Buffs.StrategicRangedHealthHigh = 0;
+    HelmPiece5Buffs.EnemyRangedAttackDebuffLow = 0;
+    HelmPiece5Buffs.EnemyRangedAttackDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicRangedAttackDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicRangedAttackDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyRangedDefenceDebuffLow = 0;
+    HelmPiece5Buffs.EnemyRangedDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicRangedDefenceDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicRangedDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyRangedHealthDebuffLow = 0;
+    HelmPiece5Buffs.EnemyRangedHealthDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyStrategicRangedHealthDebuffLow = 0;
+    HelmPiece5Buffs.EnemyStrategicRangedHealthDebuffHigh = 0;
+    HelmPiece5Buffs.CavalryAttackLow = 0;
+    HelmPiece5Buffs.CavalryAttackHigh = 0;
+    HelmPiece5Buffs.CavalryDefenceLow = 0;
+    HelmPiece5Buffs.CavalryDefenceHigh = 0;
+    HelmPiece5Buffs.StrategicCavalryAttackLow = 0;
+    HelmPiece5Buffs.StrategicCavalryAttackHigh = 0;
+    HelmPiece5Buffs.StrategicCavalryDefenceLow = 0;
+    HelmPiece5Buffs.StrategicCavalryDefenceHigh = 0;
+    HelmPiece5Buffs.CavalryHealthLow = 0;
+    HelmPiece5Buffs.CavalryHealthHigh = 0;
+    HelmPiece5Buffs.StrategicCavalryHealthLow = 0;
+    HelmPiece5Buffs.StrategicCavalryHealthHigh = 0;
+    HelmPiece5Buffs.EnemyCavalryAttackDebuffLow = 0;
+    HelmPiece5Buffs.EnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece5Buffs.StrategicEnemyCavalryAttackDebuffLow = 0;
+    HelmPiece5Buffs.StrategicEnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece5Buffs.EnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.StrategicEnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece5Buffs.StrategicEnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece5Buffs.EnemyCavalryHealthDebuffLow = 0;
+    HelmPiece5Buffs.EnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece5Buffs.StrategicEnemyCavalryHealthDebuffLow = 0;
+    HelmPiece5Buffs.StrategicEnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece5Buffs.SiegeAttackLow = 0;
+    HelmPiece5Buffs.SiegeAttackHigh = 0;
+    HelmPiece5Buffs.SiegeDefenceLow = 0;
+    HelmPiece5Buffs.SiegeDefenceHigh = 0;
+    HelmPiece5Buffs.TrapDefenceLow = 0;
+    HelmPiece5Buffs.TrapDefenceHigh = 0;
+    HelmPiece5Buffs.StrategicTrapDefenceLow = 0;
+    HelmPiece5Buffs.StrategicTrapDefenceHigh = 0;
+    HelmPiece5Buffs.TroopTrainingSpeedLow = 0;
+    HelmPiece5Buffs.TroopTrainingSpeedHigh = 0;
+    HelmPiece5Buffs.EnemySiegeAttackDebuffLow = 0;
+    HelmPiece5Buffs.EnemySiegeAttackDebuffHigh = 0;
+    HelmPiece5Buffs.StrategicTrapAttackLow = 0;
+    HelmPiece5Buffs.StrategicTrapAttackHigh = 0;
+    HelmPiece5Buffs.TrapAttackLow = 0;
+    HelmPiece5Buffs.TrapAttackHigh = 0;
+    HelmPiece5Buffs.HeroCriticalLow = 0;
+    HelmPiece5Buffs.HeroCriticalHigh = 0;
+    HelmPiece5Buffs.MonsterDebuffLow = 0;
+    HelmPiece5Buffs.MonsterDebuffHigh = 0;
+}
+function resetHelmPiece4Buffs(buffs) {
+    HelmPiece4Buffs.TroopAttackLow = 0;
+    HelmPiece4Buffs.TroopAttackHigh = 0;
+    HelmPiece4Buffs.TroopDefenceLow = 0;
+    HelmPiece4Buffs.TroopDefenceHigh = 0;
+    HelmPiece4Buffs.TroopHealthLow = 0;
+    HelmPiece4Buffs.TroopHealthHigh = 0;
+    HelmPiece4Buffs.StrategicTroopAttackLow = 0;
+    HelmPiece4Buffs.StrategicTroopAttackHigh = 0;
+    HelmPiece4Buffs.StrategicTroopDefenceLow = 0;
+    HelmPiece4Buffs.StrategicTroopDefenceHigh = 0;
+    HelmPiece4Buffs.StrategicTroopHealthLow = 0;
+    HelmPiece4Buffs.StrategicTroopHealthHigh = 0;
+    HelmPiece4Buffs.EnemyAttackDebuffLow = 0;
+    HelmPiece4Buffs.EnemyAttackDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicAttackDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicAttackDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyDefenceDebuffLow = 0;
+    HelmPiece4Buffs.EnemyDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicDefenceDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyHealthDebuffLow = 0;
+    HelmPiece4Buffs.EnemyHealthDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicHealthDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicHealthDebuffHigh = 0;
+    HelmPiece4Buffs.MarchSpeedLow = 0;
+    HelmPiece4Buffs.MarchSpeedHigh = 0;
+    HelmPiece4Buffs.InfantryAttackLow = 0;
+    HelmPiece4Buffs.InfantryAttackHigh = 0;
+    HelmPiece4Buffs.InfantryDefenceLow = 0;
+    HelmPiece4Buffs.InfantryDefenceHigh = 0;
+    HelmPiece4Buffs.StrategicInfantryAttackLow = 0;
+    HelmPiece4Buffs.StrategicInfantryAttackHigh = 0;
+    HelmPiece4Buffs.StrategicInfantryDefenceLow = 0;
+    HelmPiece4Buffs.StrategicInfantryDefenceHigh = 0;
+    HelmPiece4Buffs.InfantryHealthLow = 0;
+    HelmPiece4Buffs.InfantryHealthHigh = 0;
+    HelmPiece4Buffs.StrategicInfantryHealthLow = 0;
+    HelmPiece4Buffs.StrategicInfantryHealthHigh = 0;
+    HelmPiece4Buffs.EnemyInfantryAttackDebuffLow = 0;
+    HelmPiece4Buffs.EnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece4Buffs.StratEnemyInfantryAttackDebuffLow = 0;
+    HelmPiece4Buffs.StratEnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyInfantryDefenceDebuffLow = 0;
+    HelmPiece4Buffs.EnemyInfantryDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicInfantryDefenceDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicInfantryDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicInfantryHealthDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicInfantryHealthDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyInfantryHealthDebuffLow = 0;
+    HelmPiece4Buffs.EnemyInfantryHealthDebuffHigh = 0;
+    HelmPiece4Buffs.RangedAttackLow = 0;
+    HelmPiece4Buffs.RangedAttackHigh = 0;
+    HelmPiece4Buffs.RangedDefenceLow = 0;
+    HelmPiece4Buffs.RangedDefenceHigh = 0;
+    HelmPiece4Buffs.StrategicRangedAttackLow = 0;
+    HelmPiece4Buffs.StrategicRangedAttackHigh = 0;
+    HelmPiece4Buffs.StrategicRangedDefenceLow = 0;
+    HelmPiece4Buffs.StrategicRangedDefenceHigh = 0;
+    HelmPiece4Buffs.RangedHealthLow = 0;
+    HelmPiece4Buffs.RangedHealthHigh = 0;
+    HelmPiece4Buffs.StrategicRangedHealthLow = 0;
+    HelmPiece4Buffs.StrategicRangedHealthHigh = 0;
+    HelmPiece4Buffs.EnemyRangedAttackDebuffLow = 0;
+    HelmPiece4Buffs.EnemyRangedAttackDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicRangedAttackDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicRangedAttackDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyRangedDefenceDebuffLow = 0;
+    HelmPiece4Buffs.EnemyRangedDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicRangedDefenceDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicRangedDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyRangedHealthDebuffLow = 0;
+    HelmPiece4Buffs.EnemyRangedHealthDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyStrategicRangedHealthDebuffLow = 0;
+    HelmPiece4Buffs.EnemyStrategicRangedHealthDebuffHigh = 0;
+    HelmPiece4Buffs.CavalryAttackLow = 0;
+    HelmPiece4Buffs.CavalryAttackHigh = 0;
+    HelmPiece4Buffs.CavalryDefenceLow = 0;
+    HelmPiece4Buffs.CavalryDefenceHigh = 0;
+    HelmPiece4Buffs.StrategicCavalryAttackLow = 0;
+    HelmPiece4Buffs.StrategicCavalryAttackHigh = 0;
+    HelmPiece4Buffs.StrategicCavalryDefenceLow = 0;
+    HelmPiece4Buffs.StrategicCavalryDefenceHigh = 0;
+    HelmPiece4Buffs.CavalryHealthLow = 0;
+    HelmPiece4Buffs.CavalryHealthHigh = 0;
+    HelmPiece4Buffs.StrategicCavalryHealthLow = 0;
+    HelmPiece4Buffs.StrategicCavalryHealthHigh = 0;
+    HelmPiece4Buffs.EnemyCavalryAttackDebuffLow = 0;
+    HelmPiece4Buffs.EnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece4Buffs.StrategicEnemyCavalryAttackDebuffLow = 0;
+    HelmPiece4Buffs.StrategicEnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece4Buffs.EnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.StrategicEnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece4Buffs.StrategicEnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece4Buffs.EnemyCavalryHealthDebuffLow = 0;
+    HelmPiece4Buffs.EnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece4Buffs.StrategicEnemyCavalryHealthDebuffLow = 0;
+    HelmPiece4Buffs.StrategicEnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece4Buffs.SiegeAttackLow = 0;
+    HelmPiece4Buffs.SiegeAttackHigh = 0;
+    HelmPiece4Buffs.SiegeDefenceLow = 0;
+    HelmPiece4Buffs.SiegeDefenceHigh = 0;
+    HelmPiece4Buffs.TrapDefenceLow = 0;
+    HelmPiece4Buffs.TrapDefenceHigh = 0;
+    HelmPiece4Buffs.StrategicTrapDefenceLow = 0;
+    HelmPiece4Buffs.StrategicTrapDefenceHigh = 0;
+    HelmPiece4Buffs.TroopTrainingSpeedLow = 0;
+    HelmPiece4Buffs.TroopTrainingSpeedHigh = 0;
+    HelmPiece4Buffs.EnemySiegeAttackDebuffLow = 0;
+    HelmPiece4Buffs.EnemySiegeAttackDebuffHigh = 0;
+    HelmPiece4Buffs.StrategicTrapAttackLow = 0;
+    HelmPiece4Buffs.StrategicTrapAttackHigh = 0;
+    HelmPiece4Buffs.TrapAttackLow = 0;
+    HelmPiece4Buffs.TrapAttackHigh = 0;
+    HelmPiece4Buffs.HeroCriticalLow = 0;
+    HelmPiece4Buffs.HeroCriticalHigh = 0;
+    HelmPiece4Buffs.MonsterDebuffLow = 0;
+    HelmPiece4Buffs.MonsterDebuffHigh = 0;
+}
+function resetHelmPiece3Buffs(buffs) {
+    HelmPiece3Buffs.TroopAttackLow = 0;
+    HelmPiece3Buffs.TroopAttackHigh = 0;
+    HelmPiece3Buffs.TroopDefenceLow = 0;
+    HelmPiece3Buffs.TroopDefenceHigh = 0;
+    HelmPiece3Buffs.TroopHealthLow = 0;
+    HelmPiece3Buffs.TroopHealthHigh = 0;
+    HelmPiece3Buffs.StrategicTroopAttackLow = 0;
+    HelmPiece3Buffs.StrategicTroopAttackHigh = 0;
+    HelmPiece3Buffs.StrategicTroopDefenceLow = 0;
+    HelmPiece3Buffs.StrategicTroopDefenceHigh = 0;
+    HelmPiece3Buffs.StrategicTroopHealthLow = 0;
+    HelmPiece3Buffs.StrategicTroopHealthHigh = 0;
+    HelmPiece3Buffs.EnemyAttackDebuffLow = 0;
+    HelmPiece3Buffs.EnemyAttackDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicAttackDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicAttackDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyDefenceDebuffLow = 0;
+    HelmPiece3Buffs.EnemyDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicDefenceDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyHealthDebuffLow = 0;
+    HelmPiece3Buffs.EnemyHealthDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicHealthDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicHealthDebuffHigh = 0;
+    HelmPiece3Buffs.MarchSpeedLow = 0;
+    HelmPiece3Buffs.MarchSpeedHigh = 0;
+    HelmPiece3Buffs.InfantryAttackLow = 0;
+    HelmPiece3Buffs.InfantryAttackHigh = 0;
+    HelmPiece3Buffs.InfantryDefenceLow = 0;
+    HelmPiece3Buffs.InfantryDefenceHigh = 0;
+    HelmPiece3Buffs.StrategicInfantryAttackLow = 0;
+    HelmPiece3Buffs.StrategicInfantryAttackHigh = 0;
+    HelmPiece3Buffs.StrategicInfantryDefenceLow = 0;
+    HelmPiece3Buffs.StrategicInfantryDefenceHigh = 0;
+    HelmPiece3Buffs.InfantryHealthLow = 0;
+    HelmPiece3Buffs.InfantryHealthHigh = 0;
+    HelmPiece3Buffs.StrategicInfantryHealthLow = 0;
+    HelmPiece3Buffs.StrategicInfantryHealthHigh = 0;
+    HelmPiece3Buffs.EnemyInfantryAttackDebuffLow = 0;
+    HelmPiece3Buffs.EnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece3Buffs.StratEnemyInfantryAttackDebuffLow = 0;
+    HelmPiece3Buffs.StratEnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyInfantryDefenceDebuffLow = 0;
+    HelmPiece3Buffs.EnemyInfantryDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicInfantryDefenceDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicInfantryDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicInfantryHealthDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicInfantryHealthDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyInfantryHealthDebuffLow = 0;
+    HelmPiece3Buffs.EnemyInfantryHealthDebuffHigh = 0;
+    HelmPiece3Buffs.RangedAttackLow = 0;
+    HelmPiece3Buffs.RangedAttackHigh = 0;
+    HelmPiece3Buffs.RangedDefenceLow = 0;
+    HelmPiece3Buffs.RangedDefenceHigh = 0;
+    HelmPiece3Buffs.StrategicRangedAttackLow = 0;
+    HelmPiece3Buffs.StrategicRangedAttackHigh = 0;
+    HelmPiece3Buffs.StrategicRangedDefenceLow = 0;
+    HelmPiece3Buffs.StrategicRangedDefenceHigh = 0;
+    HelmPiece3Buffs.RangedHealthLow = 0;
+    HelmPiece3Buffs.RangedHealthHigh = 0;
+    HelmPiece3Buffs.StrategicRangedHealthLow = 0;
+    HelmPiece3Buffs.StrategicRangedHealthHigh = 0;
+    HelmPiece3Buffs.EnemyRangedAttackDebuffLow = 0;
+    HelmPiece3Buffs.EnemyRangedAttackDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicRangedAttackDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicRangedAttackDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyRangedDefenceDebuffLow = 0;
+    HelmPiece3Buffs.EnemyRangedDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicRangedDefenceDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicRangedDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyRangedHealthDebuffLow = 0;
+    HelmPiece3Buffs.EnemyRangedHealthDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyStrategicRangedHealthDebuffLow = 0;
+    HelmPiece3Buffs.EnemyStrategicRangedHealthDebuffHigh = 0;
+    HelmPiece3Buffs.CavalryAttackLow = 0;
+    HelmPiece3Buffs.CavalryAttackHigh = 0;
+    HelmPiece3Buffs.CavalryDefenceLow = 0;
+    HelmPiece3Buffs.CavalryDefenceHigh = 0;
+    HelmPiece3Buffs.StrategicCavalryAttackLow = 0;
+    HelmPiece3Buffs.StrategicCavalryAttackHigh = 0;
+    HelmPiece3Buffs.StrategicCavalryDefenceLow = 0;
+    HelmPiece3Buffs.StrategicCavalryDefenceHigh = 0;
+    HelmPiece3Buffs.CavalryHealthLow = 0;
+    HelmPiece3Buffs.CavalryHealthHigh = 0;
+    HelmPiece3Buffs.StrategicCavalryHealthLow = 0;
+    HelmPiece3Buffs.StrategicCavalryHealthHigh = 0;
+    HelmPiece3Buffs.EnemyCavalryAttackDebuffLow = 0;
+    HelmPiece3Buffs.EnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece3Buffs.StrategicEnemyCavalryAttackDebuffLow = 0;
+    HelmPiece3Buffs.StrategicEnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece3Buffs.EnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.StrategicEnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece3Buffs.StrategicEnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece3Buffs.EnemyCavalryHealthDebuffLow = 0;
+    HelmPiece3Buffs.EnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece3Buffs.StrategicEnemyCavalryHealthDebuffLow = 0;
+    HelmPiece3Buffs.StrategicEnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece3Buffs.SiegeAttackLow = 0;
+    HelmPiece3Buffs.SiegeAttackHigh = 0;
+    HelmPiece3Buffs.SiegeDefenceLow = 0;
+    HelmPiece3Buffs.SiegeDefenceHigh = 0;
+    HelmPiece3Buffs.TrapDefenceLow = 0;
+    HelmPiece3Buffs.TrapDefenceHigh = 0;
+    HelmPiece3Buffs.StrategicTrapDefenceLow = 0;
+    HelmPiece3Buffs.StrategicTrapDefenceHigh = 0;
+    HelmPiece3Buffs.TroopTrainingSpeedLow = 0;
+    HelmPiece3Buffs.TroopTrainingSpeedHigh = 0;
+    HelmPiece3Buffs.EnemySiegeAttackDebuffLow = 0;
+    HelmPiece3Buffs.EnemySiegeAttackDebuffHigh = 0;
+    HelmPiece3Buffs.StrategicTrapAttackLow = 0;
+    HelmPiece3Buffs.StrategicTrapAttackHigh = 0;
+    HelmPiece3Buffs.TrapAttackLow = 0;
+    HelmPiece3Buffs.TrapAttackHigh = 0;
+    HelmPiece3Buffs.HeroCriticalLow = 0;
+    HelmPiece3Buffs.HeroCriticalHigh = 0;
+    HelmPiece3Buffs.MonsterDebuffLow = 0;
+    HelmPiece3Buffs.MonsterDebuffHigh = 0;
+}
+function resetHelmPiece2Buffs(buffs) {
+    HelmPiece2Buffs.TroopAttackLow = 0;
+    HelmPiece2Buffs.TroopAttackHigh = 0;
+    HelmPiece2Buffs.TroopDefenceLow = 0;
+    HelmPiece2Buffs.TroopDefenceHigh = 0;
+    HelmPiece2Buffs.TroopHealthLow = 0;
+    HelmPiece2Buffs.TroopHealthHigh = 0;
+    HelmPiece2Buffs.StrategicTroopAttackLow = 0;
+    HelmPiece2Buffs.StrategicTroopAttackHigh = 0;
+    HelmPiece2Buffs.StrategicTroopDefenceLow = 0;
+    HelmPiece2Buffs.StrategicTroopDefenceHigh = 0;
+    HelmPiece2Buffs.StrategicTroopHealthLow = 0;
+    HelmPiece2Buffs.StrategicTroopHealthHigh = 0;
+    HelmPiece2Buffs.EnemyAttackDebuffLow = 0;
+    HelmPiece2Buffs.EnemyAttackDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicAttackDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicAttackDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyDefenceDebuffLow = 0;
+    HelmPiece2Buffs.EnemyDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicDefenceDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyHealthDebuffLow = 0;
+    HelmPiece2Buffs.EnemyHealthDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicHealthDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicHealthDebuffHigh = 0;
+    HelmPiece2Buffs.MarchSpeedLow = 0;
+    HelmPiece2Buffs.MarchSpeedHigh = 0;
+    HelmPiece2Buffs.InfantryAttackLow = 0;
+    HelmPiece2Buffs.InfantryAttackHigh = 0;
+    HelmPiece2Buffs.InfantryDefenceLow = 0;
+    HelmPiece2Buffs.InfantryDefenceHigh = 0;
+    HelmPiece2Buffs.StrategicInfantryAttackLow = 0;
+    HelmPiece2Buffs.StrategicInfantryAttackHigh = 0;
+    HelmPiece2Buffs.StrategicInfantryDefenceLow = 0;
+    HelmPiece2Buffs.StrategicInfantryDefenceHigh = 0;
+    HelmPiece2Buffs.InfantryHealthLow = 0;
+    HelmPiece2Buffs.InfantryHealthHigh = 0;
+    HelmPiece2Buffs.StrategicInfantryHealthLow = 0;
+    HelmPiece2Buffs.StrategicInfantryHealthHigh = 0;
+    HelmPiece2Buffs.EnemyInfantryAttackDebuffLow = 0;
+    HelmPiece2Buffs.EnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece2Buffs.StratEnemyInfantryAttackDebuffLow = 0;
+    HelmPiece2Buffs.StratEnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyInfantryDefenceDebuffLow = 0;
+    HelmPiece2Buffs.EnemyInfantryDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicInfantryDefenceDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicInfantryDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicInfantryHealthDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicInfantryHealthDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyInfantryHealthDebuffLow = 0;
+    HelmPiece2Buffs.EnemyInfantryHealthDebuffHigh = 0;
+    HelmPiece2Buffs.RangedAttackLow = 0;
+    HelmPiece2Buffs.RangedAttackHigh = 0;
+    HelmPiece2Buffs.RangedDefenceLow = 0;
+    HelmPiece2Buffs.RangedDefenceHigh = 0;
+    HelmPiece2Buffs.StrategicRangedAttackLow = 0;
+    HelmPiece2Buffs.StrategicRangedAttackHigh = 0;
+    HelmPiece2Buffs.StrategicRangedDefenceLow = 0;
+    HelmPiece2Buffs.StrategicRangedDefenceHigh = 0;
+    HelmPiece2Buffs.RangedHealthLow = 0;
+    HelmPiece2Buffs.RangedHealthHigh = 0;
+    HelmPiece2Buffs.StrategicRangedHealthLow = 0;
+    HelmPiece2Buffs.StrategicRangedHealthHigh = 0;
+    HelmPiece2Buffs.EnemyRangedAttackDebuffLow = 0;
+    HelmPiece2Buffs.EnemyRangedAttackDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicRangedAttackDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicRangedAttackDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyRangedDefenceDebuffLow = 0;
+    HelmPiece2Buffs.EnemyRangedDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicRangedDefenceDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicRangedDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyRangedHealthDebuffLow = 0;
+    HelmPiece2Buffs.EnemyRangedHealthDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyStrategicRangedHealthDebuffLow = 0;
+    HelmPiece2Buffs.EnemyStrategicRangedHealthDebuffHigh = 0;
+    HelmPiece2Buffs.CavalryAttackLow = 0;
+    HelmPiece2Buffs.CavalryAttackHigh = 0;
+    HelmPiece2Buffs.CavalryDefenceLow = 0;
+    HelmPiece2Buffs.CavalryDefenceHigh = 0;
+    HelmPiece2Buffs.StrategicCavalryAttackLow = 0;
+    HelmPiece2Buffs.StrategicCavalryAttackHigh = 0;
+    HelmPiece2Buffs.StrategicCavalryDefenceLow = 0;
+    HelmPiece2Buffs.StrategicCavalryDefenceHigh = 0;
+    HelmPiece2Buffs.CavalryHealthLow = 0;
+    HelmPiece2Buffs.CavalryHealthHigh = 0;
+    HelmPiece2Buffs.StrategicCavalryHealthLow = 0;
+    HelmPiece2Buffs.StrategicCavalryHealthHigh = 0;
+    HelmPiece2Buffs.EnemyCavalryAttackDebuffLow = 0;
+    HelmPiece2Buffs.EnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece2Buffs.StrategicEnemyCavalryAttackDebuffLow = 0;
+    HelmPiece2Buffs.StrategicEnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece2Buffs.EnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.StrategicEnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece2Buffs.StrategicEnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece2Buffs.EnemyCavalryHealthDebuffLow = 0;
+    HelmPiece2Buffs.EnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece2Buffs.StrategicEnemyCavalryHealthDebuffLow = 0;
+    HelmPiece2Buffs.StrategicEnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece2Buffs.SiegeAttackLow = 0;
+    HelmPiece2Buffs.SiegeAttackHigh = 0;
+    HelmPiece2Buffs.SiegeDefenceLow = 0;
+    HelmPiece2Buffs.SiegeDefenceHigh = 0;
+    HelmPiece2Buffs.TrapDefenceLow = 0;
+    HelmPiece2Buffs.TrapDefenceHigh = 0;
+    HelmPiece2Buffs.StrategicTrapDefenceLow = 0;
+    HelmPiece2Buffs.StrategicTrapDefenceHigh = 0;
+    HelmPiece2Buffs.TroopTrainingSpeedLow = 0;
+    HelmPiece2Buffs.TroopTrainingSpeedHigh = 0;
+    HelmPiece2Buffs.EnemySiegeAttackDebuffLow = 0;
+    HelmPiece2Buffs.EnemySiegeAttackDebuffHigh = 0;
+    HelmPiece2Buffs.StrategicTrapAttackLow = 0;
+    HelmPiece2Buffs.StrategicTrapAttackHigh = 0;
+    HelmPiece2Buffs.TrapAttackLow = 0;
+    HelmPiece2Buffs.TrapAttackHigh = 0;
+    HelmPiece2Buffs.HeroCriticalLow = 0;
+    HelmPiece2Buffs.HeroCriticalHigh = 0;
+    HelmPiece2Buffs.MonsterDebuffLow = 0;
+    HelmPiece2Buffs.MonsterDebuffHigh = 0;
+}
+function resetHelmPiece1Buffs(buffs) {
+    HelmPiece1Buffs.TroopAttackLow = 0;
+    HelmPiece1Buffs.TroopAttackHigh = 0;
+    HelmPiece1Buffs.TroopDefenceLow = 0;
+    HelmPiece1Buffs.TroopDefenceHigh = 0;
+    HelmPiece1Buffs.TroopHealthLow = 0;
+    HelmPiece1Buffs.TroopHealthHigh = 0;
+    HelmPiece1Buffs.StrategicTroopAttackLow = 0;
+    HelmPiece1Buffs.StrategicTroopAttackHigh = 0;
+    HelmPiece1Buffs.StrategicTroopDefenceLow = 0;
+    HelmPiece1Buffs.StrategicTroopDefenceHigh = 0;
+    HelmPiece1Buffs.StrategicTroopHealthLow = 0;
+    HelmPiece1Buffs.StrategicTroopHealthHigh = 0;
+    HelmPiece1Buffs.EnemyAttackDebuffLow = 0;
+    HelmPiece1Buffs.EnemyAttackDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicAttackDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicAttackDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyDefenceDebuffLow = 0;
+    HelmPiece1Buffs.EnemyDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicDefenceDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyHealthDebuffLow = 0;
+    HelmPiece1Buffs.EnemyHealthDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicHealthDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicHealthDebuffHigh = 0;
+    HelmPiece1Buffs.MarchSpeedLow = 0;
+    HelmPiece1Buffs.MarchSpeedHigh = 0;
+    HelmPiece1Buffs.InfantryAttackLow = 0;
+    HelmPiece1Buffs.InfantryAttackHigh = 0;
+    HelmPiece1Buffs.InfantryDefenceLow = 0;
+    HelmPiece1Buffs.InfantryDefenceHigh = 0;
+    HelmPiece1Buffs.StrategicInfantryAttackLow = 0;
+    HelmPiece1Buffs.StrategicInfantryAttackHigh = 0;
+    HelmPiece1Buffs.StrategicInfantryDefenceLow = 0;
+    HelmPiece1Buffs.StrategicInfantryDefenceHigh = 0;
+    HelmPiece1Buffs.InfantryHealthLow = 0;
+    HelmPiece1Buffs.InfantryHealthHigh = 0;
+    HelmPiece1Buffs.StrategicInfantryHealthLow = 0;
+    HelmPiece1Buffs.StrategicInfantryHealthHigh = 0;
+    HelmPiece1Buffs.EnemyInfantryAttackDebuffLow = 0;
+    HelmPiece1Buffs.EnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece1Buffs.StratEnemyInfantryAttackDebuffLow = 0;
+    HelmPiece1Buffs.StratEnemyInfantryAttackDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyInfantryDefenceDebuffLow = 0;
+    HelmPiece1Buffs.EnemyInfantryDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicInfantryDefenceDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicInfantryDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicInfantryHealthDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicInfantryHealthDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyInfantryHealthDebuffLow = 0;
+    HelmPiece1Buffs.EnemyInfantryHealthDebuffHigh = 0;
+    HelmPiece1Buffs.RangedAttackLow = 0;
+    HelmPiece1Buffs.RangedAttackHigh = 0;
+    HelmPiece1Buffs.RangedDefenceLow = 0;
+    HelmPiece1Buffs.RangedDefenceHigh = 0;
+    HelmPiece1Buffs.StrategicRangedAttackLow = 0;
+    HelmPiece1Buffs.StrategicRangedAttackHigh = 0;
+    HelmPiece1Buffs.StrategicRangedDefenceLow = 0;
+    HelmPiece1Buffs.StrategicRangedDefenceHigh = 0;
+    HelmPiece1Buffs.RangedHealthLow = 0;
+    HelmPiece1Buffs.RangedHealthHigh = 0;
+    HelmPiece1Buffs.StrategicRangedHealthLow = 0;
+    HelmPiece1Buffs.StrategicRangedHealthHigh = 0;
+    HelmPiece1Buffs.EnemyRangedAttackDebuffLow = 0;
+    HelmPiece1Buffs.EnemyRangedAttackDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicRangedAttackDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicRangedAttackDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyRangedDefenceDebuffLow = 0;
+    HelmPiece1Buffs.EnemyRangedDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicRangedDefenceDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicRangedDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyRangedHealthDebuffLow = 0;
+    HelmPiece1Buffs.EnemyRangedHealthDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyStrategicRangedHealthDebuffLow = 0;
+    HelmPiece1Buffs.EnemyStrategicRangedHealthDebuffHigh = 0;
+    HelmPiece1Buffs.CavalryAttackLow = 0;
+    HelmPiece1Buffs.CavalryAttackHigh = 0;
+    HelmPiece1Buffs.CavalryDefenceLow = 0;
+    HelmPiece1Buffs.CavalryDefenceHigh = 0;
+    HelmPiece1Buffs.StrategicCavalryAttackLow = 0;
+    HelmPiece1Buffs.StrategicCavalryAttackHigh = 0;
+    HelmPiece1Buffs.StrategicCavalryDefenceLow = 0;
+    HelmPiece1Buffs.StrategicCavalryDefenceHigh = 0;
+    HelmPiece1Buffs.CavalryHealthLow = 0;
+    HelmPiece1Buffs.CavalryHealthHigh = 0;
+    HelmPiece1Buffs.StrategicCavalryHealthLow = 0;
+    HelmPiece1Buffs.StrategicCavalryHealthHigh = 0;
+    HelmPiece1Buffs.EnemyCavalryAttackDebuffLow = 0;
+    HelmPiece1Buffs.EnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece1Buffs.StrategicEnemyCavalryAttackDebuffLow = 0;
+    HelmPiece1Buffs.StrategicEnemyCavalryAttackDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece1Buffs.EnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.StrategicEnemyCavalryDefenceDebuffLow = 0;
+    HelmPiece1Buffs.StrategicEnemyCavalryDefenceDebuffHigh = 0;
+    HelmPiece1Buffs.EnemyCavalryHealthDebuffLow = 0;
+    HelmPiece1Buffs.EnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece1Buffs.StrategicEnemyCavalryHealthDebuffLow = 0;
+    HelmPiece1Buffs.StrategicEnemyCavalryHealthDebuffHigh = 0;
+    HelmPiece1Buffs.SiegeAttackLow = 0;
+    HelmPiece1Buffs.SiegeAttackHigh = 0;
+    HelmPiece1Buffs.SiegeDefenceLow = 0;
+    HelmPiece1Buffs.SiegeDefenceHigh = 0;
+    HelmPiece1Buffs.TrapDefenceLow = 0;
+    HelmPiece1Buffs.TrapDefenceHigh = 0;
+    HelmPiece1Buffs.StrategicTrapDefenceLow = 0;
+    HelmPiece1Buffs.StrategicTrapDefenceHigh = 0;
+    HelmPiece1Buffs.TroopTrainingSpeedLow = 0;
+    HelmPiece1Buffs.TroopTrainingSpeedHigh = 0;
+    HelmPiece1Buffs.EnemySiegeAttackDebuffLow = 0;
+    HelmPiece1Buffs.EnemySiegeAttackDebuffHigh = 0;
+    HelmPiece1Buffs.StrategicTrapAttackLow = 0;
+    HelmPiece1Buffs.StrategicTrapAttackHigh = 0;
+    HelmPiece1Buffs.TrapAttackLow = 0;
+    HelmPiece1Buffs.TrapAttackHigh = 0;
+    HelmPiece1Buffs.HeroCriticalLow = 0;
+    HelmPiece1Buffs.HeroCriticalHigh = 0;
+    HelmPiece1Buffs.MonsterDebuffLow = 0;
+    HelmPiece1Buffs.MonsterDebuffHigh = 0;
+}
 
 function helmSummary() {
     HelmTroopAttackLow = 0;
@@ -1944,65 +2778,65 @@ function helmSummary() {
         HelmMonsterDebuffHigh = HelmMonsterDebuffHigh + HelmPiece6Buffs.MonsterDebuffHigh;
     }
         
-    document.getElementById("HelmSummaryTroopAttack").innerHTML = HelmTroopAttackLow + "-" + HelmTroopAttackHigh;
-    document.getElementById("HelmSummaryTroopDefence").innerHTML = HelmTroopDefenceLow + "-" + HelmTroopDefenceHigh;
-    document.getElementById("HelmSummaryTroopHealth").innerHTML = HelmTroopHealthLow + "-" + HelmTroopHealthHigh;
-    document.getElementById("HelmSummaryStrategicTroopAttack").innerHTML = HelmStrategicTroopAttackLow + "-" + HelmStrategicTroopAttackHigh;
-    document.getElementById("HelmSummaryStrategicTroopDefence").innerHTML = HelmStrategicTroopDefenceLow + "-" + HelmStrategicTroopDefenceHigh;
-    document.getElementById("HelmSummaryStrategicTroopHealth").innerHTML = HelmStrategicTroopHealthLow + "-" + HelmStrategicTroopHealthHigh;
-    document.getElementById("HelmSummaryEnemyAttackDebuff").innerHTML = HelmEnemyAttackDebuffLow + "-" + HelmEnemyAttackDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicAttackDebuff").innerHTML = HelmEnemyStrategicAttackDebuffLow + "-" + HelmEnemyStrategicAttackDebuffHigh;
-    document.getElementById("HelmSummaryEnemyDefenceDebuff").innerHTML = HelmEnemyDefenceDebuffLow + "-" + HelmEnemyDefenceDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicDefenceDebuff").innerHTML = HelmEnemyStrategicDefenceDebuffLow + "-" + HelmEnemyStrategicDefenceDebuffHigh;
-    document.getElementById("HelmSummaryEnemyHealthDebuff").innerHTML = HelmEnemyHealthDebuffLow + "-" + HelmEnemyHealthDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicHealthDebuff").innerHTML = HelmEnemyStrategicHealthDebuffLow + "-" + HelmEnemyStrategicHealthDebuffHigh;
-    document.getElementById("HelmSummaryMarchSpeed").innerHTML = HelmMarchSpeedLow + "-" + HelmMarchSpeedHigh;
-    document.getElementById("HelmSummaryInfantryAttack").innerHTML = HelmInfantryAttackLow + "-" + HelmInfantryAttackHigh;
-    document.getElementById("HelmSummaryInfantryDefence").innerHTML = HelmInfantryDefenceLow + "-" + HelmInfantryDefenceHigh;
-    document.getElementById("HelmSummaryStrategicInfantryAttack").innerHTML = HelmStrategicInfantryAttackLow + "-" + HelmStrategicInfantryAttackHigh;
-    document.getElementById("HelmSummaryStrategicInfantryDefence").innerHTML = HelmStrategicInfantryDefenceLow + "-" + HelmStrategicInfantryDefenceHigh;
-    document.getElementById("HelmSummaryInfantryHealth").innerHTML = HelmInfantryHealthLow + "-" + HelmInfantryHealthHigh;
-    document.getElementById("HelmSummaryStrategicInfantryHealth").innerHTML = HelmStrategicInfantryHealthLow + "-" + HelmStrategicInfantryHealthHigh;
-    document.getElementById("HelmSummaryEnemyInfantryAttackDebuff").innerHTML = HelmEnemyInfantryAttackDebuffLow + "-" + HelmEnemyInfantryAttackDebuffHigh;
-    document.getElementById("HelmSummaryStratEnemyInfantryAttackDebuff").innerHTML = HelmStratEnemyInfantryAttackDebuffLow + "-" + HelmStratEnemyInfantryAttackDebuffHigh;
-    document.getElementById("HelmSummaryEnemyInfantryDefenceDebuff").innerHTML = HelmEnemyInfantryDefenceDebuffLow + "-" + HelmEnemyInfantryDefenceDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicInfantryDefenceDebuff").innerHTML = HelmEnemyStrategicInfantryDefenceDebuffLow + "-" + HelmEnemyStrategicInfantryDefenceDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicInfantryHealthDebuff").innerHTML = HelmEnemyStrategicInfantryHealthDebuffLow + "-" + HelmEnemyStrategicInfantryHealthDebuffHigh;
-    document.getElementById("HelmSummaryEnemyInfantryHealthDebuff").innerHTML = HelmEnemyInfantryHealthDebuffLow + "-" + HelmEnemyInfantryHealthDebuffHigh;
-    document.getElementById("HelmSummaryRangedAttack").innerHTML = HelmRangedAttackLow + "-" + HelmRangedAttackHigh;
-    document.getElementById("HelmSummaryRangedDefence").innerHTML = HelmRangedDefenceLow + "-" + HelmRangedDefenceHigh;
-    document.getElementById("HelmSummaryStrategicRangedAttack").innerHTML = HelmStrategicRangedAttackLow + "-" + HelmStrategicRangedAttackHigh;
-    document.getElementById("HelmSummaryStrategicRangedDefence").innerHTML = HelmStrategicRangedDefenceLow + "-" + HelmStrategicRangedDefenceHigh;
-    document.getElementById("HelmSummaryRangedHealth").innerHTML = HelmRangedHealthLow + "-" + HelmRangedHealthHigh;
-    document.getElementById("HelmSummaryStrategicRangedHealth").innerHTML = HelmStrategicRangedHealthLow + "-" + HelmStrategicRangedHealthHigh;
-    document.getElementById("HelmSummaryEnemyRangedAttackDebuff").innerHTML = HelmEnemyRangedAttackDebuffLow + "-" + HelmEnemyRangedAttackDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicRangedAttackDebuff").innerHTML = HelmEnemyStrategicRangedAttackDebuffLow + "-" + HelmEnemyStrategicRangedAttackDebuffHigh;
-    document.getElementById("HelmSummaryEnemyRangedDefenceDebuff").innerHTML = HelmEnemyRangedDefenceDebuffLow + "-" + HelmEnemyRangedDefenceDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicRangedDefenceDebuff").innerHTML = HelmEnemyStrategicRangedDefenceDebuffLow + "-" + HelmEnemyStrategicRangedDefenceDebuffHigh;
-    document.getElementById("HelmSummaryEnemyRangedHealthDebuff").innerHTML = HelmEnemyRangedHealthDebuffLow + "-" + HelmEnemyRangedHealthDebuffHigh;
-    document.getElementById("HelmSummaryEnemyStrategicRangedHealthDebuff").innerHTML = HelmEnemyStrategicRangedHealthDebuffLow + "-" + HelmEnemyStrategicRangedHealthDebuffHigh;
-    document.getElementById("HelmSummaryCavalryAttack").innerHTML = HelmCavalryAttackLow + "-" + HelmCavalryAttackHigh;
-    document.getElementById("HelmSummaryCavalryDefence").innerHTML = HelmCavalryDefenceLow + "-" + HelmCavalryDefenceHigh;
-    document.getElementById("HelmSummaryStrategicCavalryAttack").innerHTML = HelmStrategicCavalryAttackLow + "-" + HelmStrategicCavalryAttackHigh;
-    document.getElementById("HelmSummaryStrategicCavalryDefence").innerHTML = HelmStrategicCavalryDefenceLow + "-" + HelmStrategicCavalryDefenceHigh;
-    document.getElementById("HelmSummaryCavalryHealth").innerHTML = HelmCavalryHealthLow + "-" + HelmCavalryHealthHigh;
-    document.getElementById("HelmSummaryStrategicCavalryHealth").innerHTML = HelmStrategicCavalryHealthLow + "-" + HelmStrategicCavalryHealthHigh;
-    document.getElementById("HelmSummaryEnemyCavalryAttackDebuff").innerHTML = HelmEnemyCavalryAttackDebuffLow + "-" + HelmEnemyCavalryAttackDebuffHigh;
-    document.getElementById("HelmSummaryStrategicEnemyCavalryAttackDebuff").innerHTML = HelmStrategicEnemyCavalryAttackDebuffLow + "-" + HelmStrategicEnemyCavalryAttackDebuffHigh;
-    document.getElementById("HelmSummaryEnemyCavalryDefenceDebuff").innerHTML = HelmEnemyCavalryDefenceDebuffLow + "-" + HelmEnemyCavalryDefenceDebuffHigh;
-    document.getElementById("HelmSummaryStrategicEnemyCavalryDefenceDebuff").innerHTML = HelmStrategicEnemyCavalryDefenceDebuffLow + "-" + HelmStrategicEnemyCavalryDefenceDebuffHigh;
-    document.getElementById("HelmSummaryEnemyCavalryHealthDebuff").innerHTML = HelmEnemyCavalryHealthDebuffLow + "-" + HelmEnemyCavalryHealthDebuffHigh;
-    document.getElementById("HelmSummaryStrategicEnemyCavalryHealthDebuff").innerHTML = HelmStrategicEnemyCavalryHealthDebuffLow + "-" + HelmStrategicEnemyCavalryHealthDebuffHigh;
-    document.getElementById("HelmSummarySiegeAttack").innerHTML = HelmSiegeAttackLow + "-" + HelmSiegeAttackHigh;
-    document.getElementById("HelmSummarySiegeDefence").innerHTML = HelmSiegeDefenceLow + "-" + HelmSiegeDefenceHigh;
-    document.getElementById("HelmSummaryTrapDefence").innerHTML = HelmTrapDefenceLow + "-" + HelmTrapDefenceHigh;
-    document.getElementById("HelmSummaryStrategicTrapDefence").innerHTML = HelmStrategicTrapDefenceLow + "-" + HelmStrategicTrapDefenceHigh;
-    document.getElementById("HelmSummaryTroopTrainingSpeed").innerHTML = HelmTroopTrainingSpeedLow + "-" + HelmTroopTrainingSpeedHigh;
-    document.getElementById("HelmSummaryEnemySiegeAttackDebuff").innerHTML = HelmEnemySiegeAttackDebuffLow + "-" + HelmEnemySiegeAttackDebuffHigh;
-    document.getElementById("HelmSummaryStrategicTrapAttack").innerHTML = HelmStrategicTrapAttackLow + "-" + HelmStrategicTrapAttackHigh;
-    document.getElementById("HelmSummaryTrapAttack").innerHTML = HelmTrapAttackLow + "-" + HelmTrapAttackHigh;
-    document.getElementById("HelmSummaryHeroCritical").innerHTML = HelmHeroCriticalLow + "-" + HelmHeroCriticalHigh;
-    document.getElementById("HelmSummaryMonsterDebuff").innerHTML = HelmMonsterDebuffLow + "-" + HelmMonsterDebuffHigh;
+    document.getElementById("HelmSummaryTroopAttack").innerHTML = HelmTroopAttackLow.toFixed(2) + "-" + HelmTroopAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryTroopDefence").innerHTML = HelmTroopDefenceLow.toFixed(2) + "-" + HelmTroopDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryTroopHealth").innerHTML = HelmTroopHealthLow.toFixed(2) + "-" + HelmTroopHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicTroopAttack").innerHTML = HelmStrategicTroopAttackLow.toFixed(2) + "-" + HelmStrategicTroopAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicTroopDefence").innerHTML = HelmStrategicTroopDefenceLow.toFixed(2) + "-" + HelmStrategicTroopDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicTroopHealth").innerHTML = HelmStrategicTroopHealthLow.toFixed(2) + "-" + HelmStrategicTroopHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyAttackDebuff").innerHTML = HelmEnemyAttackDebuffLow.toFixed(2) + "-" + HelmEnemyAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicAttackDebuff").innerHTML = HelmEnemyStrategicAttackDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyDefenceDebuff").innerHTML = HelmEnemyDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicDefenceDebuff").innerHTML = HelmEnemyStrategicDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyHealthDebuff").innerHTML = HelmEnemyHealthDebuffLow.toFixed(2) + "-" + HelmEnemyHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicHealthDebuff").innerHTML = HelmEnemyStrategicHealthDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryMarchSpeed").innerHTML = HelmMarchSpeedLow.toFixed(2) + "-" + HelmMarchSpeedHigh.toFixed(2);
+    document.getElementById("HelmSummaryInfantryAttack").innerHTML = HelmInfantryAttackLow.toFixed(2) + "-" + HelmInfantryAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryInfantryDefence").innerHTML = HelmInfantryDefenceLow.toFixed(2) + "-" + HelmInfantryDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicInfantryAttack").innerHTML = HelmStrategicInfantryAttackLow.toFixed(2) + "-" + HelmStrategicInfantryAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicInfantryDefence").innerHTML = HelmStrategicInfantryDefenceLow.toFixed(2) + "-" + HelmStrategicInfantryDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryInfantryHealth").innerHTML = HelmInfantryHealthLow.toFixed(2) + "-" + HelmInfantryHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicInfantryHealth").innerHTML = HelmStrategicInfantryHealthLow.toFixed(2) + "-" + HelmStrategicInfantryHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyInfantryAttackDebuff").innerHTML = HelmEnemyInfantryAttackDebuffLow.toFixed(2) + "-" + HelmEnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryStratEnemyInfantryAttackDebuff").innerHTML = HelmStratEnemyInfantryAttackDebuffLow.toFixed(2) + "-" + HelmStratEnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyInfantryDefenceDebuff").innerHTML = HelmEnemyInfantryDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicInfantryDefenceDebuff").innerHTML = HelmEnemyStrategicInfantryDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicInfantryHealthDebuff").innerHTML = HelmEnemyStrategicInfantryHealthDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyInfantryHealthDebuff").innerHTML = HelmEnemyInfantryHealthDebuffLow.toFixed(2) + "-" + HelmEnemyInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryRangedAttack").innerHTML = HelmRangedAttackLow.toFixed(2) + "-" + HelmRangedAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryRangedDefence").innerHTML = HelmRangedDefenceLow.toFixed(2) + "-" + HelmRangedDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicRangedAttack").innerHTML = HelmStrategicRangedAttackLow.toFixed(2) + "-" + HelmStrategicRangedAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicRangedDefence").innerHTML = HelmStrategicRangedDefenceLow.toFixed(2) + "-" + HelmStrategicRangedDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryRangedHealth").innerHTML = HelmRangedHealthLow.toFixed(2) + "-" + HelmRangedHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicRangedHealth").innerHTML = HelmStrategicRangedHealthLow.toFixed(2) + "-" + HelmStrategicRangedHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyRangedAttackDebuff").innerHTML = HelmEnemyRangedAttackDebuffLow.toFixed(2) + "-" + HelmEnemyRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicRangedAttackDebuff").innerHTML = HelmEnemyStrategicRangedAttackDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyRangedDefenceDebuff").innerHTML = HelmEnemyRangedDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicRangedDefenceDebuff").innerHTML = HelmEnemyStrategicRangedDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyRangedHealthDebuff").innerHTML = HelmEnemyRangedHealthDebuffLow.toFixed(2) + "-" + HelmEnemyRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyStrategicRangedHealthDebuff").innerHTML = HelmEnemyStrategicRangedHealthDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryCavalryAttack").innerHTML = HelmCavalryAttackLow.toFixed(2) + "-" + HelmCavalryAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryCavalryDefence").innerHTML = HelmCavalryDefenceLow.toFixed(2) + "-" + HelmCavalryDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicCavalryAttack").innerHTML = HelmStrategicCavalryAttackLow.toFixed(2) + "-" + HelmStrategicCavalryAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicCavalryDefence").innerHTML = HelmStrategicCavalryDefenceLow.toFixed(2) + "-" + HelmStrategicCavalryDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryCavalryHealth").innerHTML = HelmCavalryHealthLow.toFixed(2) + "-" + HelmCavalryHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicCavalryHealth").innerHTML = HelmStrategicCavalryHealthLow.toFixed(2) + "-" + HelmStrategicCavalryHealthHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyCavalryAttackDebuff").innerHTML = HelmEnemyCavalryAttackDebuffLow.toFixed(2) + "-" + HelmEnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicEnemyCavalryAttackDebuff").innerHTML = HelmStrategicEnemyCavalryAttackDebuffLow.toFixed(2) + "-" + HelmStrategicEnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyCavalryDefenceDebuff").innerHTML = HelmEnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicEnemyCavalryDefenceDebuff").innerHTML = HelmStrategicEnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + HelmStrategicEnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemyCavalryHealthDebuff").innerHTML = HelmEnemyCavalryHealthDebuffLow.toFixed(2) + "-" + HelmEnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicEnemyCavalryHealthDebuff").innerHTML = HelmStrategicEnemyCavalryHealthDebuffLow.toFixed(2) + "-" + HelmStrategicEnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummarySiegeAttack").innerHTML = HelmSiegeAttackLow.toFixed(2) + "-" + HelmSiegeAttackHigh.toFixed(2);
+    document.getElementById("HelmSummarySiegeDefence").innerHTML = HelmSiegeDefenceLow.toFixed(2) + "-" + HelmSiegeDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryTrapDefence").innerHTML = HelmTrapDefenceLow.toFixed(2) + "-" + HelmTrapDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicTrapDefence").innerHTML = HelmStrategicTrapDefenceLow.toFixed(2) + "-" + HelmStrategicTrapDefenceHigh.toFixed(2);
+    document.getElementById("HelmSummaryTroopTrainingSpeed").innerHTML = HelmTroopTrainingSpeedLow.toFixed(2) + "-" + HelmTroopTrainingSpeedHigh.toFixed(2);
+    document.getElementById("HelmSummaryEnemySiegeAttackDebuff").innerHTML = HelmEnemySiegeAttackDebuffLow.toFixed(2) + "-" + HelmEnemySiegeAttackDebuffHigh.toFixed(2);
+    document.getElementById("HelmSummaryStrategicTrapAttack").innerHTML = HelmStrategicTrapAttackLow.toFixed(2) + "-" + HelmStrategicTrapAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryTrapAttack").innerHTML = HelmTrapAttackLow.toFixed(2) + "-" + HelmTrapAttackHigh.toFixed(2);
+    document.getElementById("HelmSummaryHeroCritical").innerHTML = HelmHeroCriticalLow.toFixed(2) + "-" + HelmHeroCriticalHigh.toFixed(2);
+    document.getElementById("HelmSummaryMonsterDebuff").innerHTML = HelmMonsterDebuffLow.toFixed(2) + "-" + HelmMonsterDebuffHigh.toFixed(2);
 
     if (HelmTroopAttackHigh == 0 && HelmTroopAttackLow == 0)
     { $("#HelmRowTroopAttack").hide(); }
@@ -2384,4 +3218,136 @@ function HelmPiece1Display() {
     document.getElementById("HelmPiece1HeroCritical").innerHTML = HelmPiece1Buffs.HeroCriticalLow + "-" + HelmPiece1Buffs.HeroCriticalHigh;
     document.getElementById("HelmPiece1MonsterDebuff").innerHTML = HelmPiece1Buffs.MonsterDebuffLow + "-" + HelmPiece1Buffs.MonsterDebuffHigh;
 
+}
+
+
+function CheckHelmPiece1()
+{
+    if($("#HelmPiece1 option:selected").text() == "None")
+    {
+        return false;
+    }
+    if ($("#HelmPiece1 option:selected").text() == $("#HelmPiece2 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece1 option:selected").text() == $("#HelmPiece3 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece1 option:selected").text() == $("#HelmPiece4 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece1 option:selected").text() == $("#HelmPiece5 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece1 option:selected").text() == $("#HelmPiece6 option:selected").text()) {
+        return true;
+    }
+    return false;
+}
+function CheckHelmPiece2() {
+    if ($("#HelmPiece2 option:selected").text() == "None") {
+        return false;
+    }
+    if ($("#HelmPiece2 option:selected").text() == $("#HelmPiece1 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece2 option:selected").text() == $("#HelmPiece3 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece2 option:selected").text() == $("#HelmPiece4 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece2 option:selected").text() == $("#HelmPiece5 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece2 option:selected").text() == $("#HelmPiece6 option:selected").text()) {
+        return true;
+    }
+    return false;
+}
+function CheckHelmPiece3()
+{
+    if($("#HelmPiece3 option:selected").text() == "None")
+    {
+        return false;
+    }
+    if ($("#HelmPiece3 option:selected").text() == $("#HelmPiece2 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece3 option:selected").text() == $("#HelmPiece1 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece3 option:selected").text() == $("#HelmPiece4 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece3 option:selected").text() == $("#HelmPiece5 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece3 option:selected").text() == $("#HelmPiece6 option:selected").text()) {
+        return true;
+    }
+    return false;
+}
+function CheckHelmPiece4() {
+    if ($("#HelmPiece4 option:selected").text() == "None") {
+        return false;
+    }
+    if ($("#HelmPiece4 option:selected").text() == $("#HelmPiece2 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece4 option:selected").text() == $("#HelmPiece3 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece4 option:selected").text() == $("#HelmPiece1 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece4 option:selected").text() == $("#HelmPiece5 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece4 option:selected").text() == $("#HelmPiece6 option:selected").text()) {
+        return true;
+    }
+    return false;
+}
+function CheckHelmPiece5() {
+    if ($("#HelmPiece5 option:selected").text() == "None") {
+        return false;
+    }
+    if ($("#HelmPiece5 option:selected").text() == $("#HelmPiece2 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece5 option:selected").text() == $("#HelmPiece3 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece5 option:selected").text() == $("#HelmPiece4 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece5 option:selected").text() == $("#HelmPiece1 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece5 option:selected").text() == $("#HelmPiece6 option:selected").text()) {
+        return true;
+    }
+    return false;
+}
+function CheckHelmPiece6() {
+    if ($("#HelmPiece6 option:selected").text() == "None") {
+        return false;
+    }
+    if ($("#HelmPiece6 option:selected").text() == $("#HelmPiece2 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece6 option:selected").text() == $("#HelmPiece3 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece6 option:selected").text() == $("#HelmPiece4 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece6 option:selected").text() == $("#HelmPiece5 option:selected").text()) {
+        return true;
+    }
+    if ($("#HelmPiece6 option:selected").text() == $("#HelmPiece1 option:selected").text()) {
+        return true;
+    }
+    return false;
 }

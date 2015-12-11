@@ -69,6 +69,13 @@ namespace GowWebSite.Controllers
             return Json(p, JsonRequestBehavior.AllowGet);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult GetCoreBoosts(string coreName, int coreLevel)
+        {
+            Core p = db.Cores.Where(m => m.GearName == coreName && m.GearLevel == coreLevel).FirstOrDefault();
+            return Json(p, JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult Deals()
         {
