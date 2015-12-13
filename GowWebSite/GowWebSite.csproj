@@ -280,6 +280,11 @@
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\A1.js" />
+    <Content Include="Scripts\A2.js" />
+    <Content Include="Scripts\A3.js" />
+    <Content Include="Scripts\Armour.js" />
+    <Content Include="Scripts\Foot.js" />
     <Content Include="Scripts\Helm.js" />
     <Content Include="Content\HomePage.css" />
     <Content Include="Content\Images\FarmLocations.JPG" />
@@ -335,6 +340,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\SummaryVariables.js" />
+    <Content Include="Scripts\Weapon.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

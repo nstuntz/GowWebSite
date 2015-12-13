@@ -117,7 +117,6 @@ var HelmHeroCriticalHigh = 0;
 var HelmMonsterDebuffLow = 0;
 var HelmMonsterDebuffHigh = 0;
 
-
 var HelmCoreBuffs = {};
 var HelmPiece6Buffs = {};
 var HelmPiece5Buffs = {};
@@ -2777,7 +2776,77 @@ function helmSummary() {
         HelmMonsterDebuffLow = HelmMonsterDebuffLow + HelmPiece6Buffs.MonsterDebuffLow;
         HelmMonsterDebuffHigh = HelmMonsterDebuffHigh + HelmPiece6Buffs.MonsterDebuffHigh;
     }
-        
+    
+    if (HelmTroopAttackLow + HelmTroopAttackHigh + HelmTroopDefenceLow + HelmTroopDefenceHigh + HelmTroopHealthLow + HelmTroopHealthHigh + HelmStrategicTroopAttackLow + HelmStrategicTroopAttackHigh + 
+        HelmStrategicTroopDefenceLow + HelmStrategicTroopDefenceHigh + HelmStrategicTroopHealthLow + HelmStrategicTroopHealthHigh + HelmEnemyAttackDebuffLow + HelmEnemyAttackDebuffHigh + 
+    HelmEnemyStrategicAttackDebuffLow + HelmEnemyStrategicAttackDebuffHigh + HelmEnemyDefenceDebuffLow + HelmEnemyDefenceDebuffHigh + HelmEnemyStrategicDefenceDebuffLow + 
+    HelmEnemyStrategicDefenceDebuffHigh + HelmEnemyHealthDebuffLow + HelmEnemyHealthDebuffHigh + HelmEnemyStrategicHealthDebuffLow + HelmEnemyStrategicHealthDebuffHigh + 
+    HelmMarchSpeedLow + HelmMarchSpeedHigh != 0)
+    {
+        $("#HelmOverallRow").css('background-color', 'lightgreen');
+    }
+    else
+    {
+        $("#HelmOverallRow").css('background-color', '#f5f5f5');
+    }
+
+    if (HelmInfantryAttackLow + HelmInfantryAttackHigh + HelmInfantryDefenceLow + HelmInfantryDefenceHigh + HelmStrategicInfantryAttackLow + HelmStrategicInfantryAttackHigh + 
+        HelmStrategicInfantryDefenceLow + HelmStrategicInfantryDefenceHigh + HelmInfantryHealthLow + HelmInfantryHealthHigh + HelmStrategicInfantryHealthLow + HelmStrategicInfantryHealthHigh + 
+    HelmEnemyInfantryAttackDebuffLow + HelmEnemyInfantryAttackDebuffHigh + HelmStratEnemyInfantryAttackDebuffLow + HelmStratEnemyInfantryAttackDebuffHigh + 
+    HelmEnemyInfantryDefenceDebuffLow + HelmEnemyInfantryDefenceDebuffHigh + HelmEnemyStrategicInfantryDefenceDebuffLow + HelmEnemyStrategicInfantryDefenceDebuffHigh + 
+    HelmEnemyStrategicInfantryHealthDebuffLow + HelmEnemyStrategicInfantryHealthDebuffHigh + HelmEnemyInfantryHealthDebuffLow + HelmEnemyInfantryHealthDebuffHigh != 0)
+    {
+        $("#HelmInfantryRow").css('background-color', 'lightgreen');
+    }
+    else {
+        $("#HelmInfantryRow").css('background-color', '#f5f5f5');
+    }
+
+
+    if (HelmRangedAttackLow + HelmRangedAttackHigh + HelmRangedDefenceLow + HelmRangedDefenceHigh + HelmStrategicRangedAttackLow + HelmStrategicRangedAttackHigh + HelmStrategicRangedDefenceLow + 
+        HelmStrategicRangedDefenceHigh + HelmRangedHealthLow + HelmRangedHealthHigh + HelmStrategicRangedHealthLow + HelmStrategicRangedHealthHigh + HelmEnemyRangedAttackDebuffLow + 
+    HelmEnemyRangedAttackDebuffHigh + HelmEnemyStrategicRangedAttackDebuffLow + HelmEnemyStrategicRangedAttackDebuffHigh + HelmEnemyRangedDefenceDebuffLow + HelmEnemyRangedDefenceDebuffHigh + 
+        HelmEnemyStrategicRangedDefenceDebuffLow + HelmEnemyStrategicRangedDefenceDebuffHigh + HelmEnemyRangedHealthDebuffLow + HelmEnemyRangedHealthDebuffHigh + 
+        HelmEnemyStrategicRangedHealthDebuffLow + HelmEnemyStrategicRangedHealthDebuffHigh != 0)
+    {
+        $("#HelmRangedRow").css('background-color', 'lightgreen');
+    }
+    else {
+        $("#HelmRangedRow").css('background-color', '#f5f5f5');
+    }
+
+    if (HelmCavalryAttackLow + HelmCavalryAttackHigh + HelmCavalryDefenceLow + HelmCavalryDefenceHigh + HelmStrategicCavalryAttackLow + HelmStrategicCavalryAttackHigh + HelmStrategicCavalryDefenceLow + 
+        HelmStrategicCavalryDefenceHigh + HelmCavalryHealthLow + HelmCavalryHealthHigh + HelmStrategicCavalryHealthLow + HelmStrategicCavalryHealthHigh + HelmEnemyCavalryAttackDebuffLow + 
+    HelmEnemyCavalryAttackDebuffHigh + HelmStrategicEnemyCavalryAttackDebuffLow + HelmStrategicEnemyCavalryAttackDebuffHigh + HelmEnemyCavalryDefenceDebuffLow + 
+    HelmEnemyCavalryDefenceDebuffHigh + HelmStrategicEnemyCavalryDefenceDebuffLow + HelmStrategicEnemyCavalryDefenceDebuffHigh + HelmEnemyCavalryHealthDebuffLow + 
+    HelmEnemyCavalryHealthDebuffHigh + HelmStrategicEnemyCavalryHealthDebuffLow + HelmStrategicEnemyCavalryHealthDebuffHigh != 0)
+    {
+        $("#HelmCavalryRow").css('background-color', 'lightgreen');
+    }
+    else {
+        $("#HelmCavalryRow").css('background-color', '#f5f5f5');
+    }
+
+
+    if (HelmSiegeAttackLow + HelmSiegeAttackHigh + HelmSiegeDefenceLow + HelmSiegeDefenceHigh + HelmTrapDefenceLow + HelmTrapDefenceHigh + HelmStrategicTrapDefenceLow + HelmStrategicTrapDefenceHigh + 
+        HelmTroopTrainingSpeedLow + HelmTroopTrainingSpeedHigh + HelmEnemySiegeAttackDebuffLow + HelmEnemySiegeAttackDebuffHigh + HelmStrategicTrapAttackLow + HelmStrategicTrapAttackHigh + 
+    HelmTrapAttackLow + HelmTrapAttackHigh)
+    {
+        $("#HelmSiegeRow").css('background-color', 'lightgreen');
+    }
+    else {
+        $("#HelmSiegeRow").css('background-color', '#f5f5f5');
+    }
+
+
+    if (HelmHeroCriticalLow + HelmHeroCriticalHigh + HelmMonsterDebuffLow + HelmMonsterDebuffHigh)
+    {
+        $("#HelmHeroRow").css('background-color', 'lightgreen');
+    }
+    else {
+        $("#HelmHeroRow").css('background-color', '#f5f5f5');
+    }
+
     document.getElementById("HelmSummaryTroopAttack").innerHTML = HelmTroopAttackLow.toFixed(2) + "-" + HelmTroopAttackHigh.toFixed(2);
     document.getElementById("HelmSummaryTroopDefence").innerHTML = HelmTroopDefenceLow.toFixed(2) + "-" + HelmTroopDefenceHigh.toFixed(2);
     document.getElementById("HelmSummaryTroopHealth").innerHTML = HelmTroopHealthLow.toFixed(2) + "-" + HelmTroopHealthHigh.toFixed(2);
@@ -2845,7 +2914,6 @@ function helmSummary() {
 
     //fullSummary();
 }
-
 
 function HelmPiece6Display() {
     document.getElementById("HelmPiece6TroopAttack").innerHTML = HelmPiece6Buffs.TroopAttackLow + "-" + HelmPiece6Buffs.TroopAttackHigh;
@@ -3219,7 +3287,6 @@ function HelmPiece1Display() {
     document.getElementById("HelmPiece1MonsterDebuff").innerHTML = HelmPiece1Buffs.MonsterDebuffLow + "-" + HelmPiece1Buffs.MonsterDebuffHigh;
 
 }
-
 
 function CheckHelmPiece1()
 {

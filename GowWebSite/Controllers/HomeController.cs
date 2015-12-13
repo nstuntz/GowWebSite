@@ -44,17 +44,20 @@ namespace GowWebSite.Controllers
             ViewBag.PiecesList = db.Pieces.GroupBy(m=>m.PieceName).Select(grp=>grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
             //ViewBag.Pieces = new GowWebSite.Models.CoresModel(db);
 
-            ViewBag.HelmCoreList = db.Cores.Where(m=> m.GearSlot == "Helm").Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-           // ViewBag.Cores = new GowWebSite.Models.CoresModel(db, true);
+            ViewBag.HelmCoreList = db.Cores.Where(m => m.GearSlot == "Helm").Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.WeaponCoreList = db.Cores.Where(m => m.GearSlot == "Weapon").Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.ArmourCoreList = db.Cores.Where(m => m.GearSlot == "Armour").Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.FootCoreList = db.Cores.Where(m => m.GearSlot == "Foot").Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.AccessoryCoreList = db.Cores.Where(m => m.GearSlot == "Accessory").Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });            
 
             var levels = new Dictionary<int, string>()
-                {                   
-                    {1,"White (1)"},
-                    {2,"Grey (2)"},
-                    {3,"Green (3)"},
-                    {4,"Blue (4)"},
+                {     
+                    {6,"Gold (6)"},
                     {5,"Purple (5)"},
-                    {6,"Gold (6)"}
+                    {4,"Blue (4)"},
+                    {3,"Green (3)"},
+                    {2,"Grey (2)"},              
+                    {1,"White (1)"}
                 };
 
             ViewBag.Levels = levels;
