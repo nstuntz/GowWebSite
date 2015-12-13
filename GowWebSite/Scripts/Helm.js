@@ -2907,12 +2907,67 @@ function helmSummary() {
     document.getElementById("HelmSummaryHeroCritical").innerHTML = HelmHeroCriticalLow.toFixed(2) + "-" + HelmHeroCriticalHigh.toFixed(2);
     document.getElementById("HelmSummaryMonsterDebuff").innerHTML = HelmMonsterDebuffLow.toFixed(2) + "-" + HelmMonsterDebuffHigh.toFixed(2);
 
-    if (HelmTroopAttackHigh == 0 && HelmTroopAttackLow == 0)
-    { $("#HelmRowTroopAttack").hide(); }
-    else
-    { $("#HelmRowTroopAttack").show(); }
+    document.getElementById("FullHelmSummaryTroopAttack").innerHTML = HelmTroopAttackLow.toFixed(2) + "-" + HelmTroopAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryTroopDefence").innerHTML = HelmTroopDefenceLow.toFixed(2) + "-" + HelmTroopDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryTroopHealth").innerHTML = HelmTroopHealthLow.toFixed(2) + "-" + HelmTroopHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicTroopAttack").innerHTML = HelmStrategicTroopAttackLow.toFixed(2) + "-" + HelmStrategicTroopAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicTroopDefence").innerHTML = HelmStrategicTroopDefenceLow.toFixed(2) + "-" + HelmStrategicTroopDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicTroopHealth").innerHTML = HelmStrategicTroopHealthLow.toFixed(2) + "-" + HelmStrategicTroopHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyAttackDebuff").innerHTML = HelmEnemyAttackDebuffLow.toFixed(2) + "-" + HelmEnemyAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicAttackDebuff").innerHTML = HelmEnemyStrategicAttackDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyDefenceDebuff").innerHTML = HelmEnemyDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicDefenceDebuff").innerHTML = HelmEnemyStrategicDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyHealthDebuff").innerHTML = HelmEnemyHealthDebuffLow.toFixed(2) + "-" + HelmEnemyHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicHealthDebuff").innerHTML = HelmEnemyStrategicHealthDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryMarchSpeed").innerHTML = HelmMarchSpeedLow.toFixed(2) + "-" + HelmMarchSpeedHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryInfantryAttack").innerHTML = HelmInfantryAttackLow.toFixed(2) + "-" + HelmInfantryAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryInfantryDefence").innerHTML = HelmInfantryDefenceLow.toFixed(2) + "-" + HelmInfantryDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicInfantryAttack").innerHTML = HelmStrategicInfantryAttackLow.toFixed(2) + "-" + HelmStrategicInfantryAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicInfantryDefence").innerHTML = HelmStrategicInfantryDefenceLow.toFixed(2) + "-" + HelmStrategicInfantryDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryInfantryHealth").innerHTML = HelmInfantryHealthLow.toFixed(2) + "-" + HelmInfantryHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicInfantryHealth").innerHTML = HelmStrategicInfantryHealthLow.toFixed(2) + "-" + HelmStrategicInfantryHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyInfantryAttackDebuff").innerHTML = HelmEnemyInfantryAttackDebuffLow.toFixed(2) + "-" + HelmEnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStratEnemyInfantryAttackDebuff").innerHTML = HelmStratEnemyInfantryAttackDebuffLow.toFixed(2) + "-" + HelmStratEnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyInfantryDefenceDebuff").innerHTML = HelmEnemyInfantryDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicInfantryDefenceDebuff").innerHTML = HelmEnemyStrategicInfantryDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicInfantryHealthDebuff").innerHTML = HelmEnemyStrategicInfantryHealthDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyInfantryHealthDebuff").innerHTML = HelmEnemyInfantryHealthDebuffLow.toFixed(2) + "-" + HelmEnemyInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryRangedAttack").innerHTML = HelmRangedAttackLow.toFixed(2) + "-" + HelmRangedAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryRangedDefence").innerHTML = HelmRangedDefenceLow.toFixed(2) + "-" + HelmRangedDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicRangedAttack").innerHTML = HelmStrategicRangedAttackLow.toFixed(2) + "-" + HelmStrategicRangedAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicRangedDefence").innerHTML = HelmStrategicRangedDefenceLow.toFixed(2) + "-" + HelmStrategicRangedDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryRangedHealth").innerHTML = HelmRangedHealthLow.toFixed(2) + "-" + HelmRangedHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicRangedHealth").innerHTML = HelmStrategicRangedHealthLow.toFixed(2) + "-" + HelmStrategicRangedHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyRangedAttackDebuff").innerHTML = HelmEnemyRangedAttackDebuffLow.toFixed(2) + "-" + HelmEnemyRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicRangedAttackDebuff").innerHTML = HelmEnemyStrategicRangedAttackDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyRangedDefenceDebuff").innerHTML = HelmEnemyRangedDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicRangedDefenceDebuff").innerHTML = HelmEnemyStrategicRangedDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyRangedHealthDebuff").innerHTML = HelmEnemyRangedHealthDebuffLow.toFixed(2) + "-" + HelmEnemyRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyStrategicRangedHealthDebuff").innerHTML = HelmEnemyStrategicRangedHealthDebuffLow.toFixed(2) + "-" + HelmEnemyStrategicRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryCavalryAttack").innerHTML = HelmCavalryAttackLow.toFixed(2) + "-" + HelmCavalryAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryCavalryDefence").innerHTML = HelmCavalryDefenceLow.toFixed(2) + "-" + HelmCavalryDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicCavalryAttack").innerHTML = HelmStrategicCavalryAttackLow.toFixed(2) + "-" + HelmStrategicCavalryAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicCavalryDefence").innerHTML = HelmStrategicCavalryDefenceLow.toFixed(2) + "-" + HelmStrategicCavalryDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryCavalryHealth").innerHTML = HelmCavalryHealthLow.toFixed(2) + "-" + HelmCavalryHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicCavalryHealth").innerHTML = HelmStrategicCavalryHealthLow.toFixed(2) + "-" + HelmStrategicCavalryHealthHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyCavalryAttackDebuff").innerHTML = HelmEnemyCavalryAttackDebuffLow.toFixed(2) + "-" + HelmEnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicEnemyCavalryAttackDebuff").innerHTML = HelmStrategicEnemyCavalryAttackDebuffLow.toFixed(2) + "-" + HelmStrategicEnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyCavalryDefenceDebuff").innerHTML = HelmEnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + HelmEnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicEnemyCavalryDefenceDebuff").innerHTML = HelmStrategicEnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + HelmStrategicEnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemyCavalryHealthDebuff").innerHTML = HelmEnemyCavalryHealthDebuffLow.toFixed(2) + "-" + HelmEnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicEnemyCavalryHealthDebuff").innerHTML = HelmStrategicEnemyCavalryHealthDebuffLow.toFixed(2) + "-" + HelmStrategicEnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummarySiegeAttack").innerHTML = HelmSiegeAttackLow.toFixed(2) + "-" + HelmSiegeAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummarySiegeDefence").innerHTML = HelmSiegeDefenceLow.toFixed(2) + "-" + HelmSiegeDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryTrapDefence").innerHTML = HelmTrapDefenceLow.toFixed(2) + "-" + HelmTrapDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicTrapDefence").innerHTML = HelmStrategicTrapDefenceLow.toFixed(2) + "-" + HelmStrategicTrapDefenceHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryTroopTrainingSpeed").innerHTML = HelmTroopTrainingSpeedLow.toFixed(2) + "-" + HelmTroopTrainingSpeedHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryEnemySiegeAttackDebuff").innerHTML = HelmEnemySiegeAttackDebuffLow.toFixed(2) + "-" + HelmEnemySiegeAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryStrategicTrapAttack").innerHTML = HelmStrategicTrapAttackLow.toFixed(2) + "-" + HelmStrategicTrapAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryTrapAttack").innerHTML = HelmTrapAttackLow.toFixed(2) + "-" + HelmTrapAttackHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryHeroCritical").innerHTML = HelmHeroCriticalLow.toFixed(2) + "-" + HelmHeroCriticalHigh.toFixed(2);
+    document.getElementById("FullHelmSummaryMonsterDebuff").innerHTML = HelmMonsterDebuffLow.toFixed(2) + "-" + HelmMonsterDebuffHigh.toFixed(2);
 
-    //fullSummary();
+    fullSummary();
 }
 
 function HelmPiece6Display() {

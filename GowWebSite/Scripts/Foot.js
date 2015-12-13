@@ -2907,12 +2907,67 @@ function FootSummary() {
     document.getElementById("FootSummaryHeroCritical").innerHTML = FootHeroCriticalLow.toFixed(2) + "-" + FootHeroCriticalHigh.toFixed(2);
     document.getElementById("FootSummaryMonsterDebuff").innerHTML = FootMonsterDebuffLow.toFixed(2) + "-" + FootMonsterDebuffHigh.toFixed(2);
 
-    if (FootTroopAttackHigh == 0 && FootTroopAttackLow == 0)
-    { $("#FootRowTroopAttack").hide(); }
-    else
-    { $("#FootRowTroopAttack").show(); }
+    document.getElementById("FullFootSummaryTroopAttack").innerHTML = FootTroopAttackLow.toFixed(2) + "-" + FootTroopAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryTroopDefence").innerHTML = FootTroopDefenceLow.toFixed(2) + "-" + FootTroopDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryTroopHealth").innerHTML = FootTroopHealthLow.toFixed(2) + "-" + FootTroopHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicTroopAttack").innerHTML = FootStrategicTroopAttackLow.toFixed(2) + "-" + FootStrategicTroopAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicTroopDefence").innerHTML = FootStrategicTroopDefenceLow.toFixed(2) + "-" + FootStrategicTroopDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicTroopHealth").innerHTML = FootStrategicTroopHealthLow.toFixed(2) + "-" + FootStrategicTroopHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyAttackDebuff").innerHTML = FootEnemyAttackDebuffLow.toFixed(2) + "-" + FootEnemyAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicAttackDebuff").innerHTML = FootEnemyStrategicAttackDebuffLow.toFixed(2) + "-" + FootEnemyStrategicAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyDefenceDebuff").innerHTML = FootEnemyDefenceDebuffLow.toFixed(2) + "-" + FootEnemyDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicDefenceDebuff").innerHTML = FootEnemyStrategicDefenceDebuffLow.toFixed(2) + "-" + FootEnemyStrategicDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyHealthDebuff").innerHTML = FootEnemyHealthDebuffLow.toFixed(2) + "-" + FootEnemyHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicHealthDebuff").innerHTML = FootEnemyStrategicHealthDebuffLow.toFixed(2) + "-" + FootEnemyStrategicHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryMarchSpeed").innerHTML = FootMarchSpeedLow.toFixed(2) + "-" + FootMarchSpeedHigh.toFixed(2);
+    document.getElementById("FullFootSummaryInfantryAttack").innerHTML = FootInfantryAttackLow.toFixed(2) + "-" + FootInfantryAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryInfantryDefence").innerHTML = FootInfantryDefenceLow.toFixed(2) + "-" + FootInfantryDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicInfantryAttack").innerHTML = FootStrategicInfantryAttackLow.toFixed(2) + "-" + FootStrategicInfantryAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicInfantryDefence").innerHTML = FootStrategicInfantryDefenceLow.toFixed(2) + "-" + FootStrategicInfantryDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryInfantryHealth").innerHTML = FootInfantryHealthLow.toFixed(2) + "-" + FootInfantryHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicInfantryHealth").innerHTML = FootStrategicInfantryHealthLow.toFixed(2) + "-" + FootStrategicInfantryHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyInfantryAttackDebuff").innerHTML = FootEnemyInfantryAttackDebuffLow.toFixed(2) + "-" + FootEnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStratEnemyInfantryAttackDebuff").innerHTML = FootStratEnemyInfantryAttackDebuffLow.toFixed(2) + "-" + FootStratEnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyInfantryDefenceDebuff").innerHTML = FootEnemyInfantryDefenceDebuffLow.toFixed(2) + "-" + FootEnemyInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicInfantryDefenceDebuff").innerHTML = FootEnemyStrategicInfantryDefenceDebuffLow.toFixed(2) + "-" + FootEnemyStrategicInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicInfantryHealthDebuff").innerHTML = FootEnemyStrategicInfantryHealthDebuffLow.toFixed(2) + "-" + FootEnemyStrategicInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyInfantryHealthDebuff").innerHTML = FootEnemyInfantryHealthDebuffLow.toFixed(2) + "-" + FootEnemyInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryRangedAttack").innerHTML = FootRangedAttackLow.toFixed(2) + "-" + FootRangedAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryRangedDefence").innerHTML = FootRangedDefenceLow.toFixed(2) + "-" + FootRangedDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicRangedAttack").innerHTML = FootStrategicRangedAttackLow.toFixed(2) + "-" + FootStrategicRangedAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicRangedDefence").innerHTML = FootStrategicRangedDefenceLow.toFixed(2) + "-" + FootStrategicRangedDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryRangedHealth").innerHTML = FootRangedHealthLow.toFixed(2) + "-" + FootRangedHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicRangedHealth").innerHTML = FootStrategicRangedHealthLow.toFixed(2) + "-" + FootStrategicRangedHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyRangedAttackDebuff").innerHTML = FootEnemyRangedAttackDebuffLow.toFixed(2) + "-" + FootEnemyRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicRangedAttackDebuff").innerHTML = FootEnemyStrategicRangedAttackDebuffLow.toFixed(2) + "-" + FootEnemyStrategicRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyRangedDefenceDebuff").innerHTML = FootEnemyRangedDefenceDebuffLow.toFixed(2) + "-" + FootEnemyRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicRangedDefenceDebuff").innerHTML = FootEnemyStrategicRangedDefenceDebuffLow.toFixed(2) + "-" + FootEnemyStrategicRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyRangedHealthDebuff").innerHTML = FootEnemyRangedHealthDebuffLow.toFixed(2) + "-" + FootEnemyRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyStrategicRangedHealthDebuff").innerHTML = FootEnemyStrategicRangedHealthDebuffLow.toFixed(2) + "-" + FootEnemyStrategicRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryCavalryAttack").innerHTML = FootCavalryAttackLow.toFixed(2) + "-" + FootCavalryAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryCavalryDefence").innerHTML = FootCavalryDefenceLow.toFixed(2) + "-" + FootCavalryDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicCavalryAttack").innerHTML = FootStrategicCavalryAttackLow.toFixed(2) + "-" + FootStrategicCavalryAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicCavalryDefence").innerHTML = FootStrategicCavalryDefenceLow.toFixed(2) + "-" + FootStrategicCavalryDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryCavalryHealth").innerHTML = FootCavalryHealthLow.toFixed(2) + "-" + FootCavalryHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicCavalryHealth").innerHTML = FootStrategicCavalryHealthLow.toFixed(2) + "-" + FootStrategicCavalryHealthHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyCavalryAttackDebuff").innerHTML = FootEnemyCavalryAttackDebuffLow.toFixed(2) + "-" + FootEnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicEnemyCavalryAttackDebuff").innerHTML = FootStrategicEnemyCavalryAttackDebuffLow.toFixed(2) + "-" + FootStrategicEnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyCavalryDefenceDebuff").innerHTML = FootEnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + FootEnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicEnemyCavalryDefenceDebuff").innerHTML = FootStrategicEnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + FootStrategicEnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemyCavalryHealthDebuff").innerHTML = FootEnemyCavalryHealthDebuffLow.toFixed(2) + "-" + FootEnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicEnemyCavalryHealthDebuff").innerHTML = FootStrategicEnemyCavalryHealthDebuffLow.toFixed(2) + "-" + FootStrategicEnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummarySiegeAttack").innerHTML = FootSiegeAttackLow.toFixed(2) + "-" + FootSiegeAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummarySiegeDefence").innerHTML = FootSiegeDefenceLow.toFixed(2) + "-" + FootSiegeDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryTrapDefence").innerHTML = FootTrapDefenceLow.toFixed(2) + "-" + FootTrapDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicTrapDefence").innerHTML = FootStrategicTrapDefenceLow.toFixed(2) + "-" + FootStrategicTrapDefenceHigh.toFixed(2);
+    document.getElementById("FullFootSummaryTroopTrainingSpeed").innerHTML = FootTroopTrainingSpeedLow.toFixed(2) + "-" + FootTroopTrainingSpeedHigh.toFixed(2);
+    document.getElementById("FullFootSummaryEnemySiegeAttackDebuff").innerHTML = FootEnemySiegeAttackDebuffLow.toFixed(2) + "-" + FootEnemySiegeAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullFootSummaryStrategicTrapAttack").innerHTML = FootStrategicTrapAttackLow.toFixed(2) + "-" + FootStrategicTrapAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryTrapAttack").innerHTML = FootTrapAttackLow.toFixed(2) + "-" + FootTrapAttackHigh.toFixed(2);
+    document.getElementById("FullFootSummaryHeroCritical").innerHTML = FootHeroCriticalLow.toFixed(2) + "-" + FootHeroCriticalHigh.toFixed(2);
+    document.getElementById("FullFootSummaryMonsterDebuff").innerHTML = FootMonsterDebuffLow.toFixed(2) + "-" + FootMonsterDebuffHigh.toFixed(2);
 
-    //fullSummary();
+    fullSummary();
 }
 
 function FootPiece6Display() {

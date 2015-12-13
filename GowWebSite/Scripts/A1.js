@@ -2907,13 +2907,69 @@ function A1Summary() {
     document.getElementById("A1SummaryHeroCritical").innerHTML = A1HeroCriticalLow.toFixed(2) + "-" + A1HeroCriticalHigh.toFixed(2);
     document.getElementById("A1SummaryMonsterDebuff").innerHTML = A1MonsterDebuffLow.toFixed(2) + "-" + A1MonsterDebuffHigh.toFixed(2);
 
-    if (A1TroopAttackHigh == 0 && A1TroopAttackLow == 0)
-    { $("#A1RowTroopAttack").hide(); }
-    else
-    { $("#A1RowTroopAttack").show(); }
+    document.getElementById("FullA1SummaryTroopAttack").innerHTML = A1TroopAttackLow.toFixed(2) + "-" + A1TroopAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryTroopDefence").innerHTML = A1TroopDefenceLow.toFixed(2) + "-" + A1TroopDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryTroopHealth").innerHTML = A1TroopHealthLow.toFixed(2) + "-" + A1TroopHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicTroopAttack").innerHTML = A1StrategicTroopAttackLow.toFixed(2) + "-" + A1StrategicTroopAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicTroopDefence").innerHTML = A1StrategicTroopDefenceLow.toFixed(2) + "-" + A1StrategicTroopDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicTroopHealth").innerHTML = A1StrategicTroopHealthLow.toFixed(2) + "-" + A1StrategicTroopHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyAttackDebuff").innerHTML = A1EnemyAttackDebuffLow.toFixed(2) + "-" + A1EnemyAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicAttackDebuff").innerHTML = A1EnemyStrategicAttackDebuffLow.toFixed(2) + "-" + A1EnemyStrategicAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyDefenceDebuff").innerHTML = A1EnemyDefenceDebuffLow.toFixed(2) + "-" + A1EnemyDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicDefenceDebuff").innerHTML = A1EnemyStrategicDefenceDebuffLow.toFixed(2) + "-" + A1EnemyStrategicDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyHealthDebuff").innerHTML = A1EnemyHealthDebuffLow.toFixed(2) + "-" + A1EnemyHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicHealthDebuff").innerHTML = A1EnemyStrategicHealthDebuffLow.toFixed(2) + "-" + A1EnemyStrategicHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryMarchSpeed").innerHTML = A1MarchSpeedLow.toFixed(2) + "-" + A1MarchSpeedHigh.toFixed(2);
+    document.getElementById("FullA1SummaryInfantryAttack").innerHTML = A1InfantryAttackLow.toFixed(2) + "-" + A1InfantryAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryInfantryDefence").innerHTML = A1InfantryDefenceLow.toFixed(2) + "-" + A1InfantryDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicInfantryAttack").innerHTML = A1StrategicInfantryAttackLow.toFixed(2) + "-" + A1StrategicInfantryAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicInfantryDefence").innerHTML = A1StrategicInfantryDefenceLow.toFixed(2) + "-" + A1StrategicInfantryDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryInfantryHealth").innerHTML = A1InfantryHealthLow.toFixed(2) + "-" + A1InfantryHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicInfantryHealth").innerHTML = A1StrategicInfantryHealthLow.toFixed(2) + "-" + A1StrategicInfantryHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyInfantryAttackDebuff").innerHTML = A1EnemyInfantryAttackDebuffLow.toFixed(2) + "-" + A1EnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStratEnemyInfantryAttackDebuff").innerHTML = A1StratEnemyInfantryAttackDebuffLow.toFixed(2) + "-" + A1StratEnemyInfantryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyInfantryDefenceDebuff").innerHTML = A1EnemyInfantryDefenceDebuffLow.toFixed(2) + "-" + A1EnemyInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicInfantryDefenceDebuff").innerHTML = A1EnemyStrategicInfantryDefenceDebuffLow.toFixed(2) + "-" + A1EnemyStrategicInfantryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicInfantryHealthDebuff").innerHTML = A1EnemyStrategicInfantryHealthDebuffLow.toFixed(2) + "-" + A1EnemyStrategicInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyInfantryHealthDebuff").innerHTML = A1EnemyInfantryHealthDebuffLow.toFixed(2) + "-" + A1EnemyInfantryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryRangedAttack").innerHTML = A1RangedAttackLow.toFixed(2) + "-" + A1RangedAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryRangedDefence").innerHTML = A1RangedDefenceLow.toFixed(2) + "-" + A1RangedDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicRangedAttack").innerHTML = A1StrategicRangedAttackLow.toFixed(2) + "-" + A1StrategicRangedAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicRangedDefence").innerHTML = A1StrategicRangedDefenceLow.toFixed(2) + "-" + A1StrategicRangedDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryRangedHealth").innerHTML = A1RangedHealthLow.toFixed(2) + "-" + A1RangedHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicRangedHealth").innerHTML = A1StrategicRangedHealthLow.toFixed(2) + "-" + A1StrategicRangedHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyRangedAttackDebuff").innerHTML = A1EnemyRangedAttackDebuffLow.toFixed(2) + "-" + A1EnemyRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicRangedAttackDebuff").innerHTML = A1EnemyStrategicRangedAttackDebuffLow.toFixed(2) + "-" + A1EnemyStrategicRangedAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyRangedDefenceDebuff").innerHTML = A1EnemyRangedDefenceDebuffLow.toFixed(2) + "-" + A1EnemyRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicRangedDefenceDebuff").innerHTML = A1EnemyStrategicRangedDefenceDebuffLow.toFixed(2) + "-" + A1EnemyStrategicRangedDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyRangedHealthDebuff").innerHTML = A1EnemyRangedHealthDebuffLow.toFixed(2) + "-" + A1EnemyRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyStrategicRangedHealthDebuff").innerHTML = A1EnemyStrategicRangedHealthDebuffLow.toFixed(2) + "-" + A1EnemyStrategicRangedHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryCavalryAttack").innerHTML = A1CavalryAttackLow.toFixed(2) + "-" + A1CavalryAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryCavalryDefence").innerHTML = A1CavalryDefenceLow.toFixed(2) + "-" + A1CavalryDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicCavalryAttack").innerHTML = A1StrategicCavalryAttackLow.toFixed(2) + "-" + A1StrategicCavalryAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicCavalryDefence").innerHTML = A1StrategicCavalryDefenceLow.toFixed(2) + "-" + A1StrategicCavalryDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryCavalryHealth").innerHTML = A1CavalryHealthLow.toFixed(2) + "-" + A1CavalryHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicCavalryHealth").innerHTML = A1StrategicCavalryHealthLow.toFixed(2) + "-" + A1StrategicCavalryHealthHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyCavalryAttackDebuff").innerHTML = A1EnemyCavalryAttackDebuffLow.toFixed(2) + "-" + A1EnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicEnemyCavalryAttackDebuff").innerHTML = A1StrategicEnemyCavalryAttackDebuffLow.toFixed(2) + "-" + A1StrategicEnemyCavalryAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyCavalryDefenceDebuff").innerHTML = A1EnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + A1EnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicEnemyCavalryDefenceDebuff").innerHTML = A1StrategicEnemyCavalryDefenceDebuffLow.toFixed(2) + "-" + A1StrategicEnemyCavalryDefenceDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemyCavalryHealthDebuff").innerHTML = A1EnemyCavalryHealthDebuffLow.toFixed(2) + "-" + A1EnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicEnemyCavalryHealthDebuff").innerHTML = A1StrategicEnemyCavalryHealthDebuffLow.toFixed(2) + "-" + A1StrategicEnemyCavalryHealthDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummarySiegeAttack").innerHTML = A1SiegeAttackLow.toFixed(2) + "-" + A1SiegeAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummarySiegeDefence").innerHTML = A1SiegeDefenceLow.toFixed(2) + "-" + A1SiegeDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryTrapDefence").innerHTML = A1TrapDefenceLow.toFixed(2) + "-" + A1TrapDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicTrapDefence").innerHTML = A1StrategicTrapDefenceLow.toFixed(2) + "-" + A1StrategicTrapDefenceHigh.toFixed(2);
+    document.getElementById("FullA1SummaryTroopTrainingSpeed").innerHTML = A1TroopTrainingSpeedLow.toFixed(2) + "-" + A1TroopTrainingSpeedHigh.toFixed(2);
+    document.getElementById("FullA1SummaryEnemySiegeAttackDebuff").innerHTML = A1EnemySiegeAttackDebuffLow.toFixed(2) + "-" + A1EnemySiegeAttackDebuffHigh.toFixed(2);
+    document.getElementById("FullA1SummaryStrategicTrapAttack").innerHTML = A1StrategicTrapAttackLow.toFixed(2) + "-" + A1StrategicTrapAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryTrapAttack").innerHTML = A1TrapAttackLow.toFixed(2) + "-" + A1TrapAttackHigh.toFixed(2);
+    document.getElementById("FullA1SummaryHeroCritical").innerHTML = A1HeroCriticalLow.toFixed(2) + "-" + A1HeroCriticalHigh.toFixed(2);
+    document.getElementById("FullA1SummaryMonsterDebuff").innerHTML = A1MonsterDebuffLow.toFixed(2) + "-" + A1MonsterDebuffHigh.toFixed(2);
 
-    //fullSummary();
+    fullSummary();
 }
+
 
 function A1Piece6Display() {
     document.getElementById("A1Piece6TroopAttack").innerHTML = A1Piece6Buffs.TroopAttackLow + "-" + A1Piece6Buffs.TroopAttackHigh;

@@ -28,9 +28,8 @@ form-group {
 }
 
  .modal-content {
-    width : 800px  !important;
-    max-width : 1000px ;
-    margin: 30px auto !important;
+    width : 95% ;
+    margin: 30px auto ;
 }
 .modal-body{
     padding-bottom: 5px;
