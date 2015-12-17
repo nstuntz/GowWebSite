@@ -125,7 +125,7 @@ var HelmPiece3Buffs = {};
 var HelmPiece2Buffs = {};
 var HelmPiece1Buffs = {};
 
-function setHelmHelmCoreBuffs(buffs)
+function setHelmCoreBuffs(buffs)
 {    
     HelmCoreBuffs.TroopAttackLow = buffs.TroopAttackLow;
     HelmCoreBuffs.TroopAttackHigh = buffs.TroopAttackHigh;
@@ -967,7 +967,7 @@ function setHelmPiece1Buffs(buffs) {
     HelmPiece1Buffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
 
-function resetHelmHelmCoreBuffs(buffs) {
+function resetHelmCoreBuffs(buffs) {
     HelmCoreBuffs.TroopAttackLow = 0;
     HelmCoreBuffs.TroopAttackHigh = 0;
     HelmCoreBuffs.TroopDefenceLow = 0;
@@ -3340,6 +3340,68 @@ function HelmPiece1Display() {
     document.getElementById("HelmPiece1TrapAttack").innerHTML = HelmPiece1Buffs.TrapAttackLow + "-" + HelmPiece1Buffs.TrapAttackHigh;
     document.getElementById("HelmPiece1HeroCritical").innerHTML = HelmPiece1Buffs.HeroCriticalLow + "-" + HelmPiece1Buffs.HeroCriticalHigh;
     document.getElementById("HelmPiece1MonsterDebuff").innerHTML = HelmPiece1Buffs.MonsterDebuffLow + "-" + HelmPiece1Buffs.MonsterDebuffHigh;
+
+}
+function HelmCoreDisplay() {
+    document.getElementById("HelmCoreTroopAttack").innerHTML = HelmCoreBuffs.TroopAttackLow + "-" + HelmCoreBuffs.TroopAttackHigh;
+    document.getElementById("HelmCoreTroopDefence").innerHTML = HelmCoreBuffs.TroopDefenceLow + "-" + HelmCoreBuffs.TroopDefenceHigh;
+    document.getElementById("HelmCoreTroopHealth").innerHTML = HelmCoreBuffs.TroopHealthLow + "-" + HelmCoreBuffs.TroopHealthHigh;
+    document.getElementById("HelmCoreRangedAttack").innerHTML = HelmCoreBuffs.RangedAttackLow + "-" + HelmCoreBuffs.RangedAttackHigh;
+    document.getElementById("HelmCoreCavalryAttack").innerHTML = HelmCoreBuffs.CavalryAttackLow + "-" + HelmCoreBuffs.CavalryAttackHigh;
+    document.getElementById("HelmCoreInfantryAttack").innerHTML = HelmCoreBuffs.InfantryAttackLow + "-" + HelmCoreBuffs.InfantryAttackHigh;
+    document.getElementById("HelmCoreMarchSpeed").innerHTML = HelmCoreBuffs.MarchSpeedLow + "-" + HelmCoreBuffs.MarchSpeedHigh;
+    document.getElementById("HelmCoreEnemyAttackDebuff").innerHTML = HelmCoreBuffs.EnemyAttackDebuffLow + "-" + HelmCoreBuffs.EnemyAttackDebuffHigh;
+    document.getElementById("HelmCoreEnemyHealthDebuff").innerHTML = HelmCoreBuffs.EnemyHealthDebuffLow + "-" + HelmCoreBuffs.EnemyHealthDebuffHigh;
+    document.getElementById("HelmCoreEnemyDefenceDebuff").innerHTML = HelmCoreBuffs.EnemyDefenceDebuffLow + "-" + HelmCoreBuffs.EnemyDefenceDebuffHigh;
+    document.getElementById("HelmCoreStrategicTroopAttack").innerHTML = HelmCoreBuffs.StrategicTroopAttackLow + "-" + HelmCoreBuffs.StrategicTroopAttackHigh;
+    document.getElementById("HelmCoreStrategicTroopDefence").innerHTML = HelmCoreBuffs.StrategicTroopDefenceLow + "-" + HelmCoreBuffs.StrategicTroopDefenceHigh;
+    document.getElementById("HelmCoreStrategicTroopHealth").innerHTML = HelmCoreBuffs.StrategicTroopHealthLow + "-" + HelmCoreBuffs.StrategicTroopHealthHigh;
+    document.getElementById("HelmCoreEnemyStrategicAttackDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicAttackDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicAttackDebuffHigh;
+    document.getElementById("HelmCoreEnemyStrategicDefenceDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicDefenceDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicDefenceDebuffHigh;
+    document.getElementById("HelmCoreEnemyStrategicHealthDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicHealthDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicHealthDebuffHigh;
+    document.getElementById("HelmCoreInfantryDefence").innerHTML = HelmCoreBuffs.InfantryDefenceLow + "-" + HelmCoreBuffs.InfantryDefenceHigh;
+    document.getElementById("HelmCoreStrategicInfantryAttack").innerHTML = HelmCoreBuffs.StrategicInfantryAttackLow + "-" + HelmCoreBuffs.StrategicInfantryAttackHigh;
+    document.getElementById("HelmCoreStrategicInfantryDefence").innerHTML = HelmCoreBuffs.StrategicInfantryDefenceLow + "-" + HelmCoreBuffs.StrategicInfantryDefenceHigh;
+    document.getElementById("HelmCoreInfantryHealth").innerHTML = HelmCoreBuffs.InfantryHealthLow + "-" + HelmCoreBuffs.InfantryHealthHigh;
+    document.getElementById("HelmCoreStrategicInfantryHealth").innerHTML = HelmCoreBuffs.StrategicInfantryHealthLow + "-" + HelmCoreBuffs.StrategicInfantryHealthHigh;
+    document.getElementById("HelmCoreEnemyInfantryAttackDebuff").innerHTML = HelmCoreBuffs.EnemyInfantryAttackDebuffLow + "-" + HelmCoreBuffs.EnemyInfantryAttackDebuffHigh;
+    document.getElementById("HelmCoreStratEnemyInfantryAttackDebuff").innerHTML = HelmCoreBuffs.StratEnemyInfantryAttackDebuffLow + "-" + HelmCoreBuffs.StratEnemyInfantryAttackDebuffHigh;
+    document.getElementById("HelmCoreEnemyInfantryDefenceDebuff").innerHTML = HelmCoreBuffs.EnemyInfantryDefenceDebuffLow + "-" + HelmCoreBuffs.EnemyInfantryDefenceDebuffHigh;
+    document.getElementById("HelmCoreEnemyStrategicInfantryDefenceDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicInfantryDefenceDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicInfantryDefenceDebuffHigh;
+    document.getElementById("HelmCoreEnemyStrategicInfantryHealthDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicInfantryHealthDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicInfantryHealthDebuffHigh;
+    document.getElementById("HelmCoreEnemyInfantryHealthDebuff").innerHTML = HelmCoreBuffs.EnemyInfantryHealthDebuffLow + "-" + HelmCoreBuffs.EnemyInfantryHealthDebuffHigh;
+    document.getElementById("HelmCoreRangedDefence").innerHTML = HelmCoreBuffs.RangedDefenceLow + "-" + HelmCoreBuffs.RangedDefenceHigh;
+    document.getElementById("HelmCoreStrategicRangedAttack").innerHTML = HelmCoreBuffs.StrategicRangedAttackLow + "-" + HelmCoreBuffs.StrategicRangedAttackHigh;
+    document.getElementById("HelmCoreStrategicRangedDefence").innerHTML = HelmCoreBuffs.StrategicRangedDefenceLow + "-" + HelmCoreBuffs.StrategicRangedDefenceHigh;
+    document.getElementById("HelmCoreRangedHealth").innerHTML = HelmCoreBuffs.RangedHealthLow + "-" + HelmCoreBuffs.RangedHealthHigh;
+    document.getElementById("HelmCoreStrategicRangedHealth").innerHTML = HelmCoreBuffs.StrategicRangedHealthLow + "-" + HelmCoreBuffs.StrategicRangedHealthHigh;
+    document.getElementById("HelmCoreEnemyRangedAttackDebuff").innerHTML = HelmCoreBuffs.EnemyRangedAttackDebuffLow + "-" + HelmCoreBuffs.EnemyRangedAttackDebuffHigh;
+    document.getElementById("HelmCoreEnemyStrategicRangedAttackDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicRangedAttackDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicRangedAttackDebuffHigh;
+    document.getElementById("HelmCoreEnemyRangedDefenceDebuff").innerHTML = HelmCoreBuffs.EnemyRangedDefenceDebuffLow + "-" + HelmCoreBuffs.EnemyRangedDefenceDebuffHigh;
+    document.getElementById("HelmCoreEnemyStrategicRangedDefenceDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicRangedDefenceDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicRangedDefenceDebuffHigh;
+    document.getElementById("HelmCoreEnemyRangedHealthDebuff").innerHTML = HelmCoreBuffs.EnemyRangedHealthDebuffLow + "-" + HelmCoreBuffs.EnemyRangedHealthDebuffHigh;
+    document.getElementById("HelmCoreEnemyStrategicRangedHealthDebuff").innerHTML = HelmCoreBuffs.EnemyStrategicRangedHealthDebuffLow + "-" + HelmCoreBuffs.EnemyStrategicRangedHealthDebuffHigh;
+    document.getElementById("HelmCoreCavalryDefence").innerHTML = HelmCoreBuffs.CavalryDefenceLow + "-" + HelmCoreBuffs.CavalryDefenceHigh;
+    document.getElementById("HelmCoreStrategicCavalryAttack").innerHTML = HelmCoreBuffs.StrategicCavalryAttackLow + "-" + HelmCoreBuffs.StrategicCavalryAttackHigh;
+    document.getElementById("HelmCoreStrategicCavalryDefence").innerHTML = HelmCoreBuffs.StrategicCavalryDefenceLow + "-" + HelmCoreBuffs.StrategicCavalryDefenceHigh;
+    document.getElementById("HelmCoreCavalryHealth").innerHTML = HelmCoreBuffs.CavalryHealthLow + "-" + HelmCoreBuffs.CavalryHealthHigh;
+    document.getElementById("HelmCoreStrategicCavalryHealth").innerHTML = HelmCoreBuffs.StrategicCavalryHealthLow + "-" + HelmCoreBuffs.StrategicCavalryHealthHigh;
+    document.getElementById("HelmCoreEnemyCavalryAttackDebuff").innerHTML = HelmCoreBuffs.EnemyCavalryAttackDebuffLow + "-" + HelmCoreBuffs.EnemyCavalryAttackDebuffHigh;
+    document.getElementById("HelmCoreStrategicEnemyCavalryAttackDebuff").innerHTML = HelmCoreBuffs.StrategicEnemyCavalryAttackDebuffLow + "-" + HelmCoreBuffs.StrategicEnemyCavalryAttackDebuffHigh;
+    document.getElementById("HelmCoreEnemyCavalryDefenceDebuff").innerHTML = HelmCoreBuffs.EnemyCavalryDefenceDebuffLow + "-" + HelmCoreBuffs.EnemyCavalryDefenceDebuffHigh;
+    document.getElementById("HelmCoreStrategicEnemyCavalryDefenceDebuff").innerHTML = HelmCoreBuffs.StrategicEnemyCavalryDefenceDebuffLow + "-" + HelmCoreBuffs.StrategicEnemyCavalryDefenceDebuffHigh;
+    document.getElementById("HelmCoreEnemyCavalryHealthDebuff").innerHTML = HelmCoreBuffs.EnemyCavalryHealthDebuffLow + "-" + HelmCoreBuffs.EnemyCavalryHealthDebuffHigh;
+    document.getElementById("HelmCoreStrategicEnemyCavalryHealthDebuff").innerHTML = HelmCoreBuffs.StrategicEnemyCavalryHealthDebuffLow + "-" + HelmCoreBuffs.StrategicEnemyCavalryHealthDebuffHigh;
+    document.getElementById("HelmCoreSiegeAttack").innerHTML = HelmCoreBuffs.SiegeAttackLow + "-" + HelmCoreBuffs.SiegeAttackHigh;
+    document.getElementById("HelmCoreSiegeDefence").innerHTML = HelmCoreBuffs.SiegeDefenceLow + "-" + HelmCoreBuffs.SiegeDefenceHigh;
+    document.getElementById("HelmCoreTrapDefence").innerHTML = HelmCoreBuffs.TrapDefenceLow + "-" + HelmCoreBuffs.TrapDefenceHigh;
+    document.getElementById("HelmCoreStrategicTrapDefence").innerHTML = HelmCoreBuffs.StrategicTrapDefenceLow + "-" + HelmCoreBuffs.StrategicTrapDefenceHigh;
+    document.getElementById("HelmCoreTroopTrainingSpeed").innerHTML = HelmCoreBuffs.TroopTrainingSpeedLow + "-" + HelmCoreBuffs.TroopTrainingSpeedHigh;
+    document.getElementById("HelmCoreEnemySiegeAttackDebuff").innerHTML = HelmCoreBuffs.EnemySiegeAttackDebuffLow + "-" + HelmCoreBuffs.EnemySiegeAttackDebuffHigh;
+    document.getElementById("HelmCoreStrategicTrapAttack").innerHTML = HelmCoreBuffs.StrategicTrapAttackLow + "-" + HelmCoreBuffs.StrategicTrapAttackHigh;
+    document.getElementById("HelmCoreTrapAttack").innerHTML = HelmCoreBuffs.TrapAttackLow + "-" + HelmCoreBuffs.TrapAttackHigh;
+    document.getElementById("HelmCoreHeroCritical").innerHTML = HelmCoreBuffs.HeroCriticalLow + "-" + HelmCoreBuffs.HeroCriticalHigh;
+    document.getElementById("HelmCoreMonsterDebuff").innerHTML = HelmCoreBuffs.MonsterDebuffLow + "-" + HelmCoreBuffs.MonsterDebuffHigh;
 
 }
 

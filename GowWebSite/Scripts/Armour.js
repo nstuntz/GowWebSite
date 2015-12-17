@@ -125,7 +125,7 @@ var ArmourPiece3Buffs = {};
 var ArmourPiece2Buffs = {};
 var ArmourPiece1Buffs = {};
 
-function setArmourArmourCoreBuffs(buffs)
+function setArmourCoreBuffs(buffs)
 {
     ArmourCoreBuffs.TroopAttackLow = buffs.TroopAttackLow;
     ArmourCoreBuffs.TroopAttackHigh = buffs.TroopAttackHigh;
@@ -967,7 +967,7 @@ function setArmourPiece1Buffs(buffs) {
     ArmourPiece1Buffs.MonsterDebuffHigh = buffs.MonsterDebuffHigh;
 }
 
-function resetArmourArmourCoreBuffs(buffs) {
+function resetArmourCoreBuffs(buffs) {
     ArmourCoreBuffs.TroopAttackLow = 0;
     ArmourCoreBuffs.TroopAttackHigh = 0;
     ArmourCoreBuffs.TroopDefenceLow = 0;
@@ -3340,6 +3340,68 @@ function ArmourPiece1Display() {
     document.getElementById("ArmourPiece1TrapAttack").innerHTML = ArmourPiece1Buffs.TrapAttackLow + "-" + ArmourPiece1Buffs.TrapAttackHigh;
     document.getElementById("ArmourPiece1HeroCritical").innerHTML = ArmourPiece1Buffs.HeroCriticalLow + "-" + ArmourPiece1Buffs.HeroCriticalHigh;
     document.getElementById("ArmourPiece1MonsterDebuff").innerHTML = ArmourPiece1Buffs.MonsterDebuffLow + "-" + ArmourPiece1Buffs.MonsterDebuffHigh;
+
+}
+function ArmourCoreDisplay() {
+    document.getElementById("ArmourCoreTroopAttack").innerHTML = ArmourCoreBuffs.TroopAttackLow + "-" + ArmourCoreBuffs.TroopAttackHigh;
+    document.getElementById("ArmourCoreTroopDefence").innerHTML = ArmourCoreBuffs.TroopDefenceLow + "-" + ArmourCoreBuffs.TroopDefenceHigh;
+    document.getElementById("ArmourCoreTroopHealth").innerHTML = ArmourCoreBuffs.TroopHealthLow + "-" + ArmourCoreBuffs.TroopHealthHigh;
+    document.getElementById("ArmourCoreRangedAttack").innerHTML = ArmourCoreBuffs.RangedAttackLow + "-" + ArmourCoreBuffs.RangedAttackHigh;
+    document.getElementById("ArmourCoreCavalryAttack").innerHTML = ArmourCoreBuffs.CavalryAttackLow + "-" + ArmourCoreBuffs.CavalryAttackHigh;
+    document.getElementById("ArmourCoreInfantryAttack").innerHTML = ArmourCoreBuffs.InfantryAttackLow + "-" + ArmourCoreBuffs.InfantryAttackHigh;
+    document.getElementById("ArmourCoreMarchSpeed").innerHTML = ArmourCoreBuffs.MarchSpeedLow + "-" + ArmourCoreBuffs.MarchSpeedHigh;
+    document.getElementById("ArmourCoreEnemyAttackDebuff").innerHTML = ArmourCoreBuffs.EnemyAttackDebuffLow + "-" + ArmourCoreBuffs.EnemyAttackDebuffHigh;
+    document.getElementById("ArmourCoreEnemyHealthDebuff").innerHTML = ArmourCoreBuffs.EnemyHealthDebuffLow + "-" + ArmourCoreBuffs.EnemyHealthDebuffHigh;
+    document.getElementById("ArmourCoreEnemyDefenceDebuff").innerHTML = ArmourCoreBuffs.EnemyDefenceDebuffLow + "-" + ArmourCoreBuffs.EnemyDefenceDebuffHigh;
+    document.getElementById("ArmourCoreStrategicTroopAttack").innerHTML = ArmourCoreBuffs.StrategicTroopAttackLow + "-" + ArmourCoreBuffs.StrategicTroopAttackHigh;
+    document.getElementById("ArmourCoreStrategicTroopDefence").innerHTML = ArmourCoreBuffs.StrategicTroopDefenceLow + "-" + ArmourCoreBuffs.StrategicTroopDefenceHigh;
+    document.getElementById("ArmourCoreStrategicTroopHealth").innerHTML = ArmourCoreBuffs.StrategicTroopHealthLow + "-" + ArmourCoreBuffs.StrategicTroopHealthHigh;
+    document.getElementById("ArmourCoreEnemyStrategicAttackDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicAttackDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicAttackDebuffHigh;
+    document.getElementById("ArmourCoreEnemyStrategicDefenceDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicDefenceDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicDefenceDebuffHigh;
+    document.getElementById("ArmourCoreEnemyStrategicHealthDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicHealthDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicHealthDebuffHigh;
+    document.getElementById("ArmourCoreInfantryDefence").innerHTML = ArmourCoreBuffs.InfantryDefenceLow + "-" + ArmourCoreBuffs.InfantryDefenceHigh;
+    document.getElementById("ArmourCoreStrategicInfantryAttack").innerHTML = ArmourCoreBuffs.StrategicInfantryAttackLow + "-" + ArmourCoreBuffs.StrategicInfantryAttackHigh;
+    document.getElementById("ArmourCoreStrategicInfantryDefence").innerHTML = ArmourCoreBuffs.StrategicInfantryDefenceLow + "-" + ArmourCoreBuffs.StrategicInfantryDefenceHigh;
+    document.getElementById("ArmourCoreInfantryHealth").innerHTML = ArmourCoreBuffs.InfantryHealthLow + "-" + ArmourCoreBuffs.InfantryHealthHigh;
+    document.getElementById("ArmourCoreStrategicInfantryHealth").innerHTML = ArmourCoreBuffs.StrategicInfantryHealthLow + "-" + ArmourCoreBuffs.StrategicInfantryHealthHigh;
+    document.getElementById("ArmourCoreEnemyInfantryAttackDebuff").innerHTML = ArmourCoreBuffs.EnemyInfantryAttackDebuffLow + "-" + ArmourCoreBuffs.EnemyInfantryAttackDebuffHigh;
+    document.getElementById("ArmourCoreStratEnemyInfantryAttackDebuff").innerHTML = ArmourCoreBuffs.StratEnemyInfantryAttackDebuffLow + "-" + ArmourCoreBuffs.StratEnemyInfantryAttackDebuffHigh;
+    document.getElementById("ArmourCoreEnemyInfantryDefenceDebuff").innerHTML = ArmourCoreBuffs.EnemyInfantryDefenceDebuffLow + "-" + ArmourCoreBuffs.EnemyInfantryDefenceDebuffHigh;
+    document.getElementById("ArmourCoreEnemyStrategicInfantryDefenceDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicInfantryDefenceDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicInfantryDefenceDebuffHigh;
+    document.getElementById("ArmourCoreEnemyStrategicInfantryHealthDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicInfantryHealthDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicInfantryHealthDebuffHigh;
+    document.getElementById("ArmourCoreEnemyInfantryHealthDebuff").innerHTML = ArmourCoreBuffs.EnemyInfantryHealthDebuffLow + "-" + ArmourCoreBuffs.EnemyInfantryHealthDebuffHigh;
+    document.getElementById("ArmourCoreRangedDefence").innerHTML = ArmourCoreBuffs.RangedDefenceLow + "-" + ArmourCoreBuffs.RangedDefenceHigh;
+    document.getElementById("ArmourCoreStrategicRangedAttack").innerHTML = ArmourCoreBuffs.StrategicRangedAttackLow + "-" + ArmourCoreBuffs.StrategicRangedAttackHigh;
+    document.getElementById("ArmourCoreStrategicRangedDefence").innerHTML = ArmourCoreBuffs.StrategicRangedDefenceLow + "-" + ArmourCoreBuffs.StrategicRangedDefenceHigh;
+    document.getElementById("ArmourCoreRangedHealth").innerHTML = ArmourCoreBuffs.RangedHealthLow + "-" + ArmourCoreBuffs.RangedHealthHigh;
+    document.getElementById("ArmourCoreStrategicRangedHealth").innerHTML = ArmourCoreBuffs.StrategicRangedHealthLow + "-" + ArmourCoreBuffs.StrategicRangedHealthHigh;
+    document.getElementById("ArmourCoreEnemyRangedAttackDebuff").innerHTML = ArmourCoreBuffs.EnemyRangedAttackDebuffLow + "-" + ArmourCoreBuffs.EnemyRangedAttackDebuffHigh;
+    document.getElementById("ArmourCoreEnemyStrategicRangedAttackDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicRangedAttackDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicRangedAttackDebuffHigh;
+    document.getElementById("ArmourCoreEnemyRangedDefenceDebuff").innerHTML = ArmourCoreBuffs.EnemyRangedDefenceDebuffLow + "-" + ArmourCoreBuffs.EnemyRangedDefenceDebuffHigh;
+    document.getElementById("ArmourCoreEnemyStrategicRangedDefenceDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicRangedDefenceDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicRangedDefenceDebuffHigh;
+    document.getElementById("ArmourCoreEnemyRangedHealthDebuff").innerHTML = ArmourCoreBuffs.EnemyRangedHealthDebuffLow + "-" + ArmourCoreBuffs.EnemyRangedHealthDebuffHigh;
+    document.getElementById("ArmourCoreEnemyStrategicRangedHealthDebuff").innerHTML = ArmourCoreBuffs.EnemyStrategicRangedHealthDebuffLow + "-" + ArmourCoreBuffs.EnemyStrategicRangedHealthDebuffHigh;
+    document.getElementById("ArmourCoreCavalryDefence").innerHTML = ArmourCoreBuffs.CavalryDefenceLow + "-" + ArmourCoreBuffs.CavalryDefenceHigh;
+    document.getElementById("ArmourCoreStrategicCavalryAttack").innerHTML = ArmourCoreBuffs.StrategicCavalryAttackLow + "-" + ArmourCoreBuffs.StrategicCavalryAttackHigh;
+    document.getElementById("ArmourCoreStrategicCavalryDefence").innerHTML = ArmourCoreBuffs.StrategicCavalryDefenceLow + "-" + ArmourCoreBuffs.StrategicCavalryDefenceHigh;
+    document.getElementById("ArmourCoreCavalryHealth").innerHTML = ArmourCoreBuffs.CavalryHealthLow + "-" + ArmourCoreBuffs.CavalryHealthHigh;
+    document.getElementById("ArmourCoreStrategicCavalryHealth").innerHTML = ArmourCoreBuffs.StrategicCavalryHealthLow + "-" + ArmourCoreBuffs.StrategicCavalryHealthHigh;
+    document.getElementById("ArmourCoreEnemyCavalryAttackDebuff").innerHTML = ArmourCoreBuffs.EnemyCavalryAttackDebuffLow + "-" + ArmourCoreBuffs.EnemyCavalryAttackDebuffHigh;
+    document.getElementById("ArmourCoreStrategicEnemyCavalryAttackDebuff").innerHTML = ArmourCoreBuffs.StrategicEnemyCavalryAttackDebuffLow + "-" + ArmourCoreBuffs.StrategicEnemyCavalryAttackDebuffHigh;
+    document.getElementById("ArmourCoreEnemyCavalryDefenceDebuff").innerHTML = ArmourCoreBuffs.EnemyCavalryDefenceDebuffLow + "-" + ArmourCoreBuffs.EnemyCavalryDefenceDebuffHigh;
+    document.getElementById("ArmourCoreStrategicEnemyCavalryDefenceDebuff").innerHTML = ArmourCoreBuffs.StrategicEnemyCavalryDefenceDebuffLow + "-" + ArmourCoreBuffs.StrategicEnemyCavalryDefenceDebuffHigh;
+    document.getElementById("ArmourCoreEnemyCavalryHealthDebuff").innerHTML = ArmourCoreBuffs.EnemyCavalryHealthDebuffLow + "-" + ArmourCoreBuffs.EnemyCavalryHealthDebuffHigh;
+    document.getElementById("ArmourCoreStrategicEnemyCavalryHealthDebuff").innerHTML = ArmourCoreBuffs.StrategicEnemyCavalryHealthDebuffLow + "-" + ArmourCoreBuffs.StrategicEnemyCavalryHealthDebuffHigh;
+    document.getElementById("ArmourCoreSiegeAttack").innerHTML = ArmourCoreBuffs.SiegeAttackLow + "-" + ArmourCoreBuffs.SiegeAttackHigh;
+    document.getElementById("ArmourCoreSiegeDefence").innerHTML = ArmourCoreBuffs.SiegeDefenceLow + "-" + ArmourCoreBuffs.SiegeDefenceHigh;
+    document.getElementById("ArmourCoreTrapDefence").innerHTML = ArmourCoreBuffs.TrapDefenceLow + "-" + ArmourCoreBuffs.TrapDefenceHigh;
+    document.getElementById("ArmourCoreStrategicTrapDefence").innerHTML = ArmourCoreBuffs.StrategicTrapDefenceLow + "-" + ArmourCoreBuffs.StrategicTrapDefenceHigh;
+    document.getElementById("ArmourCoreTroopTrainingSpeed").innerHTML = ArmourCoreBuffs.TroopTrainingSpeedLow + "-" + ArmourCoreBuffs.TroopTrainingSpeedHigh;
+    document.getElementById("ArmourCoreEnemySiegeAttackDebuff").innerHTML = ArmourCoreBuffs.EnemySiegeAttackDebuffLow + "-" + ArmourCoreBuffs.EnemySiegeAttackDebuffHigh;
+    document.getElementById("ArmourCoreStrategicTrapAttack").innerHTML = ArmourCoreBuffs.StrategicTrapAttackLow + "-" + ArmourCoreBuffs.StrategicTrapAttackHigh;
+    document.getElementById("ArmourCoreTrapAttack").innerHTML = ArmourCoreBuffs.TrapAttackLow + "-" + ArmourCoreBuffs.TrapAttackHigh;
+    document.getElementById("ArmourCoreHeroCritical").innerHTML = ArmourCoreBuffs.HeroCriticalLow + "-" + ArmourCoreBuffs.HeroCriticalHigh;
+    document.getElementById("ArmourCoreMonsterDebuff").innerHTML = ArmourCoreBuffs.MonsterDebuffLow + "-" + ArmourCoreBuffs.MonsterDebuffHigh;
 
 }
 
