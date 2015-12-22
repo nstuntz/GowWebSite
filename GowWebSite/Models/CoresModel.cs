@@ -279,6 +279,28 @@ namespace GowWebSite.Models
             }
 
         }
+    
+        
+    }
+
+    public class Filters
+    {
+        public Filters()
+        {
+
+        }
+
+        public bool Overall = true;
+        public bool Infantry = true;
+        public bool Ranged = true;
+        public bool Cavalry = true;
+        public bool Other = true;
+        public bool Attack = true;
+        public bool Defence = true;
+        public bool Health = true;
+        public bool AttackDebuff = true;
+        public bool DefenceDebuff = true;
+        public bool HealthDebuff = true;
     }
 
     public class Item

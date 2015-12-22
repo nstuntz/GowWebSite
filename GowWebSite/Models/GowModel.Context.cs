@@ -235,5 +235,215 @@ namespace GowWebSite.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOldestLogin2_Result>("GetOldestLogin2", computerNameParameter);
         }
+    
+        public virtual int FilterPieces(Nullable<bool> other, Nullable<bool> overallAttack, Nullable<bool> infantryAttack, Nullable<bool> rangedAttack, Nullable<bool> cavalryAttack, Nullable<bool> overallHealth, Nullable<bool> infantryHealth, Nullable<bool> rangedHealth, Nullable<bool> cavalryHealth, Nullable<bool> overallDefence, Nullable<bool> infantryDefence, Nullable<bool> rangedDefence, Nullable<bool> cavalryDefence, Nullable<bool> overallAttackDebuff, Nullable<bool> infantryAttackDebuff, Nullable<bool> rangedAttackDebuff, Nullable<bool> cavalryAttackDebuff, Nullable<bool> overallHealthDebuff, Nullable<bool> infantryHealthDebuff, Nullable<bool> rangedHealthDebuff, Nullable<bool> cavalryHealthDebuff, Nullable<bool> overallDefenceDebuff, Nullable<bool> infantryDefenceDebuff, Nullable<bool> rangedDefenceDebuff, Nullable<bool> cavalryDefenceDebuff)
+        {
+            var otherParameter = other.HasValue ?
+                new ObjectParameter("Other", other) :
+                new ObjectParameter("Other", typeof(bool));
+    
+            var overallAttackParameter = overallAttack.HasValue ?
+                new ObjectParameter("OverallAttack", overallAttack) :
+                new ObjectParameter("OverallAttack", typeof(bool));
+    
+            var infantryAttackParameter = infantryAttack.HasValue ?
+                new ObjectParameter("InfantryAttack", infantryAttack) :
+                new ObjectParameter("InfantryAttack", typeof(bool));
+    
+            var rangedAttackParameter = rangedAttack.HasValue ?
+                new ObjectParameter("RangedAttack", rangedAttack) :
+                new ObjectParameter("RangedAttack", typeof(bool));
+    
+            var cavalryAttackParameter = cavalryAttack.HasValue ?
+                new ObjectParameter("CavalryAttack", cavalryAttack) :
+                new ObjectParameter("CavalryAttack", typeof(bool));
+    
+            var overallHealthParameter = overallHealth.HasValue ?
+                new ObjectParameter("OverallHealth", overallHealth) :
+                new ObjectParameter("OverallHealth", typeof(bool));
+    
+            var infantryHealthParameter = infantryHealth.HasValue ?
+                new ObjectParameter("InfantryHealth", infantryHealth) :
+                new ObjectParameter("InfantryHealth", typeof(bool));
+    
+            var rangedHealthParameter = rangedHealth.HasValue ?
+                new ObjectParameter("RangedHealth", rangedHealth) :
+                new ObjectParameter("RangedHealth", typeof(bool));
+    
+            var cavalryHealthParameter = cavalryHealth.HasValue ?
+                new ObjectParameter("CavalryHealth", cavalryHealth) :
+                new ObjectParameter("CavalryHealth", typeof(bool));
+    
+            var overallDefenceParameter = overallDefence.HasValue ?
+                new ObjectParameter("OverallDefence", overallDefence) :
+                new ObjectParameter("OverallDefence", typeof(bool));
+    
+            var infantryDefenceParameter = infantryDefence.HasValue ?
+                new ObjectParameter("InfantryDefence", infantryDefence) :
+                new ObjectParameter("InfantryDefence", typeof(bool));
+    
+            var rangedDefenceParameter = rangedDefence.HasValue ?
+                new ObjectParameter("RangedDefence", rangedDefence) :
+                new ObjectParameter("RangedDefence", typeof(bool));
+    
+            var cavalryDefenceParameter = cavalryDefence.HasValue ?
+                new ObjectParameter("CavalryDefence", cavalryDefence) :
+                new ObjectParameter("CavalryDefence", typeof(bool));
+    
+            var overallAttackDebuffParameter = overallAttackDebuff.HasValue ?
+                new ObjectParameter("OverallAttackDebuff", overallAttackDebuff) :
+                new ObjectParameter("OverallAttackDebuff", typeof(bool));
+    
+            var infantryAttackDebuffParameter = infantryAttackDebuff.HasValue ?
+                new ObjectParameter("InfantryAttackDebuff", infantryAttackDebuff) :
+                new ObjectParameter("InfantryAttackDebuff", typeof(bool));
+    
+            var rangedAttackDebuffParameter = rangedAttackDebuff.HasValue ?
+                new ObjectParameter("RangedAttackDebuff", rangedAttackDebuff) :
+                new ObjectParameter("RangedAttackDebuff", typeof(bool));
+    
+            var cavalryAttackDebuffParameter = cavalryAttackDebuff.HasValue ?
+                new ObjectParameter("CavalryAttackDebuff", cavalryAttackDebuff) :
+                new ObjectParameter("CavalryAttackDebuff", typeof(bool));
+    
+            var overallHealthDebuffParameter = overallHealthDebuff.HasValue ?
+                new ObjectParameter("OverallHealthDebuff", overallHealthDebuff) :
+                new ObjectParameter("OverallHealthDebuff", typeof(bool));
+    
+            var infantryHealthDebuffParameter = infantryHealthDebuff.HasValue ?
+                new ObjectParameter("InfantryHealthDebuff", infantryHealthDebuff) :
+                new ObjectParameter("InfantryHealthDebuff", typeof(bool));
+    
+            var rangedHealthDebuffParameter = rangedHealthDebuff.HasValue ?
+                new ObjectParameter("RangedHealthDebuff", rangedHealthDebuff) :
+                new ObjectParameter("RangedHealthDebuff", typeof(bool));
+    
+            var cavalryHealthDebuffParameter = cavalryHealthDebuff.HasValue ?
+                new ObjectParameter("CavalryHealthDebuff", cavalryHealthDebuff) :
+                new ObjectParameter("CavalryHealthDebuff", typeof(bool));
+    
+            var overallDefenceDebuffParameter = overallDefenceDebuff.HasValue ?
+                new ObjectParameter("OverallDefenceDebuff", overallDefenceDebuff) :
+                new ObjectParameter("OverallDefenceDebuff", typeof(bool));
+    
+            var infantryDefenceDebuffParameter = infantryDefenceDebuff.HasValue ?
+                new ObjectParameter("InfantryDefenceDebuff", infantryDefenceDebuff) :
+                new ObjectParameter("InfantryDefenceDebuff", typeof(bool));
+    
+            var rangedDefenceDebuffParameter = rangedDefenceDebuff.HasValue ?
+                new ObjectParameter("RangedDefenceDebuff", rangedDefenceDebuff) :
+                new ObjectParameter("RangedDefenceDebuff", typeof(bool));
+    
+            var cavalryDefenceDebuffParameter = cavalryDefenceDebuff.HasValue ?
+                new ObjectParameter("CavalryDefenceDebuff", cavalryDefenceDebuff) :
+                new ObjectParameter("CavalryDefenceDebuff", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FilterPieces", otherParameter, overallAttackParameter, infantryAttackParameter, rangedAttackParameter, cavalryAttackParameter, overallHealthParameter, infantryHealthParameter, rangedHealthParameter, cavalryHealthParameter, overallDefenceParameter, infantryDefenceParameter, rangedDefenceParameter, cavalryDefenceParameter, overallAttackDebuffParameter, infantryAttackDebuffParameter, rangedAttackDebuffParameter, cavalryAttackDebuffParameter, overallHealthDebuffParameter, infantryHealthDebuffParameter, rangedHealthDebuffParameter, cavalryHealthDebuffParameter, overallDefenceDebuffParameter, infantryDefenceDebuffParameter, rangedDefenceDebuffParameter, cavalryDefenceDebuffParameter);
+        }
+    
+        public virtual int FilterCores(Nullable<bool> other, Nullable<bool> overallAttack, Nullable<bool> infantryAttack, Nullable<bool> rangedAttack, Nullable<bool> cavalryAttack, Nullable<bool> overallHealth, Nullable<bool> infantryHealth, Nullable<bool> rangedHealth, Nullable<bool> cavalryHealth, Nullable<bool> overallDefence, Nullable<bool> infantryDefence, Nullable<bool> rangedDefence, Nullable<bool> cavalryDefence, Nullable<bool> overallAttackDebuff, Nullable<bool> infantryAttackDebuff, Nullable<bool> rangedAttackDebuff, Nullable<bool> cavalryAttackDebuff, Nullable<bool> overallHealthDebuff, Nullable<bool> infantryHealthDebuff, Nullable<bool> rangedHealthDebuff, Nullable<bool> cavalryHealthDebuff, Nullable<bool> overallDefenceDebuff, Nullable<bool> infantryDefenceDebuff, Nullable<bool> rangedDefenceDebuff, Nullable<bool> cavalryDefenceDebuff)
+        {
+            var otherParameter = other.HasValue ?
+                new ObjectParameter("Other", other) :
+                new ObjectParameter("Other", typeof(bool));
+    
+            var overallAttackParameter = overallAttack.HasValue ?
+                new ObjectParameter("OverallAttack", overallAttack) :
+                new ObjectParameter("OverallAttack", typeof(bool));
+    
+            var infantryAttackParameter = infantryAttack.HasValue ?
+                new ObjectParameter("InfantryAttack", infantryAttack) :
+                new ObjectParameter("InfantryAttack", typeof(bool));
+    
+            var rangedAttackParameter = rangedAttack.HasValue ?
+                new ObjectParameter("RangedAttack", rangedAttack) :
+                new ObjectParameter("RangedAttack", typeof(bool));
+    
+            var cavalryAttackParameter = cavalryAttack.HasValue ?
+                new ObjectParameter("CavalryAttack", cavalryAttack) :
+                new ObjectParameter("CavalryAttack", typeof(bool));
+    
+            var overallHealthParameter = overallHealth.HasValue ?
+                new ObjectParameter("OverallHealth", overallHealth) :
+                new ObjectParameter("OverallHealth", typeof(bool));
+    
+            var infantryHealthParameter = infantryHealth.HasValue ?
+                new ObjectParameter("InfantryHealth", infantryHealth) :
+                new ObjectParameter("InfantryHealth", typeof(bool));
+    
+            var rangedHealthParameter = rangedHealth.HasValue ?
+                new ObjectParameter("RangedHealth", rangedHealth) :
+                new ObjectParameter("RangedHealth", typeof(bool));
+    
+            var cavalryHealthParameter = cavalryHealth.HasValue ?
+                new ObjectParameter("CavalryHealth", cavalryHealth) :
+                new ObjectParameter("CavalryHealth", typeof(bool));
+    
+            var overallDefenceParameter = overallDefence.HasValue ?
+                new ObjectParameter("OverallDefence", overallDefence) :
+                new ObjectParameter("OverallDefence", typeof(bool));
+    
+            var infantryDefenceParameter = infantryDefence.HasValue ?
+                new ObjectParameter("InfantryDefence", infantryDefence) :
+                new ObjectParameter("InfantryDefence", typeof(bool));
+    
+            var rangedDefenceParameter = rangedDefence.HasValue ?
+                new ObjectParameter("RangedDefence", rangedDefence) :
+                new ObjectParameter("RangedDefence", typeof(bool));
+    
+            var cavalryDefenceParameter = cavalryDefence.HasValue ?
+                new ObjectParameter("CavalryDefence", cavalryDefence) :
+                new ObjectParameter("CavalryDefence", typeof(bool));
+    
+            var overallAttackDebuffParameter = overallAttackDebuff.HasValue ?
+                new ObjectParameter("OverallAttackDebuff", overallAttackDebuff) :
+                new ObjectParameter("OverallAttackDebuff", typeof(bool));
+    
+            var infantryAttackDebuffParameter = infantryAttackDebuff.HasValue ?
+                new ObjectParameter("InfantryAttackDebuff", infantryAttackDebuff) :
+                new ObjectParameter("InfantryAttackDebuff", typeof(bool));
+    
+            var rangedAttackDebuffParameter = rangedAttackDebuff.HasValue ?
+                new ObjectParameter("RangedAttackDebuff", rangedAttackDebuff) :
+                new ObjectParameter("RangedAttackDebuff", typeof(bool));
+    
+            var cavalryAttackDebuffParameter = cavalryAttackDebuff.HasValue ?
+                new ObjectParameter("CavalryAttackDebuff", cavalryAttackDebuff) :
+                new ObjectParameter("CavalryAttackDebuff", typeof(bool));
+    
+            var overallHealthDebuffParameter = overallHealthDebuff.HasValue ?
+                new ObjectParameter("OverallHealthDebuff", overallHealthDebuff) :
+                new ObjectParameter("OverallHealthDebuff", typeof(bool));
+    
+            var infantryHealthDebuffParameter = infantryHealthDebuff.HasValue ?
+                new ObjectParameter("InfantryHealthDebuff", infantryHealthDebuff) :
+                new ObjectParameter("InfantryHealthDebuff", typeof(bool));
+    
+            var rangedHealthDebuffParameter = rangedHealthDebuff.HasValue ?
+                new ObjectParameter("RangedHealthDebuff", rangedHealthDebuff) :
+                new ObjectParameter("RangedHealthDebuff", typeof(bool));
+    
+            var cavalryHealthDebuffParameter = cavalryHealthDebuff.HasValue ?
+                new ObjectParameter("CavalryHealthDebuff", cavalryHealthDebuff) :
+                new ObjectParameter("CavalryHealthDebuff", typeof(bool));
+    
+            var overallDefenceDebuffParameter = overallDefenceDebuff.HasValue ?
+                new ObjectParameter("OverallDefenceDebuff", overallDefenceDebuff) :
+                new ObjectParameter("OverallDefenceDebuff", typeof(bool));
+    
+            var infantryDefenceDebuffParameter = infantryDefenceDebuff.HasValue ?
+                new ObjectParameter("InfantryDefenceDebuff", infantryDefenceDebuff) :
+                new ObjectParameter("InfantryDefenceDebuff", typeof(bool));
+    
+            var rangedDefenceDebuffParameter = rangedDefenceDebuff.HasValue ?
+                new ObjectParameter("RangedDefenceDebuff", rangedDefenceDebuff) :
+                new ObjectParameter("RangedDefenceDebuff", typeof(bool));
+    
+            var cavalryDefenceDebuffParameter = cavalryDefenceDebuff.HasValue ?
+                new ObjectParameter("CavalryDefenceDebuff", cavalryDefenceDebuff) :
+                new ObjectParameter("CavalryDefenceDebuff", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FilterCores", otherParameter, overallAttackParameter, infantryAttackParameter, rangedAttackParameter, cavalryAttackParameter, overallHealthParameter, infantryHealthParameter, rangedHealthParameter, cavalryHealthParameter, overallDefenceParameter, infantryDefenceParameter, rangedDefenceParameter, cavalryDefenceParameter, overallAttackDebuffParameter, infantryAttackDebuffParameter, rangedAttackDebuffParameter, cavalryAttackDebuffParameter, overallHealthDebuffParameter, infantryHealthDebuffParameter, rangedHealthDebuffParameter, cavalryHealthDebuffParameter, overallDefenceDebuffParameter, infantryDefenceDebuffParameter, rangedDefenceDebuffParameter, cavalryDefenceDebuffParameter);
+        }
     }
 }

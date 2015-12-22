@@ -92,8 +92,8 @@
           <Property Name="GearSlot" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="GearName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="GearLevel" Type="int" Nullable="false" />
-          <Property Name="SetName" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="BoostType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SetName" Type="varchar" MaxLength="255" />
+          <Property Name="BoostType" Type="varchar" MaxLength="255" />
           <Property Name="TroopAttackLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopAttackHigh" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="TroopDefenceLow" Type="decimal" Precision="10" Scale="4" Nullable="false" />
@@ -565,6 +565,60 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Parameter Name="HasGoldMine" Type="bit" Mode="In" />
           <Parameter Name="CreateUserEmail" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="FilterCores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Other" Type="bit" Mode="In" />
+          <Parameter Name="OverallAttack" Type="bit" Mode="In" />
+          <Parameter Name="InfantryAttack" Type="bit" Mode="In" />
+          <Parameter Name="RangedAttack" Type="bit" Mode="In" />
+          <Parameter Name="CavalryAttack" Type="bit" Mode="In" />
+          <Parameter Name="OverallHealth" Type="bit" Mode="In" />
+          <Parameter Name="InfantryHealth" Type="bit" Mode="In" />
+          <Parameter Name="RangedHealth" Type="bit" Mode="In" />
+          <Parameter Name="CavalryHealth" Type="bit" Mode="In" />
+          <Parameter Name="OverallDefence" Type="bit" Mode="In" />
+          <Parameter Name="InfantryDefence" Type="bit" Mode="In" />
+          <Parameter Name="RangedDefence" Type="bit" Mode="In" />
+          <Parameter Name="CavalryDefence" Type="bit" Mode="In" />
+          <Parameter Name="OverallAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="InfantryAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="RangedAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="CavalryAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="OverallHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="InfantryHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="RangedHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="CavalryHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="OverallDefenceDebuff" Type="bit" Mode="In" />
+          <Parameter Name="InfantryDefenceDebuff" Type="bit" Mode="In" />
+          <Parameter Name="RangedDefenceDebuff" Type="bit" Mode="In" />
+          <Parameter Name="CavalryDefenceDebuff" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="FilterPieces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Other" Type="bit" Mode="In" />
+          <Parameter Name="OverallAttack" Type="bit" Mode="In" />
+          <Parameter Name="InfantryAttack" Type="bit" Mode="In" />
+          <Parameter Name="RangedAttack" Type="bit" Mode="In" />
+          <Parameter Name="CavalryAttack" Type="bit" Mode="In" />
+          <Parameter Name="OverallHealth" Type="bit" Mode="In" />
+          <Parameter Name="InfantryHealth" Type="bit" Mode="In" />
+          <Parameter Name="RangedHealth" Type="bit" Mode="In" />
+          <Parameter Name="CavalryHealth" Type="bit" Mode="In" />
+          <Parameter Name="OverallDefence" Type="bit" Mode="In" />
+          <Parameter Name="InfantryDefence" Type="bit" Mode="In" />
+          <Parameter Name="RangedDefence" Type="bit" Mode="In" />
+          <Parameter Name="CavalryDefence" Type="bit" Mode="In" />
+          <Parameter Name="OverallAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="InfantryAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="RangedAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="CavalryAttackDebuff" Type="bit" Mode="In" />
+          <Parameter Name="OverallHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="InfantryHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="RangedHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="CavalryHealthDebuff" Type="bit" Mode="In" />
+          <Parameter Name="OverallDefenceDebuff" Type="bit" Mode="In" />
+          <Parameter Name="InfantryDefenceDebuff" Type="bit" Mode="In" />
+          <Parameter Name="RangedDefenceDebuff" Type="bit" Mode="In" />
+          <Parameter Name="CavalryDefenceDebuff" Type="bit" Mode="In" />
+        </Function>
         <Function Name="GetOldestLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MachineID" Type="int" Mode="In" />
         </Function>
@@ -861,6 +915,60 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySet Name="MachineLoginTrackers" EntityType="GowModel.MachineLoginTracker" />
           <EntitySet Name="Cores" EntityType="GowModel.Core" />
           <EntitySet Name="Pieces" EntityType="GowModel.Piece" />
+          <FunctionImport Name="FilterPieces">
+            <Parameter Name="Other" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallDefenceDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryDefenceDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedDefenceDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryDefenceDebuff" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="FilterCores">
+            <Parameter Name="Other" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryAttack" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryHealth" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryDefence" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryAttackDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryHealthDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="OverallDefenceDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="InfantryDefenceDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="RangedDefenceDebuff" Mode="In" Type="Boolean" />
+            <Parameter Name="CavalryDefenceDebuff" Mode="In" Type="Boolean" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -1040,8 +1148,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="GearSlot" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="GearName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="GearLevel" Type="Int32" Nullable="false" />
-          <Property Name="SetName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="BoostType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SetName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BoostType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="TroopAttackLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopAttackHigh" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="TroopDefenceLow" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
@@ -1776,6 +1884,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FilterPieces" FunctionName="GowModel.Store.FilterPieces" />
+          <FunctionImportMapping FunctionImportName="FilterCores" FunctionName="GowModel.Store.FilterCores" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
