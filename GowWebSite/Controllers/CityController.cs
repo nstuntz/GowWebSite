@@ -271,13 +271,13 @@ namespace GowWebSite.Controllers
                     }
                 }
 
-                if (city.CityInfo.Treasury)
-                {
-                    CityPayItem itemTreasury = new CityPayItem();
-                    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
-                    db.CityPayItems.Add(itemTreasury);
-                    city.CityPayItems.Add(itemTreasury);
-                }
+                //if (city.CityInfo.Treasury)
+                //{
+                //    CityPayItem itemTreasury = new CityPayItem();
+                //    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                //    db.CityPayItems.Add(itemTreasury);
+                //    city.CityPayItems.Add(itemTreasury);
+                //}
 
                 if (city.BasicCity)
                 {
@@ -1019,21 +1019,21 @@ namespace GowWebSite.Controllers
                 if(addAsRegular)
                 {
                     //check for selected options on each city to determine payitems.
-                    if (city.CityInfo.Treasury)
-                    {
-                        CityPayItem itemTreasury = new CityPayItem();
-                        itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
-                        db.CityPayItems.Add(itemTreasury);
-                        city.CityPayItems.Add(itemTreasury);
-                    }
+                    //if (city.CityInfo.Treasury)
+                    //{
+                    //    CityPayItem itemTreasury = new CityPayItem();
+                    //    itemTreasury.PayItem = db.PayItems.Find((int)PayItemEnum.Treasury);
+                    //    db.CityPayItems.Add(itemTreasury);
+                    //    city.CityPayItems.Add(itemTreasury);
+                    //}
 
-                    if (city.CityInfo.Upgrade)
-                    {
-                        CityPayItem itemUpgrade = new CityPayItem();
-                        itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
-                        db.CityPayItems.Add(itemUpgrade);
-                        city.CityPayItems.Add(itemUpgrade);
-                    }
+                    //if (city.CityInfo.Upgrade)
+                    //{
+                    //    CityPayItem itemUpgrade = new CityPayItem();
+                    //    itemUpgrade.PayItem = db.PayItems.Find((int)PayItemEnum.Upgrade);
+                    //    db.CityPayItems.Add(itemUpgrade);
+                    //    city.CityPayItems.Add(itemUpgrade);
+                    //}
 
                     //This is added for either basic or premium cities
                     CityPayItem itemHours = new CityPayItem();
