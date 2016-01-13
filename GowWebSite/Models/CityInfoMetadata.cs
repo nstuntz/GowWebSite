@@ -19,9 +19,9 @@ namespace GowWebSite.Models
         public int RSSBankNum { get; set; }
         [Range(1, 4)]
         public int SilverBankNum { get; set; }
-        [Range(0, 5)]
+        [Range(0, 8)]
         public int RssMarches { get; set; }
-        [Range(0, 5)]
+        [Range(0, 8)]
         public int SilverMarches { get; set; }
         [Range(0, 510)]
         public Nullable<int> RallyX { get; set; }

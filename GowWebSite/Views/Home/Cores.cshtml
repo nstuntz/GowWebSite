@@ -17,14 +17,6 @@
     <link rel="stylesheet" href="~/Content/Site.css" />
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/Helm.js"></script>
-    <script type="text/javascript" src="~/Scripts/Weapon.js"></script>
-    <script type="text/javascript" src="~/Scripts/Armour.js"></script>
-    <script type="text/javascript" src="~/Scripts/Foot.js"></script>
-    <script type="text/javascript" src="~/Scripts/A1.js"></script>
-    <script type="text/javascript" src="~/Scripts/A2.js"></script>
-    <script type="text/javascript" src="~/Scripts/A3.js"></script>
-    <script type="text/javascript" src="~/Scripts/SummaryVariables.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -93,7 +85,7 @@
                         </div>
                         <div id="collapseFilters" class="panel-collapse collapse in">
 
-                            <div class="row" style="margin-top:5px">
+                            @*<div class="row" style="margin-top:5px">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-left">Troop Type</div>
                             </div>
                             <div class="row" style="margin-top:5px">
@@ -113,10 +105,37 @@
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-left">@Html.CheckBoxFor(m => m.DefenceDebuff) @Html.LabelFor(m => m.DefenceDebuff)</div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-left">@Html.CheckBoxFor(m => m.Health) @Html.LabelFor(m => m.Health)</div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-left">@Html.CheckBoxFor(m => m.HealthDebuff) @Html.LabelFor(m => m.HealthDebuff)</div>
+                            </div>*@
+                            <div class="row" style="margin-top:25px;">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">                                    
+                                    @Html.Label("Overall:")
+                                    @Html.DropDownList("OverallBoost", new MultiSelectList(ViewBag.OverallTypes, "Key", "Value"), htmlAttributes: new { @class = "form-control input-xs", multiple = "multiple", style = "height:106px" })
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    @Html.Label("Infantry:")
+                                    @Html.DropDownList("InfantryBoost", new MultiSelectList(ViewBag.InfantryTypes, "Key", "Value"), htmlAttributes: new { @class = "form-control input-xs", multiple = "multiple", style = "height:106px" })
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    @Html.Label("Ranged:")
+                                    @Html.DropDownList("RangedBoost", new MultiSelectList(ViewBag.RangedTypes, "Key", "Value"), htmlAttributes: new { @class = "form-control input-xs", multiple = "multiple", style = "height:106px" })
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    @Html.Label("Cavalry:")
+                                    @Html.DropDownList("CavalryBoost", new MultiSelectList(ViewBag.CavalryTypes, "Key", "Value"), htmlAttributes: new { @class = "form-control input-xs", multiple = "multiple", style = "height:106px" })
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    @Html.Label("Other:")
+                                    @Html.DropDownList("OtherBoost", new MultiSelectList(ViewBag.OtherTypes, "Key", "Value"), htmlAttributes: new { @class = "form-control input-xs", multiple = "multiple", style = "height:60px" })
+                                </div>
                             </div>
-                            <div class="row" style="margin-top:5px">
+                            <div class="row" style="margin-top:15px">
                                 <div class="col-lg-2 col-md-2 col-sm-2">
                                     <input type="submit" value="Filter" class="btn btn-primary" />
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:15px">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <label id="inForceFilter">Current Filter: @ViewBag.Filters</label>
                                 </div>
                             </div>
                         </div>
@@ -1935,6 +1954,14 @@
     </div>
 }
 
+<script type="text/javascript" src="~/Scripts/Helm.js"></script>
+<script type="text/javascript" src="~/Scripts/Weapon.js"></script>
+<script type="text/javascript" src="~/Scripts/Armour.js"></script>
+<script type="text/javascript" src="~/Scripts/Foot.js"></script>
+<script type="text/javascript" src="~/Scripts/A1.js"></script>
+<script type="text/javascript" src="~/Scripts/A2.js"></script>
+<script type="text/javascript" src="~/Scripts/A3.js"></script>
+<script type="text/javascript" src="~/Scripts/SummaryVariables.js"></script>
 <script>     
 
 
@@ -1987,7 +2014,7 @@
                 success: function (result) {
                     //alert(result);
                     setHelmCoreBuffs(result);
-                    HelmPiece1Display();
+                    HelmCoreDisplay();
                     helmSummary();
                     
                 },
@@ -2373,7 +2400,7 @@
                 dataType: "json",
                 success: function (result) {
                     setWeaponCoreBuffs(result);
-                    WeaponPiece1Display();
+                    WeaponCoreDisplay();
                     WeaponSummary();
                     //alert(result);
                 },
@@ -2754,7 +2781,7 @@
                 dataType: "json",
                 success: function (result) {
                     setArmourCoreBuffs(result);
-                    ArmourPiece1Display();
+                    ArmourCoreDisplay();
                     ArmourSummary();
                     //alert(result);
                 },
@@ -3135,7 +3162,7 @@
                 dataType: "json",
                 success: function (result) {
                     setFootCoreBuffs(result);
-                    FootPiece1Display();
+                    FootCoreDisplay();
                     FootSummary();
                     //alert(result);
                 },
@@ -3516,7 +3543,7 @@
                 dataType: "json",
                 success: function (result) {
                     setA1CoreBuffs(result);
-                    A1Piece1Display();
+                    A1CoreDisplay();
                     A1Summary();
                     //alert(result);
                 },
@@ -3897,7 +3924,7 @@
                 dataType: "json",
                 success: function (result) {
                     setA2CoreBuffs(result);
-                    A2Piece1Display();
+                    A2CoreDisplay();
                     A2Summary();
                     //alert(result);
                 },
@@ -4278,7 +4305,7 @@
                 dataType: "json",
                 success: function (result) {
                     setA3CoreBuffs(result);
-                    A3Piece1Display();
+                    A3CoreDisplay();
                     A3Summary();
                     //alert(result);
                 },

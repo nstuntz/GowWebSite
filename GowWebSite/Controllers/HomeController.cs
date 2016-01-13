@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text;
 using System.Web.Mvc;
 using GowWebSite.Models;
 using System.Data.Entity.Validation;
@@ -46,11 +47,11 @@ namespace GowWebSite.Controllers
             ViewBag.PiecesList = db.Pieces.GroupBy(m=>m.PieceName).Select(grp=>grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
             //ViewBag.Pieces = new GowWebSite.Models.CoresModel(db);
 
-            ViewBag.HelmCoreList = db.Cores.Where(m => m.GearSlot == "Helm").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.WeaponCoreList = db.Cores.Where(m => m.GearSlot == "Weapon").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.ArmourCoreList = db.Cores.Where(m => m.GearSlot == "Armour").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.FootCoreList = db.Cores.Where(m => m.GearSlot == "Feet").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.AccessoryCoreList = db.Cores.Where(m => m.GearSlot == "Accessory").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });            
+            ViewBag.HelmCoreList = Enumerable.Empty<SelectListItem>();// db.Cores.Where(m => m.GearSlot == "Helm").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.WeaponCoreList = Enumerable.Empty<SelectListItem>();// db.Cores.Where(m => m.GearSlot == "Weapon").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.ArmourCoreList = Enumerable.Empty<SelectListItem>();// db.Cores.Where(m => m.GearSlot == "Armour").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.FootCoreList = Enumerable.Empty<SelectListItem>();// db.Cores.Where(m => m.GearSlot == "Feet").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.AccessoryCoreList = Enumerable.Empty<SelectListItem>();// db.Cores.Where(m => m.GearSlot == "Accessory").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });            
 
             var levels = new Dictionary<int, string>()
                 {     
@@ -62,19 +63,105 @@ namespace GowWebSite.Controllers
                     {1,"White (1)"}
                 };
 
-            ViewBag.Levels = levels;            
+            ViewBag.Levels = levels;
 
+            var overallTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.OverallTypes = overallTypes;
+
+            var infantryTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.InfantryTypes = infantryTypes;
+
+            var cavalryTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.CavalryTypes = cavalryTypes;
+
+            var rangedTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.RangedTypes = rangedTypes;
+
+            var otherTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Hero"},
+                    {1,"Siege"},
+                    {2,"Trap"}
+                };
+
+            ViewBag.OtherTypes = otherTypes;
+            ViewBag.OverallBoost = "Health";
+
+            ViewBag.Filters = "None";
             return View(filter);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cores(bool infantry, bool overall, bool cavalry, bool ranged, bool other, 
-                                    bool attack, bool defence, bool health,
-                                    bool attackDebuff, bool defenceDebuff, bool healthDebuff)
+        public ActionResult Cores(FormCollection formValues)
         {
             ViewBag.Message = "Your Cores Information Center.";
             //First get the set of booleans to call the SP with.
+            string[] overall = new string[0];
+            string[] infantry = new string[0];
+            string[] ranged = new string[0];
+            string[] cavalry = new string[0];
+            string[] other = new string[0];
+            StringBuilder filters = new StringBuilder();
+
+            if(formValues["OverallBoost"] != null)
+            {
+                overall = formValues["OverallBoost"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+            if (formValues["InfantryBoost"] != null)
+            {
+                infantry = formValues["InfantryBoost"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+            if (formValues["RangedBoost"] != null)
+            {
+                ranged = formValues["RangedBoost"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+            if (formValues["CavalryBoost"] != null)
+            {
+                cavalry = formValues["CavalryBoost"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+            if (formValues["OtherBoost"] != null)
+            {
+                other = formValues["OtherBoost"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+
+
 
             bool otherParam = false;
             bool overallAttackParam = false;
@@ -105,47 +192,194 @@ namespace GowWebSite.Controllers
             bool rangedHealthDebuffParam = false;
             bool rangedDefenceDebuffParam = false;
 
-            otherParam = other;
+            //otherParam = other;
 
-            if(overall)
+            foreach(string index in overall)
             {
-                if (attack) overallAttackParam = true;
-                if (health) overallHealthParam = true;
-                if (defence) overallDefenceParam = true;
-                if (attackDebuff) overallAttackDebuffParam = true;
-                if (healthDebuff) overallHealthDebuffParam = true;
-                if (defenceDebuff) overallDefenceDebuffParam = true;
+                switch (index)
+                {
+                    case "0": 
+                        overallAttackParam = true;
+                        filters.Append("Overall Attack;");
+                        break;
+                    case "1":
+                        overallHealthParam = true;
+                        filters.Append("Overall Health;");
+                        break;
+                    case "2":
+                        overallDefenceParam = true;
+                        filters.Append("Overall Defence;");
+                        break;
+                    case "3":
+                        overallAttackDebuffParam = true;
+                        filters.Append("Overall Enemy Attack Debuff;");
+                        break;
+                    case "4":
+                        overallHealthDebuffParam = true;
+                        filters.Append("Overall Enemy Health Debuff;");
+                        break;
+                    case "5":
+                        overallDefenceDebuffParam = true;
+                        filters.Append("Overall Enemy Defence Debuff;");
+                        break;
+                    default:
+                        break;
+                }
             }
-            if (ranged)
+
+            foreach (string index in infantry)
             {
-                if (attack) rangedAttackParam = true;
-                if (health) rangedHealthParam = true;
-                if (defence) rangedDefenceParam = true;
-                if (attackDebuff) rangedAttackDebuffParam = true;
-                if (healthDebuff) rangedHealthDebuffParam = true;
-                if (defenceDebuff) rangedDefenceDebuffParam = true;
+                switch (index)
+                {
+                    case "0":
+                        infantryAttackParam = true;
+                        filters.Append("Infantry Attack;");
+                        break;
+                    case "1":
+                        infantryHealthParam = true;
+                        filters.Append("Infantry Health;");
+                        break;
+                    case "2":
+                        infantryDefenceParam = true;
+                        filters.Append("Infantry Defence;");
+                        break;
+                    case "3":
+                        infantryAttackDebuffParam = true;
+                        filters.Append("Infantry Enemy Attack Debuff;");
+                        break;
+                    case "4":
+                        infantryHealthDebuffParam = true;
+                        filters.Append("Infantry Enemy Health Debuff;");
+                        break;
+                    case "5":
+                        infantryDefenceDebuffParam = true;
+                        filters.Append("Infantry Enemy Defence Debuff;");
+                        break;
+                    default:
+                        break;
+                }
             }
-            if (infantry)
+
+            foreach (string index in ranged)
             {
-                if (attack) infantryAttackParam = true;
-                if (health) infantryHealthParam = true;
-                if (defence) infantryDefenceParam = true;
-                if (attackDebuff) infantryAttackDebuffParam = true;
-                if (healthDebuff) infantryHealthDebuffParam = true;
-                if (defenceDebuff) infantryDefenceDebuffParam = true;
+                switch (index)
+                {
+                    case "0":
+                        rangedAttackParam = true;
+                        filters.Append("Ranged Attack;");
+                        break;
+                    case "1":
+                        rangedHealthParam = true;
+                        filters.Append("Ranged Health;");
+                        break;
+                    case "2":
+                        rangedDefenceParam = true;
+                        filters.Append("Ranged Defence;");
+                        break;
+                    case "3":
+                        rangedAttackDebuffParam = true;
+                        filters.Append("Ranged Enemy Attack Debuff;");
+                        break;
+                    case "4":
+                        rangedHealthDebuffParam = true;
+                        filters.Append("Ranged Enemy Health Debuff;");
+                        break;
+                    case "5":
+                        rangedDefenceDebuffParam = true;
+                        filters.Append("Ranged Enemy Defence Debuff;");
+                        break;
+                    default:
+                        break;
+                }
             }
-            if (cavalry)
+
+            foreach (string index in cavalry)
             {
-                if (attack) cavalryAttackParam = true;
-                if (health) cavalryHealthParam = true;
-                if (defence) cavalryDefenceParam = true;
-                if (attackDebuff) cavalryAttackDebuffParam = true;
-                if (healthDebuff) cavalryHealthDebuffParam = true;
-                if (defenceDebuff) cavalryDefenceDebuffParam = true;
+                switch (index)
+                {
+                    case "0":
+                        cavalryAttackParam = true;
+                        filters.Append("Cavalry Attack;");
+                        break;
+                    case "1":
+                        cavalryHealthParam = true;
+                        filters.Append("Cavalry Health;");
+                        break;
+                    case "2":
+                        cavalryDefenceParam = true;
+                        filters.Append("Cavalry Defence;");
+                        break;
+                    case "3":
+                        cavalryAttackDebuffParam = true;
+                        filters.Append("Cavalry Enemy Attack Debuff;");
+                        break;
+                    case "4":
+                        cavalryHealthDebuffParam = true;
+                        filters.Append("Cavalry Enemy Health Debuff;");
+                        break;
+                    case "5":
+                        cavalryDefenceDebuffParam = true;
+                        filters.Append("Cavalry Enemy Defence Debuff;");
+                        break;
+                    default:
+                        break;
+                }
             }
+
+            foreach (string index in other)
+            {
+                switch (index)
+                {
+                    case "0":
+                    case "1":
+                    case "2":
+                        otherParam = true;
+                        filters.Append("Other;");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //if(overall)
+            //{
+            //    if (attack) overallAttackParam = true;
+            //    if (health) overallHealthParam = true;
+            //    if (defence) overallDefenceParam = true;
+            //    if (attackDebuff) overallAttackDebuffParam = true;
+            //    if (healthDebuff) overallHealthDebuffParam = true;
+            //    if (defenceDebuff) overallDefenceDebuffParam = true;
+            //}
+            //if (ranged)
+            //{
+            //    if (attack) rangedAttackParam = true;
+            //    if (health) rangedHealthParam = true;
+            //    if (defence) rangedDefenceParam = true;
+            //    if (attackDebuff) rangedAttackDebuffParam = true;
+            //    if (healthDebuff) rangedHealthDebuffParam = true;
+            //    if (defenceDebuff) rangedDefenceDebuffParam = true;
+            //}
+            //if (infantry)
+            //{
+            //    if (attack) infantryAttackParam = true;
+            //    if (health) infantryHealthParam = true;
+            //    if (defence) infantryDefenceParam = true;
+            //    if (attackDebuff) infantryAttackDebuffParam = true;
+            //    if (healthDebuff) infantryHealthDebuffParam = true;
+            //    if (defenceDebuff) infantryDefenceDebuffParam = true;
+            //}
+            //if (cavalry)
+            //{
+            //    if (attack) cavalryAttackParam = true;
+            //    if (health) cavalryHealthParam = true;
+            //    if (defence) cavalryDefenceParam = true;
+            //    if (attackDebuff) cavalryAttackDebuffParam = true;
+            //    if (healthDebuff) cavalryHealthDebuffParam = true;
+            //    if (defenceDebuff) cavalryDefenceDebuffParam = true;
+            //}
 
             var filteredPieces = db.Database.SqlQuery<Piece>("EXEC FilterPieces @Other, @OverallAttack, @InfantryAttack, @RangedAttack, @CavalryAttack, @OverallHealth, @InfantryHealth, @RangedHealth, @CavalryHealth, @OverallDefence, @InfantryDefence, @RangedDefence, @CavalryDefence, @OverallAttackDebuff, @InfantryAttackDebuff, @RangedAttackDebuff, @CavalryAttackDebuff, @OverallHealthDebuff, @InfantryHealthDebuff, @RangedHealthDebuff, @CavalryHealthDebuff, @OverallDefenceDebuff, @InfantryDefenceDebuff, @RangedDefenceDebuff, @CavalryDefenceDebuff ", 
-                new SqlParameter ("Other", otherParam),
+                new SqlParameter("Other", otherParam),
                 new SqlParameter("OverallAttack", overallAttackParam),
                 new SqlParameter("InfantryAttack", infantryAttackParam),
                 new SqlParameter("RangedAttack", rangedAttackParam),
@@ -201,7 +435,7 @@ namespace GowWebSite.Controllers
                new SqlParameter("RangedDefenceDebuff", rangedDefenceDebuffParam),
                new SqlParameter("CavalryDefenceDebuff", cavalryDefenceDebuffParam)).ToList();
 
-            ViewBag.HelmCoreList = filteredCores.Where(m => m.GearSlot == "Helm").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.HelmCoreList = filteredCores.Where(m => m.GearSlot == "Helm").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).OrderBy(m=>m.TroopAttackHigh).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
             ViewBag.WeaponCoreList = filteredCores.Where(m => m.GearSlot == "Weapon").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
             ViewBag.ArmourCoreList = filteredCores.Where(m => m.GearSlot == "Armour").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
             ViewBag.FootCoreList = filteredCores.Where(m => m.GearSlot == "Feet").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
@@ -218,8 +452,67 @@ namespace GowWebSite.Controllers
                 };
 
             ViewBag.Levels = levels;
+
+            var overallTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.OverallTypes = overallTypes;
+
+            var infantryTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.InfantryTypes = infantryTypes;
+
+            var cavalryTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.CavalryTypes = cavalryTypes;
+
+            var rangedTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Troop Attack"},
+                    {1,"Defence"},
+                    {2,"Health"},
+                    {3,"Enemy Attack Debuff"},
+                    {4,"Enemy Defence Debuff"},              
+                    {5,"Enemy Health Debuff"}
+                };
+
+            ViewBag.RangedTypes = rangedTypes;
+
+            var otherTypes = new Dictionary<int, string>()
+                {     
+                    {0,"Hero"},
+                    {1,"Siege"},
+                    {2,"Trap"}
+                };
+
+            ViewBag.OtherTypes = otherTypes;
+
             var newFilter = new Filters();
-            newFilter.Overall = overall;
+            //newFilter.Overall = overall;
+            ViewBag.Filters = filters.ToString();
             return View(newFilter);
         }
 

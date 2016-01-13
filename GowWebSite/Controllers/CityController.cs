@@ -616,11 +616,18 @@ namespace GowWebSite.Controllers
 
             origLogin.PIN = city.Login.PIN;
             origLogin.Active = city.Login.Active;
+
             if (city.Login.LoginDelayMin != 0)
             {
-                origLogin.LoginDelayMin = city.Login.LoginDelayMin;
+                //origLogin.LoginDelayMin = city.Login.LoginDelayMin;
+                if ((origLogin.LoginDelayMin == 60) ||
+                    (origLogin.LoginDelayMin == 180) ||
+                    (origLogin.LoginDelayMin == 360))
+                {
+                    origLogin.LoginDelayMin = city.Login.LoginDelayMin;
+                }
             }
-
+            
             origCity.CityName = city.CityName;
             origCity.ResourceTypeID = city.ResourceTypeID;
             origCity.LocationX = city.LocationX;
