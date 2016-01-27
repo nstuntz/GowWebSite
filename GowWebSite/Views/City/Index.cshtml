@@ -45,7 +45,7 @@
         bool error = false;
         string errorClass = "";
         if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
-                || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(72) < DateTime.Now))
+                || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(71) < DateTime.Now))
         {
             error = true;
             errorClass = "danger";
