@@ -227,7 +227,7 @@
           <Property Name="MachineID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Severity" Type="int" Nullable="false" />
           <Property Name="LoginID" Type="int" />
-          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="8000" Nullable="false" />
           <Property Name="LogDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Login">
@@ -438,12 +438,16 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Key>
             <PropertyRef Name="MachineID" />
             <PropertyRef Name="Message" />
+            <PropertyRef Name="Success1Day" />
+            <PropertyRef Name="Success1Hr" />
           </Key>
           <Property Name="MachineID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LoginDate" Type="datetime" />
           <Property Name="RestartBlueStacksDate" Type="datetime" />
-          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="8000" Nullable="false" />
           <Property Name="LogDate" Type="datetime" />
+          <Property Name="Success1Day" Type="varchar" MaxLength="28" Nullable="false" />
+          <Property Name="Success1Hr" Type="varchar" MaxLength="28" Nullable="false" />
         </EntityType>
         <Association Name="FK_City_Login">
           <End Role="Login" Type="Self.Login" Multiplicity="1" />
@@ -646,7 +650,9 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
     [MachineLoginTracker].[LoginDate] AS [LoginDate], 
     [MachineLoginTracker].[RestartBlueStacksDate] AS [RestartBlueStacksDate], 
     [MachineLoginTracker].[Message] AS [Message], 
-    [MachineLoginTracker].[LogDate] AS [LogDate]
+    [MachineLoginTracker].[LogDate] AS [LogDate], 
+    [MachineLoginTracker].[Success1Day] AS [Success1Day], 
+    [MachineLoginTracker].[Success1Hr] AS [Success1Hr]
     FROM [dbo].[MachineLoginTracker] AS [MachineLoginTracker]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_City_Login" Association="Self.FK_City_Login">
@@ -748,7 +754,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Severity" Type="Int32" Nullable="false" />
           <Property Name="LoginID" Type="Int32" />
-          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LogDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Login" Relationship="GowModel.FK_Log_Login" FromRole="Log" ToRole="Login" />
         </EntityType>
@@ -1133,12 +1139,16 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Key>
             <PropertyRef Name="MachineID" />
             <PropertyRef Name="Message" />
+            <PropertyRef Name="Success1Day" />
+            <PropertyRef Name="Success1Hr" />
           </Key>
           <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LoginDate" Type="DateTime" Precision="3" />
           <Property Name="RestartBlueStacksDate" Type="DateTime" Precision="3" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="LogDate" Type="DateTime" Precision="3" />
+          <Property Name="Success1Day" Type="String" Nullable="false" MaxLength="28" FixedLength="false" Unicode="false" />
+          <Property Name="Success1Hr" Type="String" Nullable="false" MaxLength="28" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Core">
           <Key>
@@ -1612,6 +1622,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="MachineLoginTrackers">
             <EntityTypeMapping TypeName="GowModel.MachineLoginTracker">
               <MappingFragment StoreEntitySet="MachineLoginTracker">
+                <ScalarProperty Name="Success1Hr" ColumnName="Success1Hr" />
+                <ScalarProperty Name="Success1Day" ColumnName="Success1Day" />
                 <ScalarProperty Name="LogDate" ColumnName="LogDate" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="RestartBlueStacksDate" ColumnName="RestartBlueStacksDate" />

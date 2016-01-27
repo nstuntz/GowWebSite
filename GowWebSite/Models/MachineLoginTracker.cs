@@ -19,5 +19,7 @@ namespace GowWebSite.Models
         public Nullable<System.DateTime> RestartBlueStacksDate { get; set; }
         public string Message { get; set; }
         public Nullable<System.DateTime> LogDate { get; set; }
+        public string Success1Day { get; set; }
+        public string Success1Hr { get; set; }
     }
 }

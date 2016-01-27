@@ -12,6 +12,8 @@
         <th> Last City</th>
         <th> Last Login</th>
         <th> Last Bluestacks Restart</th>
+        <th> Success Past Hour</th>
+        <th> Success Past Day</th>
     </tr>
     @foreach (var machine in ViewBag.Machines as IEnumerable<GowWebSite.Models.MachineLoginTracker>)
     {
@@ -31,6 +33,8 @@
             <td>@machine.Message.Substring(15)</td>
             <td>@machine.LoginDate</td>
             <td>@machine.RestartBlueStacksDate</td>
+            <td>@machine.Success1Hr</td>
+            <td>@machine.Success1Day</td>
         </tr>
     }
 </table>
