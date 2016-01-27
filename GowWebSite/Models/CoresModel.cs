@@ -303,6 +303,21 @@ namespace GowWebSite.Models
         public bool HealthDebuff = true;
     }
 
+    public class SortPiece
+    {
+        public long PieceID { get; set; }
+        public string PieceName { get; set; }
+        public decimal SortValue { get; set; }
+    }
+
+    public class SortCore
+    {
+        public long GearID { get; set; }
+        public string GearName { get; set; }
+        public string GearSlot { get; set; }
+        public decimal SortValue { get; set; }
+    }
+
     public class Item
     {
         public string Name;

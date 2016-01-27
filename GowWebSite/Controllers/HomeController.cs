@@ -44,7 +44,7 @@ namespace GowWebSite.Controllers
         public ActionResult Cores()
         {
             ViewBag.Message = "Your Cores Information Center.";
-            ViewBag.PiecesList = db.Pieces.GroupBy(m=>m.PieceName).Select(grp=>grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
+            ViewBag.PiecesList = Enumerable.Empty<SelectListItem>();// db.Pieces.GroupBy(m=>m.PieceName).Select(grp=>grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
             //ViewBag.Pieces = new GowWebSite.Models.CoresModel(db);
 
             ViewBag.HelmCoreList = Enumerable.Empty<SelectListItem>();// db.Cores.Where(m => m.GearSlot == "Helm").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
@@ -202,11 +202,11 @@ namespace GowWebSite.Controllers
                         overallAttackParam = true;
                         filters.Append("Overall Attack;");
                         break;
-                    case "1":
+                    case "2":
                         overallHealthParam = true;
                         filters.Append("Overall Health;");
                         break;
-                    case "2":
+                    case "1":
                         overallDefenceParam = true;
                         filters.Append("Overall Defence;");
                         break;
@@ -235,11 +235,11 @@ namespace GowWebSite.Controllers
                         infantryAttackParam = true;
                         filters.Append("Infantry Attack;");
                         break;
-                    case "1":
+                    case "2":
                         infantryHealthParam = true;
                         filters.Append("Infantry Health;");
                         break;
-                    case "2":
+                    case "1":
                         infantryDefenceParam = true;
                         filters.Append("Infantry Defence;");
                         break;
@@ -268,11 +268,11 @@ namespace GowWebSite.Controllers
                         rangedAttackParam = true;
                         filters.Append("Ranged Attack;");
                         break;
-                    case "1":
+                    case "2":
                         rangedHealthParam = true;
                         filters.Append("Ranged Health;");
                         break;
-                    case "2":
+                    case "1":
                         rangedDefenceParam = true;
                         filters.Append("Ranged Defence;");
                         break;
@@ -301,11 +301,11 @@ namespace GowWebSite.Controllers
                         cavalryAttackParam = true;
                         filters.Append("Cavalry Attack;");
                         break;
-                    case "1":
+                    case "2":
                         cavalryHealthParam = true;
                         filters.Append("Cavalry Health;");
                         break;
-                    case "2":
+                    case "1":
                         cavalryDefenceParam = true;
                         filters.Append("Cavalry Defence;");
                         break;
@@ -378,7 +378,7 @@ namespace GowWebSite.Controllers
             //    if (defenceDebuff) cavalryDefenceDebuffParam = true;
             //}
 
-            var filteredPieces = db.Database.SqlQuery<Piece>("EXEC FilterPieces @Other, @OverallAttack, @InfantryAttack, @RangedAttack, @CavalryAttack, @OverallHealth, @InfantryHealth, @RangedHealth, @CavalryHealth, @OverallDefence, @InfantryDefence, @RangedDefence, @CavalryDefence, @OverallAttackDebuff, @InfantryAttackDebuff, @RangedAttackDebuff, @CavalryAttackDebuff, @OverallHealthDebuff, @InfantryHealthDebuff, @RangedHealthDebuff, @CavalryHealthDebuff, @OverallDefenceDebuff, @InfantryDefenceDebuff, @RangedDefenceDebuff, @CavalryDefenceDebuff ", 
+            var filteredPieces = db.Database.SqlQuery<SortPiece>("EXEC FilterPieces @Other, @OverallAttack, @InfantryAttack, @RangedAttack, @CavalryAttack, @OverallHealth, @InfantryHealth, @RangedHealth, @CavalryHealth, @OverallDefence, @InfantryDefence, @RangedDefence, @CavalryDefence, @OverallAttackDebuff, @InfantryAttackDebuff, @RangedAttackDebuff, @CavalryAttackDebuff, @OverallHealthDebuff, @InfantryHealthDebuff, @RangedHealthDebuff, @CavalryHealthDebuff, @OverallDefenceDebuff, @InfantryDefenceDebuff, @RangedDefenceDebuff, @CavalryDefenceDebuff ", 
                 new SqlParameter("Other", otherParam),
                 new SqlParameter("OverallAttack", overallAttackParam),
                 new SqlParameter("InfantryAttack", infantryAttackParam),
@@ -405,10 +405,10 @@ namespace GowWebSite.Controllers
                 new SqlParameter("RangedDefenceDebuff", rangedDefenceDebuffParam),
                 new SqlParameter("CavalryDefenceDebuff", cavalryDefenceDebuffParam)).ToList();
 
-            ViewBag.PiecesList = filteredPieces.GroupBy(m => m.PieceName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
+            ViewBag.PiecesList = filteredPieces.OrderByDescending(m => m.SortValue).Select(m => new SelectListItem { Value = m.PieceID.ToString(), Text = m.PieceName });
 
 
-            var filteredCores = db.Database.SqlQuery<Core>("EXEC FilterCores @Other, @OverallAttack, @InfantryAttack, @RangedAttack, @CavalryAttack, @OverallHealth, @InfantryHealth, @RangedHealth, @CavalryHealth, @OverallDefence, @InfantryDefence, @RangedDefence, @CavalryDefence, @OverallAttackDebuff, @InfantryAttackDebuff, @RangedAttackDebuff, @CavalryAttackDebuff, @OverallHealthDebuff, @InfantryHealthDebuff, @RangedHealthDebuff, @CavalryHealthDebuff, @OverallDefenceDebuff, @InfantryDefenceDebuff, @RangedDefenceDebuff, @CavalryDefenceDebuff ",
+            var filteredCores = db.Database.SqlQuery<SortCore>("EXEC FilterCores @Other, @OverallAttack, @InfantryAttack, @RangedAttack, @CavalryAttack, @OverallHealth, @InfantryHealth, @RangedHealth, @CavalryHealth, @OverallDefence, @InfantryDefence, @RangedDefence, @CavalryDefence, @OverallAttackDebuff, @InfantryAttackDebuff, @RangedAttackDebuff, @CavalryAttackDebuff, @OverallHealthDebuff, @InfantryHealthDebuff, @RangedHealthDebuff, @CavalryHealthDebuff, @OverallDefenceDebuff, @InfantryDefenceDebuff, @RangedDefenceDebuff, @CavalryDefenceDebuff ",
                new SqlParameter("Other", otherParam),
                new SqlParameter("OverallAttack", overallAttackParam),
                new SqlParameter("InfantryAttack", infantryAttackParam),
@@ -435,11 +435,11 @@ namespace GowWebSite.Controllers
                new SqlParameter("RangedDefenceDebuff", rangedDefenceDebuffParam),
                new SqlParameter("CavalryDefenceDebuff", cavalryDefenceDebuffParam)).ToList();
 
-            ViewBag.HelmCoreList = filteredCores.Where(m => m.GearSlot == "Helm").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).OrderBy(m=>m.TroopAttackHigh).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.WeaponCoreList = filteredCores.Where(m => m.GearSlot == "Weapon").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.ArmourCoreList = filteredCores.Where(m => m.GearSlot == "Armour").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.FootCoreList = filteredCores.Where(m => m.GearSlot == "Feet").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
-            ViewBag.AccessoryCoreList = filteredCores.Where(m => m.GearSlot == "Accessory").GroupBy(m => m.GearName).Select(grp => grp.FirstOrDefault()).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.HelmCoreList = filteredCores.Where(m => m.GearSlot == "Helm").OrderByDescending(m => m.SortValue).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.WeaponCoreList = filteredCores.Where(m => m.GearSlot == "Weapon").OrderByDescending(m => m.SortValue).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.ArmourCoreList = filteredCores.Where(m => m.GearSlot == "Armour").OrderByDescending(m => m.SortValue).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.FootCoreList = filteredCores.Where(m => m.GearSlot == "Feet").OrderByDescending(m => m.SortValue).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
+            ViewBag.AccessoryCoreList = filteredCores.Where(m => m.GearSlot == "Accessory").OrderByDescending(m => m.SortValue).Select(m => new SelectListItem { Value = m.GearID.ToString(), Text = m.GearName });
 
             var levels = new Dictionary<int, string>()
                 {     
