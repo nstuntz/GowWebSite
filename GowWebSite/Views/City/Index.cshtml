@@ -83,12 +83,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
             </td>
-            <td class="hidden-xs hidden-sm">
-                @if (item.CityInfo.Upgrade)
-                {
-                    @Html.DisplayFor(modelItem => item.CityInfo.NeedRSS)
-                }
-            </td>
             <td class="">
                 <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
                     <span class="glyphicon glyphicon-camera"></span>
