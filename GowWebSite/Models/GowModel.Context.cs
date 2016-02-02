@@ -445,5 +445,33 @@ namespace GowWebSite.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FilterCores", otherParameter, overallAttackParameter, infantryAttackParameter, rangedAttackParameter, cavalryAttackParameter, overallHealthParameter, infantryHealthParameter, rangedHealthParameter, cavalryHealthParameter, overallDefenceParameter, infantryDefenceParameter, rangedDefenceParameter, cavalryDefenceParameter, overallAttackDebuffParameter, infantryAttackDebuffParameter, rangedAttackDebuffParameter, cavalryAttackDebuffParameter, overallHealthDebuffParameter, infantryHealthDebuffParameter, rangedHealthDebuffParameter, cavalryHealthDebuffParameter, overallDefenceDebuffParameter, infantryDefenceDebuffParameter, rangedDefenceDebuffParameter, cavalryDefenceDebuffParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> GetAdminNonShield()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetAdminNonShield");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetBetaNonShield()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetBetaNonShield");
+        }
+    
+        public virtual int UpdateAdminNonShield(Nullable<bool> status)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAdminNonShield", statusParameter);
+        }
+    
+        public virtual int UpdateBetaNonShield(Nullable<bool> status)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateBetaNonShield", statusParameter);
+        }
     }
 }

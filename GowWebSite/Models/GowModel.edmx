@@ -623,11 +623,19 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Parameter Name="RangedDefenceDebuff" Type="bit" Mode="In" />
           <Parameter Name="CavalryDefenceDebuff" Type="bit" Mode="In" />
         </Function>
+        <Function Name="GetAdminNonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetBetaNonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetOldestLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MachineID" Type="int" Mode="In" />
         </Function>
         <Function Name="GetOldestLogin2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateAdminNonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UpdateBetaNonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="bit" Mode="In" />
         </Function>
         <EntityContainer Name="GowModelStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
@@ -974,6 +982,14 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
             <Parameter Name="InfantryDefenceDebuff" Mode="In" Type="Boolean" />
             <Parameter Name="RangedDefenceDebuff" Mode="In" Type="Boolean" />
             <Parameter Name="CavalryDefenceDebuff" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetAdminNonShield" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetBetaNonShield" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="UpdateAdminNonShield">
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateBetaNonShield">
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetOldestLogin_Result">
@@ -1898,6 +1914,10 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="FilterPieces" FunctionName="GowModel.Store.FilterPieces" />
           <FunctionImportMapping FunctionImportName="FilterCores" FunctionName="GowModel.Store.FilterCores" />
+          <FunctionImportMapping FunctionImportName="GetAdminNonShield" FunctionName="GowModel.Store.GetAdminNonShield" />
+          <FunctionImportMapping FunctionImportName="GetBetaNonShield" FunctionName="GowModel.Store.GetBetaNonShield" />
+          <FunctionImportMapping FunctionImportName="UpdateAdminNonShield" FunctionName="GowModel.Store.UpdateAdminNonShield" />
+          <FunctionImportMapping FunctionImportName="UpdateBetaNonShield" FunctionName="GowModel.Store.UpdateBetaNonShield" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

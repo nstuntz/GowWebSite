@@ -18,6 +18,9 @@ namespace GowWebSite.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
+            int? a =  db.GetAdminNonShield().FirstOrDefault();
+            ViewBag.AdminState = (a.Value > 0);
+            ViewBag.BetaState = ((db.GetBetaNonShield().FirstOrDefault().Value) > 0);
             return View(db.Logins.OrderByDescending(x => x.InProcess).ThenBy(x => System.Data.Entity.DbFunctions.AddMinutes(x.LastRun,(x.LoginDelayMin))).ToList());
         }
 
@@ -194,6 +197,24 @@ namespace GowWebSite.Controllers
             //db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult ToggleAdmin(bool newState)
+        {
+            //Piece p = db.Pieces.Where(m => m.PieceName == PieceName && m.PieceLevel == PieceLevel).FirstOrDefault();
+            db.UpdateAdminNonShield(newState); 
+            return Json(newState, JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult ToggleBeta(bool newState)
+        {
+            //Piece p = db.Pieces.Where(m => m.PieceName == PieceName && m.PieceLevel == PieceLevel).FirstOrDefault();
+            db.UpdateBetaNonShield(newState);
+            return Json(newState, JsonRequestBehavior.AllowGet);
+        }
+
 
         protected override void Dispose(bool disposing)
         {
