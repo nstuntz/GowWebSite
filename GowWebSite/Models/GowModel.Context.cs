@@ -473,5 +473,19 @@ namespace GowWebSite.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateBetaNonShield", statusParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> Get719NonShield()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Get719NonShield");
+        }
+    
+        public virtual int Update719NonShield(Nullable<bool> status)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Update719NonShield", statusParameter);
+        }
     }
 }

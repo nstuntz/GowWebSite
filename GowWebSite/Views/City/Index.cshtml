@@ -35,6 +35,9 @@
         <th class="hidden-xs hidden-sm">
             RSS Image
         </th>
+        <th class="hidden-xs hidden-sm">
+            Gold Image
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -90,6 +93,9 @@
             </td>
             <td class="hidden-xs hidden-sm">
                 <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
+            </td>
+            <td class="hidden-xs hidden-sm">
+                <img src='/Images/@(item.CityID)/GoldImage_@(item.CityID).jpg' height="40"/>
             </td>
         </tr>
     }

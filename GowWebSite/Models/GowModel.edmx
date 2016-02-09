@@ -448,6 +448,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="LogDate" Type="datetime" />
           <Property Name="Success1Day" Type="varchar" MaxLength="28" Nullable="false" />
           <Property Name="Success1Hr" Type="varchar" MaxLength="28" Nullable="false" />
+          <Property Name="Success30m" Type="varchar" MaxLength="28" />
         </EntityType>
         <Association Name="FK_City_Login">
           <End Role="Login" Type="Self.Login" Multiplicity="1" />
@@ -623,6 +624,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Parameter Name="RangedDefenceDebuff" Type="bit" Mode="In" />
           <Parameter Name="CavalryDefenceDebuff" Type="bit" Mode="In" />
         </Function>
+        <Function Name="Get719NonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAdminNonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetBetaNonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetOldestLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -630,6 +632,9 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
         </Function>
         <Function Name="GetOldestLogin2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update719NonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="bit" Mode="In" />
         </Function>
         <Function Name="UpdateAdminNonShield" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Status" Type="bit" Mode="In" />
@@ -660,7 +665,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
     [MachineLoginTracker].[Message] AS [Message], 
     [MachineLoginTracker].[LogDate] AS [LogDate], 
     [MachineLoginTracker].[Success1Day] AS [Success1Day], 
-    [MachineLoginTracker].[Success1Hr] AS [Success1Hr]
+    [MachineLoginTracker].[Success1Hr] AS [Success1Hr], 
+    [MachineLoginTracker].[Success30m] AS [Success30m]
     FROM [dbo].[MachineLoginTracker] AS [MachineLoginTracker]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_City_Login" Association="Self.FK_City_Login">
@@ -986,9 +992,13 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <FunctionImport Name="GetAdminNonShield" ReturnType="Collection(Int32)" />
           <FunctionImport Name="GetBetaNonShield" ReturnType="Collection(Int32)" />
           <FunctionImport Name="UpdateAdminNonShield">
-            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          <Parameter Name="Status" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="UpdateBetaNonShield">
+          <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Get719NonShield" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Update719NonShield">
             <Parameter Name="Status" Mode="In" Type="Boolean" />
           </FunctionImport>
           </EntityContainer>
@@ -1165,6 +1175,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="LogDate" Type="DateTime" Precision="3" />
           <Property Name="Success1Day" Type="String" Nullable="false" MaxLength="28" FixedLength="false" Unicode="false" />
           <Property Name="Success1Hr" Type="String" Nullable="false" MaxLength="28" FixedLength="false" Unicode="false" />
+          <Property Name="Success30m" Type="String" MaxLength="28" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Core">
           <Key>
@@ -1638,6 +1649,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="MachineLoginTrackers">
             <EntityTypeMapping TypeName="GowModel.MachineLoginTracker">
               <MappingFragment StoreEntitySet="MachineLoginTracker">
+                <ScalarProperty Name="Success30m" ColumnName="Success30m" />
                 <ScalarProperty Name="Success1Hr" ColumnName="Success1Hr" />
                 <ScalarProperty Name="Success1Day" ColumnName="Success1Day" />
                 <ScalarProperty Name="LogDate" ColumnName="LogDate" />
@@ -1918,6 +1930,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <FunctionImportMapping FunctionImportName="GetBetaNonShield" FunctionName="GowModel.Store.GetBetaNonShield" />
           <FunctionImportMapping FunctionImportName="UpdateAdminNonShield" FunctionName="GowModel.Store.UpdateAdminNonShield" />
           <FunctionImportMapping FunctionImportName="UpdateBetaNonShield" FunctionName="GowModel.Store.UpdateBetaNonShield" />
+          <FunctionImportMapping FunctionImportName="Get719NonShield" FunctionName="GowModel.Store.Get719NonShield" />
+          <FunctionImportMapping FunctionImportName="Update719NonShield" FunctionName="GowModel.Store.Update719NonShield" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
