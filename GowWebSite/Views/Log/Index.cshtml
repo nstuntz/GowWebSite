@@ -9,7 +9,9 @@
     <tr>
         <th> Machine Name</th>
         <th> Script Version</th>
-        <th> Last Login</th>
+        <th> Last BS Restart</th>
+        <th> Last Machine Restart</th>
+        <th> Success Past 30 min</th>
         <th> Success Past Hour</th>
         <th> Success Past Day</th>
     </tr>
@@ -29,7 +31,9 @@
                 @machine.MachineID
             </td>
             <td>@machine.Message.Substring(17)</td>
-            <td>@machine.LoginDate</td>
+            <td>@machine.RestartBlueStacksDate</td>
+            <td>@machine.RestartMachineDate</td>
+            <td>@machine.Success30m</td>
             <td>@machine.Success1Hr</td>
             <td>@machine.Success1Day</td>
         </tr>

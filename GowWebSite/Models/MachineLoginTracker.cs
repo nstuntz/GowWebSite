@@ -22,5 +22,6 @@ namespace GowWebSite.Models
         public string Success1Day { get; set; }
         public string Success1Hr { get; set; }
         public string Success30m { get; set; }
+        public Nullable<System.DateTime> RestartMachineDate { get; set; }
     }
 }
