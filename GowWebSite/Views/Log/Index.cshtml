@@ -1,17 +1,15 @@
-﻿@model IEnumerable<GowWebSite.Models.Log>
+﻿@*@model IEnumerable<GowWebSite.Models.Log>*@
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Log Index";
 }
 
 <h2>Logs</h2>
-<p>Last 100 Shown</p>
 <table class="table">
     <tr>
         <th> Machine Name</th>
-        <th> Last City</th>
+        <th> Script Version</th>
         <th> Last Login</th>
-        <th> Last Bluestacks Restart</th>
         <th> Success Past Hour</th>
         <th> Success Past Day</th>
     </tr>
@@ -30,9 +28,8 @@
                 {<div class="glyphicon glyphicon-exclamation-sign"></div> }
                 @machine.MachineID
             </td>
-            <td>@machine.Message.Substring(15)</td>
+            <td>@machine.Message.Substring(17)</td>
             <td>@machine.LoginDate</td>
-            <td>@machine.RestartBlueStacksDate</td>
             <td>@machine.Success1Hr</td>
             <td>@machine.Success1Day</td>
         </tr>
@@ -41,7 +38,7 @@
 
 
 
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.MachineID)
@@ -78,4 +75,4 @@
     </tr>
 }
 
-</table>
+</table>*@

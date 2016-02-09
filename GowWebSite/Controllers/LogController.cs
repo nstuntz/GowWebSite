@@ -20,15 +20,19 @@ namespace GowWebSite.Views
         public ActionResult Index(string machineID)
         {
             ViewBag.Machines = db.MachineLoginTrackers.OrderBy(x => x.MachineID).ToList();
-            var logs = db.Logs.Include(l => l.Login);
-            if (!string.IsNullOrWhiteSpace(machineID))
-            {
-                return View(logs.Where(x => x.MachineID == machineID).OrderByDescending(x => x.LogDate).Take(100).ToList());
-            }
-            else
-            {
-                return View(logs.OrderByDescending(x => x.LogDate).Take(100).ToList());
-            }
+
+            return View();
+
+            //Old to return the logs which we don't need
+            //var logs = db.Logs.Include(l => l.Login);
+            //if (!string.IsNullOrWhiteSpace(machineID))
+            //{
+            //    return View(logs.Where(x => x.MachineID == machineID).OrderByDescending(x => x.LogDate).Take(100).ToList());
+            //}
+            //else
+            //{
+            //    return View(logs.OrderByDescending(x => x.LogDate).Take(100).ToList());
+            //}
         }
 
         // GET: Log/Details/5
