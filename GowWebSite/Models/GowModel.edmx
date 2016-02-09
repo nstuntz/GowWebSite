@@ -437,11 +437,13 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
         <EntityType Name="MachineLoginTracker">
           <Key>
             <PropertyRef Name="MachineID" />
+            <PropertyRef Name="LastLoginUsername" />
             <PropertyRef Name="Message" />
             <PropertyRef Name="Success1Day" />
             <PropertyRef Name="Success1Hr" />
           </Key>
           <Property Name="MachineID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastLoginUsername" Type="varchar" MaxLength="8000" Nullable="false" />
           <Property Name="LoginDate" Type="datetime" />
           <Property Name="RestartBlueStacksDate" Type="datetime" />
           <Property Name="Message" Type="varchar" MaxLength="8000" Nullable="false" />
@@ -661,6 +663,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySet Name="MachineLoginTracker" EntityType="Self.MachineLoginTracker" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [MachineLoginTracker].[MachineID] AS [MachineID], 
+    [MachineLoginTracker].[LastLoginUsername] AS [LastLoginUsername], 
     [MachineLoginTracker].[LoginDate] AS [LoginDate], 
     [MachineLoginTracker].[RestartBlueStacksDate] AS [RestartBlueStacksDate], 
     [MachineLoginTracker].[Message] AS [Message], 
@@ -1169,6 +1172,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
             <PropertyRef Name="Message" />
             <PropertyRef Name="Success1Day" />
             <PropertyRef Name="Success1Hr" />
+            <PropertyRef Name="LastLoginUsername" />
           </Key>
           <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LoginDate" Type="DateTime" Precision="3" />
@@ -1179,6 +1183,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="Success1Hr" Type="String" Nullable="false" MaxLength="28" FixedLength="false" Unicode="false" />
           <Property Name="Success30m" Type="String" MaxLength="28" FixedLength="false" Unicode="false" />
           <Property Name="RestartMachineDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginUsername" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Core">
           <Key>
@@ -1652,6 +1657,7 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="MachineLoginTrackers">
             <EntityTypeMapping TypeName="GowModel.MachineLoginTracker">
               <MappingFragment StoreEntitySet="MachineLoginTracker">
+                <ScalarProperty Name="LastLoginUsername" ColumnName="LastLoginUsername" />
                 <ScalarProperty Name="RestartMachineDate" ColumnName="RestartMachineDate" />
                 <ScalarProperty Name="Success30m" ColumnName="Success30m" />
                 <ScalarProperty Name="Success1Hr" ColumnName="Success1Hr" />

@@ -9,6 +9,7 @@
     <tr>
         <th> Machine Name</th>
         <th> Script Version</th>
+        <th> Last City</th>
         <th> Last BS Restart</th>
         <th> Last Machine Restart</th>
         <th> Success Past 30 min</th>
@@ -31,6 +32,7 @@
                 @machine.MachineID
             </td>
             <td>@machine.Message.Substring(17)</td>
+            <td>@machine.LastLoginUsername.Substring(15)</td>
             <td>@machine.RestartBlueStacksDate</td>
             <td>@machine.RestartMachineDate</td>
             <td>@machine.Success30m</td>
