@@ -21,6 +21,7 @@ namespace GowWebSite.Controllers
             int? a =  db.GetAdminNonShield().FirstOrDefault();
             ViewBag.AdminState = (a.Value > 0);
             ViewBag.BetaState = ((db.GetBetaNonShield().FirstOrDefault().Value) > 0);
+            ViewBag.Admin719State = ((db.Get719NonShield().FirstOrDefault().Value) > 0);
             return View(db.Logins.OrderByDescending(x => x.InProcess).ThenBy(x => System.Data.Entity.DbFunctions.AddMinutes(x.LastRun,(x.LoginDelayMin))).ToList());
         }
 
@@ -204,6 +205,15 @@ namespace GowWebSite.Controllers
         {
             //Piece p = db.Pieces.Where(m => m.PieceName == PieceName && m.PieceLevel == PieceLevel).FirstOrDefault();
             db.UpdateAdminNonShield(newState); 
+            return Json(newState, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult ToggleAdmin719(bool newState)
+        {
+            //Piece p = db.Pieces.Where(m => m.PieceName == PieceName && m.PieceLevel == PieceLevel).FirstOrDefault();
+            db.Update719NonShield(newState);
             return Json(newState, JsonRequestBehavior.AllowGet);
         }
 

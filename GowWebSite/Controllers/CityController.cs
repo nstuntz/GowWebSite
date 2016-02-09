@@ -204,7 +204,7 @@ namespace GowWebSite.Controllers
                 city.Login.InProcess = "0";
                 city.Login.LastRun = DateTime.Now;
                 city.Login.CreateDate = DateTime.Now;
-                city.Login.Active = true;
+                city.Login.Active = false;
 
                 //Setup the encrypted login info
                 city.Login.Password = GowWebSite.Helpers.Encrypt(city.Login.Password);
@@ -222,7 +222,7 @@ namespace GowWebSite.Controllers
                 city.CityInfo.LastAthenaGift = DateTime.Today;
                 city.CityInfo.LastBank = DateTime.Today;
                 city.CityInfo.LastRally = DateTime.Today;
-                city.CityInfo.LastShield = DateTime.Now.AddHours(-69); // This will then shield in the next 3 hours
+                city.CityInfo.LastShield = DateTime.Now.AddHours(-63); // This will then shield in the next 3 hours
                 city.CityInfo.LastTreasury = DateTime.Today;
                 city.CityInfo.LastUpgrade = DateTime.Today;
                 city.CityInfo.TreasuryDue = DateTime.Today;

@@ -32,6 +32,28 @@
 
 
         });
+        $('#admin719NonShield').change(function () {
+
+            //This needs to call a check against each of the other drop downs to make sure it isnt the same.
+            //one method for each and dont call ajax if it fails
+            var toggleAdmin = $('#admin719NonShield').prop('checked');
+
+            $.ajax({
+                type: "GET",
+                url: "../Login/ToggleAdmin719",
+                data: { newState: toggleAdmin },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    //alert("Successfully toggled Admin Cities");
+                },
+                error: function (result) {
+                    alert("Failed to toggle Admin 719 cities");
+                }
+            })
+
+
+        });
         $('#betaNonShield').change(function () {
 
             var toggleBeta = $('#betaNonShield').prop('checked');
@@ -62,6 +84,9 @@
 <div class="row" style="padding-bottom:10px">
     <div class="col-lg-3"> Admin Non Shield Cities</div>
     <div class="col-lg-2"><input type="checkbox" checked="@ViewBag.AdminState" id="adminNonShield" data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-style="slow"></div>
+
+    <div class="col-lg-3"> Admin Non Shield 719 Cities</div>
+    <div class="col-lg-2"><input type="checkbox" checked="@ViewBag.Admin719State" id="admin719NonShield" data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-style="slow"></div>
 </div>
 <div class="row" style="padding-bottom:25px">
     <div class="col-lg-3"> Beta Non Shield Cities</div>
