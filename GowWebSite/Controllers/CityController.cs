@@ -607,7 +607,16 @@ namespace GowWebSite.Controllers
             {
                 //This means there was a change.
                 origLogin.LoginAttempts = 0;
+                string oldPwd = origLogin.Password;
                 origLogin.Password = Helpers.Encrypt(city.Login.Password);
+
+                Log pwdChange = new Log();
+                pwdChange.MachineID = "website";
+                pwdChange.LogDate = DateTime.Now;
+                pwdChange.LoginID = origLogin.LoginID;
+                pwdChange.Message = "City changed password from " + oldPwd + " to " + origLogin.Password + " By user " + User.Identity.Name;
+
+                db.Logs.Add(pwdChange);
             }
             else
             {

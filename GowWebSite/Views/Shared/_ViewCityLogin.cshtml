@@ -37,7 +37,7 @@
         { 
             @Html.Raw("Running")
         }
-        else
+        else if (User.IsInRole("Admin"))
         { 
             if (Model.LastRun.AddMinutes(20) > DateTime.Now)
             {
