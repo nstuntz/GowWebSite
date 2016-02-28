@@ -33,10 +33,13 @@
         </th>
         <th></th>
         <th class="hidden-xs hidden-sm">
-            RSS Image
+            RSS
         </th>
         <th class="hidden-xs hidden-sm">
-            Gold Image
+            Gold
+        </th>
+        <th class="hidden-xs hidden-sm">
+            Shields
         </th>
     </tr>
 
@@ -96,6 +99,9 @@
             </td>
             <td class="hidden-xs hidden-sm">
                 <img src='/Images/@(item.CityID)/GoldImage_@(item.CityID).jpg' height="40"/>
+            </td>
+            <td class="hidden-xs hidden-sm">
+                <img src='/Images/@(item.CityID)/ShieldCount_@(item.CityID).jpg' height="40" />
             </td>
         </tr>
     }

@@ -204,7 +204,7 @@ namespace GowWebSite.Controllers
                 city.Login.InProcess = "0";
                 city.Login.LastRun = DateTime.Now;
                 city.Login.CreateDate = DateTime.Now;
-                city.Login.Active = false;
+                city.Login.Active = city.Login.Active;
 
                 //Setup the encrypted login info
                 city.Login.Password = GowWebSite.Helpers.Encrypt(city.Login.Password);
