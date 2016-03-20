@@ -1,6 +1,16 @@
 ﻿@model GowWebSite.Models.City
 
-
+<script type="text/javascript">
+    $(function () {
+        $("#Login_IsMS").click(function () {
+            if ($(this).is(":checked")) {
+                $("#GoWOnly").hide();
+            } else {
+                $("#GoWOnly").show();
+            }
+        });
+    });
+</script>
 <div class="col-md-12 col-sm-12">
     <div class="form-horizontal">
 
@@ -84,6 +94,22 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                           @Html.LabelFor(model => model.Login.IsMS,"Mobile Strike", htmlAttributes: new { @class = "control-label" })
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This flag sets if this is a Mobile Strike city."></span>
+                        </div>
+                        <div class="col-lg-2">
+                            <!--<input type="checkbox" on ="GoW" off="MS" checked= "checked" id="adminNonShield" data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-style="slow">-->
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Login.IsMS)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="row">
@@ -290,88 +316,90 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-offset-1 col-sm-10 col-xs-10">
-                            <hr style="margin-bottom:0px; margin-top:0px" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-
-                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.Rally, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. Rallying is complex to setup correctly, for more information see the FAQs."></span>
-                        </div>
-                        <div class="col-md-8 col-sm-9 col-xs-6">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.CityInfo.Rally)
-                                @Html.ValidationMessageFor(model => model.CityInfo.Rally, "", new { @class = "text-danger" })
+                <div id="GoWOnly">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-sm-10 col-xs-10">
+                                <hr style="margin-bottom:0px; margin-top:0px" />
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
+                    <div class="form-group">
+                        <div class="row">
 
-                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.RallyX, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the X coordinates of the rally target."></span>
-                        </div>
-                        <div class="col-md-8 col-sm-9 col-xs-6">
-                            @Html.EditorFor(model => model.CityInfo.RallyX, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CityInfo.RallyX, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-
-                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.RallyY, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the Y coordinates of the rally target."></span>
-                        </div>
-                        <div class="col-md-8 col-sm-9 col-xs-6">
-                            @Html.EditorFor(model => model.CityInfo.RallyY, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CityInfo.RallyY, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-offset-1 col-sm-10 col-xs-10">
-                            <hr style="margin-bottom:0px; margin-top:0px" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-
-                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.Shield, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city shielding information. In order to shield, the city must either have 3d shields on hand, or enough gold to buy one."></span>
-                        </div>
-                        <div class="col-md-8 col-sm-9 col-xs-6">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.CityInfo.Shield)
-                                @Html.ValidationMessageFor(model => model.CityInfo.Shield, "", new { @class = "text-danger" })
+                            <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                                @Html.LabelFor(model => model.CityInfo.Rally, htmlAttributes: new { @class = "control-label" })
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains information needed to attempt to rally your hero. Rallying is complex to setup correctly, for more information see the FAQs."></span>
+                            </div>
+                            <div class="col-md-8 col-sm-9 col-xs-6">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.CityInfo.Rally)
+                                    @Html.ValidationMessageFor(model => model.CityInfo.Rally, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
+                    <div class="form-group">
+                        <div class="row">
 
-                        <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
-                            @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label" })
-                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains treasury collection information. This will collect the treasury and then re-invest for another 30 days. The cost is $.30 per month."></span>
+                            <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                                @Html.LabelFor(model => model.CityInfo.RallyX, htmlAttributes: new { @class = "control-label" })
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the X coordinates of the rally target."></span>
+                            </div>
+                            <div class="col-md-8 col-sm-9 col-xs-6">
+                                @Html.EditorFor(model => model.CityInfo.RallyX, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CityInfo.RallyX, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                        <div class="col-md-8 col-sm-9 col-xs-6">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.CityInfo.Treasury)
-                                @Html.ValidationMessageFor(model => model.CityInfo.Treasury, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                                @Html.LabelFor(model => model.CityInfo.RallyY, htmlAttributes: new { @class = "control-label" })
+                                <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the Y coordinates of the rally target."></span>
+                            </div>
+                            <div class="col-md-8 col-sm-9 col-xs-6">
+                                @Html.EditorFor(model => model.CityInfo.RallyY, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CityInfo.RallyY, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-sm-10 col-xs-10">
+                                <hr style="margin-bottom:0px; margin-top:0px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                                @Html.LabelFor(model => model.CityInfo.Shield, htmlAttributes: new { @class = "control-label" })
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains city shielding information. In order to shield, the city must either have 3d shields on hand, or enough gold to buy one."></span>
+                            </div>
+                            <div class="col-md-8 col-sm-9 col-xs-6">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.CityInfo.Shield)
+                                    @Html.ValidationMessageFor(model => model.CityInfo.Shield, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
+                                @Html.LabelFor(model => model.CityInfo.Treasury, htmlAttributes: new { @class = "control-label" })
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="This section contains treasury collection information. This will collect the treasury and then re-invest for another 30 days. The cost is $.30 per month."></span>
+                            </div>
+                            <div class="col-md-8 col-sm-9 col-xs-6">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.CityInfo.Treasury)
+                                    @Html.ValidationMessageFor(model => model.CityInfo.Treasury, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
                     </div>

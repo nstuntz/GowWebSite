@@ -246,6 +246,8 @@
           <Property Name="Paid" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="PaidThrough" Type="datetime" Nullable="false" />
+          <Property Name="IsMS" Type="bit" Nullable="false" />
+          <Property Name="LastStarted" Type="datetime" />
         </EntityType>
         <EntityType Name="PayItem">
           <Key>
@@ -443,10 +445,10 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
             <PropertyRef Name="Success1Hr" />
           </Key>
           <Property Name="MachineID" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastLoginUsername" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="LastLoginUsername" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="LoginDate" Type="datetime" />
           <Property Name="RestartBlueStacksDate" Type="datetime" />
-          <Property Name="Message" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="LogDate" Type="datetime" />
           <Property Name="RestartMachineDate" Type="datetime" />
           <Property Name="Success1Day" Type="varchar" MaxLength="28" Nullable="false" />
@@ -795,6 +797,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="Paid" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PaidThrough" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsMS" Type="Boolean" Nullable="false" />
+          <Property Name="LastStarted" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ResourceType">
           <Key>
@@ -1177,13 +1181,13 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <Property Name="MachineID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LoginDate" Type="DateTime" Precision="3" />
           <Property Name="RestartBlueStacksDate" Type="DateTime" Precision="3" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="LogDate" Type="DateTime" Precision="3" />
           <Property Name="Success1Day" Type="String" Nullable="false" MaxLength="28" FixedLength="false" Unicode="false" />
           <Property Name="Success1Hr" Type="String" Nullable="false" MaxLength="28" FixedLength="false" Unicode="false" />
           <Property Name="Success30m" Type="String" MaxLength="28" FixedLength="false" Unicode="false" />
           <Property Name="RestartMachineDate" Type="DateTime" Precision="3" />
-          <Property Name="LastLoginUsername" Type="String" Nullable="false" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="LastLoginUsername" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Core">
           <Key>
@@ -1522,6 +1526,8 @@ warning 6002: The table/view 'GowTest.dbo.MachineLoginTracker' does not have a p
           <EntitySetMapping Name="Logins">
             <EntityTypeMapping TypeName="GowModel.Login">
               <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="LastStarted" ColumnName="LastStarted" />
+                <ScalarProperty Name="IsMS" ColumnName="IsMS" />
                 <ScalarProperty Name="PaidThrough" ColumnName="PaidThrough" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Paid" ColumnName="Paid" />

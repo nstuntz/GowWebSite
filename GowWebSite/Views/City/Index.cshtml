@@ -3,137 +3,256 @@
 @{
     ViewBag.Title = "City List";
 }
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
 
-<div class="row">
-    <div class="col-md-10 col-sm-12 col-xs-12">
-        <h2>City List</h2>
+<div id="tabs">
+
+    <ul>
+        <li><a href="#tabs-1">Game Of War Cities</a></li>
+        <li><a href="#tabs-2">Mobile Strike Cities</a></li>
+    </ul>
+
+    <div id="tabs-1">
+
+        <div class="row">
+            <div class="col-md-10 col-sm-12 col-xs-12">
+                <h2>City List</h2>
+            </div>
+            <div class="col-md-2 hidden-xs hidden-sm">
+                <h2>@Html.ActionLink("Bulk Upload", "UploadCity", null, new { @class = "btn btn-primary" })</h2>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CityName)
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    @Html.DisplayNameFor(model => model.Login.UserName)
+                </th>
+                <th>&nbsp;</th>
+                <th>
+                    Min Since
+                </th>
+                <th>&nbsp;</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResourceType.Type)
+                </th>
+                <th>
+                    SH Lvl
+                </th>
+                <th></th>
+                <th class="hidden-xs hidden-sm">
+                    RSS
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    Gold
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    Shields
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if(!item.Login.IsMS)
+                { 
+                    bool error = false;
+                    string errorClass = "";
+                    if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
+                            || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(71) < DateTime.Now))
+                    {
+                        error = true;
+                        errorClass = "danger";
+                    }
+                    else if (!item.Login.Active)
+                    {
+                        errorClass = "success";
+                    }
+
+                <tr class=@errorClass>
+                    <td>
+                        @if (error)
+                            {<div class="glyphicon glyphicon-exclamation-sign"></div> }
+                        @Html.ActionLink(item.CityName, "Edit", "City", new { id = item.CityID }, null)
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+                        @Html.DisplayFor(modelItem => item.Login.UserName)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                            <span class="glyphicon glyphicon-list"></span>
+                        </a>
+                    </td>
+                    <td>
+                        @item.CityInfo.City.Login.RunSince.ToString("F0")
+                    </td>
+                    <td>
+                        <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                            <span class="glyphicon glyphicon-forward"></span>
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResourceType.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
+                    </td>
+                    <td class="">
+                        <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                            <span class="glyphicon glyphicon-camera"></span>
+                        </a>
+                        <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+                        <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+                        <img src='/Images/@(item.CityID)/GoldImage_@(item.CityID).jpg' height="40" />
+                    </td>
+                    <td class="hidden-xs hidden-sm">
+                        <img src='/Images/@(item.CityID)/ShieldCount_@(item.CityID).jpg' height="40" />
+                    </td>
+                </tr>
+                }
+            }
+
+        </table>
     </div>
-    <div class="col-md-2 hidden-xs hidden-sm">
-        <h2>@Html.ActionLink("Bulk Upload", "UploadCity", null, new { @class = "btn btn-primary" })</h2>
+    <div id="tabs-2">
+        <div class="row">
+            <div class="col-md-10 col-sm-12 col-xs-12">
+                <h2>City List</h2>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CityName)
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    @Html.DisplayNameFor(model => model.Login.UserName)
+                </th>
+                <th>&nbsp;</th>
+                <th>
+                    Min Since
+                </th>
+                <th>&nbsp;</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResourceType.Type)
+                </th>
+                <th>
+                    SH Lvl
+                </th>
+                <th></th>
+                <th class="hidden-xs hidden-sm">
+                    RSS
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    Gold
+                </th>
+                <th class="hidden-xs hidden-sm">
+                    Shields
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if(item.Login.IsMS)
+                { 
+                    bool error = false;
+                    string errorClass = "";
+                    if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
+                            || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(71) < DateTime.Now))
+                    {
+                        error = true;
+                        errorClass = "danger";
+                    }
+                    else if (!item.Login.Active)
+                    {
+                        errorClass = "success";
+                    }
+
+                    <tr class=@errorClass>
+                        <td>
+                            @if (error)
+                            {<div class="glyphicon glyphicon-exclamation-sign"></div> }
+                            @Html.ActionLink(item.CityName, "Edit", "City", new { id = item.CityID }, null)
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            @Html.DisplayFor(modelItem => item.Login.UserName)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-list"></span>
+                            </a>
+                        </td>
+                        <td>
+                            @item.CityInfo.City.Login.RunSince.ToString("F0")
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-forward"></span>
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResourceType.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
+                        </td>
+                        <td class="">
+                            <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-camera"></span>
+                            </a>
+                            <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </a>
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            <img src='/Images/@(item.CityID)/GoldImage_@(item.CityID).jpg' height="40" />
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            <img src='/Images/@(item.CityID)/ShieldCount_@(item.CityID).jpg' height="40" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
     </div>
 </div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CityName)
-        </th>
-        <th class="hidden-xs hidden-sm">
-            @Html.DisplayNameFor(model => model.Login.UserName)
-        </th>
-        <th>&nbsp;</th>
-        <th>
-            Min Since
-        </th>
-        <th>&nbsp;</th>
-        <th>
-            @Html.DisplayNameFor(model => model.ResourceType.Type)
-        </th>
-        <th>
-            SH Lvl
-        </th>
-        <th></th>
-        <th class="hidden-xs hidden-sm">
-            RSS
-        </th>
-        <th class="hidden-xs hidden-sm">
-            Gold
-        </th>
-        <th class="hidden-xs hidden-sm">
-            Shields
-        </th>
-    </tr>
+        <!-- Modal -->
+        <div id="myModal" class="modal" role="dialog" tabindex="-1"></div>
 
-    @foreach (var item in Model)
-    {
-        bool error = false;
-        string errorClass = "";
-        if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
-                || (item.CityInfo.Shield && item.CityInfo.LastShield.AddHours(71) < DateTime.Now))
+
+        @Html.ActionLink("Create Single City", "CreateFull", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
+        @if (ViewBag.BasicCitiesAllowed > 0)
         {
-            error = true;
-            errorClass = "danger";
+            <p>
+                <div>You have used @ViewBag.BasicCitiesUsed of @ViewBag.BasicCitiesAllowed Basic cities from your paid packages</div>
+                @if (ViewBag.BasicCitiesUsed < ViewBag.BasicCitiesAllowed)
+                {
+                    @Html.ActionLink("Create Package City", "CreateFull", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
+                }
+            </p>
         }
-        else if (!item.Login.Active)
+        @if (ViewBag.PremiumCitiesAllowed > 0)
         {
-            errorClass = "success";
+            <p>
+                <div>You have used @ViewBag.PremiumCitiesUsed of @ViewBag.PremiumCitiesAllowed Premium cities from your paid packages</div>
+                @if (ViewBag.PremiumCitiesUsed < ViewBag.PremiumCitiesAllowed)
+                {
+                    @Html.ActionLink("Create Premium City", "CreateFull", new { premium = true, basic = false }, new { @class = "btn btn-primary" })
+                }
+            </p>
         }
 
-        <tr class=@errorClass>
-            <td>
-                @if (error)
-                {<div class="glyphicon glyphicon-exclamation-sign"></div> }
-                @Html.ActionLink(item.CityName, "Edit", "City", new { id = item.CityID }, null)  
-            </td>
-            <td class="hidden-xs hidden-sm">
-                @Html.DisplayFor(modelItem => item.Login.UserName)
-            </td>
-            <td>
-                <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-list"></span>
-                </a>
-            </td>
-            <td>
-                @item.CityInfo.City.Login.RunSince.ToString("F0")
-            </td>
-            <td>
-                <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-forward"></span>
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResourceType.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
-            </td>
-            <td class="">
-                <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-camera"></span>
-                </a>
-                <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-home"></span>
-                </a>
-            </td>
-            <td class="hidden-xs hidden-sm">
-                <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
-            </td>
-            <td class="hidden-xs hidden-sm">
-                <img src='/Images/@(item.CityID)/GoldImage_@(item.CityID).jpg' height="40"/>
-            </td>
-            <td class="hidden-xs hidden-sm">
-                <img src='/Images/@(item.CityID)/ShieldCount_@(item.CityID).jpg' height="40" />
-            </td>
-        </tr>
-    }
-
-</table>
-
-<!-- Modal -->
-<div id="myModal" class="modal" role="dialog" tabindex="-1"></div>
-
-
-@Html.ActionLink("Create Single City", "CreateFull", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
-@if (ViewBag.BasicCitiesAllowed > 0)
-{
-    <p>
-        <div>You have used @ViewBag.BasicCitiesUsed of @ViewBag.BasicCitiesAllowed Basic cities from your paid packages</div>
-        @if (ViewBag.BasicCitiesUsed < ViewBag.BasicCitiesAllowed)
-        {
-            @Html.ActionLink("Create Package City", "CreateFull", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
-        }
-    </p>
-}
-@if (ViewBag.PremiumCitiesAllowed > 0)
-{
-    <p>
-        <div>You have used @ViewBag.PremiumCitiesUsed of @ViewBag.PremiumCitiesAllowed Premium cities from your paid packages</div>
-        @if (ViewBag.PremiumCitiesUsed < ViewBag.PremiumCitiesAllowed)
-        {
-            @Html.ActionLink("Create Premium City", "CreateFull", new { premium = true, basic = false }, new { @class = "btn btn-primary" })
-        }
-    </p>
-}
-        
 
         <script type="text/javascript">
             $(function () {
@@ -155,5 +274,7 @@
                 $('#myModal').on('shown.bs.modal', function () {
                     $('#myModal').scrollTop(0);
                 });
+
+                $("#tabs").tabs();
             });
         </script>

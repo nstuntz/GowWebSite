@@ -223,7 +223,7 @@ namespace GowWebSite.Controllers
                 city.CityInfo.LastBank = DateTime.Today;
                 city.CityInfo.LastRally = DateTime.Today;
                 city.CityInfo.LastShield = DateTime.Now.AddHours(-63); // This will then shield in the next 3 hours
-                city.CityInfo.LastTreasury = DateTime.Today;
+                city.CityInfo.LastTreasury = DateTime.Now.AddDays(-31);
                 city.CityInfo.LastUpgrade = DateTime.Today;
                 city.CityInfo.TreasuryDue = DateTime.Today;
                 
@@ -675,6 +675,11 @@ namespace GowWebSite.Controllers
             origCityInfo.RallyX = city.CityInfo.RallyX;
             origCityInfo.RallyY = city.CityInfo.RallyY;
             origCityInfo.TreasuryLevel = city.CityInfo.TreasuryLevel;
+
+            if ((!origCityInfo.Treasury) && (city.CityInfo.Treasury))
+            {
+                origCityInfo.LastTreasury = DateTime.Now.AddDays(-29);
+            }
             origCityInfo.Treasury = city.CityInfo.Treasury;
 
             if (ModelState.IsValid)
