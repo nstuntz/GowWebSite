@@ -84,12 +84,13 @@
                     </div>
                 </div>
 
+
                 <div class="form-group">
                     <div class="row">
 
                         <div class="col-md-2 col-sm-3 col-xs-5" style="text-align:right;">
                             @Html.Label("Login Timing", htmlAttributes: new { @class = "control-label" }) 
-                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the frequency with which the service will log into the account. This is also the basis for the 3 tiers of pricing. The basic functionality includes: Collecting Daily and Alliance Quests; Collecting Athenas gifts; Clicking on Helps; Collecting Alliance Gifts. The price is $.90/$1.50/$3.00 for 6/3/1 hrs respectively. All costs are on a monthly basis."></span>
+                            <span class="glyphicon glyphicon-question-sign form-control-static" data-toggle="popover" data-trigger="hover" data-content="This is the frequency with which the service will log into the account. This is also the basis for the 3 tiers of pricing. The basic functionality includes: Collecting Daily and Alliance Quests; Collecting Athenas gifts; Clicking on Helps; Collecting Alliance Gifts."></span>
                         </div>
                         <div class="col-md-10 col-sm-9">
                             @Html.EditorFor(model => model.Login.DelayTier, "RadioButtonListEnum")
