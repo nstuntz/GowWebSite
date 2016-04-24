@@ -17,7 +17,7 @@
     <div class="container">
         <div class="page-header">
             <div class="row">
-                <div class="col-md-9 col-sm-8 col-xs-7"><h1>GoW Minion FAQ</h1></div>
+                <div class="col-md-9 col-sm-8 col-xs-7"><h1>GoW/MS Minion FAQ</h1></div>
                 <div class="col-md-3 col-sm-4 col-xs-5" style="vertical-align:bottom">Contact: <a href="mailto:support@gowminion.com">support@gowminion.com</a></div>
             </div>
         </div>
@@ -32,24 +32,12 @@
 
 
             <div class="panel-group" id="accordion">
-                <!-- Mobile Strike Section-->
-                <div class="faqHeader">Mobile Strike</div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMSInfo">General Info</a>
-                        </h4>
-                    </div>
-                    <div id="collapseMSInfo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">Our minions are not as familiar with Mobile Strike as GoW. Because of this there are a few featuers that are not currently available within Mobile Strike. Auto Shielding (coming soon) and Auto Rallying are not available.</div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!--Minion Section-->
-                <div class="faqHeader">Minions</div>
-                <div class="panel panel-default">
+                <div class="faqHeader">Minions General Info</div>
+                <!--
+                    <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMinionBulkUpload">Bulk Uploads</a>
@@ -61,6 +49,7 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -86,182 +75,210 @@
                         </div>
                     </div>
                 </div>
-                
-                <!--Bank Section-->
-                <div class="faqHeader">Banking</div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseBankInfo">General Info</a>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsePayment">Payment</a>
                         </h4>
                     </div>
-                    <div id="collapseBankInfo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">The number of marches selected between the silver and rss marches should not exceed the maximum allowed by your city. Remember that if Rally is turned on that also uses a march slot. If you are SH 14 you can have 3 total marches.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseMarketLocation">Marketplace Location</a>
-                        </h4>
-                    </div>
-                    <div id="collapseMarketLocation" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">Our minions get lost when wandering too far to the market. For them to be able to trade rss the marketplace must be located in the city spot below the treasury. </div>
-                            <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/MarketLocation.jpg" class="col-xs-11 col-md-11" /></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseCityOrder">City Order</a>
-                        </h4>
-                    </div>
-                    <div id="collapseCityOrder" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">Our minions don't like to click and drag, in order for them to correctly bank resources your bank has to be at the top of the alliance list alphabetically. If you set the RSSBankNum to 1 it will send rss to Cloudbirth in the picture below. RssBankNum to 2 it will send rss to cobratil es. etc </div>
-                            <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/MarketOrder.jpg" class="col-xs-11 col-md-11" /></div>
-                        </div>
-                    </div>
-                </div>
-                   
-                <!-- Rally Section-->             
-                <div class="faqHeader">Rallying</div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseRallyInfo">General Info</a>
-                        </h4>
-                    </div>
-                    <div id="collapseRallyInfo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">Rallying can be complex and our minions are a bit slow. In order for them to properly rally they have to target a city that is either in a different alliance, or SH 15+ in no alliance. If the minion is starting a rally from an R4 then the target city must be in an alliance or the rally will not work. If the target city moves or is shielded then the rally will not work. The minions will not rally if you have an active peace shield or do not have a hall of war. The minions will attempt to rally whatever location you have entered, if it is too far of a march the rally attempt will fail. If you have wounded troops the minions will heal them, if the hospital is in the original location.</div>
-                            <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/HospitalLocation.jpg" class="col-xs-11 col-md-11" /></div>
+                    <div class="panel-collapse collapse" id="collapsePayment">
+                        <div class="panel-group">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapsePayment" href="#collapseMultiCity">Multi-City Discounts</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseMultiCity" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row col-md-12 col-sm-12 col-xs-12">There are two city type packages. The Basic City gives you all the features you know and love. Banking, shielding/rallying etc. The Premium City gives you all that plus Upgrading and Treasury, and Treasury is free.</div>
+                                        <div class="form-group"></div>
+                                        <div class="row col-md-12 col-sm-12 col-xs-12">With our new Multi-City discounts the more you have the more you save. You can buy packages of 10 (-5%), 25 (-10%) or 50 (-15%) cities. This allows you to add cities as you would like without having to revisit the checkout every time, all while saving money. The discount amounts are off the total price, so if you buy a 25 city package you would pay 90$ rather than 100$ if bought individually.</div>
+                                    </div>
+                                </div>
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapsePayment" href="#collapsePayment1">How it works</a>
+                                    </h4>
+                                </div>
+                                <div id="collapsePayment1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row col-md-12 col-sm-12 col-xs-12">When you are creating cities you will be able to add them to a shopping cart. Once you check out you will pay the immediate amount for this month, and then approve a monthly subscription. The subscriptions will be pulled on the first of the month. If the PayPal subscription fails for some reason we will email you and flag your accounts as having not paid. Our minions will ignore any unpaid city.</div>
+                                    </div>
+                                </div>
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapsePayment" href="#collapsePayment2">Deactivate vs Deletion</a>
+                                    </h4>
+                                </div>
+                                <div id="collapsePayment2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row col-md-12 col-sm-12 col-xs-12">If you deactivate a city our minions will ignore it until you re-activate it. Even a deactivated city will count towards your monthly subscription costs. If you delete a city it will be removed from your account and will not count towards your monthly subscription costs. We will NOT refund if you delete mid month.</div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Shield Section-->
-                <div class="faqHeader">Shielding</div>
+                <!-- Mobile Strike Section-->
+                <div class="faqHeader">Mobile Strike</div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseShieldInfo">General Info</a>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMSInfo">General Info</a>
                         </h4>
                     </div>
-                    <div id="collapseShieldInfo" class="panel-collapse collapse">
+                    <div id="collapseMSInfo" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">While shielding does not seem very complex, our minions are rather simple. In order for your city to properly shield for 3 days, and continue to shield, you need to make sure of the following. 
-                                <ul>
-                                    <li>You have either 3d shields or enough gold on hand, not in tokens, to reshield.</li>
-                                    <li>You need to burn any non standard shields. Our minions click on the 3rd shield down, if you have a 4 hr then the third one down is a 24 hr, and the minions wont try to reshield for 3 days thinking that they just shielded for 3 days.</li>
-                                    <li>When first setting up a city, if the shield option is selected, our minions will assume the city needs shielding and will shield it within 3 hrs of the city being activated. This will replace any existing shield even if there are 29 days left on it.</li>
-                                </ul>
-                            </div>                            
+                            <div class="row col-md-12 col-sm-12 col-xs-12">Our minions are not as familiar with Mobile Strike as GoW. Because of this there are a few featuers that are not currently available within Mobile Strike. Auto Shielding (coming soon) and Treasury (not in MS yet).</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMSBanking">Banking</a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseMSBanking">
+                        <div class="panel-group">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapseMSBanking" href="#collapseMSBankInfo">General Info</a>
+                                </h4>
+                            </div>
+                            <div id="collapseMSBankInfo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">The number of marches selected between the silver and rss marches should not exceed the maximum allowed by your city. If you are SH 14 you can have 3 total marches.</div>
+                                </div>
+                            </div>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseMSBanking" href="#collapseMSMarketLocation">Marketplace Location</a>
+                                </h4>
+                            </div>
+                            <div id="collapseMSMarketLocation" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">Our minions get lost when wandering too far to the market. For them to be able to trade rss the marketplace must be located in the city spot below the treasury. </div>
+                                    <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/MSTradingPostLocation.jpg" class="col-xs-11 col-md-11" /></div>
+                                </div>
+                            </div>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapseMSBanking" href="#collapseMSCityOrder">City Order</a>
+                                </h4>
+                            </div>
+                            <div id="collapseMSCityOrder" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">Our minions don't like to click and drag, in order for them to correctly bank resources your bank has to be at the top of the alliance list alphabetically. If you set the RSSBankNum to 1 it will send rss to Augustus Max in the picture below. RssBankNum to 2 it will send rss to Chester03. etc </div>
+                                    <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/MSMarketOrder.jpg" class="col-xs-11 col-md-11" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMSShield">Shielding (coming soon)</a>
+                        </h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseMSShield">
+                        <div class="panel-group">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapseMSShield" href="#collapseMSShieldInfo">General Info</a>
+                                </h4>
+                            </div>
+                            <div id="collapseMSShieldInfo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">
+                                        While shielding does not seem very complex, our minions are rather simple. In order for your city to properly shield for 3 days, and continue to shield, you need to make sure of the following.
+                                        <ul>
+                                            <li>You have either 3d shields or enough gold on hand, not in tokens, to reshield.</li>
+                                            <li>You need to burn any non standard shields. Our minions click on the 3rd shield down, if you have a 4 hr then the third one down is a 24 hr, and the minions wont try to reshield for 3 days thinking that they just shielded for 3 days.</li>
+                                            <li>When first setting up a city, if the shield option is selected, our minions will assume the city needs shielding and will shield it within 3 hrs of the city being activated. This will replace any existing shield even if there are 29 days left on it.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Upgrade Section-->
-               <!-- <div class="faqHeader">Upgrading</div>
+                <!--Game Of War Section-->
+                <div class="faqHeader">Game Of War</div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseUpgradeInfo">General Info</a>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGoWBanking">Banking</a>
                         </h4>
                     </div>
-                    <div id="collapseUpgradeInfo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">Upgrading will have the minions build a city up to SH14 and then build all other buildings up to 14 as well. In order for the minions to build past 14 you manually start the SH 15 upgrade.</div>
+                    <div class="panel-collapse collapse" id="collapseGoWBanking">
+                        <div class="panel-group">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapseGoWBanking" href="#collapseGoWBankInfo">General Info</a>
+                                </h4>
+                            </div>
+                            <div id="collapseGoWBankInfo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">The number of marches selected between the silver and rss marches should not exceed the maximum allowed by your city. If you are SH 14 you can have 3 total marches.</div>
+                                </div>
+                            </div>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#collapseGoWBanking" href="#collapseMarketLocation">Marketplace Location</a>
+                                </h4>
+                            </div>
+                            <div id="collapseMarketLocation" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">Our minions get lost when wandering too far to the market. For them to be able to trade rss the marketplace must be located in the city spot below the treasury. </div>
+                                    <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/MarketLocation.jpg" class="col-xs-11 col-md-11" /></div>
+                                </div>
+                            </div>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapseGoWBanking" href="#collapseCityOrder">City Order</a>
+                                </h4>
+                            </div>
+                            <div id="collapseCityOrder" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">Our minions don't like to click and drag, in order for them to correctly bank resources your bank has to be at the top of the alliance list alphabetically. If you set the RSSBankNum to 1 it will send rss to Augustus Max in the picture below. RssBankNum to 2 it will send rss to Chester03. etc </div>
+                                    <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/MarketOrder.jpg" class="col-xs-11 col-md-11" /></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOutsideCity">Outside the City</a>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGoWShield">Shielding</a>
                         </h4>
                     </div>
-                    <div id="collapseOutsideCity" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">Without resources our minions can't keep building. In order to keep the minions well supplied you should have 2 of each type outside of the specialized type, and keep them close to the walls for the safety of the minions.</div>
-                            <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/FarmLocations.jpg" class="col-xs-11 col-md-11" /></div>
+                    <div class="panel-collapse collapse" id="collapseGoWShield">
+                        <div class="panel-group">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#collapseGoWShield" href="#collapseShieldInfo">General Info</a>
+                                </h4>
+                            </div>
+                            <div id="collapseShieldInfo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row col-md-12 col-sm-12 col-xs-12">
+                                        While shielding does not seem very complex, our minions are rather simple. In order for your city to properly shield for 3 days, and continue to shield, you need to make sure of the following.
+                                        <ul>
+                                            <li>You have either 3d shields or enough gold on hand, not in tokens, to reshield.</li>
+                                            <li>You need to burn any non standard shields. Our minions click on the 3rd shield down, if you have a 4 hr then the third one down is a 24 hr, and the minions wont try to reshield for 3 days thinking that they just shielded for 3 days.</li>
+                                            <li>When first setting up a city, if the shield option is selected, our minions will assume the city needs shielding and will shield it within 3 hrs of the city being activated. This will replace any existing shield even if there are 29 days left on it.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseInsideCity">Inside the City</a>
-                        </h4>
-                    </div>
-                    <div id="collapseInsideCity" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12"></div> Our minions are a little lazy and don't like long walks, so if you want to upgrade to SH14 as quickly as possible keep all the required buildings to the left side of the city.
-                            <div class="row col-md-12 col-sm-12 col-xs-12"></div><img src="~/Content/Images/InsideLocations.jpg" class="col-xs-11 col-md-11" />
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGoldmine">Gold Mine</a>
-                        </h4>
-                    </div>
-                    <div id="collapseGoldmine" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">Our minions have a fear of gold mines, ever since one of our cousins got lost in one. If your city has a gold mine please put it in the upper right most corner. This will allow the minions to upgrade your buildings without fear of falling in. </div>
-                            <div class="row col-md-12 col-sm-12 col-xs-12"><img src="~/Content/Images/GoldMineLocation.jpg" class="col-xs-11 col-md-11" /></div>
-                        </div>
-                    </div>
-                </div>
-                -->
-
-                <!--Payment Section-->
-                <div class="faqHeader">Payment</div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMultiCity">Multi-City Discounts</a>
-                        </h4>
-                    </div>
-                    <div id="collapseMultiCity" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">There are two city type packages. The Basic City gives you all the features you know and love. Banking, shielding/rallying etc. The Premium City gives you all that plus Upgrading and Treasury, and Treasury is free.</div>
-                            <div class="form-group"></div>
-                            <div class="row col-md-12 col-sm-12 col-xs-12">With our new Multi-City discounts the more you have the more you save. You can buy packages of 10 (-5%), 25 (-10%) or 50 (-15%) cities. This allows you to add cities as you would like without having to revisit the checkout every time, all while saving money. The discount amounts are off the total price, so if you buy a 25 city package you would pay 90$ rather than 100$ if bought individually.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsePayment1">How it works</a>
-                        </h4>
-                    </div>
-                    <div id="collapsePayment1" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">When you are creating cities you will be able to add them to a shopping cart. Once you check out you will pay the immediate amount for this month, and then approve a monthly subscription. The subscriptions will be pulled on the first of the month. If the PayPal subscription fails for some reason we will email you and flag your accounts as having not paid. Our minions will ignore any unpaid city.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsePayment2">Deactivate vs Deletion</a>
-                        </h4>
-                    </div>
-                    <div id="collapsePayment2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="row col-md-12 col-sm-12 col-xs-12">If you deactivate a city our minions will ignore it until you re-activate it. Even a deactivated city will count towards your monthly subscription costs. If you delete a city it will be removed from your account and will not count towards your monthly subscription costs. We will NOT refund if you delete mid month.</div>
-                        </div>
-                    </div>
-                </div>
-
-            
+        
              </div>
         </div>
         <style>

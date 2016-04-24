@@ -5,24 +5,84 @@
 }
 <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+<script>
+
+    $(function () {
+        if (readCookie('cityType') == 'false')
+        {
+            //Here we have gotten to the page and set to MS.
+            $("#tabs-1").hide();
+            $("#tabs-2").show();
+            $('#cityType').bootstrapToggle('off')
+        }
+        else
+        {
+            $("#tabs-1").show();
+            $("#tabs-2").hide();
+            $('#cityType').bootstrapToggle('on')
+        }
+        $('#cityType').change(function () {
+
+            createCookie('cityType', $(this).prop('checked'), 365);
+
+            var cityType = $('#cityType').prop('checked');
+            if(cityType)
+            {
+                $("#tabs-1").show();
+                $("#tabs-2").hide();
+            }
+            else
+            {
+                $("#tabs-1").hide();
+                $("#tabs-2").show();
+            }
+
+        });
+    });
+    function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        }
+        else var expires = "";
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+</script>
+
+
+<div class="row">
+    <div class="col-md-10 col-sm-12 col-xs-12">
+        <h2><input type="checkbox" checked="checked" id="cityType" data-toggle="toggle" data-size="large" data-onstyle="success" data-offstyle="primary" data-style="slow" data-on="GoW" data-off="MS"> City List</h2>
+    </div>
+    <div class="col-md-2 hidden-xs hidden-sm">
+        <h2>@Html.ActionLink("Bulk Upload", "UploadCity", null, new { @class = "btn btn-primary" })</h2>
+    </div>
+</div>
 
 <div id="tabs">
-
-    <ul>
-        <li><a href="#tabs-1">Game Of War Cities</a></li>
-        <li><a href="#tabs-2">Mobile Strike Cities</a></li>
-    </ul>
-
+    <!-- Tab 1 is GoW and Tab 2 is MS-->
+    
     <div id="tabs-1">
 
-        <div class="row">
-            <div class="col-md-10 col-sm-12 col-xs-12">
-                <h2>City List</h2>
-            </div>
-            <div class="col-md-2 hidden-xs hidden-sm">
-                <h2>@Html.ActionLink("Bulk Upload", "UploadCity", null, new { @class = "btn btn-primary" })</h2>
-            </div>
-        </div>
         <table class="table">
             <tr>
                 <th>
@@ -56,8 +116,8 @@
 
             @foreach (var item in Model)
             {
-                if(!item.Login.IsMS)
-                { 
+                if (!item.Login.IsMS)
+                {
                     bool error = false;
                     string errorClass = "";
                     if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
@@ -71,63 +131,58 @@
                         errorClass = "success";
                     }
 
-                <tr class=@errorClass>
-                    <td>
-                        @if (error)
+                    <tr class=@errorClass>
+                        <td>
+                            @if (error)
                             {<div class="glyphicon glyphicon-exclamation-sign"></div> }
-                        @Html.ActionLink(item.CityName, "Edit", "City", new { id = item.CityID }, null)
-                    </td>
-                    <td class="hidden-xs hidden-sm">
-                        @Html.DisplayFor(modelItem => item.Login.UserName)
-                    </td>
-                    <td>
-                        <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-list"></span>
-                        </a>
-                    </td>
-                    <td>
-                        @item.CityInfo.City.Login.RunSince.ToString("F0")
-                    </td>
-                    <td>
-                        <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-forward"></span>
-                        </a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ResourceType.Type)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
-                    </td>
-                    <td class="">
-                        <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-camera"></span>
-                        </a>
-                        <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-home"></span>
-                        </a>
-                    </td>
-                    <td class="hidden-xs hidden-sm">
-                        <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
-                    </td>
-                    <td class="hidden-xs hidden-sm">
-                        <img src='/Images/@(item.CityID)/GoldImage_@(item.CityID).jpg' height="40" />
-                    </td>
-                    <td class="hidden-xs hidden-sm">
-                        <img src='/Images/@(item.CityID)/ShieldCount_@(item.CityID).jpg' height="40" />
-                    </td>
-                </tr>
+                            @Html.ActionLink(item.CityName, "Edit", "City", new { id = item.CityID }, null)
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            @Html.DisplayFor(modelItem => item.Login.UserName)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-list"></span>
+                            </a>
+                        </td>
+                        <td>
+                            @item.CityInfo.City.Login.RunSince.ToString("F0")
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ViewLogin", "Login", new { cityID = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-forward"></span>
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResourceType.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CityInfo.StrongHoldLevel)
+                        </td>
+                        <td class="">
+                            <a href="@Url.Action("ViewImages", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-camera"></span>
+                            </a>
+                            <a href="@Url.Action("ViewImagesLg", "City", new { cityid = item.CityID })" class="modal-link" data-toggle="modal" data-target="#myModal">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </a>
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            <img src='/Images/@(item.CityID)/RSSImage_@(item.CityID).jpg' />
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            <img src='/Images/@(item.CityID)/GoldImage_@(item.CityID).jpg' height="40" />
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            <img src='/Images/@(item.CityID)/ShieldCount_@(item.CityID).jpg' height="40" />
+                        </td>
+                    </tr>
                 }
             }
 
         </table>
     </div>
     <div id="tabs-2">
-        <div class="row">
-            <div class="col-md-10 col-sm-12 col-xs-12">
-                <h2>City List</h2>
-            </div>
-        </div>
         <table class="table">
             <tr>
                 <th>
@@ -161,8 +216,8 @@
 
             @foreach (var item in Model)
             {
-                if(item.Login.IsMS)
-                { 
+                if (item.Login.IsMS)
+                {
                     bool error = false;
                     string errorClass = "";
                     if ((item.CityInfo.Rally && item.CityInfo.LastRally.HasValue && item.CityInfo.LastRally.Value.AddHours(8) < DateTime.Now)
@@ -227,54 +282,54 @@
         </table>
     </div>
 </div>
-        <!-- Modal -->
-        <div id="myModal" class="modal" role="dialog" tabindex="-1"></div>
+<!-- Modal -->
+<div id="myModal" class="modal" role="dialog" tabindex="-1"></div>
 
 
-        @Html.ActionLink("Create Single City", "CreateFull", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
-        @if (ViewBag.BasicCitiesAllowed > 0)
+@Html.ActionLink("Create Single City", "CreateFull", new { premium = false, basic = false }, new { @class = "btn btn-primary" })
+@if (ViewBag.BasicCitiesAllowed > 0)
+{
+    <p>
+        <div>You have used @ViewBag.BasicCitiesUsed of @ViewBag.BasicCitiesAllowed Basic cities from your paid packages</div>
+        @if (ViewBag.BasicCitiesUsed < ViewBag.BasicCitiesAllowed)
         {
-            <p>
-                <div>You have used @ViewBag.BasicCitiesUsed of @ViewBag.BasicCitiesAllowed Basic cities from your paid packages</div>
-                @if (ViewBag.BasicCitiesUsed < ViewBag.BasicCitiesAllowed)
-                {
-                    @Html.ActionLink("Create Package City", "CreateFull", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
-                }
-            </p>
+            @Html.ActionLink("Create Package City", "CreateFull", new { premium = false, basic = true }, new { @class = "btn btn-primary" })
         }
-        @if (ViewBag.PremiumCitiesAllowed > 0)
+    </p>
+}
+@if (ViewBag.PremiumCitiesAllowed > 0)
+{
+    <p>
+        <div>You have used @ViewBag.PremiumCitiesUsed of @ViewBag.PremiumCitiesAllowed Premium cities from your paid packages</div>
+        @if (ViewBag.PremiumCitiesUsed < ViewBag.PremiumCitiesAllowed)
         {
-            <p>
-                <div>You have used @ViewBag.PremiumCitiesUsed of @ViewBag.PremiumCitiesAllowed Premium cities from your paid packages</div>
-                @if (ViewBag.PremiumCitiesUsed < ViewBag.PremiumCitiesAllowed)
-                {
-                    @Html.ActionLink("Create Premium City", "CreateFull", new { premium = true, basic = false }, new { @class = "btn btn-primary" })
-                }
-            </p>
+            @Html.ActionLink("Create Premium City", "CreateFull", new { premium = true, basic = false }, new { @class = "btn btn-primary" })
         }
+    </p>
+}
 
 
-        <script type="text/javascript">
-            $(function () {
-                // Initialize numeric spinner input boxes
-                //$(".numeric-spinner").spinedit();
-                // Initialize modal dialog
-                // attach modal-container bootstrap attributes to links with .modal-link class.
-                // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
-                $('body').on('click', '.modal-link', function (e) {
-                    e.preventDefault();
-                    $(this).attr('data-target', '#myModal');
-                    $(this).attr('data-toggle', 'modal');
-                });
-                //clear modal cache, so that new content can be loaded
-                $('#myModal').on('hidden.bs.modal', function () {
-                    $(this).removeData('bs.modal');
-                });
+<script type="text/javascript">
+    $(function () {
+        // Initialize numeric spinner input boxes
+        //$(".numeric-spinner").spinedit();
+        // Initialize modal dialog
+        // attach modal-container bootstrap attributes to links with .modal-link class.
+        // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+        $('body').on('click', '.modal-link', function (e) {
+            e.preventDefault();
+            $(this).attr('data-target', '#myModal');
+            $(this).attr('data-toggle', 'modal');
+        });
+        //clear modal cache, so that new content can be loaded
+        $('#myModal').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+        });
 
-                $('#myModal').on('shown.bs.modal', function () {
-                    $('#myModal').scrollTop(0);
-                });
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myModal').scrollTop(0);
+        });
 
-                $("#tabs").tabs();
-            });
-        </script>
+        $("#tabs").tabs();
+    });
+</script>

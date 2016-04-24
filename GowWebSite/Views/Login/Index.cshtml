@@ -98,6 +98,9 @@
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
+        <th>            
+            @Html.DisplayNameFor(model => model.IsMS)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Active)
         </th>
@@ -117,6 +120,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsMS)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Active)

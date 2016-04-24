@@ -403,8 +403,9 @@ namespace GowWebSite.Controllers
                 }
             }
 
-            IEnumerable<Log> logs = db.Logs.Where(x => x.LoginID == city.LoginID);
-            db.Logs.RemoveRange(logs);
+            //This is not a foreign key and so doesnt have to be deleted
+            //IEnumerable<Log> logs = db.Logs.Where(x => x.LoginID == city.LoginID);
+            //db.Logs.RemoveRange(logs);
 
             CityInfo ci = db.CityInfoes.Find(city.CityID);
             db.CityInfoes.Remove(ci);
