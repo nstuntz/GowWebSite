@@ -959,10 +959,10 @@ namespace GowWebSite.Controllers
 
                     foreach (City city in db.Cities)
                     {
-                        existingUserNames.Add(city.Login.UserName, city.CityName);
+                        existingUserNames.Add(String.Concat(city.Login.UserName, city.Login.IsMS), city.CityName);
                     }
 
-                    for (int i = 4; i < dt.Rows.Count; i++)
+                    for (int i = 2; i < dt.Rows.Count; i++)
                     {
                         DataRow row = dt.Rows[i];
                         City city = new City();
@@ -1170,15 +1170,8 @@ namespace GowWebSite.Controllers
                 int resourceMarches = 0;
                 int silverBank = 1;
                 int silverMarches = 0;
-                string rally = row[13].ToString();
-                string inRallyX = row[14].ToString();
-                string inRallyY = row[15].ToString();
-                int? rallyX = null;
-                int? rallyY = null;
-                string shield = row[16].ToString();
-                string upgrade = row[17].ToString();
-                string goldMine = row[18].ToString();
-                string treasury = row[19].ToString();
+                string shield = row[13].ToString();
+                string treasury = row[14].ToString();
 
                 //TODO: Now do the data validations. Have to figure out the response on an error. Thans help?
                 if (!userName.Contains('@'))
@@ -1254,32 +1247,7 @@ namespace GowWebSite.Controllers
                     errors.Append("Please enter a Stronghold Level between 1 and 21.  ");
                 }
 
-                //Validate rally info - only if rally is yes.
-                if(rally == "Yes")
-                {
-                    int tempX;
-                    int tempY;
-
-                    if ((!Int32.TryParse(inRallyX, out tempX)) || (!Int32.TryParse(inRallyY, out tempY)))
-                    {
-                        errors.Append("Please choose integers for the Rally X/Rally Y coordinate.  ");
-                    }
-                    else
-                    {
-                        rallyX = tempX;
-                        rallyY = tempY;
-                    }
-
-                    if ((rallyX != null && rallyY != null) && ((rallyX < 1 || rallyX > 510) || (rallyY < 1 || rallyY > 1022)))
-                    {
-                        errors.Append("Please choose valid Rally coordinates.  ");
-                    }
-                }
-
-                if((rally == "Yes") && (shield =="Yes"))
-                {
-                    errors.Append("Please choose either Rally OR Shield.  ");
-                }
+                
 
                 if (bank == "Yes")
                 {
@@ -1307,10 +1275,6 @@ namespace GowWebSite.Controllers
                     }
 
                     int marchCount = 0;
-                    if(rally=="Yes")
-                    {
-                        marchCount = 1;
-                    }
                     marchCount = marchCount + silverMarches + resourceMarches;
 
                     if(SHLevel<6)
@@ -1370,13 +1334,8 @@ namespace GowWebSite.Controllers
                     city.CityInfo.RssMarches = resourceMarches;
                     city.CityInfo.SilverBankNum = silverBank;
                     city.CityInfo.SilverMarches = silverMarches;
-                    city.CityInfo.Rally = rally == "Yes" ? true : false;
-                    city.CityInfo.RallyX = rallyX;
-                    city.CityInfo.RallyY = rallyY;
                     city.CityInfo.Shield = shield == "Yes" ? true : false;
-                    city.CityInfo.Upgrade = upgrade == "Yes" ? true : false;
                     city.CityInfo.Treasury = treasury == "Yes" ? true : false;
-                    city.CityInfo.HasGoldMine = goldMine == "Yes" ? true : false;
 
                     //Set the defaults
                     city.Login.InProcess = "0";
