@@ -191,6 +191,9 @@
                 <th class="hidden-xs hidden-sm">
                     @Html.DisplayNameFor(model => model.Login.UserName)
                 </th>
+                <th class="hidden-xs hidden-sm">
+                    @Html.DisplayNameFor(model => model.Alliance)
+                </th>
                 <th>&nbsp;</th>
                 <th>
                     Min Since
@@ -239,6 +242,9 @@
                         </td>
                         <td class="hidden-xs hidden-sm">
                             @Html.DisplayFor(modelItem => item.Login.UserName)
+                        </td>
+                        <td class="hidden-xs hidden-sm">
+                            @Html.DisplayFor(modelItem => item.Alliance)
                         </td>
                         <td>
                             <a href="@Url.Action("CityLogs", "Log", new { loginID = item.LoginID })" class="modal-link" data-toggle="modal" data-target="#myModal">

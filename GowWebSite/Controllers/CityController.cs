@@ -33,7 +33,7 @@ namespace GowWebSite.Controllers
             try
             {
                 var userCities = db.Cities.Where(x => db.UserCities.Where(y => y.Email == selectedUser).Select(id => id.CityID).Contains(x.CityID));
-                var orderedCities = userCities.OrderBy(x => x.CityName);
+                var orderedCities = userCities.OrderByDescending(x=> x.Alliance).ThenBy(x => x.CityName);
 
                 var cities = orderedCities.Include(c => c.Login).Include(c => c.ResourceType).Include(c => c.CityInfo);
 
